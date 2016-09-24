@@ -1,0 +1,638 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<title>API SERVER & CLIENT  - Plugins For Sximo Builder</title>
+	
+	<meta name="description" content="Description">
+	<meta name="author" content="Mangopik">
+	<meta name="copyright" content="Mangopik">
+	<meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
+	<meta name="date" content="2014-05-26T00:00:00+02:00">
+	
+	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
+	<link rel="stylesheet" href="assets/css/style.css" media="all">
+	<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
+	<script src="assets/js/google-code-prettify/prettify.js"></script>	
+	
+	
+	<script src="assets/js/jquery.js"></script>
+	
+	<script src="assets/js/jquery.scrollTo.js"></script>
+	<script src="assets/js/jquery.easing.js"></script>
+	
+	<script>document.createElement('section');var duration='500',easing='swing';</script>
+	<script src="assets/js/script.js"></script>
+	
+	<style>
+		html{background-color:#EEEEEE;color:#383838;}
+		::-moz-selection{background:#333636;color:#00DFFC;}
+		::selection{background:#333636;color:#00DFFC;}
+		#documenter_sidebar #documenter_logo{background-image:url(assets/images/logo-alt.png);}
+		a{color:#008C9E;}
+		.btn {
+			border-radius:3px;
+		}
+		.btn-primary {
+			  background-image: -moz-linear-gradient(top, #008C9E, #006673);
+			  background-image: -ms-linear-gradient(top, #008C9E, #006673);
+			  background-image: -webkit-gradient(linear, 0 0, 0 008C9E%, from(#343838), to(#006673));
+			  background-image: -webkit-linear-gradient(top, #008C9E, #006673);
+			  background-image: -o-linear-gradient(top, #008C9E, #006673);
+			  background-image: linear-gradient(top, #008C9E, #006673);
+			  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#008C9E', endColorstr='#006673', GradientType=0);
+			  border-color: #006673 #006673 #bfbfbf;
+			  color:#FFFFFF;
+		}
+		.btn-primary:hover,
+		.btn-primary:active,
+		.btn-primary.active,
+		.btn-primary.disabled,
+		.btn-primary[disabled] {
+		  border-color: #008C9E #008C9E #bfbfbf;
+		  background-color: #006673;
+		}
+		hr{border-top:1px solid #D4D4D4;border-bottom:1px solid #FFFFFF;}
+		#documenter_sidebar, #documenter_sidebar ul a{background-color:#2f4050;color:#FFFFFF;}
+		#documenter_sidebar ul a{-webkit-text-shadow:1px 1px 0px #494F4F;-moz-text-shadow:1px 1px 0px #494F4F;text-shadow:1px 1px 0px #494F4F;}
+		#documenter_sidebar ul{border-top:1px solid #212424;}
+		#documenter_sidebar ul a{border-top:1px solid #494F4F;border-bottom:1px solid #212424;color:#FFFFFF;}
+		#documenter_sidebar ul a:hover{background:#333636;color:#00DFFC;border-top:1px solid #333636;}
+		#documenter_sidebar ul a.current{background:#233646;color:#fff;border-top:1px solid #233646;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+
+
+	</style>
+	
+</head>
+<body class="documenter-project-sximo-ajax-crud">
+	<div id="documenter_sidebar">
+		<a href="#documenter_cover" id="documenter_logo"></a>
+		<ul id="documenter_nav">
+			<li><a class="current" href="#documenter_cover">Start</a></li>
+				
+			<li><a href="#getting_started" title="Getting Started">Getting Started</a></li>
+			<li><a href="#feature" title="Getting Started">Feature</a></li>
+			<li><a href="#requirment" title="Compatibility">Compatibility </a></li>	
+			<li><a href="#installation" title="Installation">Installation</a></li>
+			<li><a href="#usage" title="Usage">Usage</a></li>	
+			<li><a href="#sximoclass" title="Sximoapi Class "> Sximoapi Class ( PHP )</a></li>	
+			<li><a href="#example" title="Example Sximoapi Class "> Example </a></li>	
+
+			<li><a href="#credit" title="credit">Source & Credits</a></li>
+
+		</ul>
+		<div id="documenter_copyright">Copyright Mangopik 2014<br>
+		made with the <a href="http://rxa.li/documenter">Documenter v2.0</a> 
+		</div>
+	</div>
+	<div id="documenter_content">
+	<section id="documenter_cover">
+	<h1>RESTfull API Server & Client <small style="font-size:12px;"> Make your application as web services </small> </h1>
+	<div id="documenter_buttons">
+		
+	</div>
+	<hr>
+	<ul>
+	<li>Created: 01/05/2015</li>
+	<li>Latest update: 01/05/2015</li>
+	<li>By: Mangopik</li>
+	<li><a href=""></a></li>
+	<li>Email: <a href="mailto:kangopik@gmail.com">kangopik@gmail.com</a></li>
+	</ul>
+	</section>
+	
+	<section id="getting_started">
+	<div class="page-header"><h3>Getting Started</h3><hr class="notop"></div>
+		<p>Sximo RESTfull API patch/plugin to make your application as web services </p>
+
+	</section>
+
+	<section id="feature">
+		<div class="page-header"><h3>Features </h3><hr class="notop"></div>
+		<p> What can Sximo RESTfull API do ?   </p>
+		<ol>
+			<li> Access to all generated modules  </li>
+			<li> Basic web service ( GET , POST , PUT/PATCH , DELETE  )  </li>		
+			<li> Generate APIkey  </li>		
+			<li> Option to limit spesific modules with apikey </li>			
+		</ol>
+
+	</section>
+
+	<section id="requirment">
+		<div class="page-header"><h3>Compatibility </h3><hr class="notop"></div>
+		<p> This Sximo RESTfull API Plugins running only  with sximo builder <strong>version 2.9</strong> and Future Version   </p>
+
+	</section>
+	
+
+	<section id="installation">
+	<div class="page-header"><h3>Installation</h3><hr class="notop"></div>
+	<h4> Extract your download Source directory </h4>
+	<ul>
+		<li> <b>documentation</b> ( Manual guide ) </li>
+		<li> <b>source</b>  ( Source for Server and Client )</li>
+		<li> <b>sample</b> ( example usage using PHP )</li>
+
+	</ul>
+
+	<h4> Preparing Installation  </h4>
+	<p><b>STEP 1 : Install</b> : Please find <b>/source/server/restapi.zip</b> and install to your codebuilder  <br />
+	- Once your module installed , edit the <b>RestApi</b> module and go to permission tab . set full permission to your superadmin group <br />
+	- Create new menu from menu manager and select <b>RestApi</b> as module link , set menu type as sidemenu </p>  
+	</p>
+	<p><b>STEP 2 : Copy File</b> : <b>SximoapiController.php</b> <br />
+		Depending on your application . <br />
+		If you using Native laravel sximo then please Copy file inside /server/native/<b>SximoapiController.php</b> to  <b>/protected/app/controllers/</b> <br />
+		If you using  Ajax Plugin laravel sximo then please Copy file inside /server/ajax/<b>SximoapiController.php</b> to <b>/protected/app/controllers/</b><br /> 
+	</p>
+	<p><b>STEP 3 : Routes</b> : open your /protected/app/<b>routes.php</b> , register new routes <br /></p>
+	<p> Copy code bellow and paste to your routes at the bottom of  line code </p>
+	<pre class="prettyprint lang-php ">
+Route::group(array('before' => 'authorization'), function() 
+{
+	Route::resource('sximoapi', 'SximoapiController'); 
+});
+
+	</pre>
+
+	<p><b>STEP 4 : Filters </b> : open your /protected/app/<b>filters.php</b> , register new Filter <br /></p>
+	<p> Copy code bellow and paste to your filters at the bottom of  line code </p>
+	<pre class="prettyprint lang-php ">
+Route::filter('authorization', function()
+{
+
+	if(is_null(Input::get('module'))) 
+		return Response::json(array('status'=>'error','message'=>' Please Define Module Name to accessed '),400);		
+			
+	if(!isset($_SERVER['PHP_AUTH_USER']) && !isset($_SERVER['PHP_AUTH_PW']))
+	{
+        return Response::json([
+            'error' => true,
+            'message' => 'Not authenticated',
+            'code' => 401], 401
+        );		
+	} else {
+		
+		$user = $_SERVER['PHP_AUTH_USER'];
+		$key = $_SERVER['PHP_AUTH_PW'];
+		
+		$auth = DB::table('tb_restapi')
+				->join('tb_users', 'tb_users.id', '=', 'tb_restapi.apiuser')
+				->where('apikey',"$key")->where("email","$user")->get();
+
+		
+		if(count($auth) <=0 )
+		{
+			return Response::json([
+				'error' => true,
+				'message' => 'Invalid authenticated params !',
+				'code' => 401], 401
+			);	
+		}  else {
+		
+			$row = $auth[0];
+			$modules = explode(',',str_replace(" ","",$row->modules));
+			if(!in_array(Input::get('module'), $modules))
+			{				
+				return Response::json([
+					'error' => true,
+					'message' => 'You Dont Have Authorization Access!',
+					'code' => 401], 401
+				);				
+			} 		
+		
+		}
+	}	
+
+});
+</pre>
+
+
+	</section>
+	
+	<section id="usage">
+		<div class="page-header"><h3> HowTo Use API ? </h3><hr class="notop"></div>
+		<h5> Create New API Key  </h5>
+		<p> Before use API feature , you need to create API key , please go to your <b>RestApi</b> module and create new API Key and register wich current modules are able to access VIA API HTTP    </p>
+		<hr />
+		<h5> Headers </h5>
+		<p> All Method and URL acces API are protected by basic authentication . Authentication are combination between useremail and apikey </p>
+		<p> <b>User/Email</b> : youremailaccount@mail.com <br />
+			<b>Apikey :</b> yourgeneratedapikey </p>
+		<hr />	
+		
+
+<h5> Available API Method and URL access  </h5>
+
+<table  class="table table-bordered table-striped" border="1" width="100%" cellpadding="2" cellspacing="2">
+<thead>
+<tr>
+<th>Verb</th>
+<th>Path</th>
+<th>Action</th>
+<th>Route Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>http://yourdomain.com/<b>sximoapi</b>?module</code>=<code>{modulename}</td>
+<td>index</td>
+<td>sximoapi.index</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>http://yourdomain.com/<b>sximoapi</b>?module</code>=<code>{modulename}</td>
+<td>store</td>
+<td>sximoapi.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>http://yourdomain.com/<b>sximoapi</b>/<b>id</b>?module</code>=<code>{modulename}</td>
+<td>show</td>
+<td>sximoapi.show</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td>http://yourdomain.com/<b>sximoapi</b><b>id</b>?module</code>=<code>{modulename}</td>
+<td>update</td>
+<td>sximoapi.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>http://yourdomain.com/<b>sximoapi</b>/<b>id</b>?module</code>=<code>{modulename}</td>
+<td>destroy</td>
+<td>sximoapi.destroy</td>
+</tr>
+</tbody>
+</table>
+<p> * NOTE : <b>id</b> is unix primary for each data rows </p>
+<hr />
+<h5> Retrieve Data Option </h5>
+<p> you can add more parameter to url . </p>
+<pre class="prettyprint lang-html ">
+http://yourdomain.com/<b>sximoapi</b>?module</code>=<code>{modulename}</code>&<b>limit</b>=10&<b>sort</b>=fieldname&<b>order</b>=desc&<b>option</b>=true
+</pre>
+<table  class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th> $_GET Option Params</th>
+			<th> Value </th>
+			<th> Info </th> 
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td> limit </td>
+			<td>  <code>0</code> </td>
+			<td> Number of rows diplayed perpage  <br />opt : <code>0,  10 , 20 , 50 ,100 </code>
+			<br />
+			if you set limit <code>0</code> , then it will displaying all records
+			
+			 </td>
+		</tr>
+		<tr>
+			<td> order </td>
+			<td> <code> field </code></td>
+			<td> Ordering rows with spesific field </td>
+		</tr>
+		<tr>
+			<td> sort </td>
+			<td><code> asc </code></td>
+			<td> Type of sort order <code> asc </code> or <code> desc </code></td>
+		</tr>
+
+		<tr>
+			<td> Option </td>
+			<td><code> false </code></td>
+			<td> If you set true , the result will contain Field and Label information <br />
+<pre class="prettyprint lang-php ">
+option : {
+	'label':['label1','lable2'],
+	"field": ['field1','field2']
+} 
+</pre>
+
+			</td>
+		</tr>					
+	</tbody>
+</table>
+
+<hr />
+<h4> Access Via CURL  </h4>
+
+<b> Retrive All data from spesific module </b>
+<pre class="prettyprint lang-php ">
+$ curl --user useremail:apikey http://yourdomain.com/sximoapi?module=modulename
+</pre>
+<b> Vide Detail data from spesific module </b>
+<pre class="prettyprint lang-php ">
+$ curl --user useremail:apikey  http://yourdomain.com/sximoapi/1?module=modulename
+</pre>
+<b> Create new data </b>
+<pre class="prettyprint lang-php ">
+$ curl --user useremail:apikey  http://yourdomain.com/sximoapi?module=modulename 
+-X POST -d '{"field":"value","field":"value"}' -H "Content-Type: application/json"
+</pre>
+<b> Update Data  </b>
+<pre class="prettyprint lang-php ">
+$ curl --user useremail:apikey  http://yourdomain.com/sximoapi/1?module=modulename 
+-X PUT -d '{"field":"value","field":"value"}' -H "Content-Type: application/json"
+</pre>
+<b> Delete Data </b>
+<pre class="prettyprint lang-php ">
+$ curl --user useremail:apikey  http://yourdomain.com/sximoapi/1?module=modulename  
+-X DELETE
+</pre>
+
+<hr />
+<h4> Access Via JQuery / Javascript  </h4>
+<b> Retrive All data from spesific module </b>
+<pre class="prettyprint lang-js ">
+$.ajax({
+	dataType 	: "json",
+	url 		: 'http://yourdomain.com/sximoapi?module=employee',
+	headers		: {"Authorization": "Basic " +  btoa("superadmin@mail.com:pLihtt-I4jzL")},
+	success 	: function(data){
+		// Do return value here //
+
+	}
+})
+</pre>
+<b> Vide Detail data from spesific module </b>
+<pre class="prettyprint lang-js ">
+$.ajax({
+	dataType 	: "json",
+	type 		: "GET",
+	url 		: 'http://yourdomain.com/sximoapi/1?module=employee',
+	headers		: {"Authorization": "Basic " +  btoa("superadmin@mail.com:pLihtt-I4jzL")},
+	success 	: function(data){ 
+		// Do return value here //
+	}
+})
+</pre>
+<b> Create new data </b>
+<pre class="prettyprint lang-js ">
+$.ajax({
+	dataType	: "json",
+	type 		: "POST",
+	data 		: { "field":"value","field":"value" },
+	url 		: 'http://yourdomain.com/sximoapi/1?module=employee',
+	headers		: {"Authorization": "Basic " +  btoa("superadmin@mail.com:pLihtt-I4jzL")},
+	success 	: function(data){ 
+		// Do return value here //
+	}
+})
+</pre>
+<b> Update Data  </b>
+<pre class="prettyprint lang-js ">
+$.ajax({
+	dataType 	: "json",
+	type 		: "PUT",
+	data 		: { "field":"value","field":"value" },
+	url 		: 'http://yourdomain.com/sximoapi/1?module=employee',
+	headers		: {"Authorization": "Basic " +  btoa("superadmin@mail.com:pLihtt-I4jzL")},
+	data 		: [{"field":"value","field":"value"}],
+	success 	: function(data){ 
+		// Do return value here //
+	}
+})
+</pre>
+<b> Delete Data </b>
+<pre class="prettyprint lang-js ">
+$.ajax({
+	dataType 	: "json",
+	type 		: 'DELETE',
+	url 		: 'http://yourdomain.com/sximoapi/1?module=employee',
+	headers		: {"Authorization": "Basic " +  btoa("superadmin@mail.com:pLihtt-I4jzL")},
+	success 	: function(data){ 
+		// Do return value here //
+	}
+})
+</pre>
+
+	</section>
+	
+	<section id="sximoclass">
+		<div class="page-header"><h3>Sximoapi.class.php  </h3><hr class="notop"></div>
+		<p> We provide you with SximoClass function for making access API more easier </p>
+		 </p>
+		 <hr />
+		<h4> Authentication and Instance Class   </h4>
+<pre class="prettyprint lang-php ">
+require_once('sximoapi.php');
+$api = new sximoapi('http://yourdomain.com/sximoapi','superadmin@mail.com:pLihtt-I4jzL');
+</pre>
+<p> In this example we will use module <b>employee</b> to be accessed via API . For real usage , you just need to change module name </p>
+<hr />
+	<h4> Create Auto CRUD </h4>
+	<p> If you want to quick usage from spesific module , you only need to write line code bellow . this will contain complete CRUD function  </p>
+<pre class="prettyprint lang-php ">
+$rest = $api->crud('employee');
+</pre>	
+
+<hr />
+<h4> Manual Usage   </h4>
+<p> If you want to more flexible usage from spesific module , you can use example ( GET , PUT , POST , DELETE ) </p>
+		<h4> Retive Data  </h4>
+
+Quick Usage and pull all data 
+<pre class="prettyprint lang-php ">
+$rest = $api->module('employee')->get();
+</pre>
+
+Using Option <b>LIMIT</b> ,<b> SORT </b>, <b>ORDER</b> 
+ <pre class="prettyprint lang-php ">
+ $option = array(
+ 	'limit'	=> 10 ,
+ 	'sort'	=>'FirstName',
+ 	'order'	=> 'asc'
+ );
+$rest = $api->module('employee', $option)->get();
+</pre>
+<b> Output  : </b>
+ <pre class="prettyprint lang-php ">
+{
+   "total": 11,
+   "rows": [{
+           "EmployeeId": 1,
+           "LastName": "Adam",
+           "FirstName": "Andrew",
+           "ReportsTo": 0,
+           "BirthDate": "2014-04-24",
+           "HireDate": "2014-04-24",
+           "Phone": "+1 (780) 428-9482",
+           "Email": "andrew@chinookcorp.com",
+           "Foto": "",
+           "Status": "0"
+       }],
+   "control":
+   {
+       "page": 1,
+       "sort": "",
+       "order": "asc",
+       "limit": ""
+   },
+   "key": "EmployeeId",       
+}       
+
+</pre>
+
+Using Option <b>option</b></b> 
+ <pre class="prettyprint lang-php ">
+ $option = array(
+ 	'option'	=> 'true' ,
+ );
+$rest = $api->module('employee', $option)->get();
+</pre>
+<b> Output  : </b>
+ <pre class="prettyprint lang-php ">
+{
+   "total": 11,
+   "rows": [{
+           "EmployeeId": 1,
+           "LastName": "Adam",
+           "FirstName": "Andrew",
+           "ReportsTo": 0,
+           "BirthDate": "2014-04-24",
+           "HireDate": "2014-04-24",
+           "Phone": "+1 (780) 428-9482",
+           "Email": "andrew@chinookcorp.com",
+           "Foto": "",
+           "Status": "0"
+       }],
+   "control":
+   {
+       "page": 1,
+       "sort": "",
+       "order": "asc",
+       "limit": ""
+   },
+   "key": "EmployeeId",
+   "option":
+   {
+       "label":
+       [
+           "EmployeeId",
+           "LastName",
+           "FirstName",
+           "ReportsTo",
+           "BirthDate",
+           "HireDate",
+           "Phone",
+           "Email",
+           "Foto",
+           "Status"
+       ],
+       "field":
+       [
+           "EmployeeId",
+           "LastName",
+           "FirstName",
+           "ReportsTo",
+           "BirthDate",
+           "HireDate",
+           "Phone",
+           "Email",
+           "Foto",
+           "Status"
+       ]
+   }
+}       
+
+</pre>
+	
+<hr />
+		<h4> View Detail  </h4>
+<pre class="prettyprint lang-php ">
+$rest = $api->module('employee')->show(1);
+</pre>
+<b> Output : </b>
+ <pre class="prettyprint lang-php ">
+{
+
+   "EmployeeId": 1,
+   "LastName": "Adam",
+   "FirstName": "Andrew",
+   "ReportsTo": 0,
+   "BirthDate": "2014-04-24",
+   "HireDate": "2014-04-24",
+   "Phone": "+1 (780) 428-9482",
+   "Email": "andrew@chinookcorp.com",
+   "Foto": "",
+   "Status": "0"
+       
+}       
+
+</pre>
+<hr />
+		<h4> Create new  </h4>
+<pre class="prettyprint lang-php ">
+$data = array(
+	'FirstName'	=> 'John',
+	'LastName'	=> 'Doe',
+);
+
+$rest = $api->module('employee')->store($data);
+</pre>
+
+<hr />
+		<h4> Update  </h4>
+<pre class="prettyprint lang-php ">
+$data = array(
+	'FirstName'	=> 'John',
+	'LastName'	=> 'Doe',
+);
+$rest = $api->module('employee')->put( 1, $data );
+</pre>
+
+<hr />
+		<h4> Delete  </h4>
+<pre class="prettyprint lang-php ">
+$rest = $api->module('employee')->delete(1);
+</pre>
+	</section>
+		
+
+<section id="example">
+<div class="page-header"><h3> Example  </h3><hr class="notop"></div>
+	<p>Please find example folder inside your directory source </p>
+	<h5> Follow this following step </h5>
+	<ol>
+
+		<li> Install <b>sample/employee.zip</b> to your application using installer package </li>
+		<li> Create new apikey and register  <b>employee</b> module  </li>
+		<li> Edit authorization.php and change  url and user/apikey with your application and new apikey
+<pre class="prettyprint lang-php ">
+$api = new sximoapi('http://localhost/myapp/sximoapi','superadmin@mail.com:pLihtt-I4jzL');
+</pre>
+		</li>
+		<li> Now running your example by accessing example index.php via your browser  </li>
+	</ol>
+
+
+</section>
+
+<section id="credit">
+<div class="page-header"><h3>Source and credit </h3><hr class="notop"></div>
+	<p>Sximo Ajax Plugins is using following plugins</p>
+
+	<ul>
+		<li> <a href="http://jquery.com" target="_blank"> Jquery - javascript framework library </a></li>
+		<li> <a href="http://laravel.com" target="_blank"> Laravel - PHP framework library </li>
+		<li> <a href="http://getbootstrap.com" target="_blank"> Bootstrap - CSS framework library </li>
+	</ul>	
+</section>
+
+</div>
+	
+</body>
+</html>
