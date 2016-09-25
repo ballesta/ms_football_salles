@@ -17,16 +17,16 @@
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
 			<?php if($access['is_add'] ==1): ?>
-	   		<a href="<?php echo e(URL::to('reseauxsalles/update')); ?>" class="tips btn btn-sm btn-white"  title="<?php echo e(Lang::get('core.btn_create')); ?>">
+	   		<a href="<?php echo e(URL::to('complexesportif/update')); ?>" class="tips btn btn-sm btn-white"  title="<?php echo e(Lang::get('core.btn_create')); ?>">
 			<i class="icon-plus-circle2 "></i>&nbsp;<?php echo e(Lang::get('core.btn_create')); ?></a>
 			<?php endif; ?>  
 			<?php if($access['is_remove'] ==1): ?>
 			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="<?php echo e(Lang::get('core.btn_remove')); ?>">
 			<i class="icon-remove4"></i>&nbsp;<?php echo e(Lang::get('core.btn_remove')); ?></a>
 			<?php endif; ?> 
-			<a href="<?php echo e(URL::to( 'reseauxsalles/search')); ?>" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" title="<?php echo e(Lang::get('core.btn_search')); ?>"><i class="icon-search3"></i> <?php echo e(Lang::get('core.btn_search')); ?> </a>				
+			<a href="<?php echo e(URL::to( 'complexesportif/search')); ?>" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" title="<?php echo e(Lang::get('core.btn_search')); ?>"><i class="icon-search3"></i> <?php echo e(Lang::get('core.btn_search')); ?> </a>				
 			<?php if($access['is_excel'] ==1): ?>
-			<a href="<?php echo e(URL::to('reseauxsalles/download?return='.$return)); ?>" class="tips btn btn-sm btn-white" title="<?php echo e(Lang::get('core.btn_download')); ?>">
+			<a href="<?php echo e(URL::to('complexesportif/download?return='.$return)); ?>" class="tips btn btn-sm btn-white" title="<?php echo e(Lang::get('core.btn_download')); ?>">
 			<i class="icon-file-download"></i>&nbsp;<?php echo e(Lang::get('core.btn_download')); ?> </a>
 			<?php endif; ?>			
 		 
@@ -35,7 +35,7 @@
 	 <?php echo (isset($search_map) ? $search_map : ''); ?>
 
 	
-	 <?php echo Form::open(array('url'=>'reseauxsalles/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )); ?>
+	 <?php echo Form::open(array('url'=>'complexesportif/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )); ?>
 
 	 <div class="table-responsive" style="min-height:300px;">
     <table class="table table-striped ">
@@ -53,7 +53,7 @@
 						<?php endif; ?> 
 					<?php endif; ?>
 				<?php endforeach; ?>
-				<th width="270" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
+				<th width="70" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
 			  </tr>
         </thead>
 
@@ -61,7 +61,7 @@
             <?php foreach($rowData as $row): ?>
                 <tr>
 					<td width="30"> <?php echo e(++$i); ?> </td>
-					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="<?php echo e($row->club_id); ?>" />  </td>									
+					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="<?php echo e($row->complexe_salle_id); ?>" />  </td>									
 				 <?php foreach($tableGrid as $field): ?>
 					 <?php if($field['view'] =='1'): ?>
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
@@ -73,32 +73,14 @@
 					 <?php endif; ?>					 
 				 <?php endforeach; ?>
 				 <td>
-					 <?php echo Navigation::link('Salles', 'reseauxsalles/show/'); ?>
-
-					 <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>"
-						class="tips btn btn-xs btn-primary"
-						title="Salles indoors du complexe">
-						 <i class="fa  fa-search "></i>
-						 Salles
-					 </a>
-					 <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>"
-						class="tips btn btn-xs btn-primary"
-						title="Equipes de joueurs">
-						 Equipes
-					 </a>
-					 <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>"
-						class="tips btn btn-xs btn-primary"
-						title="Joueurs inscrits dans la salle">
-						 Joueurs
-					 </a>
-					 <?php if($access['is_detail'] ==1): ?>
-						<a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-primary" title="<?php echo e(Lang::get('core.btn_view')); ?>"><i class="fa  fa-search "></i></a>
-					<?php endif; ?>
-					<?php if($access['is_edit'] ==1): ?>
-						<a  href="<?php echo e(URL::to('reseauxsalles/update/'.$row->club_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-success" title="<?php echo e(Lang::get('core.btn_edit')); ?>"><i class="fa fa-edit "></i></a>
-					<?php endif; ?>
-
-
+					 	<?php if($access['is_detail'] ==1): ?>
+						<a href="<?php echo e(URL::to('complexesportif/show/'.$row->complexe_salle_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-primary" title="<?php echo e(Lang::get('core.btn_view')); ?>"><i class="fa  fa-search "></i></a>
+						<?php endif; ?>
+						<?php if($access['is_edit'] ==1): ?>
+						<a  href="<?php echo e(URL::to('complexesportif/update/'.$row->complexe_salle_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-success" title="<?php echo e(Lang::get('core.btn_edit')); ?>"><i class="fa fa-edit "></i></a>
+						<?php endif; ?>
+												
+					
 				</td>				 
                 </tr>
 				
@@ -120,7 +102,7 @@
 $(document).ready(function(){
 
 	$('.do-quick-search').click(function(){
-		$('#SximoTable').attr('action','<?php echo e(URL::to("reseauxsalles/multisearch")); ?>');
+		$('#SximoTable').attr('action','<?php echo e(URL::to("complexesportif/multisearch")); ?>');
 		$('#SximoTable').submit();
 	});
 	
