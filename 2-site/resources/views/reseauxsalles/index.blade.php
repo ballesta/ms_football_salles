@@ -53,7 +53,7 @@
 						@endif 
 					@endif
 				@endforeach
-				<th width="270" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+				<th width="300" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 			  </tr>
         </thead>
 
@@ -73,22 +73,18 @@
 					 @endif					 
 				 @endforeach
 				 <td>
-					 {!! Navigation::link('Salles', 'reseauxsalles/show/') !!}
+					 {!!  Navigation::link('Salles', 'reseauxsalles/show/'); !!}
 					 <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}"
 						class="tips btn btn-xs btn-primary"
 						title="Salles indoors du complexe">
 						 <i class="fa  fa-search "></i>
-						 Salles
+						 Complexes Sportifs
 					 </a>
-					 <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}"
-						class="tips btn btn-xs btn-primary"
-						title="Equipes de joueurs">
-						 Equipes
-					 </a>
+
 					 <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}"
 						class="tips btn btn-xs btn-primary"
 						title="Joueurs inscrits dans la salle">
-						 Joueurs
+						 Responsables
 					 </a>
 					 @if($access['is_detail'] ==1)
 						<a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>

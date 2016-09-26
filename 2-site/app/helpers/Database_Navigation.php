@@ -12,6 +12,6 @@ class Database_Navigation
 {
     static function link($text, $link)
     {
-        return '<a href="'.$link.'">'.$text.'</a>';
+        //return '<a href="'.$link.'">'.$text.'</a>';
     }
 }
