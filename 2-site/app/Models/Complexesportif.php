@@ -19,8 +19,9 @@ class complexesportif extends Sximo  {
 	}	
 
 	public static function queryWhere(  ){
-		
-		return "  WHERE fbs_complexe_salles.complexe_salle_id IS NOT NULL ";
+
+	    //dd($_GET['club_id']);
+        return self::parent_filter('club_id');
 	}
 	
 	public static function queryGroup(){

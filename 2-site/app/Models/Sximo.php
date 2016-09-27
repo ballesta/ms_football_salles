@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sximo extends Model {
 
-
+    // bb: Added filter on parent
 	public static function getRows( $args )
 	{
        $table = with(new static)->table;
@@ -31,22 +31,43 @@ class Sximo extends Model {
 
         // Ajouter filtre sur table parents ++++
 
+        $sql = self::querySelect()
+             . self::queryWhere()
+             . " {$params} "
+             . self::queryGroup()
+             ." {$orderConditional}  {$limitConditional} ";
+        //dd($sql);
+
+
 		$rows = array();
-	    $result = \DB::select( self::querySelect() . self::queryWhere(). " 
-				{$params} ". self::queryGroup() ." {$orderConditional}  {$limitConditional} ");
-		
-		if($key =='' ) { $key ='*'; } else { $key = $table.".".$key ; }	
+	    $result = \DB::select( $sql);
+
+		if($key =='' ) { $key ='*'; } else { $key = $table.".".$key ; }
 		$total = \DB::select( self::querySelect() . self::queryWhere(). " 
 				{$params} ". self::queryGroup() ." {$orderConditional}  ");
 		$total = count($total);
 
 //		$total = $res[0]->total;
+		return $results = array('rows'=> $result , 'total' => $total);
+	}
 
-
-		return $results = array('rows'=> $result , 'total' => $total);	
-
-	
-	}	
+    public static function parent_filter($parent_id_key)
+    {
+        $table = with(new static)->table;
+        $key = with(new static)->primaryKey;
+        if (isset($_GET[$parent_id_key]))
+        {
+            // Filtrage par parent courant
+            $id = $_GET[$parent_id_key];
+            $where = "  WHERE $table.$parent_id_key = $id ";
+            // dd($where);
+        }
+        else
+        {
+            $where = "  WHERE $table.$key IS NOT NULL ";
+        }
+        return $where;
+    }
 
 	public static function getRow( $id )
 	{
