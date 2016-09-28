@@ -51,21 +51,27 @@ class Sximo extends Model {
 		return $results = array('rows'=> $result , 'total' => $total);
 	}
 
+	// bb
     public static function parent_filter($parent_id_key)
     {
+        // Table
         $table = with(new static)->table;
+        // clef primaire de la table
         $key = with(new static)->primaryKey;
-        if (isset($_GET[$parent_id_key]))
+        // Id du parent passée en paramètre?
+        $id = \Session::get($parent_id_key, null);
+        echo 'parent_filter: ', $id, '<br>';
+        if (is_null($id))
         {
-            // Filtrage par parent courant
-            $id = $_GET[$parent_id_key];
-            $where = "  WHERE $table.$parent_id_key = $id ";
-            // dd($where);
+            // Pas d'id: laisser le filtrage existant
+            $where = "  WHERE $table.$key IS NOT NULL ";
         }
         else
         {
-            $where = "  WHERE $table.$key IS NOT NULL ";
+            // Filtrage par parent courant
+            $where = "  WHERE $table.$parent_id_key = $id ";
         }
+        echo $where,'<hr>';
         return $where;
     }
 
@@ -95,19 +101,17 @@ class Sximo extends Model {
 	   $key = with(new static)->primaryKey;
 	    if($id == NULL )
         {
-			
             // Insert Here 
             unset($data[$key]);
 			if(isset($data['createdOn'])) $data['createdOn'] = date("Y-m-d H:i:s");	
 			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");	
-			 $id = \DB::table( $table)->insertGetId($data);				
-            
+            $id = \DB::table( $table)->insertGetId($data);
         } else {
             // Update here 
 			// update created field if any
 			if(isset($data['createdOn'])) unset($data['createdOn']);	
 			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");			
-			 \DB::table($table)->where($key,$id)->update($data);    
+			\DB::table($table)->where($key,$id)->update($data);
         }    
         return $id;    
 	}			
@@ -128,15 +132,11 @@ class Sximo extends Model {
 			foreach($data['config']['grid'] as $fs)
 			{
 				foreach($fs as $f)
-					$field[] = $fs['field']; 	
-									
+					$field[] = $fs['field'];
 			}
-			$data['field'] = $field;	
-					
+			$data['field'] = $field;
 		}
 		return $data;
-			
-	
 	} 
 
     static function getComboselect( $params , $limit =null, $parent = null)
@@ -205,8 +205,7 @@ class Sximo extends Model {
 			
 		} else {
 			return false;
-		}			
-	
+		}
 	}	
 
 	static function getColumnTable( $table )
@@ -217,7 +216,14 @@ class Sximo extends Model {
            //print_r($column);
 		    $columns[$column->Field] = '';
         }
-	  
+
+        switch ($table)
+        {
+            case  'fbs_complexe_salles':
+                $club_id = \Session::get('club_id');
+                $columns['club_id'] = $club_id;
+                break;
+        }
 
         return $columns;
 	}	

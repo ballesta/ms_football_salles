@@ -85,7 +85,7 @@
 									  <div class="form-group  " >
 										<label for="Club Id" class=" control-label col-md-4 text-left"> Club Id </label>
 										<div class="col-md-6">
-										  {!! Form::text('club_id', $row['club_id'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  <select name='club_id' rows='5' id='club_id' class='select2 '   ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -117,6 +117,9 @@
    <script type="text/javascript">
 	$(document).ready(function() { 
 		
+		
+		$("#club_id").jCombo("{!! url('complexesportif/comboselect?filter=fbs_reseaux_salles:club_id:nom|ville') !!}",
+		{  selected_value : '{{ $row["club_id"] }}' });
 		 
 
 		$('.removeMultiFiles').on('click',function(){

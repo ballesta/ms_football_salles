@@ -202,7 +202,8 @@ return [
         'Socialize' => Laravel\Socialite\Facades\Socialite::class,
         'Markdown'  => GrahamCampbell\Markdown\Facades\Markdown::class,
         'Socialize' => Laravel\Socialite\Facades\Socialite::class ,
-        'Navigation'=> App\Helpers\Database_Navigation::class
+        'Navigation'=> App\Helpers\Database_Navigation::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class
 
     ],
 

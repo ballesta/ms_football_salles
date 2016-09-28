@@ -36,15 +36,17 @@ class ComplexesportifController extends Controller {
 
 		$lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
 		\App::setLocale($lang);
-		}  
-
-
-		
+		}
 	}
 
 	public function getIndex( Request $request )
 	{
-
+	    //
+        if(!is_null($club_id = $request->input('club_id')))
+        {
+            // Store in session
+            \Session::put('club_id',$club_id );
+        }
 		if($this->access['is_view'] ==0) 
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');

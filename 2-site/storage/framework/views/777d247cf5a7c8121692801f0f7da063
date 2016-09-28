@@ -51,7 +51,6 @@
                             <tr>
                                 <th class="number"><span> No </span></th>
                                 <th><input type="checkbox" class="checkall"/></th>
-
                                 <?php foreach($tableGrid as $t): ?>
                                     <?php if($t['view'] =='1'): ?>
                                         <?php $limited = isset($t['limited']) ? $t['limited'] : ''; ?>
@@ -66,7 +65,7 @@
                             <tbody>
                             <?php foreach($rowData as $row): ?>
                                 <tr>
-                                    <td width="30"> <?php echo e(++$i); ?> </td>
+                                    <td width="30"> <?php echo e(++$i); ?></td>
                                     <td width="50"><input type="checkbox" class="ids" name="ids[]"
                                                           value="<?php echo e($row->club_id); ?>"/></td>
                                     <?php foreach($tableGrid as $field): ?>
@@ -81,20 +80,13 @@
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                     <td>
-                                        <?php echo Navigation::link('Salles', 'reseauxsalles/show/');; ?>
+                                        <?php echo Navigation::link('Complexes',
+                                        'Complexes sportifs (établissements) du réseau',
+                                        'complexesportif',
+                                        'club_id',
+                                        $row->club_id
+                                        ); ?>
 
-                                        <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>"
-                                           class="tips btn btn-xs btn-primary"
-                                           title="Salles indoors du complexe">
-                                            <i class="fa  fa-search "></i>
-                                            Complexes Sportifs
-                                        </a>
-
-                                        <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>"
-                                           class="tips btn btn-xs btn-primary"
-                                           title="Joueurs inscrits dans la salle">
-                                            Responsables
-                                        </a>
                                         <?php if($access['is_detail'] ==1): ?>
                                             <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>"
                                                class="tips btn btn-xs btn-primary"
@@ -129,4 +121,5 @@
         });
     </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

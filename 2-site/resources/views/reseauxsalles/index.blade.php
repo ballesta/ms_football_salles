@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
     <div class="page-content row">
@@ -43,14 +42,14 @@
                         @endif
                     </div>
                     {!! (isset($search_map) ? $search_map : '') !!}
-                    {!! Form::open(array('url'=>'reseauxsalles/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+                    {!! Form::open(array('url'=>'reseauxsalles/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' ))
+                    !!}
                     <div class="table-responsive" style="min-height:300px;">
                         <table class="table table-striped ">
                             <thead>
                             <tr>
                                 <th class="number"><span> No </span></th>
                                 <th><input type="checkbox" class="checkall"/></th>
-
                                 @foreach ($tableGrid as $t)
                                     @if($t['view'] =='1')
                                         <?php $limited = isset($t['limited']) ? $t['limited'] : ''; ?>
@@ -65,7 +64,7 @@
                             <tbody>
                             @foreach ($rowData as $row)
                                 <tr>
-                                    <td width="30"> {{ ++$i }} </td>
+                                    <td width="30"> {{ ++$i }}</td>
                                     <td width="50"><input type="checkbox" class="ids" name="ids[]"
                                                           value="{{ $row->club_id }}"/></td>
                                     @foreach ($tableGrid as $field)
@@ -79,19 +78,14 @@
                                         @endif
                                     @endforeach
                                     <td>
-                                        {!!  Navigation::link('Salles', 'reseauxsalles/show/'); !!}
-                                        <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}"
-                                           class="tips btn btn-xs btn-primary"
-                                           title="Salles indoors du complexe">
-                                            <i class="fa  fa-search "></i>
-                                            Complexes Sportifs
-                                        </a>
-
-                                        <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}"
-                                           class="tips btn btn-xs btn-primary"
-                                           title="Joueurs inscrits dans la salle">
-                                            Responsables
-                                        </a>
+                                        {!!
+                                        Navigation::link('Complexes',
+                                        'Complexes sportifs (établissements) du réseau',
+                                        'complexesportif',
+                                        'club_id',
+                                        $row->club_id
+                                        )
+                                        !!}
                                         @if($access['is_detail'] ==1)
                                             <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}"
                                                class="tips btn btn-xs btn-primary"
