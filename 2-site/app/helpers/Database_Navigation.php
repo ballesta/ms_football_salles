@@ -21,20 +21,14 @@ class Database_Navigation
      */
     static function link($text, $help, $url, $parent_key, $parent_id)
     {
-        // Passer identifiant en parametre pour le mettre en session en début de l'url appellée
+        // Passer identifiant en parametre
+        // pour le mettre en session en début de l'url appellée
         $bouton=
          '<a href="' . $url . '?' . $parent_key . '=' . $parent_id . '"'
         .'   class="tips btn btn-xs btn-primary"'
         .'   title="' . $help . '">'
         .    $text
         . '</a>';
-
-        // Met l'identifiant du parent en session
-        //\Session::forget($parent_key);
-        //\Session::flush();
-        //\Session::put($parent_key, $parent_id);
-        //echo 'link:', $parent_id, '<br>';
-        //echo 'session:', \Session::get($parent_key);
 
         return $bouton;
     }

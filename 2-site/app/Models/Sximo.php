@@ -29,7 +29,6 @@ class Sximo extends Model {
 				$params .= " AND {$table}.entry_by ='".\Session::get('uid')."'"; 	
 		// End Update permission global / own access new ver 1.1			
 
-        // Ajouter filtre sur table parents ++++
 
         $sql = self::querySelect()
              . self::queryWhere()
@@ -51,7 +50,7 @@ class Sximo extends Model {
 		return $results = array('rows'=> $result , 'total' => $total);
 	}
 
-	// bb
+	// bb ++++ a supprimer, inclu dans les modèles
     public static function parent_filter($parent_id_key)
     {
         // Table
