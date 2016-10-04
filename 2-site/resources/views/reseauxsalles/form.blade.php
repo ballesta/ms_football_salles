@@ -28,9 +28,9 @@
 						<fieldset><legend> Réseaux de salles</legend>
 				{!! Form::hidden('club_id', $row['club_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Nom" class=" control-label col-md-4 text-left"> Nom </label>
+										<label for="Nom" class=" control-label col-md-4 text-left"> Nom <span class="asterix"> * </span></label>
 										<div class="col-md-6">
-										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
 										 <div class="col-md-2">
 										 	

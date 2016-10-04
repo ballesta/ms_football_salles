@@ -19,8 +19,12 @@ class Database_Navigation
      * @param $parent_id
      * @return string
      */
-    static function link($text, $help, $url, $parent_key, $parent_id)
+
+    //use \Illuminate\Session;
+
+    static function link_to_detail($text, $help, $url, $parent_key, $parent_id)
     {
+
         // Passer identifiant en parametre
         // pour le mettre en session en début de l'url appellée
         $bouton=
@@ -29,6 +33,9 @@ class Database_Navigation
         .'   title="' . $help . '">'
         .    $text
         . '</a>';
+
+        // Met l'identifiant du parent en session
+        \Session::put($parent_key, $parent_id);
 
         return $bouton;
     }

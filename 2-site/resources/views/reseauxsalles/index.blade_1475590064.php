@@ -19,16 +19,16 @@
 	<div class="sbox-content"> 	
 	    <div class="toolbar-line ">
 			@if($access['is_add'] ==1)
-	   		<a href="{{ URL::to('complexesportif/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}">
+	   		<a href="{{ URL::to('reseauxsalles/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}">
 			<i class="icon-plus-circle2 "></i>&nbsp;{{ Lang::get('core.btn_create') }}</a>
 			@endif  
 			@if($access['is_remove'] ==1)
 			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_remove') }}">
 			<i class="icon-remove4"></i>&nbsp;{{ Lang::get('core.btn_remove') }}</a>
 			@endif 
-			<a href="{{ URL::to( 'complexesportif/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" title="{{ Lang::get('core.btn_search') }}"><i class="icon-search3"></i> {{ Lang::get('core.btn_search') }} </a>				
+			<a href="{{ URL::to( 'reseauxsalles/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" title="{{ Lang::get('core.btn_search') }}"><i class="icon-search3"></i> {{ Lang::get('core.btn_search') }} </a>				
 			@if($access['is_excel'] ==1)
-			<a href="{{ URL::to('complexesportif/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
+			<a href="{{ URL::to('reseauxsalles/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
 			<i class="icon-file-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
 			@endif			
 		 
@@ -36,7 +36,7 @@
 
 	 {!! (isset($search_map) ? $search_map : '') !!}
 	
-	 {!! Form::open(array('url'=>'complexesportif/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+	 {!! Form::open(array('url'=>'reseauxsalles/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
 	 <div class="table-responsive" style="min-height:300px;">
     <table class="table table-striped ">
         <thead>
@@ -61,7 +61,7 @@
             @foreach ($rowData as $row)
                 <tr>
 					<td width="30"> {{ ++$i }} </td>
-					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->complexe_salle_id }}" />  </td>									
+					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="{{ $row->club_id }}" />  </td>									
 				 @foreach ($tableGrid as $field)
 					 @if($field['view'] =='1')
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
@@ -74,12 +74,14 @@
 				 @endforeach
 				 <td>
 					 	@if($access['is_detail'] ==1)
-						<a href="{{ URL::to('complexesportif/show/'.$row->complexe_salle_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
+						<a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 						@endif
 						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('complexesportif/update/'.$row->complexe_salle_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
+						<a  href="{{ URL::to('reseauxsalles/update/'.$row->club_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
 						@endif
-				</td>
+												
+					
+				</td>				 
                 </tr>
 				
             @endforeach
@@ -99,7 +101,7 @@
 $(document).ready(function(){
 
 	$('.do-quick-search').click(function(){
-		$('#SximoTable').attr('action','{{ URL::to("complexesportif/multisearch")}}');
+		$('#SximoTable').attr('action','{{ URL::to("reseauxsalles/multisearch")}}');
 		$('#SximoTable').submit();
 	});
 	

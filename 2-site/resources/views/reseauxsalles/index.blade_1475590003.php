@@ -64,12 +64,17 @@
 @endforeach
 <td>
 {{!!
-    \Navigation::link_to_detail(
-    $text      = 'complexesportif',
-    $help      = '',
-    $url       = 'complexesportif/show/',
-    $parent_key= 'club_id',
-    $parent_id = $row->club_id)
+    $text      = 'complexesportif';
+    $help      = '';
+    $url       = 'complexesportif/show/';
+    $parent_key= 'club_id';
+    $parent_id = $row->club_id;
+    link_to_detail(  
+                    $text,
+                    $help,
+                    $url,
+                    $parent_key,
+                    $parent_id);
 !!}}
 @if($access['is_detail'] ==1)
 <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>

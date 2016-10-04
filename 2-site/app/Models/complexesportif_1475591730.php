@@ -152,34 +152,6 @@ $where = "  WHERE $table.$parent_id_key = $id ";
 }
 return $where;
 }
-else
-{
-// Filter by parent id
-$where = "  WHERE $table.$parent_id_key = $id ";
-}
-return $where;
-}
-else
-{
-// Filter by parent id
-$where = "  WHERE $table.$parent_id_key = $id ";
-}
-return $where;
-}
-else
-{
-// Filter by parent id
-$where = "  WHERE $table.$parent_id_key = $id ";
-}
-return $where;
-}
-else
-{
-// Filter by parent id
-$where = "  WHERE $table.$parent_id_key = $id ";
-}
-return $where;
-}
 public static function queryGroup(){
 return "  ";
 }
