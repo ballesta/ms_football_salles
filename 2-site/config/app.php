@@ -147,7 +147,8 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,  
-        Collective\Html\HtmlServiceProvider::class    
+        Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 

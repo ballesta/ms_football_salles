@@ -51,28 +51,28 @@ class Sximo extends Model {
 	}
 
 	// bb ++++ a supprimer, inclu dans les modèles
-    public static function parent_filter($parent_id_key)
-    {
-        // Table
-        $table = with(new static)->table;
-        // clef primaire de la table
-        $key = with(new static)->primaryKey;
-        // Id du parent passée en paramètre?
-        $id = \Session::get($parent_id_key, null);
-        echo 'parent_filter: ', $id, '<br>';
-        if (is_null($id))
-        {
-            // Pas d'id: laisser le filtrage existant
-            $where = "  WHERE $table.$key IS NOT NULL ";
-        }
-        else
-        {
-            // Filtrage par parent courant
-            $where = "  WHERE $table.$parent_id_key = $id ";
-        }
-        echo $where,'<hr>';
-        return $where;
-    }
+    //public static function parent_filter($parent_id_key)
+    //{
+    //    // Table
+    //    $table = with(new static)->table;
+    //    // clef primaire de la table
+    //    $key = with(new static)->primaryKey;
+    //    // Id du parent passée en paramètre?
+    //    $id = \Session::get($parent_id_key, null);
+    //    echo 'parent_filter: ', $id, '<br>';
+    //    if (is_null($id))
+    //    {
+    //        // Pas d'id: laisser le filtrage existant
+    //        $where = "  WHERE $table.$key IS NOT NULL ";
+    //    }
+    //    else
+    //    {
+    //        // Filtrage par parent courant
+    //        $where = "  WHERE $table.$parent_id_key = $id ";
+    //    }
+    //    echo $where,'<hr>';
+    //    return $where;
+    //}
 
 	public static function getRow( $id )
 	{
@@ -216,13 +216,13 @@ class Sximo extends Model {
 		    $columns[$column->Field] = '';
         }
 
-        switch ($table)
-        {
-            case  'fbs_complexe_salles':
-                $club_id = \Session::get('club_id');
-                $columns['club_id'] = $club_id;
-                break;
-        }
+        //switch ($table)
+        //{
+        //    case  'fbs_complexe_salles':
+        //        $club_id = \Session::get('club_id');
+        //        $columns['club_id'] = $club_id;
+        //        break;
+        //}
 
         return $columns;
 	}	

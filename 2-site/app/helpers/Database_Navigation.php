@@ -28,14 +28,16 @@ class Database_Navigation
         // Passer identifiant en parametre
         // pour le mettre en session en début de l'url appellée
         $bouton=
-         '<a href="' . $url . '?' . $parent_key . '=' . $parent_id . '"'
+         '<a href="' . $url . '?'  . $parent_key . '=' . $parent_id . '"'
         .'   class="tips btn btn-xs btn-primary"'
         .'   title="' . $help . '">'
         .    $text
         . '</a>';
 
-        // Met l'identifiant du parent en session
-        \Session::put($parent_key, $parent_id);
+
+        // Met l'identifiant du parent en session ===> NON!!!
+        // \Session::put($parent_key, $parent_id);
+        \Session::forget($parent_key);
 
         return $bouton;
     }

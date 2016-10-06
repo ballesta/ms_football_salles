@@ -45,19 +45,18 @@ abstract class Controller extends BaseController {
         {
         	\Session::put('themes', 'sximo');	
         }
-        
+
          \App::setLocale(CNF_LANG);
 		 if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
 
 		    $lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
 		    \App::setLocale($lang);
-		}    
+		}
 		$data = array(
 				'last_activity'=> strtotime(Carbon::now())
 			);
 		\DB::table('tb_users')->where('id',\Session::get('uid'))->update($data);   
-	} 	
-
+	}
 
 	function getComboselect( Request $request)
 	{
@@ -416,10 +415,8 @@ abstract class Controller extends BaseController {
 
 							} else {
 								unset($data[$field]);
-							}	
-
+							}
 						}
-
 					}	
 
 					// Handle Checkbox input 
@@ -461,7 +458,7 @@ abstract class Controller extends BaseController {
 
 			}	
 		}
-		 $global	= (isset($this->access['is_global']) ? $this->access['is_global'] : 0 );
+        $global	= (isset($this->access['is_global']) ? $this->access['is_global'] : 0 );
 		
 		if($global == 0 )
 			$data['entry_by'] = \Session::get('uid');
@@ -637,7 +634,6 @@ abstract class Controller extends BaseController {
 		exit;
 	
 	}	
-
 
 	function getLookup( Request $request, $id)
 	{

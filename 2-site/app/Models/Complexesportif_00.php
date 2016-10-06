@@ -14,15 +14,16 @@ class complexesportif extends Sximo  {
         return "  SELECT fbs_complexe_salles.* FROM fbs_complexe_salles  ";
     }
     public static function queryWhere(  ){
-       $parent_id_key = 'club_id';
+        $parent_id_key = 'club_id';
         // Table
         $table = with(new static)->table;
         // clef primaire de la table
         $key = with(new static)->primaryKey;
         // Id du parent passée en paramètre?
         $id = \Session::get($parent_id_key, null);
-        //$id=1;
-		if (is_null($id))
+        //$id = null;
+        //if (!isset($_GET[$parent_id_key]))
+        if (is_null($id))
         {
             // No id,leave existing filter
             $where = "  WHERE $table.$key IS NOT NULL ";
@@ -30,13 +31,14 @@ class complexesportif extends Sximo  {
         else
         {
             // Filter by parent id
+            $id = $_GET[$parent_id_key];
             $where = "  WHERE $table.$parent_id_key = $id ";
         }
         return $where;
- }
+    }
 
-public static function queryGroup(){
-    return "  ";
-}
+    public static function queryGroup(){
+        return "  ";
+    }
 
 }

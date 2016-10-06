@@ -45,7 +45,7 @@
 <?php endif; ?>
 <?php endif; ?>
 <?php endforeach; ?>
-<th width="70" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
+<th width="330" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
 </tr>
 </thead>
 <tbody>
@@ -65,12 +65,20 @@
 <?php endif; ?>
 <?php endforeach; ?>
 <td>
-{<?php echo \Navigation::link_to_detail(
-    $text      = 'complexesportif',
+<?php echo \Navigation::link_to_detail(
+    $text      = 'Complexes sportifs',
     $help      = '',
-    $url       = 'complexesportif/show/',
+    $url       = URL::to('complexesportif'),
     $parent_key= 'club_id',
-    $parent_id = $row->club_id); ?>}
+    $parent_id = $row->club_id); ?>
+
+<?php echo \Navigation::link_to_detail(
+    $text      = 'Complexes sportifs',
+    $help      = '',
+    $url       = URL::to('complexesportif'),
+    $parent_key= 'club_id',
+    $parent_id = $row->club_id); ?>
+
 <?php if($access['is_detail'] ==1): ?>
 <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-primary" title="<?php echo e(Lang::get('core.btn_view')); ?>"><i class="fa  fa-search "></i></a>
 <?php endif; ?>

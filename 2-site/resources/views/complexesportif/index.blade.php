@@ -79,7 +79,9 @@
 						@if($access['is_edit'] ==1)
 						<a  href="{{ URL::to('complexesportif/update/'.$row->complexe_salle_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
 						@endif
-				</td>
+												
+					
+				</td>				 
                 </tr>
 				
             @endforeach
