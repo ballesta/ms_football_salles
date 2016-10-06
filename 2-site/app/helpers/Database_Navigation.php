@@ -37,7 +37,7 @@ class Database_Navigation
 
         // Met l'identifiant du parent en session ===> NON!!!
         // \Session::put($parent_key, $parent_id);
-        \Session::forget($parent_key);
+        //\Session::forget($parent_key);
 
         return $bouton;
     }

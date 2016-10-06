@@ -1,6 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <?php /**/ usort($tableGrid, "SiteHelpers::_sort") /**/ ?>
 <div class="page-content row">
+
 <div class="page-content-wrapper m-t">
 <div class="sbox">
 <div class="sbox-title"> <h3> <?php echo e($pageTitle); ?> <small><?php echo e($pageNote); ?></small></h3>
@@ -26,8 +27,10 @@
 <a href="<?php echo e(URL::to('reseauxsalles/download?return='.$return)); ?>" class="tips btn btn-sm btn-white" title="<?php echo e(Lang::get('core.btn_download')); ?>">
 <i class="icon-file-download"></i>&nbsp;<?php echo e(Lang::get('core.btn_download')); ?> </a>
 <?php endif; ?>
+
 </div>
 <?php echo (isset($search_map) ? $search_map : ''); ?>
+
 
 <?php echo Form::open(array('url'=>'reseauxsalles/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )); ?>
 
@@ -37,15 +40,17 @@
 <tr>
 <th class="number"><span> No </span> </th>
 <th> <input type="checkbox" class="checkall" /></th>
+
 <?php foreach($tableGrid as $t): ?>
 <?php if($t['view'] =='1'): ?>
 <?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
 <?php if(SiteHelpers::filterColumn($limited )): ?>
+
 <th><span><?php echo e($t['label']); ?></span></th>
 <?php endif; ?>
 <?php endif; ?>
 <?php endforeach; ?>
-<th width="330" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
+<th width="200" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
 </tr>
 </thead>
 <tbody>
@@ -72,23 +77,21 @@
     $parent_key= 'club_id',
     $parent_id = $row->club_id); ?>
 
-<?php echo \Navigation::link_to_detail(
-    $text      = 'Complexes sportifs',
-    $help      = '',
-    $url       = URL::to('complexesportif'),
-    $parent_key= 'club_id',
-    $parent_id = $row->club_id); ?>
-
 <?php if($access['is_detail'] ==1): ?>
 <a href="<?php echo e(URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-primary" title="<?php echo e(Lang::get('core.btn_view')); ?>"><i class="fa  fa-search "></i></a>
 <?php endif; ?>
 <?php if($access['is_edit'] ==1): ?>
 <a  href="<?php echo e(URL::to('reseauxsalles/update/'.$row->club_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-success" title="<?php echo e(Lang::get('core.btn_edit')); ?>"><i class="fa fa-edit "></i></a>
 <?php endif; ?>
+
+
 </td>
 </tr>
+
 <?php endforeach; ?>
+
 </tbody>
+
 </table>
 <input type="hidden" name="md" value="" />
 </div>
