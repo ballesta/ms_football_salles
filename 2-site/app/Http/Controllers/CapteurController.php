@@ -35,9 +35,6 @@ class CapteurController extends Controller {
     }
     public function getIndex( Request $request )
     {
-        $id = $request->query("malette_capteurs_id");
-        if (!is_null($id))
-        \Session::put("malette_capteurs_id", $id);
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -110,10 +107,12 @@ class CapteurController extends Controller {
             $this->data['row'] =  $row;
         } else {
             $this->data['row'] = $this->model->getColumnTable('fb_capteurs');
+            ////(( Code generated begin
             $columns = $this->data['row'];
             $id = \Session::get('malette_capteurs_id', null);
             $columns['malette_capteurs_id'] = $id;
             $this->data['row'] = $columns;
+            ////)) Code generated end
         }
         $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
         

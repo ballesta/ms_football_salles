@@ -35,9 +35,6 @@ class ComplexesportifController extends Controller {
     }
     public function getIndex( Request $request )
     {
-        $id = $request->query("club_id");
-        if (!is_null($id))
-        \Session::put("club_id", $id);
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -110,10 +107,12 @@ class ComplexesportifController extends Controller {
             $this->data['row'] =  $row;
         } else {
             $this->data['row'] = $this->model->getColumnTable('fbs_complexe_salles');
+            ////(( Code generated begin
             $columns = $this->data['row'];
             $id = \Session::get('club_id', null);
             $columns['club_id'] = $id;
             $this->data['row'] = $columns;
+            ////)) Code generated end
         }
         $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
         

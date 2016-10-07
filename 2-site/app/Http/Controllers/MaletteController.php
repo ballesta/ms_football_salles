@@ -35,9 +35,6 @@ class MaletteController extends Controller {
     }
     public function getIndex( Request $request )
     {
-        $id = $request->query("complexe_salle_id");
-        if (!is_null($id))
-        \Session::put("complexe_salle_id", $id);
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -110,10 +107,12 @@ class MaletteController extends Controller {
             $this->data['row'] =  $row;
         } else {
             $this->data['row'] = $this->model->getColumnTable('fb_malette_capteurs');
+            ////(( Code generated begin
             $columns = $this->data['row'];
             $id = \Session::get('complexe_salle_id', null);
             $columns['complexe_salle_id'] = $id;
             $this->data['row'] = $columns;
+            ////)) Code generated end
         }
         $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
         

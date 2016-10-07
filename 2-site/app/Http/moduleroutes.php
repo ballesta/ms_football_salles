@@ -5,4 +5,5 @@
                     Route::controller('capteur', 'CapteurController');
                     Route::controller('salle', 'SalleController');
                     Route::controller('equipe', 'EquipeController');
+                    Route::controller('joueur', 'JoueurController');
                     ?>

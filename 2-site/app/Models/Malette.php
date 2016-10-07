@@ -14,6 +14,7 @@ class malette extends Sximo  {
         return "  SELECT fb_malette_capteurs.* FROM fb_malette_capteurs  ";
     }
     public static function queryWhere(  ){
+        ////(( Code generated begin
         $parent_id_key = 'complexe_salle_id';
         // Table
         $table = with(new static)->table;
@@ -32,6 +33,7 @@ class malette extends Sximo  {
             $where = "  WHERE $table.$parent_id_key = $id ";
         }
         return $where;
+        ////)) Code generated end
     }
     
     public static function queryGroup(){

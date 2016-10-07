@@ -14,6 +14,7 @@ class capteur extends Sximo  {
         return "  SELECT fb_capteurs.* FROM fb_capteurs  ";
     }
     public static function queryWhere(  ){
+        ////(( Code generated begin
         $parent_id_key = 'malette_capteurs_id';
         // Table
         $table = with(new static)->table;
@@ -32,6 +33,7 @@ class capteur extends Sximo  {
             $where = "  WHERE $table.$parent_id_key = $id ";
         }
         return $where;
+        ////)) Code generated end
     }
     
     public static function queryGroup(){

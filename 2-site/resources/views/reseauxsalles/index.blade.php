@@ -2,7 +2,6 @@
 @section('content')
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
 <div class="page-content row">
-
 <div class="page-content-wrapper m-t">
 <div class="sbox">
 <div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3>
@@ -28,10 +27,8 @@
 <a href="{{ URL::to('reseauxsalles/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
 <i class="icon-file-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
 @endif
-
 </div>
 {!! (isset($search_map) ? $search_map : '') !!}
-
 {!! Form::open(array('url'=>'reseauxsalles/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
 <div class="table-responsive" style="min-height:300px;">
 <table class="table table-striped ">
@@ -39,17 +36,15 @@
 <tr>
 <th class="number"><span> No </span> </th>
 <th> <input type="checkbox" class="checkall" /></th>
-
 @foreach ($tableGrid as $t)
 @if($t['view'] =='1')
 <?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
 @if(SiteHelpers::filterColumn($limited ))
-
 <th><span>{{ $t['label'] }}</span></th>
 @endif
 @endif
 @endforeach
-<th width="200" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="460" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
@@ -68,6 +63,7 @@
 @endif
 @endforeach
 <td>
+<!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
     $text      = 'Complexes sportifs',
@@ -76,21 +72,17 @@
     $parent_key= 'club_id',
     $parent_id = $row->club_id)
 !!}
+<!--//)) Code generated end-->
 @if($access['is_detail'] ==1)
 <a href="{{ URL::to('reseauxsalles/show/'.$row->club_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 @endif
 @if($access['is_edit'] ==1)
 <a  href="{{ URL::to('reseauxsalles/update/'.$row->club_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
 @endif
-
-
 </td>
 </tr>
-
 @endforeach
-
 </tbody>
-
 </table>
 <input type="hidden" name="md" value="" />
 </div>

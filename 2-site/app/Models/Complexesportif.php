@@ -14,6 +14,7 @@ class complexesportif extends Sximo  {
         return "  SELECT fbs_complexe_salles.* FROM fbs_complexe_salles  ";
     }
     public static function queryWhere(  ){
+        ////(( Code generated begin
         $parent_id_key = 'club_id';
         // Table
         $table = with(new static)->table;
@@ -32,6 +33,7 @@ class complexesportif extends Sximo  {
             $where = "  WHERE $table.$parent_id_key = $id ";
         }
         return $where;
+        ////)) Code generated end
     }
     
     public static function queryGroup(){
