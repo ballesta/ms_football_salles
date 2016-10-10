@@ -35,6 +35,12 @@ class ComplexesportifController extends Controller {
     }
     public function getIndex( Request $request )
     {
+        ////(( Code generated begin
+        // Get parameter in URL to use it as filter
+        $id = $request->query("club_id");
+        if (!is_null($id))
+        \Session::put("club_id", $id);
+        ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');

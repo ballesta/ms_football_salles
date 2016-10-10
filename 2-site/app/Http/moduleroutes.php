@@ -6,4 +6,5 @@
                     Route::controller('salle', 'SalleController');
                     Route::controller('equipe', 'EquipeController');
                     Route::controller('joueur', 'JoueurController');
+                    Route::controller('partie', 'PartieController');
                     ?>

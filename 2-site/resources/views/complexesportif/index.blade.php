@@ -44,7 +44,7 @@
 @endif
 @endif
 @endforeach
-<th width="1240" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="33%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
@@ -69,6 +69,26 @@
     $text      = 'Equipes',
     $help      = '',
     $url       = URL::to('equipe'),
+    $parent_key= 'complexe_salle_id',
+    $parent_id = $row->complexe_salle_id)
+!!}
+<!--//)) Code generated end-->
+<!--//(( Code generated begin-->
+{!!
+    \Navigation::link_to_detail(
+    $text      = 'Salles',
+    $help      = '',
+    $url       = URL::to('salle'),
+    $parent_key= 'complexe_salle_id',
+    $parent_id = $row->complexe_salle_id)
+!!}
+<!--//)) Code generated end-->
+<!--//(( Code generated begin-->
+{!!
+    \Navigation::link_to_detail(
+    $text      = 'Malettes',
+    $help      = '',
+    $url       = URL::to('malette'),
     $parent_key= 'complexe_salle_id',
     $parent_id = $row->complexe_salle_id)
 !!}
