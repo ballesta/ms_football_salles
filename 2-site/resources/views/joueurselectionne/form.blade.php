@@ -23,23 +23,32 @@
 			@endforeach
 		</ul>	
 
-		 {!! Form::open(array('url'=>'equipe/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+		 {!! Form::open(array('url'=>'joueurselectionne/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
 <div class="col-md-12">
-						<fieldset><legend> Equipe</legend>
-				{!! Form::hidden('equipe_id', $row['equipe_id']) !!}					
+						<fieldset><legend> Joueurs sélectionnés</legend>
+				{!! Form::hidden('joueur_selectionne_id', $row['joueur_selectionne_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Nom" class=" control-label col-md-4 text-left"> Nom </label>
+										<label for="Partie Id" class=" control-label col-md-4 text-left"> Partie Id </label>
 										<div class="col-md-6">
-										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  <select name='partie_id' rows='5' id='partie_id' class='select2 '   ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Centre" class=" control-label col-md-4 text-left"> Centre </label>
+										<label for="Joueur Id" class=" control-label col-md-4 text-left"> Joueur Id </label>
 										<div class="col-md-6">
-										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
+										  <select name='joueur_id' rows='5' id='joueur_id' class='select2 '   ></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Capteur Id" class=" control-label col-md-4 text-left"> Capteur Id </label>
+										<div class="col-md-6">
+										  <select name='capteur_id' rows='5' id='capteur_id' class='select2 '   ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -58,7 +67,7 @@
 					<div class="col-sm-8">	
 					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="icon-checkmark-circle2"></i> {{ Lang::get('core.sb_apply') }}</button>
 					<button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="icon-bubble-check"></i> {{ Lang::get('core.sb_save') }}</button>
-					<button type="button" onclick="location.href='{{ URL::to('equipe?return='.$return) }}' " class="btn btn-warning btn-sm "><i class="icon-cancel-circle2 "></i>  {{ Lang::get('core.sb_cancel') }} </button>
+					<button type="button" onclick="location.href='{{ URL::to('joueurselectionne?return='.$return) }}' " class="btn btn-warning btn-sm "><i class="icon-cancel-circle2 "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
 				  </div> 
@@ -72,12 +81,18 @@
 	$(document).ready(function() { 
 		
 		
-		$("#complexe_salle_id").jCombo("{!! url('equipe/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
-		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
+		$("#partie_id").jCombo("{!! url('joueurselectionne/comboselect?filter=fb_partie:partie_id:debut|duree') !!}",
+		{  selected_value : '{{ $row["partie_id"] }}' });
+		
+		$("#joueur_id").jCombo("{!! url('joueurselectionne/comboselect?filter=fb_joueurs:joueur_id:nom|premon') !!}",
+		{  selected_value : '{{ $row["joueur_id"] }}' });
+		
+		$("#capteur_id").jCombo("{!! url('joueurselectionne/comboselect?filter=fb_capteurs:capteur_id:numero_serie') !!}",
+		{  selected_value : '{{ $row["capteur_id"] }}' });
 		 
 
 		$('.removeMultiFiles').on('click',function(){
-			var removeUrl = '{{ url("equipe/removefiles?file=")}}'+$(this).attr('url');
+			var removeUrl = '{{ url("joueurselectionne/removefiles?file=")}}'+$(this).attr('url');
 			$(this).parent().remove();
 			$.get(removeUrl,function(response){});
 			$(this).parent('div').empty();	

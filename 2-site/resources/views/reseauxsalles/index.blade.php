@@ -44,7 +44,7 @@
 @endif
 @endif
 @endforeach
-<th width="33%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
@@ -66,7 +66,7 @@
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text      = 'Complexes sportifs',
+    $text      = 'Centres',
     $help      = '',
     $url       = URL::to('complexesportif'),
     $parent_key= 'club_id',

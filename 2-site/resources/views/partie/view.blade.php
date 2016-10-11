@@ -23,12 +23,6 @@
 			<tbody>	
 		
 					<tr>
-						<td width='30%' class='label-view text-right'>Partie Id</td>
-						<td>{{ $row->partie_id}} </td>
-						
-					</tr>
-				
-					<tr>
 						<td width='30%' class='label-view text-right'>Debut</td>
 						<td>{{ $row->debut}} </td>
 						

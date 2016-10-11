@@ -45,7 +45,7 @@
 <?php endif; ?>
 <?php endif; ?>
 <?php endforeach; ?>
-<th width="33%"%"%"%"%"%"%"%"%"%"%"%"%"%"%" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
+<th width="40%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
 </tr>
 </thead>
 <tbody>
@@ -67,7 +67,7 @@
 <td>
 <!--//(( Code generated begin-->
 <?php echo \Navigation::link_to_detail(
-    $text      = 'Complexes sportifs',
+    $text      = 'Centres',
     $help      = '',
     $url       = URL::to('complexesportif'),
     $parent_key= 'club_id',

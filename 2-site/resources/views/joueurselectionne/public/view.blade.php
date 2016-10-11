@@ -12,14 +12,20 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Identifiant</td>
-						<td>{{ $row->identifiant}} </td>
+						<td width='30%' class='label-view text-right'>Partie Id</td>
+						<td>{{ SiteHelpers::formatLookUp($row->partie_id,'partie_id','1:fb_partie:partie_id:debut|duree') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Complexe Salle Id</td>
-						<td>{{ SiteHelpers::formatLookUp($row->complexe_salle_id,'complexe_salle_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
+						<td width='30%' class='label-view text-right'>Joueur Id</td>
+						<td>{{ SiteHelpers::formatLookUp($row->joueur_id,'joueur_id','1:fb_joueurs:joueur_id:nom|premon') }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Capteur Id</td>
+						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:numero_serie') }} </td>
 						
 					</tr>
 						

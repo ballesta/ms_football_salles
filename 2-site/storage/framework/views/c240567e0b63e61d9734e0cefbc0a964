@@ -45,7 +45,7 @@
 <?php endif; ?>
 <?php endif; ?>
 <?php endforeach; ?>
-<th width="33%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
+<th width="40%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
 </tr>
 </thead>
 <tbody>
@@ -76,7 +76,7 @@
 <!--//)) Code generated end-->
 <!--//(( Code generated begin-->
 <?php echo \Navigation::link_to_detail(
-    $text      = 'Salles',
+    $text      = 'Terrains',
     $help      = '',
     $url       = URL::to('salle'),
     $parent_key= 'complexe_salle_id',
