@@ -8,4 +8,7 @@
                     Route::controller('joueur', 'JoueurController');
                     Route::controller('partie', 'PartieController');
                     Route::controller('joueurselectionne', 'JoueurselectionneController');
+                    Route::controller('sessionmesure', 'SessionmesureController');
+                    Route::controller('mesure', 'MesureController');
+                    Route::controller('mesurestoutes', 'MesurestoutesController');
                     ?>
