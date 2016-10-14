@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/scripts/cree_api_controlleur.bat" />
+    <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -430,12 +427,20 @@
       <workItem from="1476200581647" duration="1311000" />
       <workItem from="1476270350659" duration="598000" />
       <workItem from="1476346181296" duration="3150000" />
-      <workItem from="1476442124134" duration="2625000" />
+      <workItem from="1476442124134" duration="2644000" />
     </task>
+    <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
+      <created>1476465407612</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1476465407612</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80874000" />
+    <option name="totallyTimeSpent" value="80893000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -501,6 +506,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement" />
     <option name="LAST_COMMIT_MESSAGE" value="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement" />
   </component>
