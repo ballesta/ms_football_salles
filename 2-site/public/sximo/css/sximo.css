@@ -1068,7 +1068,7 @@ body.body-small .footer.fixed {
   border-bottom: 1px solid #e8edf1;
   vertical-align: bottom;  background:#fff;   font-size:12px; 
 }
-.table > thead > tr > th  { line-height: 40px !important; padding: 10px 0; }
+.table > thead > tr > th  { line-height: 14px !important; padding: 10px 0; }
 .table > thead > tr > th i { font-size: 10px; margin-right: 5px;    }
 
 

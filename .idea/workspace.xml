@@ -2,36 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/049d204b108b78289fcb758564e3fb2d" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/0841251ff8460ca8bf2dcc5917397577" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/15c8d6916272534ff86f040f7431d77f" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/3494c6789a5c00acb37578639345684f" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/35f4d1a70a3c6735832187899c9518ea" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/5998760b948f82b6abb150242ff238d8" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/6323917579c336102f7fb2c6ced56b8e" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/64c1eb8b2c4de86c7ad0a5085028fe16" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/67f7b98bf0c6d557fa3cc3b3a4336155" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/9656947a6fa0e2a576e88d2f512bb61e" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/b20731bfbbd88698826a86715130ddc8" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/c4827dff79d2c40dca7c0cdcbe32b8d2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/cc22fef2abb96d897a95ce57457240f3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/d06f8b67a358c8b020d143977516fa30" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/fa40b890b5537f2cfcae1c0697f7ca0c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/ff083c466dc641bd85840008bf4f202c" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/0-documentation/ms-football-indoor.mdzip" afterPath="$PROJECT_DIR$/0-documentation/ms-football-indoor.mdzip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/0-documentation/ms-football-indoor.mdzip.bak" afterPath="$PROJECT_DIR$/0-documentation/ms-football-indoor.mdzip.bak" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/.env" afterPath="$PROJECT_DIR$/2-site/.env" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/moduleroutes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/moduleroutes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/config/app.php" afterPath="$PROJECT_DIR$/2-site/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/equipe/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/equipe/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/malette/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/malette/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/partie/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/partie/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/salle/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/salle/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/4198edb7ffbf81371535e9d0a3083a92" afterPath="$PROJECT_DIR$/2-site/storage/framework/views/4198edb7ffbf81371535e9d0a3083a92" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/777d247cf5a7c8121692801f0f7da063" afterPath="$PROJECT_DIR$/2-site/storage/framework/views/777d247cf5a7c8121692801f0f7da063" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/c240567e0b63e61d9734e0cefbc0a964" afterPath="$PROJECT_DIR$/2-site/storage/framework/views/c240567e0b63e61d9734e0cefbc0a964" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" afterPath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,16 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CapteurController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/CapteurController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -128,7 +92,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
@@ -138,10 +102,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="sximo.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="1071" column="10" selection-start-line="1071" selection-start-column="10" selection-end-line="1071" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/resources/views/reseauxsalles/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2625">
+            <state relative-caret-position="2730">
               <caret line="78" column="3" selection-start-line="78" selection-start-column="3" selection-end-line="78" selection-end-column="3" />
               <folding>
                 <marker date="1476351949242" expanded="true" signature="3055:3183" ph="..." />
@@ -153,7 +127,7 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3780">
+            <state relative-caret-position="3885">
               <caret line="111" column="3" selection-start-line="111" selection-start-column="3" selection-end-line="111" selection-end-column="3" />
               <folding>
                 <marker date="1476351949520" expanded="true" signature="3811:3894" ph="..." />
@@ -192,6 +166,7 @@
         <option value="$PROJECT_DIR$/2-site/.gitignore" />
         <option value="$PROJECT_DIR$/2-site/.env" />
         <option value="$PROJECT_DIR$/2-site/config/app.php" />
+        <option value="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
       </list>
     </option>
   </component>
@@ -236,7 +211,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -283,12 +257,79 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2-site" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sximo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2-site" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sximo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2-site" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -385,11 +426,12 @@
       <workItem from="1476200581647" duration="1311000" />
       <workItem from="1476270350659" duration="598000" />
       <workItem from="1476346181296" duration="3150000" />
+      <workItem from="1476442124134" duration="134000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78249000" />
+    <option name="totallyTimeSpent" value="78383000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -404,7 +446,7 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15359828" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1557465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -458,13 +500,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/app/Providers/AppServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Library/MyHelpers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -714,9 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1400">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <marker date="1476351949763" expanded="true" signature="1194:1195" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -759,7 +791,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3780">
+        <state relative-caret-position="3885">
           <caret line="111" column="3" selection-start-line="111" selection-start-column="3" selection-end-line="111" selection-end-column="3" />
           <folding>
             <marker date="1476351949520" expanded="true" signature="3811:3894" ph="..." />
@@ -769,7 +801,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/reseauxsalles/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
+        <state relative-caret-position="2730">
           <caret line="78" column="3" selection-start-line="78" selection-start-column="3" selection-end-line="78" selection-end-column="3" />
           <folding>
             <marker date="1476351949242" expanded="true" signature="3055:3183" ph="..." />
@@ -835,6 +867,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="1071" column="10" selection-start-line="1071" selection-start-column="10" selection-end-line="1071" selection-end-column="10" />
           <folding />
         </state>
       </provider>
