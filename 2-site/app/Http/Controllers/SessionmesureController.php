@@ -1,256 +1,225 @@
-<?php namespace App\Http\Controllers;
-use App\Http\Controllers\controller;
-use App\Models\Sessionmesure;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect ;
-class SessionmesureController extends Controller {
-    protected $layout = "layouts.main";
-    protected $data = array();
-    public $module = 'sessionmesure';
-    static $per_page	= '10';
-    public function __construct()
+<?php
+
+    namespace App\Http\Controllers;
+
+
+    use Illuminate\Http\Request;
+
+    use DB;
+    use Exception;
+    use App\Http\Requests;
+    use App\Http\Controllers\Controller;
+    use Monolog\Handler\ElasticSearchHandler;
+
+    class SessionMesuresController extends Controller
     {
-        
-        $this->beforeFilter('csrf', array('on'=>'post'));
-        $this->model = new Sessionmesure();
-        
-        $this->info = $this->model->makeInfo( $this->module);
-        $this->access = $this->model->validAccess($this->info['id']);
-        
-        $this->data = array(
-        'pageTitle'	=> 	$this->info['title'],
-        'pageNote'	=>  $this->info['note'],
-        'pageModule'=> 'sessionmesure',
-        'return'	=> self::returnUrl()
-        
-        );
-        
-        \App::setLocale(CNF_LANG);
-        if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
-            $lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
-            \App::setLocale($lang);
-        }
-        
-    }
-    public function getIndex( Request $request )
-    {
-        ////(( Code generated begin
-        // Get parameter in URL to use it as filter
-        $id = $request->query("partie_id");
-        if (!is_null($id))
-        \Session::put("partie_id", $id);
-        ////)) Code generated end
-        if($this->access['is_view'] ==0)
-        return Redirect::to('dashboard')
-        ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'session_mesure_id');
-        $order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
-        // End Filter sort and order for query
-        // Filter Search for query
-        $filter = '';
-        if(!is_null($request->input('search')))
+        /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function index()
         {
-            $search = 	$this->buildSearch('maps');
-            $filter = $search['param'];
-            $this->data['search_map'] = $search['maps'];
+            return "Sessions de mesures<hr>";
         }
-        
-        $page = $request->input('page', 1);
-        $params = array(
-        'page'		=> $page ,
-        'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
-        'sort'		=> $sort ,
-        'order'		=> $order,
-        'params'	=> $filter,
-        'global'	=> (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
-        );
-        // Get Query
-        $results = $this->model->getRows( $params );
-        
-        // Build pagination setting
-        $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
-        $pagination = new Paginator($results['rows'], $results['total'], $params['limit']);
-        $pagination->setPath('sessionmesure');
-        
-        $this->data['rowData']		= $results['rows'];
-        // Build Pagination
-        $this->data['pagination']	= $pagination;
-        // Build pager number and append current param GET
-        $this->data['pager'] 		= $this->injectPaginate();
-        // Row grid Number
-        $this->data['i']			= ($page * $params['limit'])- $params['limit'];
-        // Grid Configuration
-        $this->data['tableGrid'] 	= $this->info['config']['grid'];
-        $this->data['tableForm'] 	= $this->info['config']['forms'];
-        // Group users permission
-        $this->data['access']		= $this->access;
-        // Detail from master if any
-        
-        // Master detail link if any
-        $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
-        // Render into template
-        return view('sessionmesure.index',$this->data);
-    }
-    function getUpdate(Request $request, $id = null)
-    {
-        
-        if($id =='')
+
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function create()
         {
-            if($this->access['is_add'] ==0 )
-            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
+            //
         }
-        
-        if($id !='')
+
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param  \Illuminate\Http\Request $request
+         *
+         * @return \Illuminate\Http\Response
+         */
+        // Récupère la mesure transmise par l'api
+        public function store(Request $request)
         {
-            if($this->access['is_edit'] ==0 )
-            return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
-        }
-        
-        $row = $this->model->find($id);
-        if($row)
-        {
-            $this->data['row'] =  $row;
-        } else {
-            $this->data['row'] = $this->model->getColumnTable('fb_sessions_mesures');
-            ////(( Code generated begin
-            $columns = $this->data['row'];
-            $id = \Session::get('partie_id', null);
-            $columns['partie_id'] = $id;
-            $this->data['row'] = $columns;
-            ////)) Code generated end
-        }
-        $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
-        
-        $this->data['id'] = $id;
-        return view('sessionmesure.form',$this->data);
-    }
-    public function getShow( Request $request, $id = null)
-    {
-        if($this->access['is_detail'] ==0)
-        return Redirect::to('dashboard')
-        ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-        
-        $row = $this->model->getRow($id);
-        if($row)
-        {
-            $this->data['row'] =  $row;
-            $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['grid']);
-            $this->data['id'] = $id;
-            $this->data['access']		= $this->access;
-            $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
-            return view('sessionmesure.view',$this->data);
-        } else {
-            return Redirect::to('sessionmesure')->with('messagetext','Record Not Found !')->with('msgstatus','error');
-        }
-    }
-    function postSave( Request $request)
-    {
-        
-        $rules = $this->validateForm();
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->passes()) {
-            $data = $this->validatePost('tb_sessionmesure');
-            
-            $id = $this->model->insertRow($data , $request->input('session_mesure_id'));
-            
-            if(!is_null($request->input('apply')))
+            try
             {
-                $return = 'sessionmesure/update/'.$id.'?return='.self::returnUrl();
-            } else {
-                $return = 'sessionmesure?return='.self::returnUrl();
+                // Récupère la mesure en json
+                $mesure_json = $request->getContent();
+                // Transforme du contenu json en tableau
+                $mesure = json_decode($mesure_json, true);
+                // Associe la mesure à sa session de mesure, joueurs, partie courante
+                $session_mesure_id = $this->associe_mesure_a_joueur($mesure);
+                $mesure_brute_id = $this->enregistre_mesure_brute($mesure_json, $session_mesure_id);
+                $this->enregistre_mesure($mesure, $mesure_brute_id);
             }
-            // Insert logs into database
-            if($request->input('session_mesure_id') =='')
+            catch (Exception $e)
             {
-                \SiteHelpers::auditTrail( $request , 'New Data with ID '.$id.' Has been Inserted !');
-            } else {
-                \SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
+                $m = $e->getMessage();
+                return response()->json(['error'   => true,
+                                         'message' =>$m]);
             }
-            return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
-            
-        } else {
-            return Redirect::to('sessionmesure/update/'.$request->input('session_mesure_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
-            ->withErrors($validator)->withInput();
+            return response()->json(['success' => true,
+                                     'message' => "Mesure OK"]);
         }
-        
-    }
-    public function postDelete( Request $request)
-    {
-        
-        if($this->access['is_remove'] ==0)
-        return Redirect::to('dashboard')
-        ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-        // delete multipe rows
-        if(count($request->input('ids')) >=1)
+
+        function enregistre_mesure_brute($mesure_json, $session_mesure_id)
         {
-            $this->model->destroy($request->input('ids'));
-            
-            \SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
-            // redirect
-            return Redirect::to('sessionmesure')
-            ->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
-            
-        } else {
-            return Redirect::to('sessionmesure')
-            ->with('messagetext','No Item Deleted')->with('msgstatus','error');
-        }
-    }
-    public static function display( )
-    {
-        $mode  = isset($_GET['view']) ? 'view' : 'default' ;
-        $model  = new Sessionmesure();
-        $info = $model::makeInfo('sessionmesure');
-        $data = array(
-        'pageTitle'	=> 	$info['title'],
-        'pageNote'	=>  $info['note']
-        
-        );
-        if($mode == 'view')
-        {
-            $id = $_GET['view'];
-            $row = $model::getRow($id);
-            if($row)
-            {
-                $data['row'] =  $row;
-                $data['fields'] 		=  \SiteHelpers::fieldLang($info['config']['grid']);
-                $data['id'] = $id;
-                return view('sessionmesure.public.view',$data);
-            }
-        } else {
-            $page = isset($_GET['page']) ? $_GET['page'] : 1;
-            $params = array(
-            'page'		=> $page ,
-            'limit'		=>  (isset($_GET['rows']) ? filter_var($_GET['rows'],FILTER_VALIDATE_INT) : 10 ) ,
-            'sort'		=> 'session_mesure_id' ,
-            'order'		=> 'asc',
-            'params'	=> '',
-            'global'	=> 1
+            // Enregistre la mesure brute
+            $id = DB::table('fb_mesures')->insertGetId(
+                [
+                    'message_json'      => $mesure_json,
+                    'session_mesure_id' => $session_mesure_id,
+                ]
             );
-            $result = $model::getRows( $params );
-            $data['tableGrid'] 	= $info['config']['grid'];
-            $data['rowData'] 	= $result['rows'];
-            $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
-            $pagination = new Paginator($result['rows'], $result['total'], $params['limit']);
-            $pagination->setPath('');
-            $data['i']			= ($page * $params['limit'])- $params['limit'];
-            $data['pagination'] = $pagination;
-            return view('sessionmesure.public.index',$data);
+            return $id;
+        }
+
+        // Enregistre la mesure dans sa table propre
+        function enregistre_mesure($mesure, $mesure_brute_id)
+        {
+            // Teste le type de la mesure et enregistre dans sa table propre
+            if (isset($mesure['sensor']['EventShoot']))
+            {
+                $uid   = $mesure['sensor']['EventShoot']['UID'  ];
+                $id    = $mesure['sensor']['EventShoot']['id'   ];
+                $speed = $mesure['sensor']['EventShoot']['speed'];
+
+                // Enregistre la mesure brute
+                $id_mesure_shoot = DB::table('fb_mesure_eventshoot')->insertGetId(
+                    [
+                        'mesure_id'  => $mesure_brute_id,
+                        'uid'        => $uid            ,
+                        'id'         => $id             ,
+                        'speed'      => $speed
+                    ]
+                );
+                return $id_mesure_shoot;
+            }
+            else
+            {
+                throw new Exception('01:Type de message non reconnu');
+            }
+        }
+
+
+        /*
+         *  Fonctionne.
+         *
+            -- Les 3 tables liées
+            select fb_joueurs_selectionnes.*
+            -- Table à laquelle nous devons associer la mesure reçue
+            from `fb_sessions_mesures`
+            -- Une session_mesure appartient à un joueur_selectionne dans un partie
+            inner join `fb_joueurs_selectionnes`
+            on `fb_sessions_mesures`.`joueur_selectionne_id` = `fb_joueurs_selectionnes`.`joueur_selectionne_id`
+            -- Un joueur selectionne appartient à une partie
+            inner join `fb_partie`
+            on `fb_partie`.`partie_id` = `fb_joueurs_selectionnes`.`partie_id`
+            -- Le joueur selectionne doit avoir le N° de capteur de la mesure reçue
+            where fb_joueurs_selectionnes.capteur_id = 1
+            -- La partie doit être en cours
+            and TIME_TO_SEC(NOW()) >= TIME_TO_SEC(fb_partie.debut)
+            and TIME_TO_SEC(NOW()) <= TIME_TO_SEC(fb_partie.fin)
+        */
+
+
+        function associe_mesure_a_joueur($mesure)
+        {
+            /*  NOK
+                        // 1: Détermine le capteur_id à partir du N° de série du capteur
+                        $numero_serie_capteur   = $mesure['sensor']['EventShoot']['UID'  ];
+                        $capteurs = DB::table('fb_capteurs')
+                            ->where('numero_serie', '=', $numero_serie_capteur)
+                            ->get();
+                        if (count($capteurs) == 1)
+                        {
+                            $capteur_id = $capteurs[0]->capteur_id;
+                        }
+                        else
+                        {
+                            throw new Exception("02:N° Capteur non trouvé ($numero_serie_capteur)");
+                        }
+
+                        // 2: Détermine la session de mesure )à afrfecter à la mesure à partir du capteur_id
+                        $sessions_mesures = DB::table('fb_sessions_mesures')
+                            ->select('fb_sessions_mesures.*')
+                            // Joueurs sélectionnés dans les parties en cours
+                            ->join('fb_parties',
+                                'fb_partie.partie_id',
+                                '=',
+                                'fb_joueurs_selectionnes.partie_id')
+                            // Sessions de mesures
+                            ->join('fb_sessions_mesures',
+                                'fb_joueurs_selectionnes.joueur_selectionne_id',
+                                '=',
+                                'fb_sessions_mesures.joueur_selectionne_id')
+                            // Capteur utilisé dans la session
+                            ->where('fb_sessions_mesures.capteur_id', '=', $capteur_id)
+                            // Parties en cours (heure entre le debut et la fin de la partie)
+                            ->where(DB::raw('TIME_TO_SEC(NOW()) >= TIME_TO_SEC(fb_partie.debut)'))
+                            ->where(DB::raw('TIME_TO_SEC(NOW()) <= TIME_TO_SEC(fb_partie.fin)'))
+                            ->get();
+                        if (count($sessions_mesures) == 1)
+                        {
+                            $session_mesures_id = $sessions_mesures[0]->session_mesure_id;
+                        }
+                        else
+                        {
+                            throw new Exception("03: N° Capteur non associé à un joueur ($numero_serie_capteur)");
+                        }
+            */
+            $session_mesures_id = NULL;
+            return $session_mesures_id;
+        }
+
+        /**
+         * Display the specified resource.
+         *
+         * @param  int $id
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function show($id)
+        {
+            //
+        }
+
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int $id
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function edit($id)
+        {
+            //
+        }
+
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param  \Illuminate\Http\Request $request
+         * @param  int                      $id
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function update(Request $request, $id)
+        {
+            //
+        }
+
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int $id
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function destroy($id)
+        {
+            //
         }
     }
-    function postSavepublic( Request $request)
-    {
-        
-        $rules = $this->validateForm();
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->passes()) {
-            $data = $this->validatePost('fb_sessions_mesures');
-            $this->model->insertRow($data , $request->input('session_mesure_id'));
-            return  Redirect::back()->with('messagetext','<p class="alert alert-success">'.\Lang::get('core.note_success').'</p>')->with('msgstatus','success');
-        } else {
-            return  Redirect::back()->with('messagetext','<p class="alert alert-danger">'.\Lang::get('core.note_error').'</p>')->with('msgstatus','error')
-            ->withErrors($validator)->withInput();
-        }
-        
-    }
-}
