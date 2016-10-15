@@ -87,6 +87,7 @@ class ConfigController extends Controller {
 			$val .= 	"?>";
 	
 			$filename = base_path().'/setting.php';
+            echo $filename,'<br>'; //bb
 			$fp=fopen($filename,"w+"); 
 			fwrite($fp,$val); 
 			fclose($fp); 

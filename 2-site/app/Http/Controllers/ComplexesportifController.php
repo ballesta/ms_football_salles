@@ -4,6 +4,9 @@ use App\Models\Complexesportif;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ;
+
+require '/setting.php';
+
 class ComplexesportifController extends Controller {
     protected $layout = "layouts.main";
     protected $data = array();

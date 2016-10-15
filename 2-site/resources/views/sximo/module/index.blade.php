@@ -94,8 +94,10 @@
 					<ul style="display: none;" class="dropdown-menu icons-right">
 						@if($type != 'core')
 						<li><a href="{{ URL::to($row->module_name)}}"><i class="icon-play2"></i> {{ Lang::get('core.btn_view') }} Module </a></li>
+						<li><a href="{{ URL::to('sximo/module/duplicate/'.$row->module_id)}}" onclick="SximoModal(this.href,'Duplicate/Clone Module'); return false;" ><i class="icon-copy4"></i> Duplicate/Clone </a></li>						
 						@endif
-						<li><a href="{{ URL::to('sximo/module/config/'.$row->module_name)}}"><i class="icon-pencil4"></i> {{ Lang::get('core.btn_edit') }}</a></li>						
+						<li><a href="{{ URL::to('sximo/module/config/'.$row->module_name)}}"><i class="icon-pencil4"></i> {{ Lang::get('core.btn_edit') }}</a></li>	
+						
 						@if($type != 'core')
 						<li><a href="javascript://ajax" onclick="SximoConfirmDelete('{{ URL::to('sximo/module/destroy/'.$row->module_id)}}')"><i class="icon-remove5"></i> {{ Lang::get('core.btn_remove') }}</a></li>
 						<li class="divider"></li>
@@ -153,7 +155,9 @@
         return false;
       }
       $('#SximoTable').attr({'action' : $(this).attr('href') }).submit();
-    })
+    });
+
+
   })
   </script>	 
 

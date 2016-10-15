@@ -1068,7 +1068,7 @@ body.body-small .footer.fixed {
   border-bottom: 1px solid #e8edf1;
   vertical-align: bottom;  background:#fff;   font-size:12px; 
 }
-.table > thead > tr > th  { line-height: 14px !important; padding: 10px 0; }
+.table > thead > tr > th  { line-height: 40px !important; padding: 10px 0; }
 .table > thead > tr > th i { font-size: 10px; margin-right: 5px;    }
 
 
@@ -1950,9 +1950,10 @@ box-shadow:1px 1px 0 rgba(255, 255, 255, 0.2) inset;
     position: relative;
 }
 .sbox-tools a {
-    color: #c4c4c4;
+    color: #333;
     cursor: pointer;
     margin-left: 5px;
+    padding: 2px 5px; font-size: 14px;
 }
 .sbox-content {
   background-color: #fff;

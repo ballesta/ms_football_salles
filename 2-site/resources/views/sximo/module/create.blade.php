@@ -137,8 +137,8 @@
       <div class="form-group">
 		<label class="col-sm-3 text-right">&nbsp;</label>
 		<div class="col-sm-9">	
-	  	<button type="submit" class="btn btn-primary ">  {{ Lang::get('core.sb_submit') }}</button>
-	  	<a href="{{ url('sximo/module')}}" class="btn btn-warning"> Cancel </a>
+	  	<button type="submit" class="btn btn-primary "><i class="icon-checkmark-circle2"></i>  {{ Lang::get('core.sb_submit') }}</button>
+	  	<a href="{{ url('sximo/module')}}" class="btn btn-warning"> <i class="icon-backward"></i> Cancel </a>
 		</div>	  
 
       </div>

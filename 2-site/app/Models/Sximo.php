@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sximo extends Model {
 
-    // bb: Added filter on parent
+
 	public static function getRows( $args )
 	{
        $table = with(new static)->table;
@@ -28,51 +28,52 @@ class Sximo extends Model {
 		if($global == 0 )
 				$params .= " AND {$table}.entry_by ='".\Session::get('uid')."'"; 	
 		// End Update permission global / own access new ver 1.1			
-
-
-        $sql = self::querySelect()
-             . self::queryWhere()
-             . " {$params} "
-             . self::queryGroup()
-             ." {$orderConditional}  {$limitConditional} ";
-        //dd($sql);
-
-
+        
 		$rows = array();
-	    $result = \DB::select( $sql);
-
-		if($key =='' ) { $key ='*'; } else { $key = $table.".".$key ; }
+	    $result = \DB::select( self::querySelect() . self::queryWhere(). " 
+				{$params} ". self::queryGroup() ." {$orderConditional}  {$limitConditional} ");
+		
+		if($key =='' ) { $key ='*'; } else { $key = $table.".".$key ; }	
 		$total = \DB::select( self::querySelect() . self::queryWhere(). " 
 				{$params} ". self::queryGroup() ." {$orderConditional}  ");
 		$total = count($total);
 
 //		$total = $res[0]->total;
-		return $results = array('rows'=> $result , 'total' => $total);
-	}
 
-	// bb ++++ a supprimer, inclu dans les modèles
-    //public static function parent_filter($parent_id_key)
-    //{
-    //    // Table
-    //    $table = with(new static)->table;
-    //    // clef primaire de la table
-    //    $key = with(new static)->primaryKey;
-    //    // Id du parent passée en paramètre?
-    //    $id = \Session::get($parent_id_key, null);
-    //    echo 'parent_filter: ', $id, '<br>';
-    //    if (is_null($id))
-    //    {
-    //        // Pas d'id: laisser le filtrage existant
-    //        $where = "  WHERE $table.$key IS NOT NULL ";
-    //    }
-    //    else
-    //    {
-    //        // Filtrage par parent courant
-    //        $where = "  WHERE $table.$parent_id_key = $id ";
-    //    }
-    //    echo $where,'<hr>';
-    //    return $where;
-    //}
+
+		return $results = array('rows'=> $result , 'total' => $total);	
+
+	
+	}	
+
+	public static function prevNext( $id ){
+
+       $table = with(new static)->table;
+	   $key = with(new static)->primaryKey;
+
+	   $prev = '';
+	   $next = '';
+
+		$Qnext = \DB::select( 
+			self::querySelect() . 
+			self::queryWhere().
+			" AND ".$table.".".$key." > '{$id}'  ". 
+			self::queryGroup().' LIMIT 1'
+		);	
+
+
+		if(count($Qnext)>=1)   $next = $Qnext[0]->{$key};
+		
+		$Qprev  = \DB::select( 
+			self::querySelect() . 
+			self::queryWhere().
+			" AND ".$table.".".$key." < '{$id}'". 
+			self::queryGroup()." ORDER BY ".$table.".".$key." DESC LIMIT 1"
+		);	
+		if(count($Qprev)>=1)  $prev = $Qprev[0]->{$key};
+
+		return array('prev'=>$prev , 'next'=> $next);	
+	}
 
 	public static function getRow( $id )
 	{
@@ -100,17 +101,19 @@ class Sximo extends Model {
 	   $key = with(new static)->primaryKey;
 	    if($id == NULL )
         {
+			
             // Insert Here 
             unset($data[$key]);
 			if(isset($data['createdOn'])) $data['createdOn'] = date("Y-m-d H:i:s");	
 			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");	
-            $id = \DB::table( $table)->insertGetId($data);
+			 $id = \DB::table( $table)->insertGetId($data);				
+            
         } else {
             // Update here 
 			// update created field if any
 			if(isset($data['createdOn'])) unset($data['createdOn']);	
 			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");			
-			\DB::table($table)->where($key,$id)->update($data);
+			 \DB::table($table)->where($key,$id)->update($data);    
         }    
         return $id;    
 	}			
@@ -131,11 +134,15 @@ class Sximo extends Model {
 			foreach($data['config']['grid'] as $fs)
 			{
 				foreach($fs as $f)
-					$field[] = $fs['field'];
+					$field[] = $fs['field']; 	
+									
 			}
-			$data['field'] = $field;
+			$data['field'] = $field;	
+					
 		}
 		return $data;
+			
+	
 	} 
 
     static function getComboselect( $params , $limit =null, $parent = null)
@@ -204,7 +211,8 @@ class Sximo extends Model {
 			
 		} else {
 			return false;
-		}
+		}			
+	
 	}	
 
 	static function getColumnTable( $table )
@@ -215,14 +223,7 @@ class Sximo extends Model {
            //print_r($column);
 		    $columns[$column->Field] = '';
         }
-
-        //switch ($table)
-        //{
-        //    case  'fbs_complexe_salles':
-        //        $club_id = \Session::get('club_id');
-        //        $columns['club_id'] = $club_id;
-        //        break;
-        //}
+	  
 
         return $columns;
 	}	

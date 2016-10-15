@@ -119,7 +119,7 @@ jQuery(document).ready(function ($) {
 			html += '<li><div class="text-center link-block"><a href="'+noteurl+'/notification"><strong>View All Notification</strong> <i class="fa fa-angle-right"></i></a></div></li>';
 			$('.notif-value').html(html);
 		});
-	}, 10000);
+	}, 60000);
 		
 });	
 	

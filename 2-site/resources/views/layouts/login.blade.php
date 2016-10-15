@@ -14,7 +14,7 @@
 		<link href="{{ asset('sximo/fonts/awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 		 <script src="//use.edgefonts.net/source-sans-pro.js"></script>
 
-		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery-1.12.3.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/parsley.js') }}"></script>			
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/bootstrap/js/bootstrap.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('sximo/js/plugins/jquery.form.js') }}"></script>	

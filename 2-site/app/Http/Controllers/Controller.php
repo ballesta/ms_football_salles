@@ -35,7 +35,7 @@ abstract class Controller extends BaseController {
 				\Session::put('uid', \Auth::user()->id);
 				\Session::put('gid', \Auth::user()->group_id);
 				\Session::put('eid', \Auth::user()->email);
-				\Session::put('ll' , \Auth::user()->last_login);
+				\Session::put('ll', \Auth::user()->last_login);
 				\Session::put('fid', \Auth::user()->first_name.' '. \Auth::user()->last_name);  
 				\Session::put('themes', 'sximo-light-blue');     		
         	}
@@ -46,27 +46,22 @@ abstract class Controller extends BaseController {
         	\Session::put('themes', 'sximo');	
         }
 
-        //bb
-         if (defined('CNF_LANG'))
-            echo 'CNF_LANG =', CNF_LANG ;
-        else
-        {
-            echo 'CNF_LANG = non defini';
-            define('CNF_LANG', 'fr');
-        }
-        echo "\n";
+        /*
+        if (!defined('CNF_LANG'))
+            define('CNF_LANG','en');
          \App::setLocale(CNF_LANG);
 		 if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
-		    $lang = (\Session::get('lang') != "" ? \Session::get('lang')
-                                                 : CNF_LANG);
+
+		    $lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
 		    \App::setLocale($lang);
 		}
-
+        */
 		$data = array(
 				'last_activity'=> strtotime(Carbon::now())
 			);
 		\DB::table('tb_users')->where('id',\Session::get('uid'))->update($data);   
-	}
+	} 	
+
 
 	function getComboselect( Request $request)
 	{
@@ -214,6 +209,20 @@ abstract class Controller extends BaseController {
 	
 	}
 
+	function onSearch( $params )
+	{
+		// Used for extracting URL GET search 
+		$psearch = explode('|',$params);
+		$currentSearch = array();
+		foreach($psearch as $ps)
+		{
+			$tosearch = explode(':',$ps);
+			if(count($tosearch) >=2)
+			$currentSearch[$tosearch[0]] = $tosearch[2]; 
+		}
+		return $currentSearch;		
+	}
+
 	function searchOperation( $operate)
 	{
 		$val = '';
@@ -326,7 +335,11 @@ abstract class Controller extends BaseController {
 		//echo '<pre>';print_r($_POST);echo '</pre>'; exit;
 		$data = array();
 		foreach($str as $f){
+			// Update for V5.1.5 issue on Autofilled createOn and updatedOn fields
 			$field = $f['field'];
+			if($field == 'createdOn') $data['createdOn'] = date('Y-m-d H:i:s');
+			if($field == 'updatedOn') $data['updatedOn'] = date('Y-m-d H:i:s');
+
 			if($f['view'] ==1) 
 			{
 				if($f['type'] =='textarea_editor' || $f['type'] =='textarea')
@@ -425,8 +438,10 @@ abstract class Controller extends BaseController {
 
 							} else {
 								unset($data[$field]);
-							}
+							}	
+
 						}
+
 					}	
 
 					// Handle Checkbox input 
@@ -467,8 +482,10 @@ abstract class Controller extends BaseController {
 				}	 						
 
 			}	
-		}
-        $global	= (isset($this->access['is_global']) ? $this->access['is_global'] : 0 );
+		}	
+
+
+		 $global	= (isset($this->access['is_global']) ? $this->access['is_global'] : 0 );
 		
 		if($global == 0 )
 			$data['entry_by'] = \Session::get('uid');
@@ -489,12 +506,15 @@ abstract class Controller extends BaseController {
 		$order 	= (!is_null($request->input('order')) ? $request->input('order') : '');
 		$rows 	= (!is_null($request->input('rows')) ? $request->input('rows') : '');
 		$md 	= (!is_null($request->input('md')) ? $request->input('md') : '');
+		$sc 	= (!is_null($request->input('sc')) ? $request->input('sc') : '');
 		
 		$filter = '?';
 		if($sort!='') $filter .= '&sort='.$sort; 
 		if($order!='') $filter .= '&order='.$order; 
 		if($rows!='') $filter .= '&rows='.$rows; 
 		if($md !='') $filter .= '&md='.$md;
+		if($sc !='') $filter .= '&search='.$sc;
+
 		 
 		 
 
@@ -644,6 +664,7 @@ abstract class Controller extends BaseController {
 		exit;
 	
 	}	
+
 
 	function getLookup( Request $request, $id)
 	{

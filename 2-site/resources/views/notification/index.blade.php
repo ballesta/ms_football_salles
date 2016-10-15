@@ -8,31 +8,37 @@
 	<div class="page-content-wrapper m-t">	 	
 
 <div class="sbox">
-	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3>
-<div class="sbox-tools" >
-		<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips"  title="{{ Lang::get('core.btn_clearsearch') }}" ><i class="fa fa-trash-o"></i> {{ Lang::get('core.btn_clearsearch') }} </a>
-		@if(Session::get('gid') ==1)
-			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
-		@endif 
-		</div>
-	</div>
-	<div class="sbox-content"> 	
-	    <div class="toolbar-line ">
+	<div class="sbox-title"> 
+
+<div class="sbox-tools pull-left" >
 			@if($access['is_add'] ==1)
-	   		<a href="{{ URL::to('notification/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}">
-			<i class="icon-plus-circle2 "></i>&nbsp;{{ Lang::get('core.btn_create') }}</a>
+	   		<a href="{{ URL::to('notification/update?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_create') }}">
+			<i class="fa  fa-plus "></i></a>
 			@endif  
 			@if($access['is_remove'] ==1)
-			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_remove') }}">
-			<i class="icon-remove4"></i>&nbsp;{{ Lang::get('core.btn_remove') }}</a>
+			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips" title="{{ Lang::get('core.btn_remove') }}">
+			<i class="fa fa-trash-o"></i></a>
 			@endif 
-			<a href="{{ URL::to( 'notification/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" title="{{ Lang::get('core.btn_search') }}"><i class="icon-search3"></i> {{ Lang::get('core.btn_search') }} </a>				
+			<a href="{{ URL::to( 'notification/search?return='.$return) }}" class="" onclick="SximoModal(this.href,'Advance Search'); return false;" title="{{ Lang::get('core.btn_search') }}"><i class="fa  fa-search"></i> </a>				
 			@if($access['is_excel'] ==1)
-			<a href="{{ URL::to('notification/download?return='.$return) }}" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_download') }}">
-			<i class="icon-file-download"></i>&nbsp;{{ Lang::get('core.btn_download') }} </a>
-			@endif			
-		 
-		</div> 		
+			<a href="{{ URL::to('notification/download?return='.$return) }}" class="tips " title="{{ Lang::get('core.btn_download') }}">
+			<i class="fa fa-cloud-download"></i></a>
+			@endif
+
+			<a href="{{ url($pageModule) }}" class=" tips"  title="{{ Lang::get('core.btn_clearsearch') }}" ><i class="fa fa-spinner"></i>  </a>
+
+		</div>
+
+		<div class="sbox-tools" >
+		
+		@if(Session::get('gid') ==1)
+			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
+		@endif 
+		</div>
+
+	</div>
+	<div class="sbox-content"> 	
+	    
 
 	 {!! (isset($search_map) ? $search_map : '') !!}
 	

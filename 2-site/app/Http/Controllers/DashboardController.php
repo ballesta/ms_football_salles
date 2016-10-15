@@ -3,8 +3,10 @@
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+//require "../../setting.php";
 
 class DashboardController extends Controller {
+
 
 	public function __construct()
 	{

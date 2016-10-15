@@ -2,49 +2,49 @@
 
 @section('content')
 
-<div class="padding-15">
-
+<div class="sbox ">
+	<div class="sbox-title"><h4 >{{ CNF_APPNAME }} <small> {{ CNF_APPDESC }} </small></h4></div>
+	<div class="sbox-content">
 		<div class="login-box">
 		{!! Form::open(array('url' => 'user/doreset/'.$verCode, 'class'=>'form-vertical sky-form boxed')) !!}
-				<header>
-					{{ CNF_APPNAME }}
-				</header>			
-				<fieldset>
-	    	@if(Session::has('message'))
-				{!! Session::get('message') !!}
-			@endif
+
+			    	@if(Session::has('message'))
+						{!! Session::get('message') !!}
+					@endif
+
+		<ul class="parsley-error-list">
+			@foreach($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+		</ul>	
+
+
+			<div class="form-group has-feedback animated fadeInLeft delayp1">
+				<label>New Password	</label>
+				{!! Form::password('password',  array('class'=>'form-control', 'placeholder'=>'New Password')) !!}
 				
-					
-				<section>
-					<label class="label">New Password</label>
-					<label class="input">
-						<i class="icon-append fa fa-lock"></i>
-						{!! Form::password('password',  array('class'=>'form-control', 'placeholder'=>'New Password')) !!}
-						<span class="tooltip tooltip-top-right">{{ Lang::get('core.email') }}</span>
-					</label>
-				</section>	
+				<i class="fa fa-lock form-control-feedback"></i>
+			</div>
 
+			<div class="form-group has-feedback animated fadeInLeft delayp1">
+				<label>Re-type Password	</label>
+				{!! Form::password('password_confirmation', array('class'=>'form-control', 'placeholder'=>'Confirm Password')) !!}
+				<i class="fa fa-lock form-control-feedback"></i>
+			</div>
 
-				<section>
-					<label class="label">Re-type Password</label>
-					<label class="input">
-						<i class="icon-append fa fa-lock"></i>
-						 {!! Form::password('password_confirmation', array('class'=>'form-control', 'placeholder'=>'Confirm Password')) !!}
-						<span class="tooltip tooltip-top-right">Re-type Password</span>
-					</label>
-				</section>
+			<div class="form-group has-feedback animated fadeInLeft delayp1">
+				<label>	</label>
+				<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-check"></i> Submit </button>
+			</div>			
 
-		</fieldset>	
-
-		<footer>
-			<div class="forgot-password pull-left">
-				<a href="{{ url('user/login')}}" ><b> Back To Login ?</b></a><br />
-				<a href="{{ url('')}}" > Go To Main Site</a>
-			</div>	
-			<button type="submit" class="btn btn-primary pull-right"><i class="fa fa-check"></i> Create Account</button>
-		</footer>					
+<p class="text-center ">
+			  <a href="{{url('')}}" class="btn btn-white"> {{ Lang::get('core.backtosite') }} </a>  
+		   		</p>				
 			
 			 {!! Form::close() !!}
 		</div>
 </div>
+
+</div>
+
 @stop

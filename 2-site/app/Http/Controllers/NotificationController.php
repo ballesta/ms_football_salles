@@ -60,7 +60,6 @@ class NotificationController extends Controller {
 			$filter .= $search['param'];
 			$this->data['search_map'] = $search['maps'];
 		} 
-
 		
 		$page = $request->input('page', 1);
 		$params = array(

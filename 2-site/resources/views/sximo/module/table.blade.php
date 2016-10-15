@@ -10,7 +10,8 @@
 			'link'	=> 'Link',
 			'checkbox'	=> 'Checkbox/Radio',
 			'radio'	=> 'Radio',
-			'file'	=> 'Files',						
+			'file'	=> 'Files',
+			'database'	=> 'Database'						
 		);
 	?>
   <div class="page-content row">

@@ -244,8 +244,7 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 	public static function toForm($forms,$layout)
 	{
 		$f = '';
-	//	echo '<pre>'; print_r($forms);echo '</pre>';
-		//usort($forms,"_sort"); 
+		usort($forms,"self::_sort"); 
 		$block = $layout['column'];
 		$format = $layout['format'];
 		$display = $layout['display'];
@@ -689,6 +688,7 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 
 	public static function toView( $grids )
 	{
+		usort($grids,"self::_sort");
 		$f = '';
 		foreach($grids as $grid)
 		{
@@ -718,7 +718,7 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 					$format_value	= str_replace($match[0],$real_value,$format_value);
 				}
 
-				if($format_as =='radio' or $format_as =='file' or $format_as == 'checkbox' or $format_as =='image'){
+				if($format_as =='radio' or $format_as =='file' or $format_as == 'checkbox' or $format_as =='image' or $format_as =='database'){
 					$val = "{!! SiteHelpers::formatRows(\$row->".$grid['field'].",\$fields['".$grid['field']."'],\$row ) !!}";
 				} elseif($format_as =='link') {
 
@@ -1316,7 +1316,36 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 			}
 			$value = $vals ;
 
-		}  else if($format_as == 'checkbox' or $format_as =='radio') {
+		} else if( $format_as =='database') {
+			// Database Lookup
+			$fields = explode("|",$format_value);
+			if(count($fields)>=2)
+			{
+
+				$field_table  =  str_replace(':',',',$fields[2]);
+				$field_toShow =  explode(":",$fields[2]);
+				//echo " SELECT ".$field_table." FROM ".$fields[0]." WHERE ".$fields[1]." IN(".$value.") ";
+				$Q = DB::select(" SELECT ".$field_table." FROM ".$fields[0]." WHERE ".$fields[1]." IN(".$value.") ");
+				if(count($Q) >= 1 )
+				{
+					$value = '';
+					foreach($Q as $qv)
+					{
+						$sub_val = '';
+						foreach($field_toShow as $fld)
+						{
+							$sub_val .= $qv->{$fld}.' '; 
+						}	
+						$value .= $sub_val.', ';					
+
+					}
+					$value = substr($value,0,($value-2));
+				} 
+
+			}	
+
+
+		} else if($format_as == 'checkbox' or $format_as =='radio') {
 			// FORMAT AS RADIO/CHECKBOX VALUES
 				
 				$values = explode(',',$format_value);

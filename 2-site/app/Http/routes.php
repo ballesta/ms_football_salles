@@ -49,7 +49,7 @@
 
     });
 
-    Route::resource('sximoapi', 'SximoapiController');
+    //Route::resource('sximoapi', 'SximoapiController');
     Route::group(['middleware' => 'auth'], function () {
 
         Route::get('core/elfinder', 'Core\ElfinderController@getIndex');

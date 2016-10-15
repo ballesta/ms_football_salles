@@ -41,6 +41,7 @@
 		</select>	
 		<button type="submit" class="btn btn-white btn-sm"><i class="icon-bubble-right"></i> GO</button>	
 		<input type="hidden" name="md" value="{{ (isset($masterdetail['filtermd']) ? $masterdetail['filtermd'] : '') }}" />
+		<input type="hidden" name="sc" value="{{ @$_GET['search'] }}" />		
 	  {!! Form::close() !!}
 	  </div>					
 	  </div>

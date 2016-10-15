@@ -9,7 +9,7 @@ class HomeController extends Controller {
 	{
 		parent::__construct();
 
-		\App::setLocale(CNF_LANG);
+		\App::setLocale('fr');
 		if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
 
 			$lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
