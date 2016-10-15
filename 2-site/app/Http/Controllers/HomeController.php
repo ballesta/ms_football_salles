@@ -38,7 +38,9 @@ class HomeController extends Controller {
 		
 		$page = $request->segment(1); 	
 		if($page !='') :
-			$content = \DB::table('tb_pages')->where('alias','=',$page)->where('status','=','enable')->get();
+			$content = \DB::table('tb_pages')->where('alias','=',$page)
+                                             ->where('status','=','enable')
+                                             ->get();
 
 			if(count($content) >=1)
 			{
@@ -46,8 +48,10 @@ class HomeController extends Controller {
 				$row = $content[0];
 				$this->data['pageTitle'] = $row->title;
 				$this->data['pageNote'] = $row->note;
-				$this->data['pageMetakey'] = ($row->metakey !='' ? $row->metakey : CNF_METAKEY) ;
-				$this->data['pageMetadesc'] = ($row->metadesc !='' ? $row->metadesc : CNF_METADESC) ;
+				$this->data['pageMetakey'] = ($row->metakey !='' ? $row->metakey
+                                                                 : CNF_METAKEY) ;
+				$this->data['pageMetadesc'] = ($row->metadesc !='' ? $row->metadesc
+                                                                   : CNF_METADESC) ;
 
 				$this->data['breadcrumb'] = 'active';					
 				
@@ -62,11 +66,14 @@ class HomeController extends Controller {
 				if($row->allow_guest !=1)
 				{	
 					$group_id = \Session::get('gid');				
-					$isValid =  (isset($access[$group_id]) && $access[$group_id] == 1 ? 1 : 0 );	
+					$isValid =  (   isset($access[$group_id])
+                                 && $access[$group_id] == 1 ? 1 : 0 );
 					if($isValid ==0)
 					{
 						return Redirect::to('')
-							->with('message', \SiteHelpers::alert('error',Lang::get('core.note_restric')));				
+							->with('message',
+                                   \SiteHelpers::alert('error',
+                                                       Lang::get('core.note_restric')));
 					}
 				}				
 				if($row->template =='backend')
@@ -86,12 +93,15 @@ class HomeController extends Controller {
 					return view($page,$this->data);
 				} else {
 					return Redirect::to('')
-						->with('message', \SiteHelpers::alert('error',\Lang::get('core.note_noexists')));					
+						->with('message',
+                               \SiteHelpers::alert('error',
+                                                   \Lang::get('core.note_noexists')));
 				}
 				
 			} else {
 				return Redirect::to('')
-					->with('message', \SiteHelpers::alert('error',\Lang::get('core.note_noexists')));	
+					->with('message',
+                           \SiteHelpers::alert('error',\Lang::get('core.note_noexists')));
 			}
 			
 			
@@ -104,8 +114,8 @@ class HomeController extends Controller {
 
 				$this->data['pageTitle'] 	= $row->title;
 				$this->data['pageNote'] 	=  $row->note;
-				$this->data['breadcrumb'] 	= 'inactive';	
-				$this->data['pageMetakey'] 	=   $row->metakey ;
+				$this->data['breadcrumb'] 	=  'inactive';
+				$this->data['pageMetakey'] 	=  $row->metakey ;
 				$this->data['pageMetadesc'] =  $row->metadesc ;
 				$this->data['filename'] 	=  $row->filename;				
 
@@ -167,10 +177,10 @@ class HomeController extends Controller {
 					//mail($data['to'],$data['subject'], $message, $headers);		
 			}
 
-
-	
-
-			return Redirect::to($request->input('redirect'))->with('message', \SiteHelpers::alert('success','Thank You , Your message has been sent !'));	
+			return Redirect::to($request->input('redirect'))
+                                        ->with('message',
+                                               \SiteHelpers::alert('success','Thank You ,
+                                                Your message has been sent !'));
 				
 		} else {
 			return Redirect::to($request->input('redirect'))->with('message', \SiteHelpers::alert('error','The following errors occurred'))

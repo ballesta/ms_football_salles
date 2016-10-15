@@ -11,13 +11,30 @@
     |
     */
 
-    $active_multilang = defined('CNF_MULTILANG') ? CNF_LANG : 'en';
+    $active_multilang = defined('CNF_MULTILANG') ? CNF_LANG
+                                                   :
+                                                   'en';
     \App::setLocale($active_multilang);
-    if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
+    if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1')
+    {
 
-        $lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
+        $lang = (\Session::get('lang') != "" ? \Session::get('lang')
+                                             :
+                                             CNF_LANG);
         \App::setLocale($lang);
     }
+
+    // Envoi de mesures pour lestests
+    //Route::resource('envoiMesures', 'SessionMesuresController');
+    //Route::get('envoiMesures', function () {
+    //    return 'Hello World';
+    //});
+
+    Route::get('envoiMesures',"EnvoiMesuresController@index");
+
+    // API de réception des messages de mesure des capteurs
+    Route::resource('sessionMesures', 'SessionmesureController');
+
 
     Route::get('/', 'HomeController@index');
     Route::controller('home', 'HomeController');
@@ -38,7 +55,12 @@
         Route::get('core/elfinder', 'Core\ElfinderController@getIndex');
         Route::post('core/elfinder', 'Core\ElfinderController@getIndex');
         Route::controller('/dashboard', 'DashboardController');
-        Route::controllers(['core/users' => 'Core\UsersController', 'notification' => 'NotificationController', 'core/logs' => 'Core\LogsController', 'core/pages' => 'Core\PagesController', 'core/groups' => 'Core\GroupsController', 'core/template' => 'Core\TemplateController',]);
+        Route::controllers(['core/users' => 'Core\UsersController',
+                            'notification' => 'NotificationController',
+                            'core/logs' => 'Core\LogsController',
+                            'core/pages' => 'Core\PagesController',
+                            'core/groups' => 'Core\GroupsController',
+                            'core/template' => 'Core\TemplateController',]);
 
     });
 
@@ -52,8 +74,7 @@
 
     });
 
-    // API de réception des messages de mesure des capteurs
-    Route::resource('sessionMesures', 'SessionMesuresController');
+
 
 
 

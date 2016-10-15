@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost/football_v00_salles',
+    'url' => 'http://localhost/football-salles',
 
     /*
     |--------------------------------------------------------------------------

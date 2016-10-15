@@ -46,12 +46,22 @@ abstract class Controller extends BaseController {
         	\Session::put('themes', 'sximo');	
         }
 
+        //bb
+         if (defined('CNF_LANG'))
+            echo 'CNF_LANG =', CNF_LANG ;
+        else
+        {
+            echo 'CNF_LANG = non defini';
+            define('CNF_LANG', 'fr');
+        }
+        echo "\n";
          \App::setLocale(CNF_LANG);
 		 if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
-
-		    $lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
+		    $lang = (\Session::get('lang') != "" ? \Session::get('lang')
+                                                 : CNF_LANG);
 		    \App::setLocale($lang);
 		}
+
 		$data = array(
 				'last_activity'=> strtotime(Carbon::now())
 			);

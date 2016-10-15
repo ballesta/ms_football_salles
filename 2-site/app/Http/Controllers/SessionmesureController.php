@@ -2,16 +2,14 @@
 
     namespace App\Http\Controllers;
 
-
     use Illuminate\Http\Request;
-
     use DB;
     use Exception;
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use Monolog\Handler\ElasticSearchHandler;
 
-    class SessionMesuresController extends Controller
+    class SessionmesureController extends Controller
     {
         /**
          * Display a listing of the resource.
