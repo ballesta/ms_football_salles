@@ -3,33 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/DashboardController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/DashboardController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/NotificationController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/NotificationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/Sximo/ConfigController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/Sximo/ConfigController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/Sximo/ModuleController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/Sximo/ModuleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Library/SiteHelpers.php" afterPath="$PROJECT_DIR$/2-site/app/Library/SiteHelpers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/public/setting.php" afterPath="$PROJECT_DIR$/2-site/public/setting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" afterPath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/footer.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/footer.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/layouts/login.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/layouts/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/notification/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/notification/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/create.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/table.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/controller.tpl" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/controller.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/form.tpl" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/form.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/grid.tpl" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/grid.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/view.tpl" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/view.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/view_detail.tpl" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/view_detail.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/user/remind.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/user/remind.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/setting.php" afterPath="$PROJECT_DIR$/2-site/setting.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -410,7 +383,7 @@
       <workItem from="1476346181296" duration="3150000" />
       <workItem from="1476442124134" duration="3563000" />
       <workItem from="1476518495369" duration="10522000" />
-      <workItem from="1476564130343" duration="6120000" />
+      <workItem from="1476564130343" duration="6230000" />
     </task>
     <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
       <created>1476465407612</created>
@@ -433,11 +406,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476565570165</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Apres ajout patch; require setting;php dans ComplexeSportifController.php">
+      <created>1476570999401</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1476570999401</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98454000" />
+    <option name="totallyTimeSpent" value="98564000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -488,7 +468,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement" />
     <MESSAGE value="Avant ajout patch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Avant ajout patch" />
+    <MESSAGE value="Apres ajout patch; require setting;php dans ComplexeSportifController.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Apres ajout patch; require setting;php dans ComplexeSportifController.php" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -659,6 +640,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37485">
           <caret line="1071" column="10" selection-start-line="1071" selection-start-column="10" selection-end-line="1071" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
