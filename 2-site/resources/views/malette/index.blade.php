@@ -44,7 +44,7 @@
 @endif
 @endif
 @endforeach
-<th width="40%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
