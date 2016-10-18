@@ -31,7 +31,7 @@ class ReseauxsallesController extends Controller {
 			
 		);
 		
-		\App::setLocale('fr');
+		\App::setLocale(CNF_LANG);
 		if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
 
 		$lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
@@ -144,6 +144,7 @@ class ReseauxsallesController extends Controller {
 			$this->data['id'] = $id;
 			$this->data['access']		= $this->access;
 			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+			$this->data['prevnext'] = $this->model->prevNext($id);
 			return view('reseauxsalles.view',$this->data);
 		} else {
 			return Redirect::to('reseauxsalles')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
@@ -198,11 +199,11 @@ class ReseauxsallesController extends Controller {
 			
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
 			// redirect
-			return Redirect::to('reseauxsalles')
+			return Redirect::to('reseauxsalles?return='.self::returnUrl())
         		->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success'); 
 	
 		} else {
-			return Redirect::to('reseauxsalles')
+			return Redirect::to('reseauxsalles?return='.self::returnUrl())
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
 

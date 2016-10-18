@@ -8,7 +8,7 @@ define('CNF_METADESC','Mesure des performances des joueurs DE FOOTBALL');
 define('CNF_GROUP','3');
 define('CNF_ACTIVATION','auto');
 define('CNF_MULTILANG','1');
-define('CNF_LANG','fr'); //bb
+define('CNF_LANG','fr');
 define('CNF_REGIST','true');
 define('CNF_FRONT','true');
 define('CNF_RECAPTCHA','false');

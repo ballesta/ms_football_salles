@@ -10,10 +10,16 @@
 
 
 <div class="sbox">
-	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3>
-		<div class="sbox-tools" >
-			<a href="{{ url($pageModule.'?return='.$return) }}" class="btn btn-xs btn-white tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="icon-backward"></i> {{ Lang::get('core.btn_back') }} </a> 
+	<div class="sbox-title"> 
+		<div class="sbox-tools pull-left" >
+			<a href="{{ url($pageModule.'?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="fa  fa-arrow-left"></i></a> 
 		</div>
+		<div class="sbox-tools " >
+			@if(Session::get('gid') ==1)
+				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
+			@endif 			
+		</div> 
+
 	</div>
 	<div class="sbox-content"> 	
 
@@ -28,7 +34,7 @@
 						<fieldset><legend> Capteurs</legend>
 				{!! Form::hidden('capteur_id', $row['capteur_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Numero Serie" class=" control-label col-md-4 text-left"> Numero Serie </label>
+										<label for="Numéro Serie" class=" control-label col-md-4 text-left"> Numéro Serie </label>
 										<div class="col-md-6">
 										  {!! Form::text('numero_serie', $row['numero_serie'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 										 </div> 
@@ -50,7 +56,16 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Malette Capteurs Id" class=" control-label col-md-4 text-left"> Malette Capteurs Id </label>
+										<label for="Complexe sportif" class=" control-label col-md-4 text-left"> Complexe sportif </label>
+										<div class="col-md-6">
+										  <select name='club_id' rows='5' id='club_id' class='select2 '   ></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Malette Capteurs" class=" control-label col-md-4 text-left"> Malette Capteurs </label>
 										<div class="col-md-6">
 										  <select name='malette_capteurs_id' rows='5' id='malette_capteurs_id' class='select2 '   ></select> 
 										 </div> 
@@ -84,6 +99,9 @@
    <script type="text/javascript">
 	$(document).ready(function() { 
 		
+		
+		$("#club_id").jCombo("{!! url('capteur/comboselect?filter=fbs_complexe_salles:club_id:nom|ville') !!}",
+		{  selected_value : '{{ $row["club_id"] }}' });
 		
 		$("#malette_capteurs_id").jCombo("{!! url('capteur/comboselect?filter=fb_malette_capteurs:malette_capteurs_id:identifiant') !!}",
 		{  selected_value : '{{ $row["malette_capteurs_id"] }}' });

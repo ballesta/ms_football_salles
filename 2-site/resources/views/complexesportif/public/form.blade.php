@@ -73,7 +73,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Club Id" class=" control-label col-md-4 text-left"> Club Id </label>
+										<label for="Réseau" class=" control-label col-md-4 text-left"> Réseau </label>
 										<div class="col-md-6">
 										  <select name='club_id' rows='5' id='club_id' class='select2 '   ></select> 
 										 </div> 

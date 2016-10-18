@@ -10,10 +10,16 @@
 
 
 <div class="sbox">
-	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3>
-		<div class="sbox-tools" >
-			<a href="{{ url($pageModule.'?return='.$return) }}" class="btn btn-xs btn-white tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="icon-backward"></i> {{ Lang::get('core.btn_back') }} </a> 
+	<div class="sbox-title"> 
+		<div class="sbox-tools pull-left" >
+			<a href="{{ url($pageModule.'?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="fa  fa-arrow-left"></i></a> 
 		</div>
+		<div class="sbox-tools " >
+			@if(Session::get('gid') ==1)
+				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
+			@endif 			
+		</div> 
+
 	</div>
 	<div class="sbox-content"> 	
 
@@ -104,7 +110,7 @@
 	$(document).ready(function() { 
 		
 		
-		$("#salle_id").jCombo("{!! url('partie/comboselect?filter=fb_clubs:club_id:club_id') !!}",
+		$("#salle_id").jCombo("{!! url('partie/comboselect?filter=fbs_salles:salle_id:identifiant') !!}",
 		{  selected_value : '{{ $row["salle_id"] }}' });
 		
 		$("#equipe_id").jCombo("{!! url('partie/comboselect?filter=fb_equipes:equipe_id:nom') !!}",

@@ -9,27 +9,32 @@
  	<div class="page-content-wrapper m-t">   
 
 <div class="sbox ">
-	<div class="sbox-title"><h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3> 
-	<div class="sbox-tools" >
-   		<a href="{{ URL::to('capteur?return='.$return) }}" class="tips btn btn-xs btn-white pull-right" title="{{ Lang::get('core.btn_back') }}"><i class="icon-backward"></i>&nbsp;{{ Lang::get('core.btn_back') }}</a>
-		@if($access['is_add'] ==1)
-   		<a href="{{ URL::to('capteur/update/'.$id.'?return='.$return) }}" class="tips btn btn-xs btn-white pull-right" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit"></i>&nbsp;{{ Lang::get('core.btn_edit') }}</a>
-		@endif 
-	</div>	
+	<div class="sbox-title">
+		<div class="sbox-tools pull-left" >
+	   		<a href="{{ url('capteur?return='.$return) }}" class="tips" title="{{ Lang::get('core.btn_back') }}"><i class="fa  fa-arrow-left"></i></a>
+			@if($access['is_add'] ==1)
+	   		<a href="{{ url('capteur/update/'.$id.'?return='.$return) }}" class="tips " title="{{ Lang::get('core.btn_edit') }}"><i class="fa  fa-pencil"></i></a>
+			@endif 
+					
+		</div>	
+
+		<div class="sbox-tools " >
+			<a href="{{ ($prevnext['prev'] != '' ? url('capteur/show/'.$prevnext['prev'].'?return='.$return ) : '#') }}" class="tips "><i class="fa fa-arrow-left"></i>  </a>	
+			<a href="{{ ($prevnext['next'] != '' ? url('capteur/show/'.$prevnext['next'].'?return='.$return ) : '#') }}" class="tips"> <i class="fa fa-arrow-right"></i>  </a>
+			@if(Session::get('gid') ==1)
+				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
+			@endif 			
+		</div>
+
+
 	</div>
-	<div class="sbox-content" style="background:#fff;"> 	
+	<div class="sbox-content" > 	
 
 		<table class="table table-striped table-bordered" >
 			<tbody>	
 		
 					<tr>
-						<td width='30%' class='label-view text-right'>Capteur Id</td>
-						<td>{{ $row->capteur_id}} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Numero Serie</td>
+						<td width='30%' class='label-view text-right'>Numéro Serie</td>
 						<td>{{ $row->numero_serie}} </td>
 						
 					</tr>
@@ -41,13 +46,13 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Club Id</td>
-						<td>{{ $row->club_id}} </td>
+						<td width='30%' class='label-view text-right'>Complexe sportif</td>
+						<td>{{ SiteHelpers::formatLookUp($row->club_id,'club_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Malette Capteurs Id</td>
+						<td width='30%' class='label-view text-right'>Malette Capteurs</td>
 						<td>{{ SiteHelpers::formatLookUp($row->malette_capteurs_id,'malette_capteurs_id','1:fb_malette_capteurs:malette_capteurs_id:identifiant') }} </td>
 						
 					</tr>

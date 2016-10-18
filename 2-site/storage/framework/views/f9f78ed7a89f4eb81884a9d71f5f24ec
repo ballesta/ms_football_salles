@@ -42,6 +42,7 @@
 		</select>	
 		<button type="submit" class="btn btn-white btn-sm"><i class="icon-bubble-right"></i> GO</button>	
 		<input type="hidden" name="md" value="<?php echo e((isset($masterdetail['filtermd']) ? $masterdetail['filtermd'] : '')); ?>" />
+		<input type="hidden" name="sc" value="<?php echo e(@$_GET['search']); ?>" />		
 	  <?php echo Form::close(); ?>
 
 	  </div>					

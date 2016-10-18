@@ -139,6 +139,7 @@ class JoueurselectionneController extends Controller {
             $this->data['id'] = $id;
             $this->data['access']		= $this->access;
             $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
+            $this->data['prevnext'] = $this->model->prevNext($id);
             return view('joueurselectionne.view',$this->data);
         } else {
             return Redirect::to('joueurselectionne')->with('messagetext','Record Not Found !')->with('msgstatus','error');
@@ -188,11 +189,11 @@ class JoueurselectionneController extends Controller {
             
             \SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
             // redirect
-            return Redirect::to('joueurselectionne')
+            return Redirect::to('joueurselectionne?return='.self::returnUrl())
             ->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
             
         } else {
-            return Redirect::to('joueurselectionne')
+            return Redirect::to('joueurselectionne?return='.self::returnUrl())
             ->with('messagetext','No Item Deleted')->with('msgstatus','error');
         }
     }

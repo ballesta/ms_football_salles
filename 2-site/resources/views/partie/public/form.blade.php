@@ -89,7 +89,7 @@
 	$(document).ready(function() { 
 		
 		
-		$("#salle_id").jCombo("{!! url('partie/comboselect?filter=fb_clubs:club_id:club_id') !!}",
+		$("#salle_id").jCombo("{!! url('partie/comboselect?filter=fbs_salles:salle_id:identifiant') !!}",
 		{  selected_value : '{{ $row["salle_id"] }}' });
 		
 		$("#equipe_id").jCombo("{!! url('partie/comboselect?filter=fb_equipes:equipe_id:nom') !!}",

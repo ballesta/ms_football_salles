@@ -12,13 +12,7 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Capteur Id</td>
-						<td>{{ $row->capteur_id}} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Numero Serie</td>
+						<td width='30%' class='label-view text-right'>Numéro Serie</td>
 						<td>{{ $row->numero_serie}} </td>
 						
 					</tr>
@@ -30,13 +24,13 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Club Id</td>
-						<td>{{ $row->club_id}} </td>
+						<td width='30%' class='label-view text-right'>Complexe sportif</td>
+						<td>{{ SiteHelpers::formatLookUp($row->club_id,'club_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Malette Capteurs Id</td>
+						<td width='30%' class='label-view text-right'>Malette Capteurs</td>
 						<td>{{ SiteHelpers::formatLookUp($row->malette_capteurs_id,'malette_capteurs_id','1:fb_malette_capteurs:malette_capteurs_id:identifiant') }} </td>
 						
 					</tr>

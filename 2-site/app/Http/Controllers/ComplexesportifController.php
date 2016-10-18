@@ -4,7 +4,6 @@ use App\Models\Complexesportif;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ;
-//require '/setting.php';
 class ComplexesportifController extends Controller {
     protected $layout = "layouts.main";
     protected $data = array();
@@ -140,6 +139,7 @@ class ComplexesportifController extends Controller {
             $this->data['id'] = $id;
             $this->data['access']		= $this->access;
             $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
+            $this->data['prevnext'] = $this->model->prevNext($id);
             return view('complexesportif.view',$this->data);
         } else {
             return Redirect::to('complexesportif')->with('messagetext','Record Not Found !')->with('msgstatus','error');
@@ -189,11 +189,11 @@ class ComplexesportifController extends Controller {
             
             \SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
             // redirect
-            return Redirect::to('complexesportif')
+            return Redirect::to('complexesportif?return='.self::returnUrl())
             ->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
             
         } else {
-            return Redirect::to('complexesportif')
+            return Redirect::to('complexesportif?return='.self::returnUrl())
             ->with('messagetext','No Item Deleted')->with('msgstatus','error');
         }
     }

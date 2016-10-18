@@ -18,7 +18,7 @@
 						<fieldset><legend> Salles</legend>
 				{!! Form::hidden('salle_id', $row['salle_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Identifiant" class=" control-label col-md-4 text-left"> Identifiant </label>
+										<label for="Terrain" class=" control-label col-md-4 text-left"> Terrain </label>
 										<div class="col-md-6">
 										  {!! Form::text('identifiant', $row['identifiant'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 										 </div> 
@@ -27,7 +27,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Complexe Salle Id" class=" control-label col-md-4 text-left"> Complexe Salle Id </label>
+										<label for="Centre" class=" control-label col-md-4 text-left"> Centre </label>
 										<div class="col-md-6">
 										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
 										 </div> 

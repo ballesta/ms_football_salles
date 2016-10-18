@@ -1,14 +1,14 @@
 <?php 
-define('CNF_APPNAME','Sximo 5.1 LTS Laravel');
+define('CNF_APPNAME','MS Football');
 define('CNF_APPDESC','PHP Application Builder and Platform IDE');
-define('CNF_COMNAME','My Company Name');
-define('CNF_EMAIL','info@mail.com');
+define('CNF_COMNAME','MS Football');
+define('CNF_EMAIL','bernard@ballesta.fr');
 define('CNF_METAKEY','my site , my company  , Larvel Crud');
 define('CNF_METADESC','Write description for your site');
 define('CNF_GROUP','3');
 define('CNF_ACTIVATION','confirmation');
-define('CNF_MULTILANG','1');
-define('CNF_LANG','en'); //bb
+define('CNF_MULTILANG','0'); //bb
+define('CNF_LANG','fr'); //bb
 define('CNF_REGIST','true');
 define('CNF_FRONT','true');
 define('CNF_RECAPTCHA','false');
