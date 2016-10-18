@@ -11,20 +11,29 @@
 	<div class="sbox-title">
 		<div class="sbox-tools pull-left" >
 			@if($access['is_add'] ==1)
-	   		<a href="{{ URL::to('joueur/update?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_create') }}">
-			<i class="fa  fa-plus "></i></a>
+	   		<a href="{{ URL::to('joueur/update?return='.$return) }}"
+			   class="tips"  title="{{ Lang::get('core.btn_create') }}">
+			<i class="fa  fa-plus "></i> Créer</a>
 			@endif  
 			@if($access['is_remove'] ==1)
-			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips" title="{{ Lang::get('core.btn_remove') }}">
-			<i class="fa fa-trash-o"></i></a>
+			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips"
+			   title="Supprimer les lignes cochées">
+			<i class="fa fa-trash-o"></i> Supprimer</a>
 			@endif 
-			<a href="{{ URL::to( 'joueur/search?return='.$return) }}" class="" onclick="SximoModal(this.href,'Advance Search'); return false;" title="{{ Lang::get('core.btn_search') }}"><i class="fa  fa-search"></i> </a>				
+			<a href="{{ URL::to( 'joueur/search?return='.$return) }}"
+			   class="tips"
+			   onclick="SximoModal(this.href,'Advance Search'); return false;"               title="{{ Lang::get('core.btn_search') }}">
+				<i class="fa fa-search"> Rechercher</i> </a>
 			@if($access['is_excel'] ==1)
 			<a href="{{ URL::to('joueur/download?return='.$return) }}" class="tips " title="{{ Lang::get('core.btn_download') }}">
-			<i class="fa fa-cloud-download"></i></a>
+			<i class="fa fa-cloud-download"></i> Télécharger</a>
 			@endif
 
-			<a href="{{ url($pageModule) }}" class=" tips"  title="{{ Lang::get('core.btn_clearsearch') }}" ><i class="fa fa-spinner"></i>  </a>
+			<a href="{{ url($pageModule) }}"
+			   class=" tips"
+			   title="{{ Lang::get('core.btn_clearsearch') }}" >
+			   <i class="fa fa-spinner"> Tout Afficher</i>
+			</a>
 
 		</div>
 

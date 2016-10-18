@@ -14,15 +14,19 @@
 			<?php endif; ?>  
 			<?php if($access['is_remove'] ==1): ?>
 			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips" title="<?php echo e(Lang::get('core.btn_remove')); ?>">
-			<i class="fa fa-trash-o"></i></a>
+			<i class="fa fa-trash-o"></i> Supprimer</a>
 			<?php endif; ?> 
-			<a href="<?php echo e(URL::to( 'capteur/search?return='.$return)); ?>" class="" onclick="SximoModal(this.href,'Advance Search'); return false;" title="<?php echo e(Lang::get('core.btn_search')); ?>"><i class="fa  fa-search"></i> </a>				
+			<a href="<?php echo e(URL::to( 'capteur/search?return='.$return)); ?>" class="" onclick="SximoModal(this.href,'Advance Search'); return false;" title="<?php echo e(Lang::get('core.btn_search')); ?>"><i class="fa  fa-search"> Rechercher</i> </a>
 			<?php if($access['is_excel'] ==1): ?>
 			<a href="<?php echo e(URL::to('capteur/download?return='.$return)); ?>" class="tips " title="<?php echo e(Lang::get('core.btn_download')); ?>">
-			<i class="fa fa-cloud-download"></i></a>
+			<i class="fa fa-cloud-download"></i> Télécharger</a>
 			<?php endif; ?>
 
-			<a href="<?php echo e(url($pageModule)); ?>" class=" tips"  title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" ><i class="fa fa-spinner"></i>  </a>
+			<a href="<?php echo e(url($pageModule)); ?>"
+			   class=" tips"
+			   title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
+			   <i class="fa fa-spinner"> Tout Afficher</i>
+			</a>
 
 		</div>
 

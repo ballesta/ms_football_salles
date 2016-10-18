@@ -1,17 +1,19 @@
+{!! Form::open(array('url'=>'joueur/savepublic',
+                     'class'=>'form-horizontal',
+                     'files' => true ,
+                     'parsley-validate'=>'',
+                     'novalidate'=>' ')) !!}
 
+@if(Session::has('messagetext'))
 
-		 {!! Form::open(array('url'=>'joueur/savepublic', 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+    {!! Session::get('messagetext') !!}
 
-	@if(Session::has('messagetext'))
-	  
-		   {!! Session::get('messagetext') !!}
-	   
-	@endif
-	<ul class="parsley-error-list">
-		@foreach($errors->all() as $error)
-			<li>{{ $error }}</li>
-		@endforeach
-	</ul>		
+@endif
+<ul class="parsley-error-list">
+    @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+</ul>
 
 
 <div class="col-md-12">
@@ -36,7 +38,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Complexe Salle Id" class=" control-label col-md-4 text-left"> Complexe Salle Id </label>
+										<label for="Complexe Salle" class=" control-label col-md-4 text-left"> Complexe Salle </label>
 										<div class="col-md-6">
 										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
 										 </div> 
@@ -45,7 +47,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Equipe Id" class=" control-label col-md-4 text-left"> Equipe Id </label>
+										<label for="Equipe" class=" control-label col-md-4 text-left"> Equipe </label>
 										<div class="col-md-6">
 										  <select name='equipe_id' rows='5' id='equipe_id' class='select2 '   ></select> 
 										 </div> 
@@ -57,37 +59,41 @@
 			
 			
 
-			<div style="clear:both"></div>	
-				
-					
-				  <div class="form-group">
-					<label class="col-sm-4 text-right">&nbsp;</label>
-					<div class="col-sm-8">	
-					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}</button>
-					<button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
-				  </div>	  
-			
-		</div> 
-		 
-		 {!! Form::close() !!}
-		 
-   <script type="text/javascript">
-	$(document).ready(function() { 
-		
-		
+<div style="clear:both"></div>
+
+
+<div class="form-group">
+    <label class="col-sm-4 text-right">&nbsp;</label>
+    <div class="col-sm-8">
+        <button type="submit" name="apply" class="btn btn-info btn-sm"><i
+                    class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}
+        </button>
+        <button type="submit" name="submit" class="btn btn-primary btn-sm"><i
+                    class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}
+        </button>
+    </div>
+
+</div>
+
+{!! Form::close() !!}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        
 		$("#complexe_salle_id").jCombo("{!! url('joueur/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
 		
 		$("#equipe_id").jCombo("{!! url('joueur/comboselect?filter=fb_equipes:equipe_id:nom') !!}",
 		{  selected_value : '{{ $row["equipe_id"] }}' });
-		 
-
-		$('.removeCurrentFiles').on('click',function(){
-			var removeUrl = $(this).attr('href');
-			$.get(removeUrl,function(response){});
-			$(this).parent('div').empty();	
-			return false;
-		});		
 		
-	});
-	</script>		 
+
+        $('.removeCurrentFiles').on('click', function () {
+            var removeUrl = $(this).attr('href');
+            $.get(removeUrl, function (response){});
+            $(this).parent('div').empty();
+            return false;
+        });
+
+    });
+</script>

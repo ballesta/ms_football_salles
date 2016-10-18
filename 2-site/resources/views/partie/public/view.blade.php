@@ -24,19 +24,19 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Salle Id</td>
+						<td width='30%' class='label-view text-right'>Salle</td>
 						<td>{{ SiteHelpers::formatLookUp($row->salle_id,'salle_id','1:fbs_salles:salle_id:identifiant') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Equipe Id</td>
+						<td width='30%' class='label-view text-right'>Equipe</td>
 						<td>{{ SiteHelpers::formatLookUp($row->equipe_id,'equipe_id','1:fb_equipes:equipe_id:nom') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Malette Capteurs Id</td>
+						<td width='30%' class='label-view text-right'>Malette Capteurs</td>
 						<td>{{ SiteHelpers::formatLookUp($row->malette_capteurs_id,'malette_capteurs_id','1:fb_malette_capteurs:malette_capteurs_id:identifiant') }} </td>
 						
 					</tr>

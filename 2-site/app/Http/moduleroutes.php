@@ -11,4 +11,5 @@
                     Route::controller('sessionmesure', 'SessionmesureController');
                     Route::controller('mesure', 'MesureController');
                     Route::controller('mesurestoutes', 'MesurestoutesController');
+                    Route::controller('joueursComplexe', 'JoueursComplexeController');
                     ?>

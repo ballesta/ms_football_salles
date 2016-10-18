@@ -15,7 +15,7 @@ class sessionmesure extends Sximo  {
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
-        $parent_id_key = 'partie_id';
+        $parent_id_key = 'joueur_selectionne_id';
         // Table
         $table = with(new static)->table;
         // clef primaire de la table

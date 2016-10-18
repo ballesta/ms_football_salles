@@ -34,7 +34,7 @@
 						<fieldset><legend> Joueurs sélectionnés</legend>
 				{!! Form::hidden('joueur_selectionne_id', $row['joueur_selectionne_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Partie Id" class=" control-label col-md-4 text-left"> Partie Id </label>
+										<label for="Partie" class=" control-label col-md-4 text-left"> Partie </label>
 										<div class="col-md-6">
 										  <select name='partie_id' rows='5' id='partie_id' class='select2 '   ></select> 
 										 </div> 
@@ -43,7 +43,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Joueur Id" class=" control-label col-md-4 text-left"> Joueur Id </label>
+										<label for="Joueur" class=" control-label col-md-4 text-left"> Joueur </label>
 										<div class="col-md-6">
 										  <select name='joueur_id' rows='5' id='joueur_id' class='select2 '   ></select> 
 										 </div> 
@@ -52,7 +52,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Capteur Id" class=" control-label col-md-4 text-left"> Capteur Id </label>
+										<label for="Capteur" class=" control-label col-md-4 text-left"> Capteur </label>
 										<div class="col-md-6">
 										  <select name='capteur_id' rows='5' id='capteur_id' class='select2 '   ></select> 
 										 </div> 

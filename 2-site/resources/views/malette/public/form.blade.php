@@ -1,17 +1,19 @@
+{!! Form::open(array('url'=>'malette/savepublic',
+                     'class'=>'form-horizontal',
+                     'files' => true ,
+                     'parsley-validate'=>'',
+                     'novalidate'=>' ')) !!}
 
+@if(Session::has('messagetext'))
 
-		 {!! Form::open(array('url'=>'malette/savepublic', 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+    {!! Session::get('messagetext') !!}
 
-	@if(Session::has('messagetext'))
-	  
-		   {!! Session::get('messagetext') !!}
-	   
-	@endif
-	<ul class="parsley-error-list">
-		@foreach($errors->all() as $error)
-			<li>{{ $error }}</li>
-		@endforeach
-	</ul>		
+@endif
+<ul class="parsley-error-list">
+    @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+</ul>
 
 
 <div class="col-md-12">
@@ -23,7 +25,7 @@
 										  {!! Form::text('identifiant', $row['identifiant'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
 										 <div class="col-md-2">
-										 	
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Lettre identifiant la malette (exemple: 'A'), les cpateurs contenus dans la malette sont identifiés par un numéro de 1 à 12."><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
@@ -39,34 +41,38 @@
 			
 			
 
-			<div style="clear:both"></div>	
-				
-					
-				  <div class="form-group">
-					<label class="col-sm-4 text-right">&nbsp;</label>
-					<div class="col-sm-8">	
-					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}</button>
-					<button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
-				  </div>	  
-			
-		</div> 
-		 
-		 {!! Form::close() !!}
-		 
-   <script type="text/javascript">
-	$(document).ready(function() { 
-		
-		
+<div style="clear:both"></div>
+
+
+<div class="form-group">
+    <label class="col-sm-4 text-right">&nbsp;</label>
+    <div class="col-sm-8">
+        <button type="submit" name="apply" class="btn btn-info btn-sm"><i
+                    class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}
+        </button>
+        <button type="submit" name="submit" class="btn btn-primary btn-sm"><i
+                    class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}
+        </button>
+    </div>
+
+</div>
+
+{!! Form::close() !!}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        
 		$("#complexe_salle_id").jCombo("{!! url('malette/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
-		 
-
-		$('.removeCurrentFiles').on('click',function(){
-			var removeUrl = $(this).attr('href');
-			$.get(removeUrl,function(response){});
-			$(this).parent('div').empty();	
-			return false;
-		});		
 		
-	});
-	</script>		 
+
+        $('.removeCurrentFiles').on('click', function () {
+            var removeUrl = $(this).attr('href');
+            $.get(removeUrl, function (response){});
+            $(this).parent('div').empty();
+            return false;
+        });
+
+    });
+</script>

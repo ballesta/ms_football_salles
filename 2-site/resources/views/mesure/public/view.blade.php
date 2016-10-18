@@ -18,7 +18,7 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Session Mesure Id</td>
+						<td width='30%' class='label-view text-right'>Session Mesure</td>
 						<td>{{ SiteHelpers::formatLookUp($row->session_mesure_id,'session_mesure_id','1:fb_sessions_mesures:session_mesure_id:date_heure') }} </td>
 						
 					</tr>

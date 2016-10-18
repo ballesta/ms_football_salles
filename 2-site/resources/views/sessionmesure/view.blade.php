@@ -117,18 +117,6 @@
 						
 					</tr>
 				
-					<tr>
-						<td width='30%' class='label-view text-right'>Capteur</td>
-						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:numero_serie') }} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Joueur</td>
-						<td>{{ SiteHelpers::formatLookUp($row->joueur_id,'joueur_id','1:fb_joueurs:joueur_id:nom|premon') }} </td>
-						
-					</tr>
-				
 			</tbody>	
 		</table>   
 

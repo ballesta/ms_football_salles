@@ -1,7 +1,7 @@
 <?php 
 return array( 
 "norecord"			=> "No Record Found",  
- "create"			=> "Créer nouveau",  
+ "create"			=> "Creer nouveau",  
  "home"			=> "Home",  
  "group"			=> "Group",  
  "username"			=> "Username",  

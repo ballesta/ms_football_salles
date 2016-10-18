@@ -1,17 +1,19 @@
+{!! Form::open(array('url'=>'partie/savepublic',
+                     'class'=>'form-horizontal',
+                     'files' => true ,
+                     'parsley-validate'=>'',
+                     'novalidate'=>' ')) !!}
 
+@if(Session::has('messagetext'))
 
-		 {!! Form::open(array('url'=>'partie/savepublic', 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
+    {!! Session::get('messagetext') !!}
 
-	@if(Session::has('messagetext'))
-	  
-		   {!! Session::get('messagetext') !!}
-	   
-	@endif
-	<ul class="parsley-error-list">
-		@foreach($errors->all() as $error)
-			<li>{{ $error }}</li>
-		@endforeach
-	</ul>		
+@endif
+<ul class="parsley-error-list">
+    @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+</ul>
 
 
 <div class="col-md-12">
@@ -41,7 +43,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Salle Id" class=" control-label col-md-4 text-left"> Salle Id </label>
+										<label for="Salle" class=" control-label col-md-4 text-left"> Salle </label>
 										<div class="col-md-6">
 										  <select name='salle_id' rows='5' id='salle_id' class='select2 '   ></select> 
 										 </div> 
@@ -50,7 +52,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Equipe Id" class=" control-label col-md-4 text-left"> Equipe Id </label>
+										<label for="Equipe" class=" control-label col-md-4 text-left"> Equipe </label>
 										<div class="col-md-6">
 										  <select name='equipe_id' rows='5' id='equipe_id' class='select2 '   ></select> 
 										 </div> 
@@ -59,7 +61,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Malette Capteurs Id" class=" control-label col-md-4 text-left"> Malette Capteurs Id </label>
+										<label for="Malette Capteurs" class=" control-label col-md-4 text-left"> Malette Capteurs </label>
 										<div class="col-md-6">
 										  <select name='malette_capteurs_id' rows='5' id='malette_capteurs_id' class='select2 '   ></select> 
 										 </div> 
@@ -71,24 +73,28 @@
 			
 			
 
-			<div style="clear:both"></div>	
-				
-					
-				  <div class="form-group">
-					<label class="col-sm-4 text-right">&nbsp;</label>
-					<div class="col-sm-8">	
-					<button type="submit" name="apply" class="btn btn-info btn-sm" ><i class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}</button>
-					<button type="submit" name="submit" class="btn btn-primary btn-sm" ><i class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}</button>
-				  </div>	  
-			
-		</div> 
-		 
-		 {!! Form::close() !!}
-		 
-   <script type="text/javascript">
-	$(document).ready(function() { 
-		
-		
+<div style="clear:both"></div>
+
+
+<div class="form-group">
+    <label class="col-sm-4 text-right">&nbsp;</label>
+    <div class="col-sm-8">
+        <button type="submit" name="apply" class="btn btn-info btn-sm"><i
+                    class="fa  fa-check-circle"></i> {{ Lang::get('core.sb_apply') }}
+        </button>
+        <button type="submit" name="submit" class="btn btn-primary btn-sm"><i
+                    class="fa  fa-save "></i> {{ Lang::get('core.sb_save') }}
+        </button>
+    </div>
+
+</div>
+
+{!! Form::close() !!}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        
 		$("#salle_id").jCombo("{!! url('partie/comboselect?filter=fbs_salles:salle_id:identifiant') !!}",
 		{  selected_value : '{{ $row["salle_id"] }}' });
 		
@@ -97,14 +103,14 @@
 		
 		$("#malette_capteurs_id").jCombo("{!! url('partie/comboselect?filter=fb_malette_capteurs:malette_capteurs_id:identifiant') !!}",
 		{  selected_value : '{{ $row["malette_capteurs_id"] }}' });
-		 
-
-		$('.removeCurrentFiles').on('click',function(){
-			var removeUrl = $(this).attr('href');
-			$.get(removeUrl,function(response){});
-			$(this).parent('div').empty();	
-			return false;
-		});		
 		
-	});
-	</script>		 
+
+        $('.removeCurrentFiles').on('click', function () {
+            var removeUrl = $(this).attr('href');
+            $.get(removeUrl, function (response){});
+            $(this).parent('div').empty();
+            return false;
+        });
+
+    });
+</script>

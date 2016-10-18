@@ -39,7 +39,7 @@
 										  {!! Form::text('identifiant', $row['identifiant'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
 										 <div class="col-md-2">
-										 	
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Lettre identifiant la malette (exemple: 'A'), les cpateurs contenus dans la malette sont identifiés par un numéro de 1 à 12."><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >

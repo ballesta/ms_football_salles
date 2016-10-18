@@ -37,9 +37,9 @@ class SessionmesureController extends Controller {
     {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
-        $id = $request->query("partie_id");
+        $id = $request->query("joueur_selectionne_id");
         if (!is_null($id))
-        \Session::put("partie_id", $id);
+        \Session::put("joueur_selectionne_id", $id);
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
@@ -115,8 +115,8 @@ class SessionmesureController extends Controller {
             $this->data['row'] = $this->model->getColumnTable('fb_sessions_mesures');
             ////(( Code generated begin
             $columns = $this->data['row'];
-            $id = \Session::get('partie_id', null);
-            $columns['partie_id'] = $id;
+            $id = \Session::get('joueur_selectionne_id', null);
+            $columns['joueur_selectionne_id'] = $id;
             $this->data['row'] = $columns;
             ////)) Code generated end
         }

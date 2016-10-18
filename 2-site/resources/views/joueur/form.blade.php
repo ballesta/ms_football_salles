@@ -52,7 +52,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Complexe Salle Id" class=" control-label col-md-4 text-left"> Complexe Salle Id </label>
+										<label for="Complexe Salle" class=" control-label col-md-4 text-left"> Complexe Salle </label>
 										<div class="col-md-6">
 										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
 										 </div> 
@@ -61,7 +61,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Equipe Id" class=" control-label col-md-4 text-left"> Equipe Id </label>
+										<label for="Equipe" class=" control-label col-md-4 text-left"> Equipe </label>
 										<div class="col-md-6">
 										  <select name='equipe_id' rows='5' id='equipe_id' class='select2 '   ></select> 
 										 </div> 

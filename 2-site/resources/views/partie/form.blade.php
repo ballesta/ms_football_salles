@@ -57,7 +57,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Salle Id" class=" control-label col-md-4 text-left"> Salle Id </label>
+										<label for="Salle" class=" control-label col-md-4 text-left"> Salle </label>
 										<div class="col-md-6">
 										  <select name='salle_id' rows='5' id='salle_id' class='select2 '   ></select> 
 										 </div> 
@@ -66,7 +66,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Equipe Id" class=" control-label col-md-4 text-left"> Equipe Id </label>
+										<label for="Equipe" class=" control-label col-md-4 text-left"> Equipe </label>
 										<div class="col-md-6">
 										  <select name='equipe_id' rows='5' id='equipe_id' class='select2 '   ></select> 
 										 </div> 
@@ -75,7 +75,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Malette Capteurs Id" class=" control-label col-md-4 text-left"> Malette Capteurs Id </label>
+										<label for="Malette Capteurs" class=" control-label col-md-4 text-left"> Malette Capteurs </label>
 										<div class="col-md-6">
 										  <select name='malette_capteurs_id' rows='5' id='malette_capteurs_id' class='select2 '   ></select> 
 										 </div> 

@@ -34,31 +34,19 @@
 			<tbody>	
 		
 					<tr>
-						<td width='30%' class='label-view text-right'>Joueur Id</td>
-						<td>{{ $row->joueur_id}} </td>
-						
-					</tr>
-				
-					<tr>
 						<td width='30%' class='label-view text-right'>Nom</td>
 						<td>{{ $row->nom}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Prémon</td>
+						<td width='30%' class='label-view text-right'>Prénom</td>
 						<td>{{ $row->premon}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Complexe Salle Id</td>
-						<td>{{ SiteHelpers::formatLookUp($row->complexe_salle_id,'complexe_salle_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Equipe Id</td>
+						<td width='30%' class='label-view text-right'>Equipe</td>
 						<td>{{ SiteHelpers::formatLookUp($row->equipe_id,'equipe_id','1:fb_equipes:equipe_id:nom') }} </td>
 						
 					</tr>

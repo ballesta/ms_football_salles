@@ -163,7 +163,7 @@
 										 <div class="col-md-2">
 										 	
 										 </div>
-									  </div> {!! Form::hidden('club_id', $row['club_id']) !!}{!! Form::hidden('activite_id', $row['activite_id']) !!}					
+									  </div> {!! Form::hidden('partie_id', $row['partie_id']) !!}{!! Form::hidden('activite_id', $row['activite_id']) !!}					
 									  <div class="form-group  " >
 										<label for="Capteur" class=" control-label col-md-4 text-left"> Capteur </label>
 										<div class="col-md-6">

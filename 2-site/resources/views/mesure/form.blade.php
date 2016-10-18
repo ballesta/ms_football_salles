@@ -34,15 +34,6 @@
 						<fieldset><legend> Mesures</legend>
 				{!! Form::hidden('mesure_id', $row['mesure_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Club Id" class=" control-label col-md-4 text-left"> Club Id </label>
-										<div class="col-md-6">
-										  <select name='club_id' rows='5' id='club_id' class='select2 '   ></select> 
-										 </div> 
-										 <div class="col-md-2">
-										 	
-										 </div>
-									  </div> 					
-									  <div class="form-group  " >
 										<label for="Message Json" class=" control-label col-md-4 text-left"> Message Json </label>
 										<div class="col-md-6">
 										  {!! Form::text('message_json', $row['message_json'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
@@ -52,7 +43,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Session Mesure Id" class=" control-label col-md-4 text-left"> Session Mesure Id </label>
+										<label for="Session Mesure" class=" control-label col-md-4 text-left"> Session Mesure </label>
 										<div class="col-md-6">
 										  <select name='session_mesure_id' rows='5' id='session_mesure_id' class='select2 '   ></select> 
 										 </div> 
@@ -86,9 +77,6 @@
    <script type="text/javascript">
 	$(document).ready(function() { 
 		
-		
-		$("#club_id").jCombo("{!! url('mesure/comboselect?filter=fb_clubs:club_id:club_id') !!}",
-		{  selected_value : '{{ $row["club_id"] }}' });
 		
 		$("#session_mesure_id").jCombo("{!! url('mesure/comboselect?filter=fb_sessions_mesures:session_mesure_id:date_heure') !!}",
 		{  selected_value : '{{ $row["session_mesure_id"] }}' });

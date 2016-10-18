@@ -34,19 +34,19 @@
 			<tbody>	
 		
 					<tr>
-						<td width='30%' class='label-view text-right'>Partie Id</td>
+						<td width='30%' class='label-view text-right'>Partie</td>
 						<td>{{ SiteHelpers::formatLookUp($row->partie_id,'partie_id','1:fb_partie:partie_id:debut|duree') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Joueur Id</td>
+						<td width='30%' class='label-view text-right'>Joueur</td>
 						<td>{{ SiteHelpers::formatLookUp($row->joueur_id,'joueur_id','1:fb_joueurs:joueur_id:nom|premon') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Capteur Id</td>
+						<td width='30%' class='label-view text-right'>Capteur</td>
 						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:numero_serie') }} </td>
 						
 					</tr>
