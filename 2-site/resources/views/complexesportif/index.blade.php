@@ -3,24 +3,23 @@
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
 <div class="page-content row">
 <div class="page-content-wrapper m-t">
-    <div class="row">
-        <div class="col-md-3"><h4 class="pull-right">Réseau de salles</h4 ></div>
-        <div class="col-md-8"><h4 ><i><b>Bubble Soccer Arena</b></i></h4 ></div>
-    </div>
-
+<div class="row">
+<div class="col-md-3"><h4 class="pull-right">Réseau de salles</h4 ></div>
+<div class="col-md-8"><h4 ><i><b>Bubble Soccer Arena</b></i></h4 ></div>
+</div>
 </row>
 <div class="sbox">
 <div class="sbox-title">
 <div class="sbox-tools pull-left" >
 @if($access['is_add'] == 1)
-    <a href="{{ URL::to('complexesportif/update?return='.$return) }}"
-    class="tips"  title="{{ Lang::get('core.btn_create') }}">
-    <i class="fa  fa-plus "></i> Créer</a>
+<a href="{{ URL::to('complexesportif/update?return='.$return) }}"
+class="tips"  title="{{ Lang::get('core.btn_create') }}">
+<i class="fa  fa-plus "></i> Créer</a>
 @endif
 @if($access['is_remove'] ==1)
-    <a href="javascript://ajax"  onclick="SximoDelete();" class="tips"
-    title="Supprimer les lignes cochées">
-    <i class="fa fa-trash-o"></i> Supprimer</a>
+<a href="javascript://ajax"  onclick="SximoDelete();" class="tips"
+title="Supprimer les lignes cochées">
+<i class="fa fa-trash-o"></i> Supprimer</a>
 @endif
 <a href="{{ URL::to( 'complexesportif/search?return='.$return) }}"
 class="tips"
@@ -59,7 +58,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 @endif
 @endif
 @endforeach
-<th width="40%"><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
@@ -81,30 +80,44 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text      = 'Equipes',
-    $help      = '',
-    $url       = URL::to('equipe'),
-    $parent_key= 'complexe_salle_id',
+    $text        = 'Equipes',
+    $help        = '',
+    $url         = URL::to('equipe'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
     $parent_id = $row->complexe_salle_id)
 !!}
 <!--//)) Code generated end-->
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text      = 'Terrains',
-    $help      = '',
-    $url       = URL::to('salle'),
-    $parent_key= 'complexe_salle_id',
+    $text        = 'Joueurs',
+    $help        = '',
+    $url         = URL::to('joueurCentre'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
     $parent_id = $row->complexe_salle_id)
 !!}
 <!--//)) Code generated end-->
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text      = 'Malettes',
-    $help      = '',
-    $url       = URL::to('malette'),
-    $parent_key= 'complexe_salle_id',
+    $text        = 'Terrains',
+    $help        = '',
+    $url         = URL::to('salle'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
+    $parent_id = $row->complexe_salle_id)
+!!}
+<!--//)) Code generated end-->
+<!--//(( Code generated begin-->
+{!!
+    \Navigation::link_to_detail(
+    $text        = 'Malettes',
+    $help        = '',
+    $url         = URL::to('malette'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
     $parent_id = $row->complexe_salle_id)
 !!}
 <!--//)) Code generated end-->

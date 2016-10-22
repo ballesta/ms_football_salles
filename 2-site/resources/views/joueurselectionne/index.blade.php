@@ -53,7 +53,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 @endif
 @endif
 @endforeach
-<th width="40%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%"%"%"%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
@@ -75,10 +75,11 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text      = 'Sessions mesures',
-    $help      = '',
-    $url       = URL::to('sessionmesure'),
-    $parent_key= 'joueur_selectionne_id',
+    $text        = 'Sessions mesures',
+    $help        = '',
+    $url         = URL::to('sessionmesure'),
+    $parent_key  = 'joueur_selectionne_id',
+    $parent_label= '',
     $parent_id = $row->joueur_selectionne_id)
 !!}
 <!--//)) Code generated end-->

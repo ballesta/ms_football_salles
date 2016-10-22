@@ -53,7 +53,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 @endif
 @endif
 @endforeach
-<th width="40%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%"%"%"%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
@@ -75,10 +75,11 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text      = 'Capteurs',
-    $help      = '',
-    $url       = URL::to('capteur'),
-    $parent_key= 'malette_capteurs_id',
+    $text        = 'Capteurs',
+    $help        = '',
+    $url         = URL::to('capteur'),
+    $parent_key  = 'malette_capteurs_id',
+    $parent_label= 'identifiant',
     $parent_id = $row->malette_capteurs_id)
 !!}
 <!--//)) Code generated end-->

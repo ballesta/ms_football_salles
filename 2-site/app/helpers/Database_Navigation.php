@@ -22,7 +22,12 @@ class Database_Navigation
 
     //use \Illuminate\Session;
 
-    static function link_to_detail($text, $help, $url, $parent_key, $parent_id)
+    static function link_to_detail( $text,
+                                    $help,
+                                    $url,
+                                    $parent_key,
+                                    $parent_label,
+                                    $parent_id)
     {
 
         // Passer identifiant en parametre

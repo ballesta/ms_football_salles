@@ -33,7 +33,7 @@
     Route::get('envoiMesures',"EnvoiMesuresController@index");
 
     // API de réception des messages de mesure des capteurs
-    Route::resource('sessionMesures', 'SessionmesureController');
+    Route::resource('sessionMesures', 'SessionMesuresAPIController');
 
 
     Route::get('/', 'HomeController@index');

@@ -39,13 +39,7 @@ class ComplexesportifController extends Controller {
         // Get parameter in URL to use it as filter
         $id = $request->query("club_id");
         if (!is_null($id))
-        {
-            \Session::put("club_id", $id);
-            $nom = $request->query("club_nom");
-            \Session::put("club_nom", $nom);
-        }
-
-
+        \Session::put("club_id", $id);
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
