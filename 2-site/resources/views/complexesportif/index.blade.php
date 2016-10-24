@@ -3,15 +3,10 @@
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
 <div class="page-content row">
 <div class="page-content-wrapper m-t">
-<div class="row">
-<div class="col-md-3"><h4 class="pull-right">Réseau de salles</h4 ></div>
-<div class="col-md-8"><h4 ><i><b>Bubble Soccer Arena</b></i></h4 ></div>
-</div>
-</row>
 <div class="sbox">
 <div class="sbox-title">
 <div class="sbox-tools pull-left" >
-@if($access['is_add'] == 1)
+@if($access['is_add'] ==1)
 <a href="{{ URL::to('complexesportif/update?return='.$return) }}"
 class="tips"  title="{{ Lang::get('core.btn_create') }}">
 <i class="fa  fa-plus "></i> Créer</a>
@@ -58,7 +53,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 @endif
 @endif
 @endforeach
-<th width="40%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"%"><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>

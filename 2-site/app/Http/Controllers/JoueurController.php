@@ -19,7 +19,7 @@ class JoueurController extends Controller {
         $this->access = $this->model->validAccess($this->info['id']);
         
         $this->data = array(
-        'pageTitle'	=> 	$this->info['title'],+
+        'pageTitle'	=> 	$this->info['title'],
         'pageNote'	=>  $this->info['note'],
         'pageModule'=> 'joueur',
         'return'	=> self::returnUrl()
@@ -59,9 +59,7 @@ class JoueurController extends Controller {
         $page = $request->input('page', 1);
         $params = array(
         'page'		=> $page ,
-        'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),
-                                                                        FILTER_VALIDATE_INT)
-                                                          : static::$per_page ) ,
+        'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
         'sort'		=> $sort ,
         'order'		=> $order,
         'params'	=> $filter,

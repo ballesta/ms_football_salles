@@ -96,13 +96,11 @@
 	$(document).ready(function() { 
 		
 		
-		$("#complexe_salle_id").jCombo(
-				"{!! url('joueur/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
+		$("#complexe_salle_id").jCombo("{!! url('joueur/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
 		
-		$("#equipe_id").jCombo(
-			"{!! url('joueur/comboselect?filter=fb_equipes:equipe_id:nom') !!}",
-			 {  selected_value : '{{ $row["equipe_id"] }}' });
+		$("#equipe_id").jCombo("{!! url('joueur/comboselect?filter=fb_equipes:equipe_id:nom') !!}",
+		{  selected_value : '{{ $row["equipe_id"] }}' });
 		 
 
 		$('.removeMultiFiles').on('click',function(){
