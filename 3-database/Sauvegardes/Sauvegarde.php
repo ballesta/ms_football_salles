@@ -26,7 +26,7 @@
 			$contenu_substitue = str_replace ("\'", "''", $contenu);
 			// Reecris le contenu normalisé
 			file_put_contents ("$nom_base.sql", $contenu_substitue);
-			echo "Resultat: $r";
+			echo "Sauvegarde base de donnees dans 3-database/Sauvegardes/$nom_base.sql";
 		}
 	}
 

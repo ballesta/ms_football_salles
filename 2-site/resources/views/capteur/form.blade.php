@@ -61,7 +61,7 @@
 										  <select name='club_id' rows='5' id='club_id' class='select2 '   ></select> 
 										 </div> 
 										 <div class="col-md-2">
-										 	
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Complexe sportif mettant ce captuer à disposition des joueurs"><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
@@ -100,7 +100,7 @@
 	$(document).ready(function() { 
 		
 		
-		$("#club_id").jCombo("{!! url('capteur/comboselect?filter=fbs_complexe_salles:club_id:nom|ville') !!}",
+		$("#club_id").jCombo("{!! url('capteur/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["club_id"] }}' });
 		
 		$("#malette_capteurs_id").jCombo("{!! url('capteur/comboselect?filter=fb_malette_capteurs:malette_capteurs_id:identifiant') !!}",
