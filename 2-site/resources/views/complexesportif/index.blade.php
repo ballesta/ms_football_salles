@@ -4,6 +4,16 @@
 <div class="page-content row">
 <div class="page-content-wrapper m-t">
 <div class="sbox">
+<!--//(( Code generated begin-->
+<table>
+<tr>
+<td>
+<small>Réseau de salles</small><br>
+<strong>Réseau de salles</strong>
+<td>
+</tr>
+</table>
+<!--//)) Code generated end-->
 <div class="sbox-title">
 <div class="sbox-tools pull-left" >
 @if($access['is_add'] ==1)
@@ -53,7 +63,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 @endif
 @endif
 @endforeach
-<th width="40%"%"%"%"" ><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%"><span>{{ Lang::get('core.btn_action') }}</span></th>
 </tr>
 </thead>
 <tbody>
@@ -75,7 +85,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Equipes',
+    $text        = 'Equipe',
     $help        = '',
     $url         = URL::to('equipe'),
     $parent_key  = 'complexe_salle_id',
@@ -86,7 +96,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Joueurs',
+    $text        = 'Joueur',
     $help        = '',
     $url         = URL::to('joueurCentre'),
     $parent_key  = 'complexe_salle_id',
@@ -97,7 +107,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Terrains',
+    $text        = 'Terrain',
     $help        = '',
     $url         = URL::to('salle'),
     $parent_key  = 'complexe_salle_id',
@@ -108,7 +118,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Malettes',
+    $text        = 'Malette',
     $help        = '',
     $url         = URL::to('malette'),
     $parent_key  = 'complexe_salle_id',

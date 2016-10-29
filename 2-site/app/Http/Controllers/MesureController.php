@@ -40,6 +40,18 @@ class MesureController extends Controller {
         $id = $request->query("session_mesure_id");
         if (!is_null($id))
         \Session::put("session_mesure_id", $id);
+        $id = \Session::get("session_mesure_id", null);
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("sessionmesure")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Sessions mesures</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Mesures</i>")
+            ->with("msgstatus","warning");
+        }
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')

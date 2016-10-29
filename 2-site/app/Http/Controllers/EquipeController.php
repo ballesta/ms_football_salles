@@ -40,6 +40,18 @@ class EquipeController extends Controller {
         $id = $request->query("complexe_salle_id");
         if (!is_null($id))
         \Session::put("complexe_salle_id", $id);
+        $id = \Session::get("complexe_salle_id", null);
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("complexesportif")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Centre sportif</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Equipe</i>")
+            ->with("msgstatus","warning");
+        }
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')

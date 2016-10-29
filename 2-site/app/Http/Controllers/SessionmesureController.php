@@ -40,6 +40,18 @@ class SessionmesureController extends Controller {
         $id = $request->query("joueur_selectionne_id");
         if (!is_null($id))
         \Session::put("joueur_selectionne_id", $id);
+        $id = \Session::get("joueur_selectionne_id", null);
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("joueurselectionne")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Joueur sélectionné</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Sessions mesures</i>")
+            ->with("msgstatus","warning");
+        }
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')

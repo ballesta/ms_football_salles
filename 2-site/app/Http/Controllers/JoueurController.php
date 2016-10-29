@@ -40,6 +40,18 @@ class JoueurController extends Controller {
         $id = $request->query("equipe_id");
         if (!is_null($id))
         \Session::put("equipe_id", $id);
+        $id = \Session::get("equipe_id", null);
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("equipe")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Equipe</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Joueurs</i>")
+            ->with("msgstatus","warning");
+        }
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')

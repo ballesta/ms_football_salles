@@ -40,6 +40,18 @@ class PartieController extends Controller {
         $id = $request->query("salle_id");
         if (!is_null($id))
         \Session::put("salle_id", $id);
+        $id = \Session::get("salle_id", null);
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("salle")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Terrain</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Partie</i>")
+            ->with("msgstatus","warning");
+        }
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')

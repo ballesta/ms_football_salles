@@ -1,7 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <?php /**/ usort($tableGrid, "SiteHelpers::_sort") /**/ ?>
 <div class="page-content row">
-
 <div class="page-content-wrapper m-t">
 <div class="sbox">
 <div class="sbox-title">
@@ -31,16 +30,13 @@ title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
 </a>
 </div>
 <div class="sbox-tools" >
-
 <?php if(Session::get('gid') ==1): ?>
 <a href="<?php echo e(URL::to('sximo/module/config/'.$pageModule)); ?>" class="tips" title=" <?php echo e(Lang::get('core.btn_config')); ?>" ><i class="fa  fa-ellipsis-v"></i></a>
 <?php endif; ?>
 </div>
 </div>
 <div class="sbox-content">
-
 <?php echo (isset($search_map) ? $search_map : ''); ?>
-
 
 <?php echo Form::open(array('url'=>'reseauxsalles/delete/0?return='.$return, 'class'=>'form-horizontal' ,'id' =>'SximoTable' )); ?>
 
@@ -50,17 +46,15 @@ title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
 <tr>
 <th class="number"><span> No </span> </th>
 <th> <input type="checkbox" class="checkall" /></th>
-
 <?php foreach($tableGrid as $t): ?>
 <?php if($t['view'] =='1'): ?>
 <?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
 <?php if(SiteHelpers::filterColumn($limited )): ?>
-
 <th><span><?php echo e($t['label']); ?></span></th>
 <?php endif; ?>
 <?php endif; ?>
 <?php endforeach; ?>
-<th width="40%"" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
+<th width="40%"><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
 </tr>
 </thead>
 <tbody>
@@ -82,7 +76,7 @@ title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
 <td>
 <!--//(( Code generated begin-->
 <?php echo \Navigation::link_to_detail(
-    $text        = 'Centres',
+    $text        = 'Centre sportif',
     $help        = '',
     $url         = URL::to('complexesportif'),
     $parent_key  = 'club_id',
@@ -96,15 +90,10 @@ title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
 <?php if($access['is_edit'] ==1): ?>
 <a  href="<?php echo e(URL::to('reseauxsalles/update/'.$row->club_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-success" title="<?php echo e(Lang::get('core.btn_edit')); ?>"><i class="fa fa-edit "></i></a>
 <?php endif; ?>
-
-
 </td>
 </tr>
-
 <?php endforeach; ?>
-
 </tbody>
-
 </table>
 <input type="hidden" name="md" value="" />
 </div>
@@ -115,7 +104,6 @@ title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
 </div>
 </div>
 </div>
-
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

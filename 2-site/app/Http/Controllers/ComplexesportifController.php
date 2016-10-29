@@ -40,6 +40,18 @@ class ComplexesportifController extends Controller {
         $id = $request->query("club_id");
         if (!is_null($id))
         \Session::put("club_id", $id);
+        $id = \Session::get("club_id", null);
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("reseauxsalles")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Réseau de salles</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Centre sportif</i>")
+            ->with("msgstatus","warning");
+        }
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
