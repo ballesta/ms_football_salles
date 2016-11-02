@@ -46,12 +46,6 @@
 						<td>{{ $row->email}} </td>
 						
 					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Club</td>
-						<td>{{ SiteHelpers::formatLookUp($row->club_id,'club_id','1:fbs_reseaux_salles:club_id:nom') }} </td>
-						
-					</tr>
 						
 					<tr>
 						<td width='30%' class='label-view text-right'></td>

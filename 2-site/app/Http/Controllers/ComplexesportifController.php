@@ -38,9 +38,14 @@ class ComplexesportifController extends Controller {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
         $id = $request->query("club_id");
+        $identifier = $request->query("nom");
         if (!is_null($id))
-        \Session::put("club_id", $id);
+        {
+            \Session::put("club_id", $id);
+            \Session::put("club_id_identifier", $identifier);
+        }
         $id = \Session::get("club_id", null);
+        $active_filter = \Session::get("club_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {
@@ -49,7 +54,7 @@ class ComplexesportifController extends Controller {
             "Vous devez d'abord sélectionner votre <br> "
             ."<i>Réseau de salles</i> <br>"
             ."avant de choisir <br>"
-            ."<i>Centre sportif</i>")
+            ."<i>Centres sportifs</i>")
             ->with("msgstatus","warning");
         }
         ////)) Code generated end

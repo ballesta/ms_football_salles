@@ -9,35 +9,35 @@
 <tr>
 <td>
 <small>Réseau de salles</small><br>
-<strong>Réseau de salles</strong>
+<strong>{{ Session::get('club_id_identifier', null) }}</strong>
 <td>
 <td>
 &nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
 <td>
 <td>
-<small>Centre sportif</small><br>
-<strong>Centre sportif</strong>
+<small>Centres sportifs</small><br>
+<strong>{{ Session::get('complexe_salle_id_identifier', null) }}</strong>
 <td>
 <td>
 &nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
 <td>
 <td>
-<small>Terrain</small><br>
-<strong>Terrain</strong>
+<small>Terrains</small><br>
+<strong>{{ Session::get('salle_id_identifier', null) }}</strong>
 <td>
 <td>
 &nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
 <td>
 <td>
-<small>Partie</small><br>
-<strong>Partie</strong>
+<small>Parties</small><br>
+<strong>{{ Session::get('partie_id_identifier', null) }}</strong>
 <td>
 <td>
 &nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
 <td>
 <td>
 <small>Joueur sélectionné</small><br>
-<strong>Joueur sélectionné</strong>
+<strong>{{ Session::get('joueur_selectionne_id_identifier', null) }}</strong>
 <td>
 </tr>
 </table>
@@ -118,7 +118,9 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
     $url         = URL::to('mesure'),
     $parent_key  = 'session_mesure_id',
     $parent_label= 'date_heure',
-    $parent_id = $row->session_mesure_id)
+    $parent_id   = $row->session_mesure_id,
+    $parent_name = $row->date_heure
+    )
 !!}
 <!--//)) Code generated end-->
 @if($access['is_detail'] ==1)

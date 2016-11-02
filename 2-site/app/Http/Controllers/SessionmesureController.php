@@ -38,9 +38,14 @@ class SessionmesureController extends Controller {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
         $id = $request->query("joueur_selectionne_id");
+        $identifier = $request->query("joueur_id");
         if (!is_null($id))
-        \Session::put("joueur_selectionne_id", $id);
+        {
+            \Session::put("joueur_selectionne_id", $id);
+            \Session::put("joueur_selectionne_id_identifier", $identifier);
+        }
         $id = \Session::get("joueur_selectionne_id", null);
+        $active_filter = \Session::get("joueur_selectionne_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {

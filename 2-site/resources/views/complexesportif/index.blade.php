@@ -9,7 +9,7 @@
 <tr>
 <td>
 <small>Réseau de salles</small><br>
-<strong>Réseau de salles</strong>
+<strong>{{ Session::get('club_id_identifier', null) }}</strong>
 <td>
 </tr>
 </table>
@@ -85,45 +85,40 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Equipe',
+    $text        = 'Capteurs',
     $help        = '',
-    $url         = URL::to('equipe'),
+    $url         = URL::to('capteur'),
     $parent_key  = 'complexe_salle_id',
     $parent_label= 'nom',
-    $parent_id = $row->complexe_salle_id)
+    $parent_id   = $row->complexe_salle_id,
+    $parent_name = $row->nom
+    )
 !!}
 <!--//)) Code generated end-->
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Joueur',
+    $text        = 'Joueurs',
     $help        = '',
     $url         = URL::to('joueurCentre'),
     $parent_key  = 'complexe_salle_id',
     $parent_label= 'nom',
-    $parent_id = $row->complexe_salle_id)
+    $parent_id   = $row->complexe_salle_id,
+    $parent_name = $row->nom
+    )
 !!}
 <!--//)) Code generated end-->
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Terrain',
+    $text        = 'Terrains',
     $help        = '',
     $url         = URL::to('salle'),
     $parent_key  = 'complexe_salle_id',
     $parent_label= 'nom',
-    $parent_id = $row->complexe_salle_id)
-!!}
-<!--//)) Code generated end-->
-<!--//(( Code generated begin-->
-{!!
-    \Navigation::link_to_detail(
-    $text        = 'Malette',
-    $help        = '',
-    $url         = URL::to('malette'),
-    $parent_key  = 'complexe_salle_id',
-    $parent_label= 'nom',
-    $parent_id = $row->complexe_salle_id)
+    $parent_id   = $row->complexe_salle_id,
+    $parent_name = $row->nom
+    )
 !!}
 <!--//)) Code generated end-->
 @if($access['is_detail'] ==1)

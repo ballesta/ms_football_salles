@@ -40,24 +40,6 @@
 										 <div class="col-md-2">
 										 	
 										 </div>
-									  </div> 					
-									  <div class="form-group  " >
-										<label for="Complexe sportif" class=" control-label col-md-4 text-left"> Complexe sportif </label>
-										<div class="col-md-6">
-										  <select name='club_id' rows='5' id='club_id' class='select2 '   ></select> 
-										 </div> 
-										 <div class="col-md-2">
-										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Complexe sportif mettant ce captuer à disposition des joueurs"><i class="icon-question2"></i></a>
-										 </div>
-									  </div> 					
-									  <div class="form-group  " >
-										<label for="Malette Capteurs" class=" control-label col-md-4 text-left"> Malette Capteurs </label>
-										<div class="col-md-6">
-										  <select name='malette_capteurs_id' rows='5' id='malette_capteurs_id' class='select2 '   ></select> 
-										 </div> 
-										 <div class="col-md-2">
-										 	
-										 </div>
 									  </div> </fieldset>
 			</div>
 			
@@ -85,12 +67,6 @@
     $(document).ready(function () {
         
         
-		$("#club_id").jCombo("{!! url('capteur/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
-		{  selected_value : '{{ $row["club_id"] }}' });
-		
-		$("#malette_capteurs_id").jCombo("{!! url('capteur/comboselect?filter=fb_malette_capteurs:malette_capteurs_id:identifiant') !!}",
-		{  selected_value : '{{ $row["malette_capteurs_id"] }}' });
-		
 
         $('.removeCurrentFiles').on('click', function () {
             var removeUrl = $(this).attr('href');

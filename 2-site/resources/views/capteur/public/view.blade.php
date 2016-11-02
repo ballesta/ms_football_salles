@@ -22,18 +22,6 @@
 						<td>{{ $row->date_achat}} </td>
 						
 					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Complexe sportif</td>
-						<td>{{ SiteHelpers::formatLookUp($row->club_id,'club_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Malette Capteurs</td>
-						<td>{{ SiteHelpers::formatLookUp($row->malette_capteurs_id,'malette_capteurs_id','1:fb_malette_capteurs:malette_capteurs_id:identifiant') }} </td>
-						
-					</tr>
 						
 					<tr>
 						<td width='30%' class='label-view text-right'></td>

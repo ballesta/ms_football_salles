@@ -4,30 +4,6 @@
 <div class="page-content row">
 <div class="page-content-wrapper m-t">
 <div class="sbox">
-<!--//(( Code generated begin-->
-<table>
-<tr>
-<td>
-<small>Réseau de salles</small><br>
-<strong>Réseau de salles</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Centre sportif</small><br>
-<strong>Centre sportif</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Equipe</small><br>
-<strong>Equipe</strong>
-<td>
-</tr>
-</table>
-<!--//)) Code generated end-->
 <div class="sbox-title">
 <div class="sbox-tools pull-left" >
 @if($access['is_add'] ==1)

@@ -38,16 +38,21 @@ class JoueurselectionneController extends Controller {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
         $id = $request->query("partie_id");
+        $identifier = $request->query("debut");
         if (!is_null($id))
-        \Session::put("partie_id", $id);
+        {
+            \Session::put("partie_id", $id);
+            \Session::put("partie_id_identifier", $identifier);
+        }
         $id = \Session::get("partie_id", null);
+        $active_filter = \Session::get("partie_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {
             return Redirect::to("partie")
             ->with("messagetext",
             "Vous devez d'abord sélectionner votre <br> "
-            ."<i>Partie</i> <br>"
+            ."<i>Parties</i> <br>"
             ."avant de choisir <br>"
             ."<i>Joueur sélectionné</i>")
             ->with("msgstatus","warning");

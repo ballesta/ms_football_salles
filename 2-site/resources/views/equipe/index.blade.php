@@ -9,14 +9,14 @@
 <tr>
 <td>
 <small>Réseau de salles</small><br>
-<strong>Réseau de salles</strong>
+<strong>{{ Session::get('club_id_identifier', null) }}</strong>
 <td>
 <td>
 &nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
 <td>
 <td>
 <small>Centre sportif</small><br>
-<strong>Centre sportif</strong>
+<strong>{{ Session::get('complexe_salle_id_identifier', null) }}</strong>
 <td>
 </tr>
 </table>
@@ -97,7 +97,9 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
     $url         = URL::to('joueur'),
     $parent_key  = 'equipe_id',
     $parent_label= 'nom',
-    $parent_id = $row->equipe_id)
+    $parent_id   = $row->equipe_id,
+    $parent_name = $row->nom
+    )
 !!}
 <!--//)) Code generated end-->
 @if($access['is_detail'] ==1)

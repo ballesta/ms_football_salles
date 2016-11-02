@@ -34,12 +34,6 @@
 			<tbody>	
 		
 					<tr>
-						<td width='30%' class='label-view text-right'>Partie</td>
-						<td>{{ SiteHelpers::formatLookUp($row->partie_id,'partie_id','1:fb_partie:partie_id:debut|duree') }} </td>
-						
-					</tr>
-				
-					<tr>
 						<td width='30%' class='label-view text-right'>Joueur</td>
 						<td>{{ SiteHelpers::formatLookUp($row->joueur_id,'joueur_id','1:fb_joueurs:joueur_id:nom|premon') }} </td>
 						

@@ -9,21 +9,14 @@
 <tr>
 <td>
 <small>Réseau de salles</small><br>
-<strong>Réseau de salles</strong>
+<strong>{{ Session::get('club_id_identifier', null) }}</strong>
 <td>
 <td>
 &nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
 <td>
 <td>
-<small>Centre sportif</small><br>
-<strong>Centre sportif</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Malette</small><br>
-<strong>Malette</strong>
+<small>Centres sportifs</small><br>
+<strong>{{ Session::get('complexe_salle_id_identifier', null) }}</strong>
 <td>
 </tr>
 </table>

@@ -37,19 +37,24 @@ class CapteurController extends Controller {
     {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
-        $id = $request->query("malette_capteurs_id");
+        $id = $request->query("complexe_salle_id");
+        $identifier = $request->query("nom");
         if (!is_null($id))
-        \Session::put("malette_capteurs_id", $id);
-        $id = \Session::get("malette_capteurs_id", null);
+        {
+            \Session::put("complexe_salle_id", $id);
+            \Session::put("complexe_salle_id_identifier", $identifier);
+        }
+        $id = \Session::get("complexe_salle_id", null);
+        $active_filter = \Session::get("complexe_salle_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {
-            return Redirect::to("malette")
+            return Redirect::to("complexesportif")
             ->with("messagetext",
             "Vous devez d'abord sélectionner votre <br> "
-            ."<i>Malette</i> <br>"
+            ."<i>Centres sportifs</i> <br>"
             ."avant de choisir <br>"
-            ."<i>Capteur</i>")
+            ."<i>Capteurs</i>")
             ->with("msgstatus","warning");
         }
         ////)) Code generated end
@@ -127,8 +132,8 @@ class CapteurController extends Controller {
             $this->data['row'] = $this->model->getColumnTable('fb_capteurs');
             ////(( Code generated begin
             $columns = $this->data['row'];
-            $id = \Session::get('malette_capteurs_id', null);
-            $columns['malette_capteurs_id'] = $id;
+            $id = \Session::get('complexe_salle_id', null);
+            $columns['complexe_salle_id'] = $id;
             $this->data['row'] = $columns;
             ////)) Code generated end
         }

@@ -38,9 +38,14 @@ class JoueurController extends Controller {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
         $id = $request->query("equipe_id");
+        $identifier = $request->query("nom");
         if (!is_null($id))
-        \Session::put("equipe_id", $id);
+        {
+            \Session::put("equipe_id", $id);
+            \Session::put("equipe_id_identifier", $identifier);
+        }
         $id = \Session::get("equipe_id", null);
+        $active_filter = \Session::get("equipe_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {

@@ -75,12 +75,14 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Centre sportif',
+    $text        = 'Centres sportifs',
     $help        = '',
     $url         = URL::to('complexesportif'),
     $parent_key  = 'club_id',
     $parent_label= 'nom',
-    $parent_id = $row->club_id)
+    $parent_id   = $row->club_id,
+    $parent_name = $row->nom
+    )
 !!}
 <!--//)) Code generated end-->
 @if($access['is_detail'] ==1)

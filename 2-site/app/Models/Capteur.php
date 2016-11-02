@@ -11,11 +11,11 @@ class capteur extends Sximo  {
     }
     public static function querySelect(  ){
         
-        return "  SELECT fb_capteurs.* FROM fb_capteurs  ";
+        return "  SELECT fb_capteurs.* FROM fb_capteurs   ";
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
-        $parent_id_key = 'malette_capteurs_id';
+        $parent_id_key = 'complexe_salle_id';
         // Table
         $table = with(new static)->table;
         // clef primaire de la table

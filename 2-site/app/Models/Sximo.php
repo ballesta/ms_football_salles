@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Sximo extends Model {
 
 
@@ -33,14 +34,18 @@ class Sximo extends Model {
 	    $result = \DB::select( self::querySelect() . self::queryWhere(). " 
 				{$params} ". self::queryGroup() ." {$orderConditional}  {$limitConditional} ");
 		
-		if($key =='' ) { $key ='*'; } else { $key = $table.".".$key ; }	
-		$total = \DB::select( self::querySelect() . self::queryWhere(). " 
-				{$params} ". self::queryGroup() ." {$orderConditional}  ");
+		if($key =='' ) { $key ='*'; } else { $key = $table.".".$key ; }
+		$query = self::querySelect()
+			   . self::queryWhere(). " {$params} "
+			   . self::queryGroup()
+			   ." {$orderConditional}  ";
+		$total = \DB::select($query );
+
 		$total = count($total);
 
 //		$total = $res[0]->total;
 
-
+		\Session::put('query', $query);
 		return $results = array('rows'=> $result , 'total' => $total);	
 
 	
@@ -145,33 +150,46 @@ class Sximo extends Model {
 	
 	} 
 
-    static function getComboselect( $params , $limit =null, $parent = null)
+    static function getComboselect( $params , $limit = null, $parent = null)
     {   
         $limit = explode(':',$limit);
         $parent = explode(':',$parent);
-
         if(count($limit) >=3)
         {
             $table = $params[0]; 
-             $condition = $limit[0]." `".$limit[1]."` ".$limit[2]." ".$limit[3]." "; 
+	        $condition = $limit[0]." `".$limit[1]."` ".$limit[2]." ".$limit[3]." ";
             if(count($parent)>=2 )
             {
             	$row =  \DB::table($table)->where($parent[0],$parent[1])->get();
-            	 $row =  \DB::select( "SELECT * FROM ".$table." ".$condition ." AND ".$parent[0]." = '".$parent[1]."'");
+	            $row =  \DB::select( "SELECT * FROM ".$table." "
+		                              .$condition
+		                              ." AND ".$parent[0]." = '".$parent[1]."'");
             } else  {
 	           $row =  \DB::select( "SELECT * FROM ".$table." ".$condition);
             }        
         }else{
-
             $table = $params[0]; 
             if(count($parent)>=2 )
             {
             	$row =  \DB::table($table)->where($parent[0],$parent[1])->get();
-            } else  {
-	            $row =  \DB::table($table)->get();
-            }	           
+            }
+            else
+            {
+	            // No filter: filter by complexe salle
+	            $complexe_salle_id = \Session::get('complexe_salle_id', null);
+	            if (!is_null($complexe_salle_id))
+	            {
+		          // Force filter with current complexe sportif
+		          $row =  \DB::table($table)
+			              ->where('complexe_salle_id','=', $complexe_salle_id)
+			              ->get();
+	            }
+	            else
+	            {
+		          $row =  \DB::table($table)->get();
+	            }
+            }
         }
-
         return $row;
     }	
 
@@ -186,18 +204,14 @@ class Sximo extends Model {
 			$coll[] = $info;
 			$i++;
 		}
-		return $coll;	
-	
+		return $coll;
 	}	
-
 
 	function validAccess( $id)
 	{
-
 		$row = \DB::table('tb_groups_access')->where('module_id','=', $id)
 				->where('group_id','=', \Session::get('gid'))
 				->get();
-		
 		if(count($row) >= 1)
 		{
 			$row = $row[0];
@@ -207,12 +221,10 @@ class Sximo extends Model {
 			} else {
 				$data = array();
 			}	
-			return $data;		
-			
+			return $data;
 		} else {
 			return false;
-		}			
-	
+		}
 	}	
 
 	static function getColumnTable( $table )
@@ -223,8 +235,6 @@ class Sximo extends Model {
            //print_r($column);
 		    $columns[$column->Field] = '';
         }
-	  
-
         return $columns;
 	}	
 
@@ -245,6 +255,5 @@ class Sximo extends Model {
 	    foreach(\DB::select("SHOW COLUMNS FROM $table") as $column)
 		    $columns[$column->Field] = $column->Field;
         return $columns;
-	}	
-
+	}
 }

@@ -87,15 +87,6 @@
 										 <div class="col-md-2">
 										 	
 										 </div>
-									  </div> 					
-									  <div class="form-group  " >
-										<label for="Réseau" class=" control-label col-md-4 text-left"> Réseau </label>
-										<div class="col-md-6">
-										  <select name='club_id' rows='5' id='club_id' class='select2 '   ></select> 
-										 </div> 
-										 <div class="col-md-2">
-										 	
-										 </div>
 									  </div> </fieldset>
 			</div>
 			
@@ -123,9 +114,6 @@
    <script type="text/javascript">
 	$(document).ready(function() { 
 		
-		
-		$("#club_id").jCombo("{!! url('complexesportif/comboselect?filter=fbs_reseaux_salles:club_id:nom|ville') !!}",
-		{  selected_value : '{{ $row["club_id"] }}' });
 		 
 
 		$('.removeMultiFiles').on('click',function(){

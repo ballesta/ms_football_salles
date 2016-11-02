@@ -38,18 +38,23 @@ class PartieController extends Controller {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
         $id = $request->query("salle_id");
+        $identifier = $request->query("identifiant");
         if (!is_null($id))
-        \Session::put("salle_id", $id);
+        {
+            \Session::put("salle_id", $id);
+            \Session::put("salle_id_identifier", $identifier);
+        }
         $id = \Session::get("salle_id", null);
+        $active_filter = \Session::get("salle_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {
             return Redirect::to("salle")
             ->with("messagetext",
             "Vous devez d'abord sélectionner votre <br> "
-            ."<i>Terrain</i> <br>"
+            ."<i>Terrains</i> <br>"
             ."avant de choisir <br>"
-            ."<i>Partie</i>")
+            ."<i>Parties</i>")
             ->with("msgstatus","warning");
         }
         ////)) Code generated end

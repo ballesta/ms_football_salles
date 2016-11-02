@@ -38,9 +38,14 @@ class MesureController extends Controller {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
         $id = $request->query("session_mesure_id");
+        $identifier = $request->query("date_heure");
         if (!is_null($id))
-        \Session::put("session_mesure_id", $id);
+        {
+            \Session::put("session_mesure_id", $id);
+            \Session::put("session_mesure_id_identifier", $identifier);
+        }
         $id = \Session::get("session_mesure_id", null);
+        $active_filter = \Session::get("session_mesure_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {

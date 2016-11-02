@@ -9,14 +9,14 @@
 <tr>
 <td>
 <small>Réseau de salles</small><br>
-<strong>Réseau de salles</strong>
+<strong>{{ Session::get('club_id_identifier', null) }}</strong>
 <td>
 <td>
 &nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
 <td>
 <td>
-<small>Centre sportif</small><br>
-<strong>Centre sportif</strong>
+<small>Centres sportifs</small><br>
+<strong>{{ Session::get('complexe_salle_id_identifier', null) }}</strong>
 <td>
 </tr>
 </table>
@@ -92,12 +92,14 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Partie',
+    $text        = 'Parties',
     $help        = '',
     $url         = URL::to('partie'),
     $parent_key  = 'salle_id',
     $parent_label= 'identifiant',
-    $parent_id = $row->salle_id)
+    $parent_id   = $row->salle_id,
+    $parent_name = $row->identifiant
+    )
 !!}
 <!--//)) Code generated end-->
 @if($access['is_detail'] ==1)

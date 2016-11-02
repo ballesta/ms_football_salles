@@ -11,7 +11,7 @@ class joueurselectionne extends Sximo  {
     }
     public static function querySelect(  ){
         
-        return "  SELECT fb_joueurs_selectionnes.* FROM fb_joueurs_selectionnes  ";
+        return "  SELECT fb_joueurs_selectionnes.* FROM fb_joueurs_selectionnes ";
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
