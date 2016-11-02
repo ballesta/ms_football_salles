@@ -26,10 +26,10 @@ class Database_Navigation
     static function link_to_detail( $text,
                                     $help,
                                     $url,
-                                    $parent_key,
-                                    $parent_label,  //      -
-                                    $parent_id,     //      ^
-									$parent_name    // For Breadcrum
+                                    $parent_key,    // field name
+                                    $parent_label,  // field name       -
+                                    $parent_id,     // value            ^
+									$parent_name    // value        For Breadcrum
                                   )
     {
 
@@ -40,10 +40,12 @@ class Database_Navigation
 	    //  pour l'afficher dans le breadcrumb
 
 	    // todo reporter dans module
-	    if ($parent_label == 'joueur_id')
-	    {
-		    $joueur = DB::table('fb_joueurs')->where('joueur_id', $parent_id)->first();
-		    $parent_name = $joueur->nom;
+	    if ($parent_label == 'joueur_id') {
+		    $joueur = \DB::table('fb_joueurs')->where('joueur_id', '=', $parent_id)->first();
+		    if (count($joueur) == 1)
+		    {
+			    $parent_name = $joueur->nom;
+		    }
 	    }
         $bouton=
          '<a href="' . $url . '?'

@@ -18,6 +18,12 @@
 					</tr>
 				
 					<tr>
+						<td width='30%' class='label-view text-right'>Capteur</td>
+						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:numero_serie') }} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>Activite Temps Total</td>
 						<td>{{ $row->activite_temps_total}} </td>
 						

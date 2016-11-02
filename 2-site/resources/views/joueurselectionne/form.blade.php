@@ -34,6 +34,15 @@
 						<fieldset><legend> Joueurs sélectionnés</legend>
 				{!! Form::hidden('joueur_selectionne_id', $row['joueur_selectionne_id']) !!}					
 									  <div class="form-group  " >
+										<label for="Partie" class=" control-label col-md-4 text-left"> Partie </label>
+										<div class="col-md-6">
+										  <select name='partie_id' rows='5' id='partie_id' class='select2 '   ></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Joueur" class=" control-label col-md-4 text-left"> Joueur </label>
 										<div class="col-md-6">
 										  <select name='joueur_id' rows='5' id='joueur_id' class='select2 '   ></select> 
@@ -77,6 +86,9 @@
    <script type="text/javascript">
 	$(document).ready(function() { 
 		
+		
+		$("#partie_id").jCombo("{!! url('joueurselectionne/comboselect?filter=fb_partie:partie_id:debut|duree') !!}",
+		{  selected_value : '{{ $row["partie_id"] }}' });
 		
 		$("#joueur_id").jCombo("{!! url('joueurselectionne/comboselect?filter=fb_joueurs:joueur_id:nom|premon') !!}",
 		{  selected_value : '{{ $row["joueur_id"] }}' });

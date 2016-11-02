@@ -57,6 +57,16 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
+										<label for="Fin" class=" control-label col-md-4 text-left"> Fin </label>
+										<div class="col-md-6">
+										  <textarea name='fin' rows='5' id='fin' class='form-control '  
+				           >{{ $row['fin'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Salle" class=" control-label col-md-4 text-left"> Salle </label>
 										<div class="col-md-6">
 										  <select name='salle_id' rows='5' id='salle_id' class='select2 '   ></select> 
@@ -66,18 +76,10 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Equipe" class=" control-label col-md-4 text-left"> Equipe </label>
+										<label for="Complexe Salle Id" class=" control-label col-md-4 text-left"> Complexe Salle Id </label>
 										<div class="col-md-6">
-										  <select name='equipe_id' rows='5' id='equipe_id' class='select2 '   ></select> 
-										 </div> 
-										 <div class="col-md-2">
-										 	
-										 </div>
-									  </div> 					
-									  <div class="form-group  " >
-										<label for="Malette Capteurs" class=" control-label col-md-4 text-left"> Malette Capteurs </label>
-										<div class="col-md-6">
-										  <select name='malette_capteurs_id' rows='5' id='malette_capteurs_id' class='select2 '   ></select> 
+										  <textarea name='complexe_salle_id' rows='5' id='complexe_salle_id' class='form-control '  
+				           >{{ $row['complexe_salle_id'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -112,12 +114,6 @@
 		
 		$("#salle_id").jCombo("{!! url('partie/comboselect?filter=fbs_salles:salle_id:identifiant') !!}",
 		{  selected_value : '{{ $row["salle_id"] }}' });
-		
-		$("#equipe_id").jCombo("{!! url('partie/comboselect?filter=fb_equipes:equipe_id:nom') !!}",
-		{  selected_value : '{{ $row["equipe_id"] }}' });
-		
-		$("#malette_capteurs_id").jCombo("{!! url('partie/comboselect?filter=fb_malette_capteurs:malette_capteurs_id:identifiant') !!}",
-		{  selected_value : '{{ $row["malette_capteurs_id"] }}' });
 		 
 
 		$('.removeMultiFiles').on('click',function(){

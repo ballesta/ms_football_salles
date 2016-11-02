@@ -106,13 +106,17 @@ class Sximo extends Model {
 	   $key = with(new static)->primaryKey;
 	    if($id == NULL )
         {
-			
-            // Insert Here 
-            unset($data[$key]);
-			if(isset($data['createdOn'])) $data['createdOn'] = date("Y-m-d H:i:s");	
-			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");	
-			 $id = \DB::table( $table)->insertGetId($data);				
-            
+	        if ($table == 'fb_partie')
+	        {
+		        $data['complexe_salle_id'] = \Session::get('complexe_salle_id');
+		        //dd($data);
+	        }
+
+	        // Insert Here
+             unset($data[$key]);
+			 if(isset($data['createdOn'])) $data['createdOn'] = date("Y-m-d H:i:s");
+			 if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");
+		     $id = \DB::table( $table)->insertGetId($data);
         } else {
             // Update here 
 			// update created field if any
@@ -139,15 +143,11 @@ class Sximo extends Model {
 			foreach($data['config']['grid'] as $fs)
 			{
 				foreach($fs as $f)
-					$field[] = $fs['field']; 	
-									
+					$field[] = $fs['field'];
 			}
-			$data['field'] = $field;	
-					
+			$data['field'] = $field;
 		}
 		return $data;
-			
-	
 	} 
 
     static function getComboselect( $params , $limit = null, $parent = null)
@@ -175,14 +175,19 @@ class Sximo extends Model {
             }
             else
             {
-	            // No filter: filter by complexe salle
-	            $complexe_salle_id = \Session::get('complexe_salle_id', null);
-	            if (!is_null($complexe_salle_id))
+	            // No filter: filter by complexe salle if field present
+	            $columns = self::getTableField($table );
+	            if(isset($columns['complexe_salle_id']))
 	            {
-		          // Force filter with current complexe sportif
-		          $row =  \DB::table($table)
-			              ->where('complexe_salle_id','=', $complexe_salle_id)
-			              ->get();
+		            // Field complexe_salle_id in table
+		            $complexe_salle_id = \Session::get('complexe_salle_id', null);
+		            if (!is_null($complexe_salle_id))
+		            {
+			            // Force filter with current complexe sportif
+			            $row =  \DB::table($table)
+				            ->where('complexe_salle_id','=', $complexe_salle_id)
+				            ->get();
+		            }
 	            }
 	            else
 	            {

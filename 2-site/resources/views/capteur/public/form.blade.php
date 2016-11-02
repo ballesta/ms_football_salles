@@ -20,9 +20,9 @@
 						<fieldset><legend> Capteurs</legend>
 				{!! Form::hidden('capteur_id', $row['capteur_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Numéro Serie" class=" control-label col-md-4 text-left"> Numéro Serie </label>
+										<label for="Numéro Serie" class=" control-label col-md-4 text-left"> Numéro Serie <span class="asterix"> * </span></label>
 										<div class="col-md-6">
-										  {!! Form::text('numero_serie', $row['numero_serie'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  {!! Form::text('numero_serie', $row['numero_serie'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -36,6 +36,15 @@
 					{!! Form::text('date_achat', $row['date_achat'],array('class'=>'form-control date')) !!}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Complexe Salle" class=" control-label col-md-4 text-left"> Complexe Salle <span class="asterix"> * </span></label>
+										<div class="col-md-6">
+										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 ' required  ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -67,6 +76,9 @@
     $(document).ready(function () {
         
         
+		$("#complexe_salle_id").jCombo("{!! url('capteur/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
+		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
+		
 
         $('.removeCurrentFiles').on('click', function () {
             var removeUrl = $(this).attr('href');
