@@ -23,6 +23,7 @@ class Database_Navigation
 
     //use \Illuminate\Session;
 
+	// Build linkto detail (drill down)
     static function link_to_detail( $text,
                                     $help,
                                     $url,
@@ -32,7 +33,6 @@ class Database_Navigation
 									$parent_name    // value        For Breadcrum
                                   )
     {
-
 	    // -Passer identifiant (id) en parametre
 	    //  pour le mettre en session en début de l'url appellée
 		//
@@ -40,7 +40,8 @@ class Database_Navigation
 	    //  pour l'afficher dans le breadcrumb
 
 	    // todo reporter dans module
-	    if ($parent_label == 'joueur_id') {
+	    if ($parent_label == 'joueur_id')
+	    {
 		    $joueur = \DB::table('fb_joueurs')->where('joueur_id', '=', $parent_id)->first();
 		    if (count($joueur) == 1)
 		    {
@@ -56,7 +57,6 @@ class Database_Navigation
          .'   title="' . $help . '">'
          .    $text
          . '</a>';
-
         return $bouton;
     }
 }

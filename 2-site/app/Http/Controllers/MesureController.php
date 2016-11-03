@@ -58,6 +58,10 @@ class MesureController extends Controller {
             ->with("msgstatus","warning");
         }
         ////)) Code generated end
+        ////(( Code generated begin
+        \Session::forget("mesure_id");
+        \Session::forget("mesure_id_identifier");
+        ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');

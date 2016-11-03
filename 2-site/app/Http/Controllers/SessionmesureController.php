@@ -58,6 +58,12 @@ class SessionmesureController extends Controller {
             ->with("msgstatus","warning");
         }
         ////)) Code generated end
+        ////(( Code generated begin
+        \Session::forget("session_mesure_id");
+        \Session::forget("session_mesure_id_identifier");
+        \Session::forget("mesure_id");
+        \Session::forget("mesure_id_identifier");
+        ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
