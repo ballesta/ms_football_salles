@@ -90,11 +90,11 @@ class Sximo extends Model {
 				self::queryWhere().
 				" AND ".$table.".".$key." = '{$id}' ". 
 				self::queryGroup()
-			);	
+			);
+		//dd($result); //ok
 		if(count($result) <= 0){
 			$result = array();		
 		} else {
-
 			$result = $result[0];
 		}
 		return $result;		
@@ -106,16 +106,17 @@ class Sximo extends Model {
 	   $key = with(new static)->primaryKey;
 	    if($id == NULL )
         {
-	        if ($table == 'fb_partie')
-	        {
-		        $data['complexe_salle_id'] = \Session::get('complexe_salle_id');
-		        //dd($data);
-	        }
+//	        if ($table == 'fb_partie')
+//	        {
+//		        $data['complexe_salle_id'] = \Session::get('complexe_salle_id');
+//		        //dd($data);
+//	        }
 
 	        // Insert Here
              unset($data[$key]);
 			 if(isset($data['createdOn'])) $data['createdOn'] = date("Y-m-d H:i:s");
 			 if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");
+	         //dd($data); // nok : pas de club_id
 		     $id = \DB::table( $table)->insertGetId($data);
         } else {
             // Update here 
@@ -151,7 +152,8 @@ class Sximo extends Model {
 	} 
 
     static function getComboselect( $params , $limit = null, $parent = null)
-    {   
+    {
+	    //dd($params);
         $limit = explode(':',$limit);
         $parent = explode(':',$parent);
         if(count($limit) >=3)
@@ -177,7 +179,7 @@ class Sximo extends Model {
             {
 	            // No filter: filter by complexe salle if field present
 	            $columns = self::getTableField($table );
-	            if(isset($columns['complexe_salle_id']))
+	            if(($table != 'fbs_complexe_salles') && isset($columns['complexe_salle_id']))
 	            {
 		            // Field complexe_salle_id in table
 		            $complexe_salle_id = \Session::get('complexe_salle_id', null);
@@ -185,8 +187,10 @@ class Sximo extends Model {
 		            {
 			            // Force filter with current complexe sportif
 			            $row =  \DB::table($table)
-				            ->where('complexe_salle_id','=', $complexe_salle_id)
-				            ->get();
+				                     ->where('complexe_salle_id',
+					                         '=',
+					                         $complexe_salle_id)
+				                     ->get();
 		            }
 	            }
 	            else

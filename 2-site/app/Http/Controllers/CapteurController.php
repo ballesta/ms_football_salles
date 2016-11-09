@@ -69,8 +69,8 @@ class CapteurController extends Controller {
         \Session::forget("session_mesure_id_identifier");
         \Session::forget("mesure_id");
         \Session::forget("mesure_id_identifier");
-        \Session::forget("joueur");
-        \Session::forget("joueur_identifier");
+        \Session::forget("joueur_id");
+        \Session::forget("joueur_id_identifier");
         \Session::forget("capteurs_id");
         \Session::forget("capteurs_id_identifier");
         ////)) Code generated end

@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/resources/views/core/users/form.blade.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/CapteurController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/CapteurController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurCentreController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurCentreController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurselectionneController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurselectionneController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/MesureController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/MesureController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/PartieController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/PartieController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/helpers/Database_Navigation.php" afterPath="$PROJECT_DIR$/2-site/app/helpers/Database_Navigation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Core/Users.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Core/Users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/core/users/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/core/users/view.blade.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,104 +33,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ComplexesportifController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php">
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="73" column="35" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="35" />
+            <state relative-caret-position="255">
+              <caret line="61" column="27" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="27" />
               <folding>
-                <element signature="e#38#74#0#PHP" expanded="true" />
+                <marker date="1478725297074" expanded="false" signature="5959:5974" ph="..." />
+                <marker date="1478725297074" expanded="true" signature="5975:6138" ph="..." />
+                <marker date="1478725297074" expanded="true" signature="17431:17450" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database_Navigation.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/helpers/Database_Navigation.php">
+      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2-site/resources/views/core/users/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="35">
+              <caret line="206" column="46" selection-start-line="206" selection-start-column="44" selection-end-line="206" selection-end-column="46" />
               <folding>
-                <element signature="e#6#89#0#PHP" expanded="true" />
+                <element signature="e#4293#5032#0#HTML" expanded="false" />
+                <marker date="1478727241588" expanded="true" signature="689:1003" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="701:1001" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="707:1000" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="1316:1548" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="1328:1546" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="1446:1545" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="4648:4963" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="4660:4961" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="4790:4960" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="5413:5736" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="5425:5734" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="5561:5733" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="6155:6401" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="6167:6399" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="6299:6398" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="11449:11543" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="11450:11543" ph="..." />
+                <marker date="1478727241588" expanded="true" signature="11700:11783" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/resources/views/joueurselectionne/form.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2520">
-              <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/resources/views/mesure/form.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1645">
-              <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3920">
-              <caret line="112" column="31" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="31" />
-              <folding>
-                <marker date="1478193079784" expanded="true" signature="3470:3741" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Joueurselectionne.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Models/Joueurselectionne.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-              <folding>
-                <element signature="e#28#64#0#PHP" expanded="true" />
-                <marker date="1478193079874" expanded="true" signature="407:439" ph="SELECT fb_jo... fb_joueurs_selectionnes" />
-                <marker date="1478193079874" expanded="true" signature="407:468" ph="SELECT fb_jo... fb_joueurs_selectionnes" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Request.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Requests/Request.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReseauxsallesController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="64" column="63" selection-start-line="64" selection-start-column="63" selection-end-line="64" selection-end-column="63" />
-              <folding>
-                <element signature="e#39#75#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sximo.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37730">
-              <caret line="1078" column="25" selection-start-line="1078" selection-start-column="25" selection-end-line="1078" selection-end-column="25" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -138,11 +80,46 @@
       <file leaf-file-name="Sximo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Models/Sximo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6615">
-              <caret line="189" column="21" selection-start-line="189" selection-start-column="21" selection-end-line="189" selection-end-column="21" />
+            <state relative-caret-position="490">
+              <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
               <folding>
-                <marker date="1478117170144" expanded="true" signature="4485:4628" ph="SELECT * FRO... ${$table}" />
-                <marker date="1478117170144" expanded="true" signature="4688:4713" ph="SELECT * FRO... ${$table}" />
+                <marker date="1478728016789" expanded="true" signature="4579:4722" ph="SELECT * FRO... ${$table}" />
+                <marker date="1478728016789" expanded="true" signature="4782:4807" ph="SELECT * FRO... ${$table}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Users.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Models/Core/Users.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#34#55#0#PHP" expanded="true" />
+                <marker date="1478542268984" expanded="true" signature="345:498" ph="SELECT tb_us... tb_users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="102" column="29" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/resources/views/core/users/view.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1645">
+              <caret line="47" column="69" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="69" />
+              <folding>
+                <marker date="1478541418298" expanded="true" signature="1872:2016" ph="..." />
               </folding>
             </state>
           </provider>
@@ -161,10 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2-site/app/Providers/DatabaseNavigation.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Library/MyHelpers.php" />
-        <option value="$PROJECT_DIR$/2-site/resources/views/complexesportif/form.blade.php" />
-        <option value="$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/moduleroutes.php" />
         <option value="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" />
         <option value="$PROJECT_DIR$/2-site/vendor/barryvdh/laravel-debugbar/src/Middleware/Debugbar.php" />
@@ -183,7 +156,6 @@
         <option value="$PROJECT_DIR$/2-site/.env" />
         <option value="$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/Sximo/ConfigController.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" />
         <option value="$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Foundation/Console/RouteListCommand.php" />
         <option value="$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Foundation/Application.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/DashboardController.php" />
@@ -208,10 +180,15 @@
         <option value="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
         <option value="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/form.blade.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" />
         <option value="$PROJECT_DIR$/2-site/app/helpers/Database_Navigation.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" />
+        <option value="$PROJECT_DIR$/2-site/resources/views/core/users/view.blade.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Models/Core/Users.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php" />
+        <option value="$PROJECT_DIR$/2-site/resources/views/core/users/form.blade.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
       </list>
     </option>
   </component>
@@ -257,10 +234,10 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,17 +245,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="H:\Program Files\nodejs\node.exe" />
     <property name="prop_add_unversioned_files" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/SQL Dialects" value="MySQL" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\public\tests" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\resources\views\core\users" />
       <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\app\Http\Controllers" />
       <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\app\Models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\public\tests" />
     </key>
   </component>
   <component name="RunManager">
@@ -391,7 +369,9 @@
       <workItem from="1478078582355" duration="96000" />
       <workItem from="1478105860450" duration="9371000" />
       <workItem from="1478169238278" duration="623000" />
-      <workItem from="1478191460632" duration="2412000" />
+      <workItem from="1478191460632" duration="3117000" />
+      <workItem from="1478538220941" duration="11152000" />
+      <workItem from="1478721527167" duration="7185000" />
     </task>
     <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
       <created>1476465407612</created>
@@ -512,11 +492,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478117493825</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Forget descendants keys in session">
+      <created>1478198130600</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1478198130600</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171564000" />
+    <option name="totallyTimeSpent" value="190606000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,28 +515,48 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1595059" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26154673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.617214" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22763307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22763307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.617214" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26154673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22763307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -596,7 +603,8 @@
     <MESSAGE value="Capteurs / form / club_id / reference changée.&#10;Incohérence entre liste et fiche" />
     <MESSAGE value="bREADCRUM EN COURS" />
     <MESSAGE value="Combo boxes limitees à complexe sportif" />
-    <option name="LAST_COMMIT_MESSAGE" value="Combo boxes limitees à complexe sportif" />
+    <MESSAGE value="Forget descendants keys in session" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forget descendants keys in session" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.73887813" />
   </component>
   <component name="XDebuggerManager">
@@ -606,48 +614,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/resources/lang/fr/validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/lang/fr/reminders.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/lang/fr/core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3745">
-          <caret line="107" column="12" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/lang/en/core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1-vendors/sximo/unzipped/sximo_lts/sximo515/resources/views/sximo/module/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/sximo/module/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="14" column="96" selection-start-line="14" selection-start-column="96" selection-end-line="14" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/capteur/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -889,9 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3920">
           <caret line="112" column="31" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="31" />
-          <folding>
-            <marker date="1478193079784" expanded="true" signature="3470:3741" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -899,7 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2520">
           <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,18 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1645">
           <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Sximo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6615">
-          <caret line="189" column="21" selection-start-line="189" selection-start-column="21" selection-end-line="189" selection-end-column="21" />
-          <folding>
-            <marker date="1478117170144" expanded="true" signature="4485:4628" ph="SELECT * FRO... ${$table}" />
-            <marker date="1478117170144" expanded="true" signature="4688:4713" ph="SELECT * FRO... ${$table}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -926,10 +876,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2450">
+          <caret line="64" column="63" selection-start-line="64" selection-start-column="63" selection-end-line="64" selection-end-column="63" />
           <folding>
-            <element signature="e#28#64#0#PHP" expanded="true" />
-            <marker date="1478193079874" expanded="true" signature="407:439" ph="SELECT fb_jo... fb_joueurs_selectionnes" />
-            <marker date="1478193079874" expanded="true" signature="407:468" ph="SELECT fb_jo... fb_joueurs_selectionnes" />
+            <element signature="e#39#75#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -938,8 +893,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
           <folding>
-            <element signature="e#6#89#0#PHP" expanded="true" />
+            <element signature="e#38#74#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -948,26 +910,93 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php">
+    <entry file="file://$PROJECT_DIR$/2-site/resources/views/core/users/view.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="64" column="63" selection-start-line="64" selection-start-column="63" selection-end-line="64" selection-end-column="63" />
+        <state relative-caret-position="1645">
+          <caret line="47" column="69" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="69" />
           <folding>
-            <element signature="e#39#75#0#PHP" expanded="true" />
+            <marker date="1478541418298" expanded="true" signature="1872:2016" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php">
+    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Core/Users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="73" column="35" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="35" />
+        <state relative-caret-position="697">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="e#38#74#0#PHP" expanded="true" />
+            <element signature="e#34#55#0#PHP" expanded="true" />
+            <marker date="1478542268984" expanded="true" signature="345:498" ph="SELECT tb_us... tb_users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="102" column="29" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="61" column="27" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="27" />
+          <folding>
+            <marker date="1478725297074" expanded="false" signature="5959:5974" ph="..." />
+            <marker date="1478725297074" expanded="true" signature="5975:6138" ph="..." />
+            <marker date="1478725297074" expanded="true" signature="17431:17450" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Sximo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
+          <folding>
+            <marker date="1478728016789" expanded="true" signature="4579:4722" ph="SELECT * FRO... ${$table}" />
+            <marker date="1478728016789" expanded="true" signature="4782:4807" ph="SELECT * FRO... ${$table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/resources/views/core/users/form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="206" column="46" selection-start-line="206" selection-start-column="44" selection-end-line="206" selection-end-column="46" />
+          <folding>
+            <element signature="e#4293#5032#0#HTML" expanded="false" />
+            <marker date="1478727241588" expanded="true" signature="689:1003" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="701:1001" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="707:1000" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="1316:1548" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="1328:1546" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="1446:1545" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="4648:4963" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="4660:4961" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="4790:4960" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="5413:5736" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="5425:5734" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="5561:5733" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="6155:6401" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="6167:6399" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="6299:6398" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="11449:11543" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="11450:11543" ph="..." />
+            <marker date="1478727241588" expanded="true" signature="11700:11783" ph="..." />
           </folding>
         </state>
       </provider>

@@ -85,29 +85,39 @@ class UsersController extends Controller {
 		return view('core.users.index',$this->data);
 	}	
 
-
-
+	// Insert or update
 	function getUpdate(Request $request, $id = null)
+
 	{
-	
+		//dd($request);
 		if($id =='')
 		{
+			// Insert new: has rights?
 			if($this->access['is_add'] ==0 )
-			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
-		}	
-		
+				return Redirect::to('dashboard')
+					             ->with('messagetext',\Lang::get('core.note_restric'))
+					             ->with('msgstatus','error');
+		}
 		if($id !='')
 		{
+			// Update: has rights?
 			if($this->access['is_edit'] ==0 )
-			return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
+			return Redirect::to('dashboard')
+				             ->with('messagetext',\Lang::get('core.note_restric'))
+				             ->with('msgstatus','error');
 		}				
-				
+
+		// Insert or update, rights verified
 		$row = $this->model->find($id);
+		//dd($row);
 		if($row)
 		{
+			// Update
 			$this->data['row'] =  $row;
 		} else {
-			$this->data['row'] = $this->model->getColumnTable('tb_users'); 
+			// Insert
+			$this->data['row'] = $this->model->getColumnTable('tb_users');
+			//dd($this->data['row']); //OK "club_id" => ""
 		}
 
 		$this->data['id'] = $id;
@@ -116,17 +126,17 @@ class UsersController extends Controller {
 
 	public function getShow( $id = null)
 	{
-	
 		if($this->access['is_detail'] ==0) 
 			return Redirect::to('dashboard')
-				->with('messagetext', Lang::get('core.note_restric'))->with('msgstatus','error');
+							 ->with('messagetext', Lang::get('core.note_restric'))
+				             ->with('msgstatus','error');
 					
 		$row = $this->model->getRow($id);
 		if($row)
 		{
 			$this->data['row'] =  $row;
 		} else {
-			$this->data['row'] = $this->model->getColumnTable('tb_users'); 
+			$this->data['row'] = $this->model->getColumnTable('tb_users');
 		}
 		$this->data['id'] = $id;
 		$this->data['access']		= $this->access;
@@ -135,46 +145,55 @@ class UsersController extends Controller {
 
 	function postSave( Request $request, $id =0)
 	{
-		
 		$rules = $this->validateForm();
 		if($request->input('id') =='')
 		{
+			// Create user
 			$rules['password'] 				= 'required|between:6,12';
 			$rules['password_confirmation'] = 'required|between:6,12';
 			$rules['email'] 				= 'required|email|unique:tb_users';
 			$rules['username'] 				= 'required|alpha_num||min:2|unique:tb_users';
-			
-		} else {
+		}
+		else
+		{
+			// Update user
 			if($request->input('password') !='')
 			{
 				$rules['password'] 				='required|between:6,12';
-				$rules['password_confirmation'] ='required|between:6,12';			
+				$rules['password_confirmation'] ='required|between:6,12';
 			}
 		}
-		if(!is_null(Input::file('avatar'))) $rules['avatar'] = 'mimes:jpg,jpeg,png,gif,bmp';
+		if(!is_null(Input::file('avatar')))
+			$rules['avatar'] = 'mimes:jpg,jpeg,png,gif,bmp';
+		$validator = Validator::make($request->all(), $rules);
 
-		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_users');
+			dd($data);
+			// 'club_id' field is not defined in module, it must be filled manually
+			$data['club_id'] = $request->input('club_id');
+			$data['complexe_salle_id'] = $request->input('complexe_salle_id');
+			//$data = $this->validatePost('tb_users');
 
-			$data = $this->validatePost('tb_users');
 			if($request->input('id') =='')
 			{
+				// Create user
 				$data['password'] = \Hash::make(Input::get('password'));
-			} else {
+			}
+			else
+			{
+				// Update User
 				if(Input::get('password') !='')
 				{
 					$data['password'] = \Hash::make(Input::get('password'));
-				} else {
+				}
+				else
+				{
 					unset($data['password']);
 				}
 			}
-					
-			
+			//dd($data);
 			$id = $this->model->insertRow($data , $request->input('id'));
-
-
-
 			if(!is_null(Input::file('avatar')))
 			{
 				$updates = array();
@@ -182,9 +201,10 @@ class UsersController extends Controller {
 				$destinationPath = './uploads/users/';
 				$filename = $file->getClientOriginalName();
 				$extension = $file->getClientOriginalExtension(); //if you need extension of the file
-				 $newfilename = $id.'.'.$extension;
-				$uploadSuccess = $request->file('avatar')->move($destinationPath, $newfilename);				 
-				if( $uploadSuccess ) {
+				$newfilename = $id.'.'.$extension;
+				$uploadSuccess = $request->file('avatar')->move($destinationPath, $newfilename);
+				if( $uploadSuccess )
+				{
 				    $updates['avatar'] = $newfilename; 
 				} 
 				$this->model->insertRow($updates , $id );
@@ -193,16 +213,23 @@ class UsersController extends Controller {
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'core/users/update/'.$id.'?return='.self::returnUrl();
-			} else {
+			}
+			else
+			{
 				$return = 'core/users?return='.self::returnUrl();
 			}
 			
-			return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
-			
+			return Redirect::to($return)
+				             ->with('messagetext',
+				                    \Lang::get('core.note_success'))
+				             ->with('msgstatus','success');
 		} else {
 
-			return Redirect::to('core/users/update/'.$id)->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
-			->withErrors($validator)->withInput();
+			return Redirect::to('core/users/update/'.$id)
+				             ->with('messagetext',
+					                \Lang::get('core.note_error'))
+				             ->with('msgstatus','error')
+			                 ->withErrors($validator)->withInput();
 		}	
 	
 	}	

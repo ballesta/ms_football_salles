@@ -65,8 +65,6 @@ abstract class Controller extends BaseController {
 
 	function getComboselect( Request $request)
 	{
-
-
 		if($request->ajax() == true && \Auth::check() == true)
 		{
 			$param = explode(':',$request->input('filter'));
@@ -84,8 +82,7 @@ abstract class Controller extends BaseController {
 				{
 					if($val != "") $value .= $row->{$val}." ";
 				}
-				$items[] = array($row->{$param['1']}, $value); 	
-	
+				$items[] = array($row->{$param['1']}, $value);
 			}
 			
 			return json_encode($items); 	
@@ -111,9 +108,7 @@ abstract class Controller extends BaseController {
 	{
 		if($request->input('table') =='') return json_encode(array());	
 		if(Request::ajax() == true && Auth::check() == true)
-		{	
-
-				
+		{
 			$items = array();
 			$table = $request->input('table');
 			if($table !='')
@@ -135,8 +130,7 @@ abstract class Controller extends BaseController {
 		foreach($post as $item=>$val):
 			if($_POST[$item] !='' and $item !='_token' and $item !='md' && $item !='id'):
 				$items .= $item.':'.trim($val).'|';
-			endif;	
-		
+			endif;
 		endforeach;
 		
 		return Redirect::to($this->module.'?search='.substr($items,0,strlen($items)-1).'&md='.Input::get('md'));
@@ -144,7 +138,6 @@ abstract class Controller extends BaseController {
 
 	function buildSearch( $map = false)
 	{
-
 			$keywords = ''; $fields = '';	$param ='';
 			$allowsearch = $this->info['config']['forms'];
 			foreach($allowsearch as $as) $arr[$as['field']] = $as ;		
@@ -467,20 +460,20 @@ abstract class Controller extends BaseController {
 					}
 
 					
-					// if post is seelct multiple						
+					// if post is select multiple
 					if($f['type'] =='select')
 					{
-						if( isset($f['option']['select_multiple']) &&  $f['option']['select_multiple'] ==1 )
+						if(     isset($f['option']['select_multiple'])
+							&&  $f['option']['select_multiple'] ==1 )
 						{
 							$multival = (is_array($_POST[$field]) ? implode(",",$_POST[$field]) :  $_POST[$field]); 
 							$data[$field] = $multival;
 						} else {
+							//dd($_POST);
 							$data[$field] = $_POST[$field];
 						}	
-					}									
-					
-				}	 						
-
+					}
+				}
 			}	
 		}	
 

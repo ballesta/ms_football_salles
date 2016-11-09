@@ -37,7 +37,22 @@
 						<td>{{ SiteHelpers::gridDisplayView($row->group_id,'group_id','1:tb_groups:group_id:name') }} </td>
 						
 					</tr>
-				
+
+					<!--
+                        Réseau de complexes sportifs
+                        ----------------------------
+                    -->
+					<tr>
+						<td width='30%' class='label-view text-right'>Réseau de complexes sportifs</td>
+						<td>{{ SiteHelpers::gridDisplayView($row->club_id,
+						                                    'club_id',
+						                                    '1:fbs_reseaux_salles:club_id:nom') }}
+						</td>
+
+					</tr>
+
+
+
 					<tr>
 						<td width='30%' class='label-view text-right'>Username</td>
 						<td>{{ $row->username }} </td>
