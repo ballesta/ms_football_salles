@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/resources/views/core/users/form.blade.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/CapteurController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/CapteurController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurCentreController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurCentreController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Core/Users.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Core/Users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/core/users/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/core/users/view.blade.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -371,7 +361,7 @@
       <workItem from="1478169238278" duration="623000" />
       <workItem from="1478191460632" duration="3117000" />
       <workItem from="1478538220941" duration="11152000" />
-      <workItem from="1478721527167" duration="7185000" />
+      <workItem from="1478721527167" duration="7214000" />
     </task>
     <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
       <created>1476465407612</created>
@@ -499,11 +489,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478198130600</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Club_id +complexe_salless tb_users">
+      <created>1478728772490</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1478728772490</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190606000" />
+    <option name="totallyTimeSpent" value="190635000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -604,7 +601,8 @@
     <MESSAGE value="bREADCRUM EN COURS" />
     <MESSAGE value="Combo boxes limitees à complexe sportif" />
     <MESSAGE value="Forget descendants keys in session" />
-    <option name="LAST_COMMIT_MESSAGE" value="Forget descendants keys in session" />
+    <MESSAGE value="Club_id +complexe_salless tb_users" />
+    <option name="LAST_COMMIT_MESSAGE" value="Club_id +complexe_salless tb_users" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.73887813" />
   </component>
   <component name="XDebuggerManager">
