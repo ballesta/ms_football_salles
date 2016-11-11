@@ -80,13 +80,10 @@
 					<tr>
 						<td width='30%' class='label-view text-right'>Created At</td>
 						<td>{{ $row->created_at }} </td>
-						
 					</tr>
-				
 					<tr>
 						<td width='30%' class='label-view text-right'>Last Login</td>
 						<td>{{ $row->last_login }} </td>
-						
 					</tr>
 				
 					<tr>

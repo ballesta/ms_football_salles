@@ -13,4 +13,5 @@
                     Route::controller('mesurestoutes', 'MesurestoutesController');
                     Route::controller('joueursComplexe', 'JoueursComplexeController');
                     Route::controller('joueurCentre', 'JoueurCentreController');
+                    Route::controller('testcombo', 'TestcomboController');
                     ?>

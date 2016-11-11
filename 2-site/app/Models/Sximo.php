@@ -122,7 +122,9 @@ class Sximo extends Model {
             // Update here 
 			// update created field if any
 			if(isset($data['createdOn'])) unset($data['createdOn']);	
-			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");			
+			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");
+		    //$data['club_id'] = null;
+		    //dd($data);
 			 \DB::table($table)->where($key,$id)->update($data);    
         }    
         return $id;    

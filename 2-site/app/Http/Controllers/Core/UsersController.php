@@ -149,8 +149,8 @@ class UsersController extends Controller {
 		if($request->input('id') =='')
 		{
 			// Create user
-			$rules['password'] 				= 'required|between:6,12';
-			$rules['password_confirmation'] = 'required|between:6,12';
+			$rules['password'] 				= 'required|between:2,12';
+			$rules['password_confirmation'] = 'required|between:2,12';
 			$rules['email'] 				= 'required|email|unique:tb_users';
 			$rules['username'] 				= 'required|alpha_num||min:2|unique:tb_users';
 		}
@@ -159,8 +159,8 @@ class UsersController extends Controller {
 			// Update user
 			if($request->input('password') !='')
 			{
-				$rules['password'] 				='required|between:6,12';
-				$rules['password_confirmation'] ='required|between:6,12';
+				$rules['password'] 				='required|between:2,12';
+				$rules['password_confirmation'] ='required|between:2,12';
 			}
 		}
 		if(!is_null(Input::file('avatar')))
@@ -169,11 +169,21 @@ class UsersController extends Controller {
 
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_users');
-			dd($data);
-			// 'club_id' field is not defined in module, it must be filled manually
-			$data['club_id'] = $request->input('club_id');
-			$data['complexe_salle_id'] = $request->input('complexe_salle_id');
-			//$data = $this->validatePost('tb_users');
+			//bb: force zero instead of null when no choice in form
+			//    for the two linked fields club_id and complexe_salle_id
+			// Club_id
+			if (!isset($data['club_id']))
+				// No choice in form: force to null
+				$data['club_id'] = 0;
+			if ($data['club_id'] == 'null')
+				// Null choice: force to integer null
+				$data['club_id'] = 0;
+			// Complexes salles
+			if (!isset($data['complexe_salle_id']))
+				$data['complexe_salle_id'] = 0;
+			if ($data['complexe_salle_id'] == 'null')
+				$data['complexe_salle_id'] = 0;
+			//dd($data);
 
 			if($request->input('id') =='')
 			{

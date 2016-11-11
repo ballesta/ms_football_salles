@@ -59,7 +59,9 @@ abstract class Controller extends BaseController {
 		$data = array(
 				'last_activity'=> strtotime(Carbon::now())
 			);
-		\DB::table('tb_users')->where('id',\Session::get('uid'))->update($data);   
+		\DB::table('tb_users')
+				->where('id',\Session::get('uid'))
+				->update($data);
 	} 	
 
 
@@ -323,10 +325,10 @@ abstract class Controller extends BaseController {
 	function validatePost(  $table )
 	{	
 		$request = new Request;	
-	///	return json_encode($_POST);	
 		$str = $this->info['config']['forms'];
 		//echo '<pre>';print_r($_POST);echo '</pre>'; exit;
 		$data = array();
+		// dd($str); // club_id et complexes_salle_id OK
 		foreach($str as $f){
 			// Update for V5.1.5 issue on Autofilled createOn and updatedOn fields
 			$field = $f['field'];
@@ -340,7 +342,9 @@ abstract class Controller extends BaseController {
 					// Handle Text Editor 
 					$content = (isset($_POST[$field]) ? $_POST[$field] : '');
 					 $data[$field] = $content;
-				} else {
+				}
+				else
+				{
 					// Handle text Input
 					if(isset($_POST[$field]))
 					{
@@ -426,9 +430,7 @@ abstract class Controller extends BaseController {
 								 
 								if( $uploadSuccess ) {
 								   $data[$field] = $newfilename;
-								} 
-
-
+								}
 							} else {
 								unset($data[$field]);
 							}	
@@ -460,18 +462,28 @@ abstract class Controller extends BaseController {
 					}
 
 					
-					// if post is select multiple
+					// Select
 					if($f['type'] =='select')
 					{
 						if(     isset($f['option']['select_multiple'])
 							&&  $f['option']['select_multiple'] ==1 )
 						{
+							// select multiple
 							$multival = (is_array($_POST[$field]) ? implode(",",$_POST[$field]) :  $_POST[$field]); 
 							$data[$field] = $multival;
-						} else {
-							//dd($_POST);
+						}
+						else
+						{
+							// Single select
+							if ((   $field == 'complexe_salle_id'
+								 || $field == 'club_id')
+								&& !isset($_POST[$field]))
+							{
+								//dd($_POST);
+								$_POST[$field]= 'null';
+							}
 							$data[$field] = $_POST[$field];
-						}	
+						}
 					}
 				}
 			}	
@@ -488,7 +500,9 @@ abstract class Controller extends BaseController {
 		foreach($data as $key=>$val)
 		{
 			if($val !='') $values[$key] = $val;
-		}			
+			//$values[$key] = $val;
+		}
+		//dd($values);
 		return $values;
 	}
 

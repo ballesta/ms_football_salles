@@ -59,7 +59,7 @@
                                         id='club_id'
                                         code='{$club_id}'
                                         class='select2'
-                                        required
+
                                 >
                                 </select>
                             </div>
@@ -203,11 +203,10 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-
-            $("#complexe_salle_id").jCombo("{{ URL::to
-                (
-                    'core/users/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom') }}",
-                    {selected_value: '{{ $row["complexe_salle_id"] }}'}
+            $("#complexe_salle_id").jCombo
+            (
+                    "{!! url( 'testcombo/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom')!!}&parent=club_id:",
+                    {  parent: '#club_id', selected_value : '{{ $row["complexe_salle_id"] }}' }
             );
 
             $("#club_id").jCombo("{{ URL::to
