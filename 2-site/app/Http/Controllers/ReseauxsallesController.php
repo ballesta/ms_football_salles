@@ -90,17 +90,20 @@ class ReseauxsallesController extends Controller
 		if ($this->access['is_view'] == 0)
 			return Redirect::to('dashboard')->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus', 'error');
 
-		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'club_id');
-		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort')
+			                                       : 'club_id');
+		$order = (!is_null($request->input('order')) ? $request->input('order')
+			                                         : 'asc');
 		// End Filter sort and order for query
 		// Filter Search for query
 		$filter = '';
 		if (!is_null($request->input('search'))) {
 			$search = $this->buildSearch('maps');
 			$filter = $search['param'];
+			dd($search);
 			$this->data['search_map'] = $search['maps'];
 		}
-
+		// todo filter reseaux
 		$page = $request->input('page', 1);
 		$params = array('page' => $page, 'limit' => (!is_null($request->input('rows')) ? filter_var($request->input('rows'), FILTER_VALIDATE_INT) : static::$per_page), 'sort' => $sort, 'order' => $order, 'params' => $filter, 'global' => (isset($this->access['is_global']) ? $this->access['is_global'] : 0));
 		// Get Query

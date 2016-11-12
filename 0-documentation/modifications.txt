@@ -5,3 +5,7 @@
         Manually report in MVC code
     Transfer complexe_salles_id in tb_users in session on login
     Filter for corresponding roles
+        role responsable reseaux
+            in reseaux table filter on session club_id
+        role responsable centre
+            in complexe table filter on session complexe_salles_id
