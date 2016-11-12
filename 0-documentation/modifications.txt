@@ -1,0 +1,7 @@
+2016-11-12 - Filter on club_id and complexe_salles_id
+    Added club_id and complexe_salles_id in tb_users
+    Added related combo box in view
+        Prototype in module testCombo
+        Manually report in MVC code
+    Transfer complexe_salles_id in tb_users in session on login
+    Filter for corresponding roles

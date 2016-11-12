@@ -186,7 +186,15 @@ class UserController extends Controller {
 						\Session::put('gid', $row->group_id);
 						\Session::put('eid', $row->email);
 						\Session::put('ll', $row->last_login);
-						\Session::put('fid', $row->first_name.' '. $row->last_name);	
+						\Session::put('fid', $row->first_name
+										    .' '
+											. $row->last_name);
+						\Session::put('user_club_id', $row->club_id);
+						\Session::put('user_complexe_salle_id',
+									  $row->complexe_salle_id);
+
+
+
 						if(\Session::get('lang') =='')
 						{
 							\Session::put('lang', CNF_LANG);	
