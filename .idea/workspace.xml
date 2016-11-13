@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/helpers/Roles.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/0-documentation/modifications.txt" afterPath="$PROJECT_DIR$/0-documentation/modifications.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" afterPath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/public/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/public/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/777d247cf5a7c8121692801f0f7da063" afterPath="$PROJECT_DIR$/2-site/storage/framework/views/777d247cf5a7c8121692801f0f7da063" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +39,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifications.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modifications.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/0-documentation/modifications.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -46,12 +49,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReseauxsallesController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php">
+      <file leaf-file-name="Reseauxsalles.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="105" column="30" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="224">
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <folding>
+                <element signature="e#28#64#0#PHP" expanded="true" />
+                <marker date="1479058704374" expanded="true" signature="384:435" ph="SELECT fbs_r... fbs_reseaux_salles" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,7 +65,7 @@
       <file leaf-file-name="Roles.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/helpers/Roles.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
+            <state relative-caret-position="595">
               <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
               <folding>
                 <element signature="e#7#95#0#PHP" expanded="true" />
@@ -68,11 +74,33 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Salle.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Models/Salle.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="37" />
+              <folding>
+                <marker date="1479058704822" expanded="true" signature="369:404" ph="SELECT fbs_s... fbs_salles" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="session.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/config/session.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="595">
               <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sximo.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-782">
+              <caret line="1079" column="16" selection-start-line="1079" selection-start-column="16" selection-end-line="1079" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -81,7 +109,7 @@
       <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
+            <state relative-caret-position="1400">
               <caret line="46" column="59" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="59" />
               <folding />
             </state>
@@ -101,7 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2-site/app/Models/Malette.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/joueur/view.blade.php" />
         <option value="$PROJECT_DIR$/2-site/.gitignore" />
         <option value="$PROJECT_DIR$/2-site/scripts/cree_api_controlleur.bat" />
@@ -135,7 +162,6 @@
         <option value="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/index.blade.php" />
         <option value="$PROJECT_DIR$/2-site/app/Models/Joueurselectionne.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php" />
-        <option value="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
         <option value="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/form.blade.php" />
         <option value="$PROJECT_DIR$/2-site/app/helpers/Database_Navigation.php" />
@@ -152,6 +178,8 @@
         <option value="$PROJECT_DIR$/2-site/app/helpers/Roles.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" />
         <option value="$PROJECT_DIR$/0-documentation/modifications.txt" />
+        <option value="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
+        <option value="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" />
       </list>
     </option>
   </component>
@@ -166,10 +194,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-1289" />
+    <option name="y" value="47" />
+    <option name="width" value="1298" />
+    <option name="height" value="992" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -197,159 +225,10 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -489,7 +368,8 @@
       <workItem from="1478721527167" duration="7236000" />
       <workItem from="1478863883295" duration="14053000" />
       <workItem from="1478953509522" duration="1329000" />
-      <workItem from="1478971337378" duration="4851000" />
+      <workItem from="1478971337378" duration="4928000" />
+      <workItem from="1479052227547" duration="4184000" />
     </task>
     <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
       <created>1476465407612</created>
@@ -645,11 +525,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478954713352</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="filtre sur club_id et complexe_salles_id depending on role ....">
+      <created>1478977890277</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1478977890277</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210890000" />
+    <option name="totallyTimeSpent" value="215151000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -661,10 +548,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1289" y="47" width="1298" height="992" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19011815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29378068" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -733,7 +620,8 @@
     <MESSAGE value="Club_id +complexe_salless tb_users" />
     <MESSAGE value="Club_id +complexe_salles dans  tb_users&#10;Synchronisation des boites déroulantes &#10;Voir le module Test Combo pour le prototype&#10;Modifications reportées dans users" />
     <MESSAGE value="Transfer complexe_salles_id in tb_users in session on login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transfer complexe_salles_id in tb_users in session on login" />
+    <MESSAGE value="filtre sur club_id et complexe_salles_id depending on role ...." />
+    <option name="LAST_COMMIT_MESSAGE" value="filtre sur club_id et complexe_salles_id depending on role ...." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.39147288" />
   </component>
   <component name="XDebuggerManager">
@@ -743,20 +631,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/sximo/module/template/native/form.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/sximo/module/template/blank/view.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Models/Joueur.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -870,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37730">
-          <caret line="1078" column="25" selection-start-line="1078" selection-start-column="25" selection-end-line="1078" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3920">
@@ -957,10 +824,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <element signature="e#34#55#0#PHP" expanded="false" />
-            <marker date="1478542268984" expanded="true" signature="345:498" ph="SELECT tb_us... tb_users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -968,24 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4865">
           <caret line="139" column="75" selection-start-line="139" selection-start-column="70" selection-end-line="139" selection-end-column="75" />
-          <folding>
-            <marker date="1478867042100" expanded="true" signature="689:1003" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="701:1001" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="707:1000" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="1316:1548" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="1328:1546" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="1446:1545" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="4600:4915" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="4612:4913" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="4742:4912" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="5365:5688" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="5377:5686" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="5513:5685" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="6107:6353" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="6119:6351" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="6251:6350" ph="..." />
-            <marker date="1478867042100" expanded="true" signature="11684:11767" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -993,9 +838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="805">
           <caret line="23" column="73" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="73" />
-          <folding>
-            <marker date="1478895002487" expanded="true" signature="1872:2016" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,7 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5880">
           <caret line="172" column="24" selection-start-line="160" selection-start-column="0" selection-end-line="172" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,7 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1960">
           <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,7 +870,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1015">
           <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,7 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1120">
           <caret line="41" column="28" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,9 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6230">
           <caret line="183" column="117" selection-start-line="183" selection-start-column="117" selection-end-line="183" selection-end-column="117" />
-          <folding>
-            <element signature="e#39#75#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1063,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="92" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,7 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,7 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,7 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1095,7 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1103,7 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,7 +946,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/config/session.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="595">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
@@ -1125,7 +954,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Core/UsersController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
+        <state relative-caret-position="1400">
           <caret line="46" column="59" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="59" />
           <folding />
         </state>
@@ -1133,7 +962,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/helpers/Roles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
+        <state relative-caret-position="595">
           <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
           <folding>
             <element signature="e#7#95#0#PHP" expanded="true" />
@@ -1143,8 +972,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="105" column="30" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
+        <state relative-caret-position="2310">
+          <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1154,6 +983,35 @@
         <state relative-caret-position="210">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-782">
+          <caret line="1079" column="16" selection-start-line="1079" selection-start-column="16" selection-end-line="1079" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <element signature="e#28#64#0#PHP" expanded="true" />
+            <marker date="1479058704374" expanded="true" signature="384:435" ph="SELECT fbs_r... fbs_reseaux_salles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Salle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <marker date="1479058704822" expanded="true" signature="369:404" ph="SELECT fbs_s... fbs_salles" />
+          </folding>
         </state>
       </provider>
     </entry>

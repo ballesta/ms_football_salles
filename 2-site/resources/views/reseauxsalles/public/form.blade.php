@@ -17,7 +17,7 @@
 
 
 <div class="col-md-12">
-						<fieldset><legend> Réseaux de salles</legend>
+						<fieldset><legend> Réseaux de complexes sportifs</legend>
 				{!! Form::hidden('club_id', $row['club_id']) !!}					
 									  <div class="form-group  " >
 										<label for="Nom" class=" control-label col-md-4 text-left"> Nom <span class="asterix"> * </span></label>
