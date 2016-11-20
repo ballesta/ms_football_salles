@@ -1,0 +1,7 @@
+Install Update from 5.1.5 
+
+1. copy and replace all folder and files inside source directory
+2. clear caches
+ go to control panel -> setting -> clear caches 
+
+Enjoy ! 

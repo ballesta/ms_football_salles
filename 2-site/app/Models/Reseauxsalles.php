@@ -15,19 +15,41 @@ class reseauxsalles extends Sximo  {
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
-    public static function queryWhere(  ){
-	        $role = \Session::get('gid');
-	        if ($role == 1 ||  $role == 2)
-	        {
-		        $filter =  "  WHERE fbs_reseaux_salles.club_id IS NOT NULL ";
-	        }
-	        elseif ($role == 4)
-	        {
-		        // Responsable reseau : limit to network
-		        $club_id = \Session::get('user_club_id');
-		        $filter =  "  WHERE fbs_reseaux_salles.club_id = $club_id ";
-	        }
-	        return $filter;
-        }
+    //
+		$role = \Session::get('gid');
+		if ($role == 1 ||  $role == 2)
+		{
+		    // Administrator: no filters by reseau
+		    $where =  "";
+		}
+		elseif ($role == 4  ||  $role == 5)
+		{
+		    // Responsable reseau : limit to user network
+		    $club_id = \Session::get('user_club_id');
+		    $where =  "  WHERE fbs_reseaux_salles.club_id = $club_id ";
+		}		    
+		return $where;
         ////)) Code generated end
     }
+    elseif ($role == 4  ||  $role == 5)
+    {
+        // Responsable reseau : limit to user network
+        $club_id = \Session::get('user_club_id');
+        $where =  "  WHERE fbs_reseaux_salles.club_id = $club_id ";
+    }
+    return $where;
+    ////)) Code generated end
+}
+elseif ($role == 4  ||  $role == 5)
+{
+    // Responsable reseau : limit to user network
+    $club_id = \Session::get('user_club_id');
+    $where =  "  WHERE fbs_reseaux_salles.club_id = $club_id ";
+}
+return $where;
+////)) Code generated end
+}
+public static function queryGroup(){
+return "  ";
+}
+}

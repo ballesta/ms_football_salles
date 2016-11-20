@@ -35,9 +35,25 @@ class complexesportif extends Sximo  {
         return $where;
         ////)) Code generated end
     }
-    
-    public static function queryGroup(){
-        return "  ";
+    elseif ($role == 5)
+    {
+        // Responsable complexe sportif : complexe sportif
+        $id = \Session::get('user_complexe_salle_id');
+        $where .=  "  WHERE fbs_complexe_salles.complexe_salle_id = $id ";
     }
-    
+    return $where;
+    ////)) Code generated end
+}
+elseif ($role == 5)
+{
+    // Responsable complexe sportif : complexe sportif
+    $id = \Session::get('user_complexe_salle_id');
+    $where .=  "  AND fbs_complexe_salles.complexe_salle_id = $id ";
+}
+return $where;
+////)) Code generated end
+}
+public static function queryGroup(){
+return "  ";
+}
 }

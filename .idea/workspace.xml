@@ -2,12 +2,80 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/2-site.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/public/uploads/users/6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/public/uploads/users/7.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/3-database/Sauvegardes/football_v00_salles.7z" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/4-sauvegardes/2-site.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ms_football_salles.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/install.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/app/Http/Controllers/Controller.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/app/Http/Controllers/NotificationController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/app/Http/Controllers/Sximo/ModuleController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/app/Library/SiteHelpers.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/app/Models/Sximo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/public/sximo/css/sximo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/footer.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/layouts/app.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/layouts/login.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/notification/form.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/notification/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/notification/view.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/create.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/duplicate.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/table.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/controller.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/form.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/frontend.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/frontendview.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/frontform.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/grid.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/masterdetailform.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/model.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/view.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/sximo/module/template/native/view_detail.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/1-vendors/sximo/unzipped/patch/patch1.0.5.1.5/source/resources/views/user/remind.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/.env.local" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/TestcomboController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Models/JoueurCentre.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Models/JoueursComplexe.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Models/Testcombo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/form.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/public/form.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/public/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/public/view.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/view.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueursComplexe/form.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueursComplexe/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueursComplexe/public/form.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueursComplexe/public/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueursComplexe/public/view.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/joueursComplexe/view.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/sximo/module/duplicate.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/testcombo/form.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/testcombo/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/testcombo/public/form.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/testcombo/public/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/testcombo/public/view.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/testcombo/view.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/routes.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/3-database/Sauvegardes/football_v00_salles.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/3-database/football_v00_salles20161110.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/4-sauvegardes/config_prod/.env" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/4-sauvegardes/config_prod/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/4-sauvegardes/config_prod/2-site/.env" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/4-sauvegardes/config_prod/2-site/public/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/4-sauvegardes/config_prod/app.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_club_complexe.patch" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" afterPath="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/public/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/public/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/lang/fr/core.php" afterPath="$PROJECT_DIR$/2-site/resources/lang/fr/core.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/complexesportif/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/complexesportif/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/complexesportif/public/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/complexesportif/public/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/setting.php" afterPath="$PROJECT_DIR$/2-site/setting.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/777d247cf5a7c8121692801f0f7da063" afterPath="$PROJECT_DIR$/2-site/storage/framework/views/777d247cf5a7c8121692801f0f7da063" />
     </list>
     <ignored path="ms_football_salles.iws" />
@@ -32,31 +100,40 @@
       <file leaf-file-name=".env" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="140">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifications.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/0-documentation/modifications.txt">
+      <file leaf-file-name="Complexesportif.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Models/Complexesportif.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="0">
+              <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <folding>
+                <marker date="1479669999909" expanded="true" signature="32:104" ph="..." />
+                <marker date="1479669999909" expanded="true" signature="143:1721" ph="..." />
+                <marker date="1479669999909" expanded="true" signature="279:324" ph="..." />
+                <marker date="1479669999909" expanded="true" signature="369:459" ph="..." />
+                <marker date="1479669999909" expanded="true" signature="397:450" ph="SELECT fbs_c... fbs_complexe_salles" />
+                <marker date="1479669999909" expanded="true" signature="503:1149" ph="..." />
+                <marker date="1479669999909" expanded="true" signature="838:958" ph="{...}" />
+                <marker date="1479669999909" expanded="true" signature="971:1087" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Reseauxsalles.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Reseauxsalles.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+            <state relative-caret-position="175">
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
               <folding>
                 <element signature="e#28#64#0#PHP" expanded="true" />
-                <marker date="1479058704374" expanded="true" signature="384:435" ph="SELECT fbs_r... fbs_reseaux_salles" />
+                <marker date="1479669999492" expanded="true" signature="384:435" ph="SELECT fbs_r... fbs_reseaux_salles" />
               </folding>
             </state>
           </provider>
@@ -74,13 +151,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Salle.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Salle.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Models/Salle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
+            <state relative-caret-position="490">
               <caret line="15" column="37" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="37" />
               <folding>
-                <marker date="1479058704822" expanded="true" signature="369:404" ph="SELECT fbs_s... fbs_salles" />
+                <marker date="1479670000373" expanded="true" signature="369:404" ph="SELECT fbs_s... fbs_salles" />
               </folding>
             </state>
           </provider>
@@ -99,7 +176,7 @@
       <file leaf-file-name="sximo.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-782">
+            <state relative-caret-position="37765">
               <caret line="1079" column="16" selection-start-line="1079" selection-start-column="16" selection-end-line="1079" selection-end-column="16" />
               <folding />
             </state>
@@ -129,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2-site/resources/views/joueur/view.blade.php" />
         <option value="$PROJECT_DIR$/2-site/.gitignore" />
         <option value="$PROJECT_DIR$/2-site/scripts/cree_api_controlleur.bat" />
         <option value="$PROJECT_DIR$/2-site/tests/api_mesures/test_1_shoots.php" />
@@ -179,6 +255,7 @@
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/ReseauxsallesController.php" />
         <option value="$PROJECT_DIR$/0-documentation/modifications.txt" />
         <option value="$PROJECT_DIR$/2-site/public/sximo/css/sximo.css" />
+        <option value="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" />
         <option value="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" />
       </list>
     </option>
@@ -194,10 +271,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1289" />
-    <option name="y" value="47" />
-    <option name="width" value="1298" />
-    <option name="height" value="992" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -224,11 +301,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,7 +446,11 @@
       <workItem from="1478863883295" duration="14053000" />
       <workItem from="1478953509522" duration="1329000" />
       <workItem from="1478971337378" duration="4928000" />
-      <workItem from="1479052227547" duration="4184000" />
+      <workItem from="1479052227547" duration="4518000" />
+      <workItem from="1479120069949" duration="659000" />
+      <workItem from="1479146693871" duration="268000" />
+      <workItem from="1479230977782" duration="1699000" />
+      <workItem from="1479635497691" duration="8060000" />
     </task>
     <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
       <created>1476465407612</created>
@@ -532,11 +613,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478977890277</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="filtre sur club_id et complexe_salles_id depending on role ....">
+      <created>1479070608514</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1479070608514</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215151000" />
+    <option name="totallyTimeSpent" value="226171000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,27 +636,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1289" y="47" width="1298" height="992" extended-state="6" />
-    <editor active="false" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29378068" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2980666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50438595" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49150622" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49830124" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -631,13 +719,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Joueur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/joueur/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -783,9 +864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
           <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
-          <folding>
-            <element signature="e#38#74#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,16 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12075">
           <caret line="502" column="14" selection-start-line="502" selection-start-column="14" selection-end-line="502" selection-end-column="14" />
-          <folding>
-            <element signature="e#9295#13554#0#PHP" expanded="false" />
-            <element signature="e#9691#12411#0#PHP" expanded="false" />
-            <element signature="e#12450#12635#0#PHP" expanded="false" />
-            <element signature="e#12666#12775#0#PHP" expanded="false" />
-            <element signature="e#12807#12927#0#PHP" expanded="false" />
-            <marker date="1478895610953" expanded="false" signature="5966:5981" ph="..." />
-            <marker date="1478895610953" expanded="true" signature="5982:6145" ph="..." />
-            <marker date="1478895610953" expanded="true" signature="17706:17725" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -845,10 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4410">
           <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
-          <folding>
-            <marker date="1478895707024" expanded="true" signature="4628:4771" ph="SELECT * FRO... ${$table}" />
-            <marker date="1478895707024" expanded="true" signature="4831:4856" ph="SELECT * FRO... ${$table}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -936,14 +1000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/config/session.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -974,7 +1030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2310">
           <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -988,29 +1043,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/public/sximo/css/sximo.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-782">
+        <state relative-caret-position="37765">
           <caret line="1079" column="16" selection-start-line="1079" selection-start-column="16" selection-end-line="1079" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php">
+    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Salle.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        <state relative-caret-position="490">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="37" />
           <folding>
-            <element signature="e#28#64#0#PHP" expanded="true" />
-            <marker date="1479058704374" expanded="true" signature="384:435" ph="SELECT fbs_r... fbs_reseaux_salles" />
+            <marker date="1479670000373" expanded="true" signature="369:404" ph="SELECT fbs_s... fbs_salles" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Salle.php">
+    <entry file="file://$PROJECT_DIR$/2-site/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="37" />
+        <state relative-caret-position="140">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Complexesportif.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding>
-            <marker date="1479058704822" expanded="true" signature="369:404" ph="SELECT fbs_s... fbs_salles" />
+            <marker date="1479669999909" expanded="true" signature="32:104" ph="..." />
+            <marker date="1479669999909" expanded="true" signature="143:1721" ph="..." />
+            <marker date="1479669999909" expanded="true" signature="279:324" ph="..." />
+            <marker date="1479669999909" expanded="true" signature="369:459" ph="..." />
+            <marker date="1479669999909" expanded="true" signature="397:450" ph="SELECT fbs_c... fbs_complexe_salles" />
+            <marker date="1479669999909" expanded="true" signature="503:1149" ph="..." />
+            <marker date="1479669999909" expanded="true" signature="838:958" ph="{...}" />
+            <marker date="1479669999909" expanded="true" signature="971:1087" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <element signature="e#28#64#0#PHP" expanded="true" />
+            <marker date="1479669999492" expanded="true" signature="384:435" ph="SELECT fbs_r... fbs_reseaux_salles" />
           </folding>
         </state>
       </provider>

@@ -20,9 +20,9 @@
 						<fieldset><legend> Complexe sportif</legend>
 				{!! Form::hidden('complexe_salle_id', $row['complexe_salle_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Nom" class=" control-label col-md-4 text-left"> Nom </label>
+										<label for="Nom" class=" control-label col-md-4 text-left"> Nom <span class="asterix"> * </span></label>
 										<div class="col-md-6">
-										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -66,9 +66,18 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Email" class=" control-label col-md-4 text-left"> Email </label>
+										<label for="Email" class=" control-label col-md-4 text-left"> Email <span class="asterix"> * </span></label>
 										<div class="col-md-6">
-										  {!! Form::text('email', $row['email'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  {!! Form::text('email', $row['email'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true', 'parsley-type'=>'email'   )) !!} 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Réseau" class=" control-label col-md-4 text-left"> Réseau <span class="asterix"> * </span></label>
+										<div class="col-md-6">
+										  <select name='club_id' rows='5' id='club_id' class='select2 ' required  ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -100,6 +109,9 @@
     $(document).ready(function () {
         
         
+		$("#club_id").jCombo("{!! url('complexesportif/comboselect?filter=fbs_reseaux_salles:club_id:nom|ville') !!}",
+		{  selected_value : '{{ $row["club_id"] }}' });
+		
 
         $('.removeCurrentFiles').on('click', function () {
             var removeUrl = $(this).attr('href');
