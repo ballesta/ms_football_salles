@@ -243,12 +243,15 @@
 </div>	
 </div>			 
    <script type="text/javascript">
-	$(document).ready(function() {
+	$(document).ready(function() { 
+		
+		
 		$("#club_id").jCombo("{!! url('testcombo/comboselect?filter=fbs_reseaux_salles:club_id:nom') !!}",
 		{  selected_value : '{{ $row["club_id"] }}' });
 		
 		$("#complexe_salle_id").jCombo("{!! url('testcombo/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom') !!}&parent=club_id:",
 		{  parent: '#club_id', selected_value : '{{ $row["complexe_salle_id"] }}' });
+		 
 
 		$('.removeMultiFiles').on('click',function(){
 			var removeUrl = '{{ url("testcombo/removefiles?file=")}}'+$(this).attr('url');
@@ -256,7 +259,8 @@
 			$.get(removeUrl,function(response){});
 			$(this).parent('div').empty();	
 			return false;
-		});
+		});		
+		
 	});
 	</script>		 
 @stop

@@ -6,12 +6,16 @@
 	 * Time: 20:01
 	 */
 	namespace App\Helpers;
+
+	// Compose SQL statements
 	class SQL_Where
 	{
 		// Compose clause SQL WHERE as:
-		// "WHERE condition-1 AND condition-2 ... AND condition-n"
+		// Output: "WHERE condition-1 AND condition-2 ... AND condition-n"
+		// From given $where conditions array
 		static function compose($where)
 		{
+			// Resulting Where clause
 			$sql_where= '';
 			foreach ($where as $condition)
 			{

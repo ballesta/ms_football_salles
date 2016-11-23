@@ -38,6 +38,53 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
+										<label for="EMail" class=" control-label col-md-4 text-left"> EMail </label>
+										<div class="col-md-6">
+										  <textarea name='eMail' rows='5' id='eMail' class='form-control '  
+				           >{{ $row['eMail'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Date Naissance" class=" control-label col-md-4 text-left"> Date Naissance </label>
+										<div class="col-md-6">
+										  {!! Form::text('date_naissance', $row['date_naissance'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Telephone" class=" control-label col-md-4 text-left"> Telephone </label>
+										<div class="col-md-6">
+										  <textarea name='telephone' rows='5' id='telephone' class='form-control '  
+				           >{{ $row['telephone'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Lateralite" class=" control-label col-md-4 text-left"> Lateralite </label>
+										<div class="col-md-6">
+										  
+					<?php $lateralite = explode(',',$row['lateralite']);
+					$lateralite_opt = array( 'Droitier' => 'Droitier' ,  'Gaucher' => 'Gaucher' , ); ?>
+					<select name='lateralite' rows='5'   class='select2 '  > 
+						<?php 
+						foreach($lateralite_opt as $key=>$val)
+						{
+							echo "<option  value ='$key' ".($row['lateralite'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+						}						
+						?></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Complexe Salle" class=" control-label col-md-4 text-left"> Complexe Salle </label>
 										<div class="col-md-6">
 										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 

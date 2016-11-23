@@ -50,7 +50,16 @@
 									  <div class="form-group  " >
 										<label for="Duree" class=" control-label col-md-4 text-left"> Duree </label>
 										<div class="col-md-6">
-										  {!! Form::text('duree', $row['duree'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  
+					<?php $duree = explode(',',$row['duree']);
+					$duree_opt = array( '30' => '30 minutes' ,  '60' => '1  Heure' ,  '90' => '1 Heure 30 minutes' , ); ?>
+					<select name='duree' rows='5'   class='select2 '  > 
+						<?php 
+						foreach($duree_opt as $key=>$val)
+						{
+							echo "<option  value ='$key' ".($row['duree'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+						}						
+						?></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Durée de la partie, du début à la dernière émission d'un capteur"><i class="icon-question2"></i></a>

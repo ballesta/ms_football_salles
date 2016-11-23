@@ -58,6 +58,12 @@
 					</tr>
 				
 					<tr>
+						<td width='30%' class='label-view text-right'>Lateralite</td>
+						<td>{{ $row->lateralite}} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>Date Naissance</td>
 						<td>{{ $row->date_naissance}} </td>
 						

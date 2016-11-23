@@ -1,272 +1,233 @@
 <?php namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
-
-
-class Sximo extends Model {
-
-
-	public static function getRows( $args )
+class Sximo extends Model
+{
+	public static function getRows($args)
 	{
-       $table = with(new static)->table;
-	   $key = with(new static)->primaryKey;
-	   
-        extract( array_merge( array(
-			'page' 		=> '0' ,
-			'limit'  	=> '0' ,
-			'sort' 		=> '' ,
-			'order' 	=> '' ,
-			'params' 	=> '' ,
-			'global'	=> 1	  
-        ), $args ));
-		
-		$offset = ($page-1) * $limit ;	
-		$limitConditional = ($page !=0 && $limit !=0) ? "LIMIT  $offset , $limit" : '';	
-		$orderConditional = ($sort !='' && $order !='') ?  " ORDER BY {$sort} {$order} " : '';
-
+		$table = with(new static)->table;
+		$key = with(new static)->primaryKey;
+		//bb
+		// Define variables for PHPstorm IDE
+		$page=0;$limit=0;$sort=0;$order=0;$global=0;$params=0;
+		extract(array_merge(array('page' => '0', 'limit' => '0', 'sort' => '', 'order' => '', 'params' => '', 'global' => 1), $args));
+		$offset = ($page - 1) * $limit;
+		$limitConditional = ($page != 0 && $limit != 0) ? "LIMIT  $offset , $limit" : '';
+		$orderConditional = ($sort != '' && $order != '') ? " ORDER BY {$sort} {$order} " : '';
 		// Update permission global / own access new ver 1.1
 		$table = with(new static)->table;
-		if($global == 0 )
-				$params .= " AND {$table}.entry_by ='".\Session::get('uid')."'"; 	
+		if ($global == 0)
+			$params .= " AND {$table}.entry_by ='" . \Session::get('uid') . "'";
 		// End Update permission global / own access new ver 1.1			
-        
 		$rows = array();
-	    $result = \DB::select( self::querySelect() . self::queryWhere(). " 
-				{$params} ". self::queryGroup() ." {$orderConditional}  {$limitConditional} ");
-		
-		if($key =='' ) { $key ='*'; } else { $key = $table.".".$key ; }
-		$query = self::querySelect()
-			   . self::queryWhere(). " {$params} "
-			   . self::queryGroup()
-			   ." {$orderConditional}  ";
-		$total = \DB::select($query );
-
+		$result = \DB::select(self::querySelect() . self::queryWhere() . " 
+				{$params} " . self::queryGroup() . " {$orderConditional}  {$limitConditional} ");
+		if ($key == '') {
+			$key = '*';
+		} else {
+			$key = $table . "." . $key;
+		}
+		$query = self::querySelect() . self::queryWhere() . " {$params} " . self::queryGroup() . " {$orderConditional}  ";
+		$total = \DB::select($query);
 		$total = count($total);
-
-//		$total = $res[0]->total;
-
+		//		$total = $res[0]->total;
 		\Session::put('query', $query);
-		return $results = array('rows'=> $result , 'total' => $total);	
-
-	
-	}	
-
-	public static function prevNext( $id ){
-
-       $table = with(new static)->table;
-	   $key = with(new static)->primaryKey;
-
-	   $prev = '';
-	   $next = '';
-
-		$Qnext = \DB::select( 
-			self::querySelect() . 
-			self::queryWhere().
-			" AND ".$table.".".$key." > '{$id}'  ". 
-			self::queryGroup().' LIMIT 1'
-		);	
-
-
-		if(count($Qnext)>=1)   $next = $Qnext[0]->{$key};
-		
-		$Qprev  = \DB::select( 
-			self::querySelect() . 
-			self::queryWhere().
-			" AND ".$table.".".$key." < '{$id}'". 
-			self::queryGroup()." ORDER BY ".$table.".".$key." DESC LIMIT 1"
-		);	
-		if(count($Qprev)>=1)  $prev = $Qprev[0]->{$key};
-
-		return array('prev'=>$prev , 'next'=> $next);	
+		return $results = array('rows' => $result, 'total' => $total);
 	}
 
-	public static function getRow( $id )
+	public static function prevNext($id)
 	{
-       $table = with(new static)->table;
-	   $key = with(new static)->primaryKey;
+		$table = with(new static)->table;
+		$key = with(new static)->primaryKey;
+		$prev = '';
+		$next = '';
+		$Qnext = \DB::select(self::querySelect() . self::queryWhere() . " AND " . $table . "." . $key . " > '{$id}'  " . self::queryGroup() . ' LIMIT 1');
+		if (count($Qnext) >= 1)
+			$next = $Qnext[0]->{$key};
+		$Qprev = \DB::select(self::querySelect() . self::queryWhere() . " AND " . $table . "." . $key . " < '{$id}'" . self::queryGroup() . " ORDER BY " . $table . "." . $key . " DESC LIMIT 1");
+		if (count($Qprev) >= 1)
+			$prev = $Qprev[0]->{$key};
+		return array('prev' => $prev, 'next' => $next);
+	}
 
-		$result = \DB::select( 
-				self::querySelect() . 
-				self::queryWhere().
-				" AND ".$table.".".$key." = '{$id}' ". 
-				self::queryGroup()
-			);
-		//dd($result); //ok
-		if(count($result) <= 0){
-			$result = array();		
+	public static function getRow($id)
+	{
+		$table = with(new static)->table;
+		$key = with(new static)->primaryKey;
+		$result = \DB::select(self::querySelect() . self::queryWhere() . " AND " . $table . "." . $key . " = '{$id}' " . self::queryGroup());
+		if (count($result) <= 0) {
+			$result = array();
 		} else {
 			$result = $result[0];
 		}
-		return $result;		
-	}	
+		return $result;
+	}
 
-	public  function insertRow( $data , $id)
+	static function makeInfo($id)
 	{
-       $table = with(new static)->table;
-	   $key = with(new static)->primaryKey;
-	    if($id == NULL )
-        {
-//	        if ($table == 'fb_partie')
-//	        {
-//		        $data['complexe_salle_id'] = \Session::get('complexe_salle_id');
-//		        //dd($data);
-//	        }
-
-	        // Insert Here
-             unset($data[$key]);
-			 if(isset($data['createdOn'])) $data['createdOn'] = date("Y-m-d H:i:s");
-			 if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");
-	         //dd($data); // nok : pas de club_id
-		     $id = \DB::table( $table)->insertGetId($data);
-        } else {
-            // Update here 
-			// update created field if any
-			if(isset($data['createdOn'])) unset($data['createdOn']);	
-			if(isset($data['updatedOn'])) $data['updatedOn'] = date("Y-m-d H:i:s");
-		    //$data['club_id'] = null;
-		    //dd($data);
-			 \DB::table($table)->where($key,$id)->update($data);    
-        }    
-        return $id;    
-	}			
-
-	static function makeInfo( $id )
-	{	
-		$row =  \DB::table('tb_module')->where('module_name', $id)->get();
+		$row = \DB::table('tb_module')->where('module_name', $id)->get();
 		$data = array();
-		foreach($row as $r)
-		{
-			$data['id']		= $r->module_id; 
-			$data['title'] 	= $r->module_title; 
-			$data['note'] 	= $r->module_note; 
-			$data['table'] 	= $r->module_db; 
-			$data['key'] 	= $r->module_db_key;
+		foreach ($row as $r) {
+			$data['id'] = $r->module_id;
+			$data['title'] = $r->module_title;
+			$data['note'] = $r->module_note;
+			$data['table'] = $r->module_db;
+			$data['key'] = $r->module_db_key;
 			$data['config'] = \SiteHelpers::CF_decode_json($r->module_config);
-			$field = array();	
-			foreach($data['config']['grid'] as $fs)
-			{
-				foreach($fs as $f)
+			$field = array();
+			foreach ($data['config']['grid'] as $fs) {
+				foreach ($fs as $f)
 					$field[] = $fs['field'];
 			}
 			$data['field'] = $field;
 		}
 		return $data;
-	} 
+	}
 
-    static function getComboselect( $params , $limit = null, $parent = null)
-    {
-	    //dd($params);
-        $limit = explode(':',$limit);
-        $parent = explode(':',$parent);
-        if(count($limit) >=3)
-        {
-            $table = $params[0]; 
-	        $condition = $limit[0]." `".$limit[1]."` ".$limit[2]." ".$limit[3]." ";
-            if(count($parent)>=2 )
-            {
-            	$row =  \DB::table($table)->where($parent[0],$parent[1])->get();
-	            $row =  \DB::select( "SELECT * FROM ".$table." "
-		                              .$condition
-		                              ." AND ".$parent[0]." = '".$parent[1]."'");
-            } else  {
-	           $row =  \DB::select( "SELECT * FROM ".$table." ".$condition);
-            }        
-        }else{
-            $table = $params[0]; 
-            if(count($parent)>=2 )
-            {
-            	$row =  \DB::table($table)->where($parent[0],$parent[1])->get();
-            }
-            else
-            {
-	            // No filter: filter by complexe salle if field present
-	            $row =  \DB::table($table)->get();
+	static function getComboselect($params, $limit = NULL, $parent = NULL)
+	{
+		//dd($params);
+		$limit = explode(':', $limit);
+		$parent = explode(':', $parent);
+		if (count($limit) >= 3) {
+			$table = $params[0];
+			$condition = $limit[0] . " `" . $limit[1] . "` " . $limit[2] . " " . $limit[3] . " ";
+			if (count($parent) >= 2) {
+				$row = \DB::table($table)->where($parent[0], $parent[1])->get();
+				$row = \DB::select("SELECT * FROM " . $table . " " . $condition . " AND " . $parent[0] . " = '" . $parent[1] . "'");
+			} else {
+				$row = \DB::select("SELECT * FROM " . $table . " " . $condition);
+			}
+		} else {
+			$table = $params[0];
+			if (count($parent) >= 2) {
+				$row = \DB::table($table)->where($parent[0], $parent[1])->get();
+			} else {
+				// No filter: filter by complexe salle if field present
+				$row = \DB::table($table)->get();
 				// bb
-	            //$columns = self::getTableField($table );
-	            //if(($table != 'fbs_complexe_salles') && isset($columns['complexe_salle_id']))
-	            //{
-		            // Field complexe_salle_id in table
-		        //    $complexe_salle_id = \Session::get('complexe_salle_id', null);
-		        //    if (!is_null($complexe_salle_id))
-		        //    {
-			    //        // Force filter with current complexe sportif
-			    //        $row =  \DB::table($table)
-				//                     ->where('complexe_salle_id',
-				//	                         '=',
-				//	                         $complexe_salle_id)
-				//                     ->get();
-		        //    }
-            //}
-            //else
-	        //    {
-		    //      $row =  \DB::table($table)->get();
-	        //    }
-            }
-        }
-        return $row;
-    }	
+				$columns = self::getTableField($table );
+				if(($table != 'fbs_complexe_salles') && isset($columns['complexe_salle_id']))
+				{
+					// Field complexe_salle_id in table
+				    $complexe_salle_id = \Session::get('complexe_salle_id', null);
+				    if (is_null($complexe_salle_id))
+				    {
+					    $row =  \DB::table($table)->get();
+				    }
+				    else
+				    {
+				        // Force filter with current complexe sportif
+				        $row =  \DB::table($table)
+				                     ->where('complexe_salle_id', '=', $complexe_salle_id)
+				                     ->get();
+				    }
+				}
+				else
+				{
+				    $row =  \DB::table($table)->get();
+				}
+			}
+		}
+		return $row;
+	}
 
-	public static function getColoumnInfo( $result )
+	public static function getColoumnInfo($result)
 	{
 		$pdo = \DB::getPdo();
 		$res = $pdo->query($result);
-		$i =0;	$coll=array();	
-		while ($i < $res->columnCount()) 
-		{
-			$info = $res->getColumnMeta($i);			
+		$i = 0;
+		$coll = array();
+		while ($i < $res->columnCount()) {
+			$info = $res->getColumnMeta($i);
 			$coll[] = $info;
 			$i++;
 		}
 		return $coll;
-	}	
+	}
 
-	function validAccess( $id)
+	static function getColumnTable($table)
 	{
-		$row = \DB::table('tb_groups_access')->where('module_id','=', $id)
-				->where('group_id','=', \Session::get('gid'))
-				->get();
-		if(count($row) >= 1)
+		$columns = array();
+		foreach (\DB::select("SHOW COLUMNS FROM $table") as $column) {
+			//print_r($column);
+			$columns[$column->Field] = '';
+		}
+		return $columns;
+	}
+
+	static function getTableList($db)
+	{
+		$t = array();
+		$dbname = 'Tables_in_' . $db;
+		foreach (\DB::select("SHOW TABLES FROM {$db}") as $table) {
+			$t[$table->$dbname] = $table->$dbname;
+		}
+		return $t;
+	}
+
+	static function getTableField($table)
+	{
+		$columns = array();
+		foreach (\DB::select("SHOW COLUMNS FROM $table") as $column)
+			$columns[$column->Field] = $column->Field;
+		return $columns;
+	}
+
+	public function insertRow($data, $id)
+	{
+
+		$table = with(new static)->table;
+		$key = with(new static)->primaryKey;
+		$columns = $this->getTableField($table);
+		if ($id == NULL) {
+			// Insert Here
+			unset($data[$key]);
+			$this->set_field_if_exists($columns,$data, 'createdOn', date("Y-m-d H:i:s"));
+			$this->set_field_if_exists($columns,$data, 'updatedOn', date("Y-m-d H:i:s"));
+			//bb
+			// Set complexe sportif
+			$complexe_salle_id = \Session::get('complexe_salle_id');
+			$this->set_field_if_exists($columns, $data, 'complexe_salle_id',$complexe_salle_id );
+			// Set user id who created
+			$created_by_user_id = \Session::get('uid');
+			$this->set_field_if_exists($columns, $data, 'created_by_user_id', $created_by_user_id);
+			//dd($data);
+			// Insert new row
+			$id = \DB::table($table)->insertGetId($data);
+		} else {
+			// Update here
+			// update created field if any
+			if (isset($data['createdOn']))
+				unset($data['createdOn']);
+			$this->set_field_if_exists($columns, $data, 'updatedOn', date("Y-m-d H:i:s"));
+			// Update current row
+			\DB::table($table)->where($key, $id)->update($data);
+		}
+		return $id;
+	}
+
+	function set_field_if_exists($columns, &$data, $field_name, $field_value)
+	{
+		if (isset($columns[$field_name]))
 		{
+			$data[$field_name] = $field_value;
+		}
+	}
+
+
+	function validAccess($id)
+	{
+		$row = \DB::table('tb_groups_access')->where('module_id', '=', $id)->where('group_id', '=', \Session::get('gid'))->get();
+		if (count($row) >= 1) {
 			$row = $row[0];
-			if($row->access_data !='')
-			{
-				$data = json_decode($row->access_data,true);
+			if ($row->access_data != '') {
+				$data = json_decode($row->access_data, TRUE);
 			} else {
 				$data = array();
-			}	
+			}
 			return $data;
 		} else {
-			return false;
+			return FALSE;
 		}
-	}	
-
-	static function getColumnTable( $table )
-	{	  
-        $columns = array();
-	    foreach(\DB::select("SHOW COLUMNS FROM $table") as $column)
-        {
-           //print_r($column);
-		    $columns[$column->Field] = '';
-        }
-        return $columns;
-	}	
-
-	static function getTableList( $db ) 
-	{
-	 	$t = array(); 
-		$dbname = 'Tables_in_'.$db ; 
-		foreach(\DB::select("SHOW TABLES FROM {$db}") as $table)
-        {
-		    $t[$table->$dbname] = $table->$dbname;
-        }	
-		return $t;
-	}	
-	
-	static function getTableField( $table ) 
-	{
-        $columns = array();
-	    foreach(\DB::select("SHOW COLUMNS FROM $table") as $column)
-		    $columns[$column->Field] = $column->Field;
-        return $columns;
 	}
 }

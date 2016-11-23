@@ -1,117 +1,157 @@
 <?php $__env->startSection('content'); ?>
 <?php /**/ usort($tableGrid, "SiteHelpers::_sort") /**/ ?>
-  <div class="page-content row">
+<div class="page-content row">
+<div class="page-content-wrapper m-t">
+<div class="sbox">
+<!--//(( Code generated begin-->
+<table>
+<tr>
+<td>
+<small>Réseau de salles</small><br>
+<strong><?php echo e(Session::get('club_id_identifier', null)); ?></strong>
+<td>
+</tr>
+</table>
+<!--//)) Code generated end-->
+<div class="sbox-title">
+<div class="sbox-tools pull-left" >
+<?php if($access['is_add'] ==1): ?>
+<a href="<?php echo e(URL::to('complexesportif/update?return='.$return)); ?>"
+class="tips"  title="<?php echo e(Lang::get('core.btn_create')); ?>">
+<i class="fa  fa-plus "></i> Créer</a>
+<?php endif; ?>
+<?php if($access['is_remove'] ==1): ?>
+<a href="javascript://ajax"  onclick="SximoDelete();" class="tips"
+title="Supprimer les lignes cochées">
+<i class="fa fa-trash-o"></i> Supprimer</a>
+<?php endif; ?>
+<a href="<?php echo e(URL::to( 'complexesportif/search?return='.$return)); ?>"
+class="tips"
+onclick="SximoModal(this.href,'Advance Search'); return false;"               title="<?php echo e(Lang::get('core.btn_search')); ?>">
+<i class="fa fa-search"> Rechercher</i> </a>
+<?php if($access['is_excel'] ==1): ?>
+<a href="<?php echo e(URL::to('complexesportif/download?return='.$return)); ?>" class="tips " title="<?php echo e(Lang::get('core.btn_download')); ?>">
+<i class="fa fa-cloud-download"></i> Télécharger</a>
+<?php endif; ?>
+<a href="<?php echo e(url($pageModule)); ?>"
+class=" tips"
+title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
+<i class="fa fa-spinner"> Tout Afficher</i>
+</a>
+</div>
+<div class="sbox-tools" >
+<?php if(Session::get('gid') ==1): ?>
+<a href="<?php echo e(URL::to('sximo/module/config/'.$pageModule)); ?>" class="tips" title=" <?php echo e(Lang::get('core.btn_config')); ?>" ><i class="fa  fa-ellipsis-v"></i></a>
+<?php endif; ?>
+</div>
+</div>
+<div class="sbox-content">
+<?php echo (isset($search_map) ? $search_map : ''); ?>
 
-	
-	<div class="page-content-wrapper m-t">	 	
+<?php echo Form::open(array('url'=>'complexesportif/delete/0?return='.$return, 'class'=>'form-horizontal' ,'id' =>'SximoTable' )); ?>
 
-	<div class="sbox">
-	<div class="sbox-title">
-		<div class="sbox-tools pull-left" >
-			<?php if($access['is_add'] ==1): ?>
-	   		<a href="<?php echo e(URL::to('complexesportif/update?return='.$return)); ?>"
-			   class="tips"  title="<?php echo e(Lang::get('core.btn_create')); ?>">
-			<i class="fa  fa-plus "></i> Créer</a>
-			<?php endif; ?>  
-			<?php if($access['is_remove'] ==1): ?>
-			<a href="javascript://ajax"  onclick="SximoDelete();" class="tips"
-			   title="Supprimer les lignes cochées">
-			<i class="fa fa-trash-o"></i> Supprimer</a>
-			<?php endif; ?> 
-			<a href="<?php echo e(URL::to( 'complexesportif/search?return='.$return)); ?>"
-			   class="tips"
-			   onclick="SximoModal(this.href,'Advance Search'); return false;"               title="<?php echo e(Lang::get('core.btn_search')); ?>">
-				<i class="fa fa-search"> Rechercher</i> </a>
-			<?php if($access['is_excel'] ==1): ?>
-			<a href="<?php echo e(URL::to('complexesportif/download?return='.$return)); ?>" class="tips " title="<?php echo e(Lang::get('core.btn_download')); ?>">
-			<i class="fa fa-cloud-download"></i> Télécharger</a>
-			<?php endif; ?>
+<div class="table-responsive" style="min-height:300px;">
+<table class="table table-striped ">
+<thead>
+<tr>
+<th class="number"><span> No </span> </th>
+<th> <input type="checkbox" class="checkall" /></th>
+<?php foreach($tableGrid as $t): ?>
+<?php if($t['view'] =='1'): ?>
+<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
+<?php if(SiteHelpers::filterColumn($limited )): ?>
+<th><span><?php echo e($t['label']); ?></span></th>
+<?php endif; ?>
+<?php endif; ?>
+<?php endforeach; ?>
+<th width="40%"><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
+</tr>
+</thead>
+<tbody>
+<?php foreach($rowData as $row): ?>
+<tr>
+<td width="30"> <?php echo e(++$i); ?> </td>
+<td width="50"><input type="checkbox" class="ids" name="ids[]" value="<?php echo e($row->complexe_salle_id); ?>" />  </td>
+<?php foreach($tableGrid as $field): ?>
+<?php if($field['view'] =='1'): ?>
+<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
+<?php if(SiteHelpers::filterColumn($limited )): ?>
+<td>
+<?php echo SiteHelpers::formatRows($row->{$field['field']},$field ,$row ); ?>
 
-			<a href="<?php echo e(url($pageModule)); ?>"
-			   class=" tips"
-			   title="<?php echo e(Lang::get('core.btn_clearsearch')); ?>" >
-			   <i class="fa fa-spinner"> Tout Afficher</i>
-			</a>
+</td>
+<?php endif; ?>
+<?php endif; ?>
+<?php endforeach; ?>
+<td>
+<!--//(( Code generated begin-->
+<?php echo \Navigation::link_to_detail(
+    $text        = 'Inscriptions',
+    $help        = '',
+    $url         = URL::to('inscription'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
+    $parent_id   = $row->complexe_salle_id,
+    $parent_name = $row->nom
+    ); ?>
 
-		</div>
+<!--//)) Code generated end-->
+<!--//(( Code generated begin-->
+<?php echo \Navigation::link_to_detail(
+    $text        = 'Capteurs',
+    $help        = '',
+    $url         = URL::to('capteur'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
+    $parent_id   = $row->complexe_salle_id,
+    $parent_name = $row->nom
+    ); ?>
 
-		<div class="sbox-tools" >
-		
-		<?php if(Session::get('gid') ==1): ?>
-			<a href="<?php echo e(URL::to('sximo/module/config/'.$pageModule)); ?>" class="tips" title=" <?php echo e(Lang::get('core.btn_config')); ?>" ><i class="fa  fa-ellipsis-v"></i></a>
-		<?php endif; ?> 
-		</div>
-	</div>
+<!--//)) Code generated end-->
+<!--//(( Code generated begin-->
+<?php echo \Navigation::link_to_detail(
+    $text        = 'Joueurs',
+    $help        = '',
+    $url         = URL::to('joueurCentre'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
+    $parent_id   = $row->complexe_salle_id,
+    $parent_name = $row->nom
+    ); ?>
 
-	<div class="sbox-content"> 	
-	
+<!--//)) Code generated end-->
+<!--//(( Code generated begin-->
+<?php echo \Navigation::link_to_detail(
+    $text        = 'Terrains',
+    $help        = '',
+    $url         = URL::to('salle'),
+    $parent_key  = 'complexe_salle_id',
+    $parent_label= 'nom',
+    $parent_id   = $row->complexe_salle_id,
+    $parent_name = $row->nom
+    ); ?>
 
-	 <?php echo (isset($search_map) ? $search_map : ''); ?>
+<!--//)) Code generated end-->
+<?php if($access['is_detail'] ==1): ?>
+<a href="<?php echo e(URL::to('complexesportif/show/'.$row->complexe_salle_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-primary" title="<?php echo e(Lang::get('core.btn_view')); ?>"><i class="fa  fa-search "></i></a>
+<?php endif; ?>
+<?php if($access['is_edit'] ==1): ?>
+<a  href="<?php echo e(URL::to('complexesportif/update/'.$row->complexe_salle_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-success" title="<?php echo e(Lang::get('core.btn_edit')); ?>"><i class="fa fa-edit "></i></a>
+<?php endif; ?>
+</td>
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<input type="hidden" name="md" value="" />
+</div>
+<?php echo Form::close(); ?>
 
-	
-	 <?php echo Form::open(array('url'=>'complexesportif/delete/0?return='.$return, 'class'=>'form-horizontal' ,'id' =>'SximoTable' )); ?>
-
-	 <div class="table-responsive" style="min-height:300px;">
-    <table class="table table-striped ">
-        <thead>
-			<tr>
-				<th class="number"><span> No </span> </th>
-				<th> <input type="checkbox" class="checkall" /></th>
-				
-				<?php foreach($tableGrid as $t): ?>
-					<?php if($t['view'] =='1'): ?>				
-						<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
-						<?php if(SiteHelpers::filterColumn($limited )): ?>
-						
-							<th><span><?php echo e($t['label']); ?></span></th>			
-						<?php endif; ?> 
-					<?php endif; ?>
-				<?php endforeach; ?>
-				<th width="70" ><span><?php echo e(Lang::get('core.btn_action')); ?></span></th>
-			  </tr>
-        </thead>
-
-        <tbody>        						
-            <?php foreach($rowData as $row): ?>
-                <tr>
-					<td width="30"> <?php echo e(++$i); ?> </td>
-					<td width="50"><input type="checkbox" class="ids" name="ids[]" value="<?php echo e($row->complexe_salle_id); ?>" />  </td>									
-				 <?php foreach($tableGrid as $field): ?>
-					 <?php if($field['view'] =='1'): ?>
-					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
-					 	<?php if(SiteHelpers::filterColumn($limited )): ?>
-						 <td>					 
-						 	<?php echo SiteHelpers::formatRows($row->{$field['field']},$field ,$row ); ?>						 
-						 </td>
-						<?php endif; ?>	
-					 <?php endif; ?>					 
-				 <?php endforeach; ?>
-				 <td>
-					 	<?php if($access['is_detail'] ==1): ?>
-						<a href="<?php echo e(URL::to('complexesportif/show/'.$row->complexe_salle_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-primary" title="<?php echo e(Lang::get('core.btn_view')); ?>"><i class="fa  fa-search "></i></a>
-						<?php endif; ?>
-						<?php if($access['is_edit'] ==1): ?>
-						<a  href="<?php echo e(URL::to('complexesportif/update/'.$row->complexe_salle_id.'?return='.$return)); ?>" class="tips btn btn-xs btn-success" title="<?php echo e(Lang::get('core.btn_edit')); ?>"><i class="fa fa-edit "></i></a>
-						<?php endif; ?>
-												
-					
-				</td>				 
-                </tr>
-				
-            <?php endforeach; ?>
-              
-        </tbody>
-      
-    </table>
-	<input type="hidden" name="md" value="" />
-	</div>
-	<?php echo Form::close(); ?>
-
-	<?php echo $__env->make('footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-	</div>
-</div>	
-	</div>	  
-</div>	
-	
+<?php echo $__env->make('footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+</div>
+</div>
+</div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

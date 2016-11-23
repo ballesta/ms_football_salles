@@ -158,19 +158,7 @@ class TestcomboController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_testcombo');
-			// Club_id
-			if (!isset($data['club_id']))
-				// No choice in form: force to null
-				$data['club_id'] = 0;
-			if ($data['club_id'] == 'null')
-				// Null choice: force to integer null
-				$data['club_id'] = 0;
-			// Complexes salles
-			if (!isset($data['complexe_salle_id']))
-				$data['complexe_salle_id'] = 0;
-			if ($data['complexe_salle_id'] == 'null')
-				$data['complexe_salle_id'] = 0;
-			//dd($data);
+				
 			$id = $this->model->insertRow($data , $request->input('id'));
 			
 			if(!is_null($request->input('apply')))

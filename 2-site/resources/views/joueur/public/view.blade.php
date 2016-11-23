@@ -24,8 +24,20 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Equipe</td>
-						<td>{{ SiteHelpers::formatLookUp($row->equipe_id,'equipe_id','1:fb_equipes:equipe_id:nom') }} </td>
+						<td width='30%' class='label-view text-right'>EMail</td>
+						<td>{{ $row->eMail}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Telephone</td>
+						<td>{{ $row->telephone}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Lateralite</td>
+						<td>{{ $row->lateralite}} </td>
 						
 					</tr>
 						

@@ -65,6 +65,24 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
+										<label for="Latéralite" class=" control-label col-md-4 text-left"> Latéralite </label>
+										<div class="col-md-6">
+										  
+					<?php $lateralite = explode(',',$row['lateralite']);
+					$lateralite_opt = array( 'Gaucher' => 'Gaucher' ,  'Droitier' => 'Droitier' , ); ?>
+					<select name='lateralite' rows='5'   class='select2 '  > 
+						<?php 
+						foreach($lateralite_opt as $key=>$val)
+						{
+							echo "<option  value ='$key' ".($row['lateralite'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+						}						
+						?></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Complexe Salle" class=" control-label col-md-4 text-left"> Complexe Salle </label>
 										<div class="col-md-6">
 										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 

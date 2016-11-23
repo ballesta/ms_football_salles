@@ -38,24 +38,9 @@ $sql_where = \App\Helpers\SQL_Where::compose($where);
 return $sql_where;
         ////)) Code generated end
     }
-    else
-    {
-        // Filter by parent id
-        $where = "  WHERE $table.$parent_id_key = $id ";
+    
+    public static function queryGroup(){
+        return "  ";
     }
-    return $where;
-    ////)) Code generated end
-}
-elseif ($role == 5)
-{
-    // Responsable complexe sportif : complexe sportif
-    $id = \Session::get('user_complexe_salle_id');
-    $where .=  "  WHERE fb_partie.complexe_salle_id = $id ";
-}
-return $where;
-////)) Code generated end
-}
-public static function queryGroup(){
-return "  ";
-}
+    
 }
