@@ -181,7 +181,7 @@ class Sximo extends Model {
             {
 	            // No filter: filter by complexe salle if field present
 	            $row =  \DB::table($table)->get();
-
+				// bb
 	            //$columns = self::getTableField($table );
 	            //if(($table != 'fbs_complexe_salles') && isset($columns['complexe_salle_id']))
 	            //{
