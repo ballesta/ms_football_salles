@@ -180,25 +180,27 @@ class Sximo extends Model {
             else
             {
 	            // No filter: filter by complexe salle if field present
-	            $columns = self::getTableField($table );
-	            if(($table != 'fbs_complexe_salles') && isset($columns['complexe_salle_id']))
-	            {
+	            $row =  \DB::table($table)->get();
+
+	            //$columns = self::getTableField($table );
+	            //if(($table != 'fbs_complexe_salles') && isset($columns['complexe_salle_id']))
+	            //{
 		            // Field complexe_salle_id in table
-		            $complexe_salle_id = \Session::get('complexe_salle_id', null);
-		            if (!is_null($complexe_salle_id))
-		            {
-			            // Force filter with current complexe sportif
-			            $row =  \DB::table($table)
-				                     ->where('complexe_salle_id',
-					                         '=',
-					                         $complexe_salle_id)
-				                     ->get();
-		            }
-	            }
-	            else
-	            {
-		          $row =  \DB::table($table)->get();
-	            }
+		        //    $complexe_salle_id = \Session::get('complexe_salle_id', null);
+		        //    if (!is_null($complexe_salle_id))
+		        //    {
+			    //        // Force filter with current complexe sportif
+			    //        $row =  \DB::table($table)
+				//                     ->where('complexe_salle_id',
+				//	                         '=',
+				//	                         $complexe_salle_id)
+				//                     ->get();
+		        //    }
+            //}
+            //else
+	        //    {
+		    //      $row =  \DB::table($table)->get();
+	        //    }
             }
         }
         return $row;
