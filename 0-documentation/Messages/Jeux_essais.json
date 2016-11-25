@@ -1,0 +1,21 @@
+<?php
+function EventShoot($time, $uid, $speed)
+{
+$Event =<<<END
+{
+  "sensor": {
+  "EventShoot": {
+    "param": [
+      {
+        "UID": "12345678",
+        "id": "4",
+        "speed": "72"
+      }
+    ]
+  }
+  }
+}
+END;
+
+
+

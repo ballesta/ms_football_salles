@@ -24,6 +24,12 @@
         \App::setLocale($lang);
     }
 
+	//Route::resource('statistiques', 'StatistiquesController');
+
+
+	Route::get('genere/mesures/eventShoot', 'GenereMesuresController@eventShoot' );
+
+
     // Envoi de mesures pour lestests
     //Route::resource('envoiMesures', 'SessionMesuresController');
     //Route::get('envoiMesures', function () {

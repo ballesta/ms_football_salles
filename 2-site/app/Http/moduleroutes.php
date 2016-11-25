@@ -15,4 +15,5 @@
                     Route::controller('joueurCentre', 'JoueurCentreController');
                     Route::controller('testcombo', 'TestcomboController');
                     Route::controller('inscription', 'InscriptionController');
+                    Route::controller('statistiques', 'StatistiquesController');
                     ?>
