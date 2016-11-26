@@ -206,6 +206,7 @@ class Sximo extends Model
 		return $id;
 	}
 
+	//bb
 	function set_field_if_exists($columns, &$data, $field_name, $field_value)
 	{
 		if (isset($columns[$field_name]))

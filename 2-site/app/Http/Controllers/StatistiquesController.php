@@ -142,9 +142,20 @@ class StatistiquesController extends Controller {
 			$this->data['row'] =  $row;
 			$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['grid']);
 			$this->data['id'] = $id;
+			// Elabore les statistique concernant un joueur à partir des mesures recues
+			// $this->data['statistiques'] = statistiques_partie_joueur($row->joueur_id,
+			//                                                         $row->date)
+			// Pour tests seulement ++++
+			$this->data['statistiques'] = [
+				'distance'          => '4.84' ,
+				'duree'             => '01:34' ,
+				'ballons_joues'     => '64' ,
+				'vitesse_maximale'  => '24'
+			];
 			$this->data['access']		= $this->access;
 			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 			$this->data['prevnext'] = $this->model->prevNext($id);
+			//dd($this);
 			return view('statistiques.view',$this->data);
 		} else {
 			return Redirect::to('statistiques')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
