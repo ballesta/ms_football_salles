@@ -27,7 +27,7 @@
 	//Route::resource('statistiques', 'StatistiquesController');
 
 
-	Route::get('genere/mesures/eventShoot', 'GenereMesuresController@addMesures' );
+	Route::get('genere/mesures', 'GenereMesuresController@addMesures' );
 
 
     // Envoi de mesures pour lestests

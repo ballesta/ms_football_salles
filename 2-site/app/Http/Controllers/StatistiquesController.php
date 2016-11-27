@@ -178,17 +178,34 @@ class StatistiquesController extends Controller {
 	{
 		//dd($date);
 		// ++++ Lis toutes les mesure et les affecte au joueur ++++
+		// Par ordre chronologique ascendants.
 		$mesures = DB::table('fb_mesures')->orderBy('Horodatage', 'asc')
 										  ->get();
-		$distance = 0;
 		$ballons_joues = 0;
-		// Calculées à partir des vitesses moyennes
+		$Dist = 0;
+		$Average = 0;
+		$Max = 0;
+		$Step = 0;
+		$Sprint = 0;
+		$Mobility = 0;
+		$Shoot = 0;
+		$Pass = 0;
+		$Control = 0;
+
+		// Calculées à partir des vitesses moyennes transmises pour chaque mesure
 		// ++++ Hypothèse
-		$vitesse_moyenne = [];
+		$vitesses_moyennes = [];
+		$i=1;
 		foreach ($mesures as $m)
 		{
 			//dd($m);
-			$date_heure = $m->Horodatage;
+			$date_heure =  strtotime($m->Horodatage);
+			// En cas d'absence de message start: prendre heure premier message
+			if($i++ == 1)
+			{
+				// Premier message seulement: top de départ
+				$start = $date_heure;
+			}
 			$mesure = json_decode($m->message_json, $to_array=true);
 			//dd($mesure);
 		    if (isset($mesure["sensor"]["Start"]))
@@ -209,24 +226,28 @@ class StatistiquesController extends Controller {
 			{
 				// Mémorise les dernières valeurs reçues qui seront affichée
 				// Distance totale parcourue en mètres
-				$distance   = $mesure["sensor"]["Mesure"]["Dist"];
+				$Dist       = $mesure["sensor"]["Mesure"]["param"][0]["Dist"];
 				// Vitesse moyenne en km/h
-				$average    = $mesure["sensor"]["Mesure"][""];
-				$vitesse_moyenne[$date_heure] = $average;
+				$Average    = $mesure["sensor"]["Mesure"]["param"][0]["Average"];
 				// Vitesse maximum en km/h
-				$max = $mesure["sensor"]["Mesure"]["Max"];
+				$Max = $mesure["sensor"]["Mesure"]["param"][0]["Max"];
 				// Nombre de pas depuis le début de la session
-				$step       = $mesure["sensor"]["Mesure"]["Step"];
+				$Step       = $mesure["sensor"]["Mesure"]["param"][0]["Step"];
 				// Nombre de sprint depuis le début de la session
-				$sprint     = $mesure["sensor"]["Mesure"]["Sprint"];
+				$Sprint     = $mesure["sensor"]["Mesure"]["param"][0]["Sprint"];
 				// Ratio mouvement/immobilité
-				$mobility   = $mesure["sensor"]["Mesure"]["Mobility"];
+				$Mobility   = $mesure["sensor"]["Mesure"]["param"][0]["Mobility"];
 				// Nombre de tir depuis le début de la session
-				$shoot      = $mesure["sensor"]["Mesure"]["Shoot"];
+				$Shoot      = $mesure["sensor"]["Mesure"]["param"][0]["Shoot"];
 				// Nombre de passes depuis le début de la session
-				$pass       = $mesure["sensor"]["Mesure"]["Pass"];
+				$Pass       = $mesure["sensor"]["Mesure"]["param"][0]["Pass"];
 				//Nombre de contrôles depuis le début de la session
-				$control    = $mesure["sensor"]["Mesure"]["Control"];
+				$Control    = $mesure["sensor"]["Mesure"]["param"][0]["Control"];
+
+				// Pour la courbe
+				$minutes = ($date_heure - $start) / 60;
+
+				$vitesses_moyennes["$minutes"] = $Average;
 			}
 		    elseif (isset($mesure["sensor"]["Check"]))
 		    {
@@ -238,14 +259,36 @@ class StatistiquesController extends Controller {
 		    }
 			else
 			    dd(["Message capteur inconnu:",$m]);
+			$end = $date_heure;
 		}
 
+		$minutes = ($end - $start) / 60;
+
+		$heures = floor($minutes / 60);
+		$minutes = $minutes % 60;
+		if ($minutes < 10)
+			$duree = "$heures:0$minutes";
+		else
+			$duree = "$heures:$minutes";
+
+		//dd([$end, $start,$end - $start,  $duree]);
+		$vitesses="";
+		//dd($vitesses_moyennes);
+		//$n = count($vitesses_moyennes);
+		foreach ($vitesses_moyennes as $m => $v)
+		{
+			$vitesses .= "{ x:$m, y:$v },";
+		}
+		$vitesses = rtrim($vitesses, ",");
+
+		//dd([$vitesses_moyennes,$vitesses]);
 		return
 		[
-			'distance'          => $distance ,
-			'duree'             => '01:34' ,
+			'Dist'              => $Dist ,
+			'duree'             => $duree ,
 			'ballons_joues'     => $ballons_joues ,
-			'vitesse_maximale'  => $max
+			'vitesse_maximale'  => $Max,
+			'vitesses'          => $vitesses
 		];
 	}
 
@@ -354,13 +397,10 @@ class StatistiquesController extends Controller {
 			$data['pagination'] = $pagination;
 			return view('statistiques.public.index',$data);			
 		}
-
-
 	}
 
 	function postSavepublic( Request $request)
 	{
-		
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
@@ -375,8 +415,5 @@ class StatistiquesController extends Controller {
 		}	
 	
 	}	
-
-
-
 
 }
