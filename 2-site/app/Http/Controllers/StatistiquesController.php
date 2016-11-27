@@ -4,9 +4,9 @@ use App\Http\Controllers\controller;
 use App\Models\Statistiques;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect ; 
+use Validator, Input, Redirect ;
 
-
+use Illuminate\Support\Facades\DB;
 class StatistiquesController extends Controller {
 
 	protected $layout = "layouts.main";
@@ -36,10 +36,7 @@ class StatistiquesController extends Controller {
 
 		$lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
 		\App::setLocale($lang);
-		}  
-
-
-		
+		}
 	}
 
 	public function getIndex( Request $request )
@@ -99,8 +96,6 @@ class StatistiquesController extends Controller {
 		return view('statistiques.index',$this->data);
 	}	
 
-
-
 	function getUpdate(Request $request, $id = null)
 	{
 	
@@ -127,8 +122,9 @@ class StatistiquesController extends Controller {
 		
 		$this->data['id'] = $id;
 		return view('statistiques.form',$this->data);
-	}	
+	}
 
+	// Appellé par visualisation statistique (Loupe verte sur ligne)
 	public function getShow( Request $request, $id = null)
 	{
 
@@ -143,15 +139,11 @@ class StatistiquesController extends Controller {
 			$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['grid']);
 			$this->data['id'] = $id;
 			// Elabore les statistique concernant un joueur à partir des mesures recues
-			// $this->data['statistiques'] = statistiques_partie_joueur($row->joueur_id,
-			//                                                         $row->date)
-			// Pour tests seulement ++++
-			$this->data['statistiques'] = [
-				'distance'          => '4.84' ,
-				'duree'             => '01:34' ,
-				'ballons_joues'     => '64' ,
-				'vitesse_maximale'  => '24'
-			];
+			// ++++ Pour les tests: toutes les mesures ++++
+			$this->data['statistiques']
+			=
+			$this->statistiques_partie_joueur($this->data['row']->joueur_id,
+									          $this->data['row']->date);
 			$this->data['access']		= $this->access;
 			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 			$this->data['prevnext'] = $this->model->prevNext($id);
@@ -161,6 +153,101 @@ class StatistiquesController extends Controller {
 			return Redirect::to('statistiques')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
 		}
 	}	
+
+	//bb
+	// Elabore les statistiques pour un joueur dans une partie.
+	/*
+		{
+			"sensor":
+			{
+				"EventShoot":
+				{
+					"param": [
+					{
+						"UID": "111111",
+						"id": "1",
+						"speed": "11"
+					}
+					]
+				}
+			}
+		}
+	*/
+
+	function statistiques_partie_joueur($joueur_id, $date)
+	{
+		//dd($date);
+		// ++++ Lis toutes les mesure et les affecte au joueur ++++
+		$mesures = DB::table('fb_mesures')->orderBy('Horodatage', 'asc')
+										  ->get();
+		$distance = 0;
+		$ballons_joues = 0;
+		// Calculées à partir des vitesses moyennes
+		// ++++ Hypothèse
+		$vitesse_moyenne = [];
+		foreach ($mesures as $m)
+		{
+			//dd($m);
+			$date_heure = $m->Horodatage;
+			$mesure = json_decode($m->message_json, $to_array=true);
+			//dd($mesure);
+		    if (isset($mesure["sensor"]["Start"]))
+				$start = $date_heure;
+			elseif (isset($mesure["sensor"]["EventShoot"]))
+			{
+				$ballons_joues++;
+			}
+		    elseif (isset($mesure["sensor"]["EventPass"]))
+		    {
+			    $ballons_joues++;
+		    }
+		    elseif (isset($mesure["sensor"]["EventControl"]))
+		    {
+			    $ballons_joues++;
+		    }
+			elseif (isset($mesure["sensor"]["Mesure"]))
+			{
+				// Mémorise les dernières valeurs reçues qui seront affichée
+				// Distance totale parcourue en mètres
+				$distance   = $mesure["sensor"]["Mesure"]["Dist"];
+				// Vitesse moyenne en km/h
+				$average    = $mesure["sensor"]["Mesure"][""];
+				$vitesse_moyenne[$date_heure] = $average;
+				// Vitesse maximum en km/h
+				$max = $mesure["sensor"]["Mesure"]["Max"];
+				// Nombre de pas depuis le début de la session
+				$step       = $mesure["sensor"]["Mesure"]["Step"];
+				// Nombre de sprint depuis le début de la session
+				$sprint     = $mesure["sensor"]["Mesure"]["Sprint"];
+				// Ratio mouvement/immobilité
+				$mobility   = $mesure["sensor"]["Mesure"]["Mobility"];
+				// Nombre de tir depuis le début de la session
+				$shoot      = $mesure["sensor"]["Mesure"]["Shoot"];
+				// Nombre de passes depuis le début de la session
+				$pass       = $mesure["sensor"]["Mesure"]["Pass"];
+				//Nombre de contrôles depuis le début de la session
+				$control    = $mesure["sensor"]["Mesure"]["Control"];
+			}
+		    elseif (isset($mesure["sensor"]["Check"]))
+		    {
+			    null;
+		    }
+		    elseif (isset($mesure["sensor"]["Battery"]))
+		    {
+			    null;
+		    }
+			else
+			    dd(["Message capteur inconnu:",$m]);
+		}
+
+		return
+		[
+			'distance'          => $distance ,
+			'duree'             => '01:34' ,
+			'ballons_joues'     => $ballons_joues ,
+			'vitesse_maximale'  => $max
+		];
+	}
 
 	function postSave( Request $request)
 	{
