@@ -19,17 +19,61 @@
     <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
     <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 
+    <!-- validation library http://parsleyjs.org/ -->
+    <link rel="stylesheet" href="plugins/parsley/parsley.css" type="text/css" media="screen, projection">
+    <script src="plugins/parsley/parsley.min.js"></script>
+
+    <!-- Time picker -->
+    <link rel='stylesheet' type='text/css' href='../TimePicki-master/css/timepicki.css'/>
+    <script type='text/javascript'
+            src='../TimePicki-master/js/timepicki.js'>
+    </script>
+
+
     <script>
         $(document).ready(function () {
-            $("#inscription").stepFormWizard({
-                transition: '3d-cube',
-                duration: 1000,
-                height: '400'
-                //theme: 'circle'
-            });
-        });
+                sfw = $("#inscription").stepFormWizard({
+                    transition: 'fade',
+                    //duration: 1000,
+                    height: '550',
+                    nextBtn: $('<a class="next-btn sf-right sf-btn" href="#">Suivant</a>'),
+                    prevBtn: $('<a class="prev-btn sf-left sf-btn" href="#">Précédent</a>'),
+                    finishBtn: $('<a class="finish-btn sf-right sf-btn" href="#">Terminer</a>'),
+                    showNav: 'left',
+                    //theme: 'sun'
+                    //onNext: function (i) {
+                    //    var valid = $("#inscription").parsley().validate('block' + i);
+                    //    sfw.refresh();
+                    //    return valid;
+                    //},
+                    //onFinish: function (i) {
+                    //    var valid = $("#inscription").parsley().validate();
+                    //    // if use height: 'auto' call refresh metod after validation, because parsley can change content
+                    //    sfw.refresh();
+                    //    return valid;
+                    //}
+                });
+
+                // Calcule l'heure courante
+                var date = new Date();
+                var heure_debut = date.getHours();
+
+                $('#heure').timepicki(
+                    {
+                        start_time: [heure_debut, "00", ""],
+                        show_meridian: false,
+                        min_hour_value: 0,
+                        max_hour_value: 23,
+                        step_size_minutes: 30,
+                        overflow_minutes: true,
+                        increase_direction: 'down',
+                        disable_keyboard_mobile: true
+                    }
+                );
+            }
+        );
         $(window).load(function () {
-            /* only if you want use mcustom scrollbar */
+            /* Use mcustom scrollbar */
             $(".sf-step").mCustomScrollbar({
                 theme: "dark-3",
                 scrollButtons: {
@@ -37,6 +81,7 @@
                 }
             });
         });
+
     </script>
 
     <style>
@@ -63,49 +108,107 @@
                     <h3>Accueil des joueurs et remise des capteurs</h3>
                     <form id="inscription" action="">
                         <fieldset>
-                            <legend>Nouveau Joueur</legend>
+                            <legend>Joueur</legend>
+                            <label style="color:blue;">Créer un nouveau joueur</label>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="nom">Prénom</label>
-                                        <input type="text" class="form-control" id="prenom"
-                                               name="prenom" placeholder="Votre prénom">
+                                        <input type="radio" name="genre" value="F"> Femme &nbsp;
+                                        <input type="radio" name="genre" value="H" checked> Homme<br>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nom">Nom</label>
-                                        <input type="text" class="form-control" id="nom"
-                                               name="nom" placeholder="Votre nom">
+                                        <label for="prenom">Prénom *</label>
+                                        <input style="font-size: 20px"
+                                               type="text"
+                                               class="form-control"
+                                               id="prenom"
+                                               name="prenom"
+                                               placeholder="Votre prénom"
+                                               required
+                                               data-parsley-group="block0">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email">Adresse Email </label>
-                                        <input type="email" class="form-control" id="email"
-                                               name="email" placeholder="Votre email">
+                                        <label for="nom">Nom *</label>
+                                        <input style="font-size: 20px"
+                                               type="text"
+                                               class="form-control"
+                                               id="nom"
+                                               name="nom"
+                                               placeholder="Votre nom"
+                                               required
+                                               data-parsley-group="block0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Adresse Email *</label>
+                                        <input style="font-size: 20px"
+                                               type="email"
+                                               class="form-control"
+                                               id="email"
+                                               name="email"
+                                               placeholder="Votre email"
+                                               required
+                                               data-parsley-group="block0"
+                                        >
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input
+                                                type="radio"
+                                               name="lateralisation"
+                                               value="G">
+                                        Gaucher &nbsp;
+                                        <input type="radio"
+                                               name="lateralisation"
+                                               value="F"
+                                               checked>
+                                        Droitier
+                                    </div>
 
                                     <div class="form-group">
-                                        <label for="mdp1">Mot de Passe</label>
-                                        <input type="password" class="form-control" id="mdp1"
-                                               name="mdp1" placeholder="Votre mot de Passe">
+                                        <label for="telephone">Téléphone</label>
+                                        <input style="font-size: 20px"
+                                               type="text"
+                                               class="form-control"
+                                               id="telephone"
+                                               name="telephone"
+                                               placeholder="Votre N° de téléphone">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mdp1">Mot de Passe *</label>
+                                        <input type="password"
+                                               class="form-control"
+                                               id="mdp1"
+                                               name="mdp1"
+                                               placeholder="Votre mot de Passe"
+                                               required
+                                               data-parsley-group="block0"
+                                               data-parsley-equalto="#mdp2">
                                     </div>
                                     <div class="form-group">
-                                        <label for="mdp2">Mot de Passe pour vérification</label>
-                                        <input type="password" class="form-control" id="mdp2"
-                                               name="mdp2" placeholder="Encore votre mot de Passe">
+                                        <label for="mdp2">Mot de Passe pour vérification *</label>
+                                        <input type="password" class="form-control"
+                                               id="mdp2"
+                                               name="mdp2"
+                                               placeholder="Saisissez à nouveau votre mot de Passe"
+                                               required
+                                               data-parsley-group="block0"
+                                               data-parsley-equalto="#mdp1">
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Joueur Inscrit</legend>
                             <div class="row">
                                 <div class="col-lg-6">
+                                    <hr>
                                     <div class="form-group">
-                                        <label for="joueur">Joueur</label>
-                                        <select class="form-control" name="joueur">
+                                        <label style="color:blue;" for="joueur">Ou Sélectionner le joueur inscrit</label>
+                                        <select style="font-size: 30px;  height:50px;"
+                                                class="form-control"
+                                                name="joueur"
+                                                id="joueur">
                                             <option value="1">Jean DUPONT</option>
                                             <option value="2">Mohamed Hasnaoui</option>
                                         </select>
@@ -116,26 +219,48 @@
                         <fieldset>
                             <legend>Partie</legend>
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="terrain">Terrain</label>
-                                        <select class="form-control" name="terrain">
+                                        <select class="form-control"
+                                                name="terrain"
+                                                id="terrain"
+                                                style="font-size: 30px;  height:50px;">
                                             <option value="1">Platinium</option>
                                             <option value="2">Gold</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label for='heure'>Heure de début du match</label>
+                                        <input class="form-control"
+                                               id='heure'
+                                               type='text'
+                                               name='heure'
+                                               style="font-size: 40px; width:130px; height:50px;"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for='duree'>Durée du match</label>
+                                        <input  class="form-control"
+                                                id='duree'
+                                                type='text'
+                                                name='duree'
+                                                style="font-size: 40px; width:130px; height:50px;"
+                                        />
+                                    </div>
+
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
-                            <legend>Remise capteur</legend>
+                            <legend>Capteur</legend>
                             <div class="row">
                                 <div class="col-lg-12">
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
-                            <legend>Validation</legend>
+                            <legend>Go!</legend>
                             <div class="row">
                                 <div class="col-lg-12">
                                 </div>
