@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Step From Wizard - 01 - basic</title>
+
+    <script src="plugins/jquery-2.1.4.min.js"></script>
+
+    <!-- bootstrap for better look example, but not necessary -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+
+    <!-- Step Form Wizard plugin -->
+    <link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+    <script src="step-form-wizard/js/step-form-wizard.js"></script>
+
+    <!-- nicer scroll in steps -->
+    <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#inscription").stepFormWizard({
+                transition: '3d-cube',
+                duration: 1000,
+                height: '400'
+                //theme: 'circle'
+            });
+        });
+        $(window).load(function () {
+            /* only if you want use mcustom scrollbar */
+            $(".sf-step").mCustomScrollbar({
+                theme: "dark-3",
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        });
+    </script>
+
+    <style>
+        pre {
+            margin: 45px 0 60px;
+        }
+
+        h1 {
+            margin: 60px 0 60px 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="site-index">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Bubble Soccer Arena</h2>
+                    <h3>Accueil des joueurs et remise des capteurs</h3>
+                    <form id="inscription" action="">
+                        <fieldset>
+                            <legend>Nouveau Joueur</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="nom">Prénom</label>
+                                        <input type="text" class="form-control" id="prenom"
+                                               name="prenom" placeholder="Votre prénom">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nom">Nom</label>
+                                        <input type="text" class="form-control" id="nom"
+                                               name="nom" placeholder="Votre nom">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Adresse Email </label>
+                                        <input type="email" class="form-control" id="email"
+                                               name="email" placeholder="Votre email">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="mdp1">Mot de Passe</label>
+                                        <input type="password" class="form-control" id="mdp1"
+                                               name="mdp1" placeholder="Votre mot de Passe">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mdp2">Mot de Passe pour vérification</label>
+                                        <input type="password" class="form-control" id="mdp2"
+                                               name="mdp2" placeholder="Encore votre mot de Passe">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Joueur Inscrit</legend>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="joueur">Joueur</label>
+                                        <select class="form-control" name="joueur">
+                                            <option value="1">Jean DUPONT</option>
+                                            <option value="2">Mohamed Hasnaoui</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Partie</legend>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="terrain">Terrain</label>
+                                        <select class="form-control" name="terrain">
+                                            <option value="1">Platinium</option>
+                                            <option value="2">Gold</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Remise capteur</legend>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Validation</legend>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <p class="pull-left"><br>© MS-Football 2016</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
