@@ -20,9 +20,14 @@
     <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <!-- validation library http://parsleyjs.org/ -->
-    <link rel="stylesheet" href="plugins/parsley/parsley.css" type="text/css" media="screen, projection">
-    <!--script src="plugins/parsley/i18n/fr.js"></script -->
+    <link rel="stylesheet"
+          href="plugins/parsley/parsley.css"
+          type="text/css"
+          media="screen, projection">
     <script src="plugins/parsley/parsley.min.js"></script>
+    <!-- French translation of messages -->
+    <script src="plugins/parsley/i18n/fr.js"></script>
+
     <!-- Time picker -->
     <link rel='stylesheet' type='text/css' href='../TimePicki-master/css/timepicki.css'/>
     <script type='text/javascript'
@@ -32,93 +37,65 @@
 
     <script>
         // Initialisation après chargement de la page
-        $(document).ready(function () {
+        $(document).ready(function ()
+            {
+                // En français
+                Parsley.setLocale('fr');
+
                 sfw = $("#inscription").stepFormWizard({
-                    transition: 'fade',
-                    //duration: 1000,
-                    height: 'auto',
-                    nextBtn: $('<a class="next-btn sf-right sf-btn" href="#">Suivant</a>'),
-                    prevBtn: $('<a class="prev-btn sf-left sf-btn" href="#">Précédent</a>'),
-                    finishBtn: $('<a class="finish-btn sf-right sf-btn" href="#">Terminer</a>'),
-                    showNav: 'left',
-                    theme: 'sun',
-                    onNext: function (from, data) {
-                        if (next_loading) { // test if ajax is executing
-                            return false;
-                        }
-                        if (data !== undefined && data.done) { // if ajax is done, than data.done is set to true
-                            return true;
-                        }
-                        sfw.addSpinner('next'); // add spinner to next button
-                        next_loading = true; // to prevent stack of ajax requests if user hasn't patience
-                        $.get
-                        (
-                            'https://www.googleapis.com/books/v1/volumes?q=' + $('#book').val(),
-                            function (data) {
-                                $('#books').html('');
-                                $.each(data.items, function (index, value) {
-                                    $('#books').append(value.volumeInfo.title + '<br/>')
-                                })
-                                // Remove spinner
-                                sfw.addSpinner('next', false);
-                                // Allow next step
-                                next_loading = false;
-                                // Go to next step, additional data will be in next callback
-                                sfw.next(false, {done: true})
+                        transition: 'fade',
+                        //duration: 1000,
+                        height: '580',
+                        nextBtn: $('<a class="next-btn sf-right sf-btn" href="#">Suivant</a>'),
+                        prevBtn: $('<a class="prev-btn sf-left sf-btn" href="#">Précédent</a>'),
+                        finishBtn: $('<a class="finish-btn sf-right sf-btn" href="#">Terminer</a>'),
+                        showNav: 'left',
+                        theme: 'sun',
+                        // Bouton suivant pour tous les panneaux.
+                        // i = N° du panneau qui demande de passer au suivant.
+                        onNext: function (i) {
+                            var valid = true;
+                            // Joueur sélectionné.
+                            if ($('#joueur').val() == 0) {
+                                // Valider le panneau courant seulement si le joueur n'est pas sélectionné.
+                                valid = $("#inscription").parsley().validate('block' + i);
                             }
-                        );
-                        return false;
-                    },
-                // Bouton suivant pour tous les panneaux.
-                // i = N° du panneau qui demande de passer au suivant.
-                onNext: function (i) {
-                    // Joueur sélectionné.
-                    if ($('#joueur').val() == 0)
-                    {
-                        // Valider le panneau courant seulement si le joueur n'est pas sélectionné.
-                        var valid = $("#inscription").parsley().validate('block' + i);
-                        if (!valid)
-                        {
-                            $(".invalid-form-error-message")
-                                .html('<h4 style="color:Orange;">Veuillez Sélectionner un joueur incrit ou créér un nouveau joueur.</h4>')
-                        }
+
+                            // La validation peut changer l'affichage en ajoutant des messages d'erreur.
+                            // Ré afficher le panneau pour prendre en compte.
+                            sfw.refresh();
+                            return valid;
+                        },
+                        // Validation particulière au bouton de fin sur le dernier panneau.
+                        onFinish: function (i) {
+                            // Validation globale: pas pour un panneau particulier
+                            var valid = $("#inscription").parsley().validate();
+                            // If use height: 'auto' call refresh metod after validation,
+                            // because parsley can change content.
+                            sfw.refresh();
+                            return valid;
+                        },
 
                     }
-                    // La validation peut changer l'affichage en ajoutant des messages d'erreur.
-                    // Ré afficher le panneau pour prendre en compte.
-                    sfw.refresh();
-                    return valid;
-                },
-                // Validation particulière au bouton de fin sur le dernier panneau.
-                onFinish: function (i) {
-                    // Validation globale: pas pour un panneau particulier
-                    var valid = $("#inscription").parsley().validate();
-                    // If use height: 'auto' call refresh metod after validation,
-                    // because parsley can change content.
-                    sfw.refresh();
-                    return valid;
-                },
+                );
 
+                // Calcule l'heure courante
+                var date = new Date();
+                var heure_debut = date.getHours();
+
+                $('#heure').timepicki(
+                    {
+                        start_time: [heure_debut, "00", ""],
+                        show_meridian: false,
+                        min_hour_value: 0,
+                        max_hour_value: 23,
+                        step_size_minutes: 30,
+                        overflow_minutes: true,
+                        increase_direction: 'down',
+                        disable_keyboard_mobile: true
+                    }
+                );
             }
-        );
-
-        // Calcule l'heure courante
-        var date = new Date();
-        var heure_debut = date.getHours();
-
-        $('#heure').timepicki(
-            {
-                start_time: [heure_debut, "00", ""],
-                show_meridian: false,
-                min_hour_value: 0,
-                max_hour_value: 23,
-                step_size_minutes: 30,
-                overflow_minutes: true,
-                increase_direction: 'down',
-                disable_keyboard_mobile: true
-            }
-        );
-        }
         )
         ;
         $(window).load(function () {
@@ -217,6 +194,10 @@
                                                placeholder="Votre email"
                                                required
                                                data-parsley-group="block0"
+                                               data-parsley-trigger="change"
+                                               data-parsley-remote-options='{ "type": "POST", "dataType": "jsonp" }'
+                                               data-parsley-remote="email_is_unique.php"
+                                               data-parsley-remote-message="eMail utilisé par un joueur inscrit"
                                         >
                                     </div>
                                 </div>
