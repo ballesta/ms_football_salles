@@ -21,8 +21,8 @@
 
     <!-- validation library http://parsleyjs.org/ -->
     <link rel="stylesheet" href="plugins/parsley/parsley.css" type="text/css" media="screen, projection">
+    <!--script src="plugins/parsley/i18n/fr.js"></script -->
     <script src="plugins/parsley/parsley.min.js"></script>
-
     <!-- Time picker -->
     <link rel='stylesheet' type='text/css' href='../TimePicki-master/css/timepicki.css'/>
     <script type='text/javascript'
@@ -31,47 +31,96 @@
 
 
     <script>
+        // Initialisation après chargement de la page
         $(document).ready(function () {
                 sfw = $("#inscription").stepFormWizard({
                     transition: 'fade',
                     //duration: 1000,
-                    height: '550',
+                    height: 'auto',
                     nextBtn: $('<a class="next-btn sf-right sf-btn" href="#">Suivant</a>'),
                     prevBtn: $('<a class="prev-btn sf-left sf-btn" href="#">Précédent</a>'),
                     finishBtn: $('<a class="finish-btn sf-right sf-btn" href="#">Terminer</a>'),
                     showNav: 'left',
-                    //theme: 'sun'
-                    //onNext: function (i) {
-                    //    var valid = $("#inscription").parsley().validate('block' + i);
-                    //    sfw.refresh();
-                    //    return valid;
-                    //},
-                    //onFinish: function (i) {
-                    //    var valid = $("#inscription").parsley().validate();
-                    //    // if use height: 'auto' call refresh metod after validation, because parsley can change content
-                    //    sfw.refresh();
-                    //    return valid;
-                    //}
-                });
-
-                // Calcule l'heure courante
-                var date = new Date();
-                var heure_debut = date.getHours();
-
-                $('#heure').timepicki(
+                    theme: 'sun',
+                    onNext: function (from, data) {
+                        if (next_loading) { // test if ajax is executing
+                            return false;
+                        }
+                        if (data !== undefined && data.done) { // if ajax is done, than data.done is set to true
+                            return true;
+                        }
+                        sfw.addSpinner('next'); // add spinner to next button
+                        next_loading = true; // to prevent stack of ajax requests if user hasn't patience
+                        $.get
+                        (
+                            'https://www.googleapis.com/books/v1/volumes?q=' + $('#book').val(),
+                            function (data) {
+                                $('#books').html('');
+                                $.each(data.items, function (index, value) {
+                                    $('#books').append(value.volumeInfo.title + '<br/>')
+                                })
+                                // Remove spinner
+                                sfw.addSpinner('next', false);
+                                // Allow next step
+                                next_loading = false;
+                                // Go to next step, additional data will be in next callback
+                                sfw.next(false, {done: true})
+                            }
+                        );
+                        return false;
+                    },
+                // Bouton suivant pour tous les panneaux.
+                // i = N° du panneau qui demande de passer au suivant.
+                onNext: function (i) {
+                    // Joueur sélectionné.
+                    if ($('#joueur').val() == 0)
                     {
-                        start_time: [heure_debut, "00", ""],
-                        show_meridian: false,
-                        min_hour_value: 0,
-                        max_hour_value: 23,
-                        step_size_minutes: 30,
-                        overflow_minutes: true,
-                        increase_direction: 'down',
-                        disable_keyboard_mobile: true
+                        // Valider le panneau courant seulement si le joueur n'est pas sélectionné.
+                        var valid = $("#inscription").parsley().validate('block' + i);
+                        if (!valid)
+                        {
+                            $(".invalid-form-error-message")
+                                .html('<h4 style="color:Orange;">Veuillez Sélectionner un joueur incrit ou créér un nouveau joueur.</h4>')
+                        }
+
                     }
-                );
+                    // La validation peut changer l'affichage en ajoutant des messages d'erreur.
+                    // Ré afficher le panneau pour prendre en compte.
+                    sfw.refresh();
+                    return valid;
+                },
+                // Validation particulière au bouton de fin sur le dernier panneau.
+                onFinish: function (i) {
+                    // Validation globale: pas pour un panneau particulier
+                    var valid = $("#inscription").parsley().validate();
+                    // If use height: 'auto' call refresh metod after validation,
+                    // because parsley can change content.
+                    sfw.refresh();
+                    return valid;
+                },
+
             }
         );
+
+        // Calcule l'heure courante
+        var date = new Date();
+        var heure_debut = date.getHours();
+
+        $('#heure').timepicki(
+            {
+                start_time: [heure_debut, "00", ""],
+                show_meridian: false,
+                min_hour_value: 0,
+                max_hour_value: 23,
+                step_size_minutes: 30,
+                overflow_minutes: true,
+                increase_direction: 'down',
+                disable_keyboard_mobile: true
+            }
+        );
+        }
+        )
+        ;
         $(window).load(function () {
             /* Use mcustom scrollbar */
             $(".sf-step").mCustomScrollbar({
@@ -104,14 +153,33 @@
         <div class="body-content">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Bubble Soccer Arena</h2>
-                    <h3>Accueil des joueurs et remise des capteurs</h3>
+                    <center>
+                        <h2>Bubble Soccer Arena</h2>
+                        <h3>Accueil des joueurs et remise des capteurs</h3>
+                    </center>
                     <form id="inscription" action="">
                         <fieldset>
                             <legend>Joueur</legend>
-                            <label style="color:blue;">Créer un nouveau joueur</label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color:blue;" for="joueur">Sélectionner le joueur inscrit</label>
+                                        <select style="font-size: 25px;  height:40px;"
+                                                class="form-control"
+                                                name="joueur"
+                                                id="joueur">
+                                            <option selected value="0">
+                                                Sélectionnez le joueur
+                                            </option>
+                                            <option value="1">Jean DUPONT</option>
+                                            <option value="2">Mohamed Hasnaoui</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
+                                    <label style="color:blue;">Ou créer un nouveau joueur</label>
                                     <div class="form-group">
                                         <input type="radio" name="genre" value="F"> Femme &nbsp;
                                         <input type="radio" name="genre" value="H" checked> Homme<br>
@@ -157,8 +225,8 @@
                                     <div class="form-group">
                                         <input
                                                 type="radio"
-                                               name="lateralisation"
-                                               value="G">
+                                                name="lateralisation"
+                                                value="G">
                                         Gaucher &nbsp;
                                         <input type="radio"
                                                name="lateralisation"
@@ -200,21 +268,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <hr>
-                                    <div class="form-group">
-                                        <label style="color:blue;" for="joueur">Ou Sélectionner le joueur inscrit</label>
-                                        <select style="font-size: 30px;  height:50px;"
-                                                class="form-control"
-                                                name="joueur"
-                                                id="joueur">
-                                            <option value="1">Jean DUPONT</option>
-                                            <option value="2">Mohamed Hasnaoui</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="invalid-form-error-message"></div>
                         </fieldset>
                         <fieldset>
                             <legend>Partie</legend>
@@ -241,11 +295,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for='duree'>Durée du match</label>
-                                        <input  class="form-control"
-                                                id='duree'
-                                                type='text'
-                                                name='duree'
-                                                style="font-size: 40px; width:130px; height:50px;"
+                                        <input class="form-control"
+                                               id='duree'
+                                               type='text'
+                                               name='duree'
+                                               style="font-size: 40px; width:130px; height:50px;"
                                         />
                                     </div>
 
@@ -266,6 +320,7 @@
                                 </div>
                             </div>
                         </fieldset>
+
                     </form>
                 </div>
             </div>
