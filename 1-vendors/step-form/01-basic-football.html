@@ -50,7 +50,7 @@
                         prevBtn: $('<a class="prev-btn sf-left sf-btn" href="#">Précédent</a>'),
                         finishBtn: $('<a class="finish-btn sf-right sf-btn" href="#">Terminer</a>'),
                         showNav: 'left',
-                        theme: 'sun',
+                        //theme: 'sun',
                         // Bouton suivant pour tous les panneaux.
                         // i = N° du panneau qui demande de passer au suivant.
                         onNext: function (i) {
@@ -69,8 +69,13 @@
                         // Validation particulière au bouton de fin sur le dernier panneau.
                         onFinish: function (i) {
                             // Validation globale: pas pour un panneau particulier
-                            var valid = $("#inscription").parsley().validate();
-                            // If use height: 'auto' call refresh metod after validation,
+                            var valid = true;
+                            // Joueur sélectionné.
+                            if ($('#joueur').val() == 0) {
+                                // Valider tous les panneaux courant seulement si le joueur n'est pas sélectionné.
+                                valid = $("#inscription").parsley().validate();
+                            }
+                            // If use height: 'auto' call refresh method after validation,
                             // because parsley can change content.
                             sfw.refresh();
                             return valid;
@@ -83,18 +88,18 @@
                 var date = new Date();
                 var heure_debut = date.getHours();
 
-                $('#heure').timepicki(
-                    {
-                        start_time: [heure_debut, "00", ""],
-                        show_meridian: false,
-                        min_hour_value: 0,
-                        max_hour_value: 23,
-                        step_size_minutes: 30,
-                        overflow_minutes: true,
-                        increase_direction: 'down',
-                        disable_keyboard_mobile: true
-                    }
-                );
+//                $('#heure').timepicki(
+//                    {
+//                        start_time: [heure_debut, "00", ""],
+//                        show_meridian: false,
+//                        min_hour_value: 0,
+//                        max_hour_value: 23,
+//                        step_size_minutes: 30,
+//                        overflow_minutes: true,
+//                        increase_direction: 'down',
+//                        disable_keyboard_mobile: true
+//                    }
+//                );
             }
         )
         ;
@@ -134,7 +139,9 @@
                         <h2>Bubble Soccer Arena</h2>
                         <h3>Accueil des joueurs et remise des capteurs</h3>
                     </center>
-                    <form id="inscription" action="">
+                    <form id="inscription"
+                          action="inscription.php"
+                          method="post">
                         <fieldset>
                             <legend>Joueur</legend>
                             <div class="row">
@@ -270,20 +277,34 @@
                                         <input class="form-control"
                                                id='heure'
                                                type='text'
-                                               name='heure'
+                                               name='heure-debut'
                                                style="font-size: 40px; width:130px; height:50px;"
                                         />
+
                                     </div>
                                     <div class="form-group">
                                         <label for='duree'>Durée du match</label>
-                                        <input class="form-control"
-                                               id='duree'
-                                               type='text'
-                                               name='duree'
-                                               style="font-size: 40px; width:130px; height:50px;"
-                                        />
                                     </div>
-
+                                    <div class="form-group">
+                                        <input
+                                                type="radio"
+                                                style="width:20px; height:20px;"
+                                                name="duree"
+                                                value="30">
+                                        <span style="font-size: 20px; width:120px; height:20px;">00:30 &nbsp;</span>
+                                        <input type="radio"
+                                               style=" width:20px; height:20px;"
+                                               name="duree"
+                                               value="60"
+                                               checked>
+                                        <span style="font-size: 25px; width:120px; height:20px;">01:00 &nbsp;</span>
+                                        <input type="radio"
+                                               style="width:20px; height:20px;"
+                                               name="duree"
+                                               value="60"
+                                               >
+                                        <span style="font-size: 30px; width:120px; height:20px;">01:30&nbsp;</span>
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>
@@ -294,13 +315,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>
-                            <legend>Go!</legend>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                </div>
-                            </div>
-                        </fieldset>
+
 
                     </form>
                 </div>
