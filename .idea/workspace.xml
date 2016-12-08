@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/public/assets/step-form/step-form-wizard/css/step-form-wizard-all.css" afterPath="$PROJECT_DIR$/2-site/public/assets/step-form/step-form-wizard/css/step-form-wizard-all.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/inscription.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/inscription.blade.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -688,7 +686,7 @@
       <workItem from="1480873848323" duration="2182000" />
       <workItem from="1480939891336" duration="2510000" />
       <workItem from="1481212772036" duration="635000" />
-      <workItem from="1481213834533" duration="21533000" />
+      <workItem from="1481213834533" duration="21551000" />
     </task>
     <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
       <created>1476465407612</created>
@@ -991,11 +989,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481232760342</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Inscription prototype en cours d'intégration">
+      <created>1481239198690</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1481239198690</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="402108000" />
+    <option name="totallyTimeSpent" value="402126000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
