@@ -51,14 +51,17 @@ clearfix:before,
   transition: height 1s; }
 
 .sf-viewport .sf-step-name {
-  font-size: 20px;
-  padding: 15px 0px;
+  display: none;
+  font-size: 0px;
+  padding: 0px 0px;
   font-weight: bold;
   background: none;
   margin: 0;
   width: 100%;
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 15px; }
+  border-bottom: 0px solid #e5e5e5;
+  margin-bottom: 0px;
+
+}
 
 .sf-btn.sf-btn-finish {
   margin: 0 0 0 15px; }

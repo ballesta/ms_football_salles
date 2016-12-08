@@ -1,4 +1,3 @@
-
 <div class="col-md-12">
     <form id="inscription"
           action="inscription.php"
@@ -6,12 +5,12 @@
         <fieldset>
             <legend>Joueur</legend>
 
-            <!-- Onglets -->
+            <!-- Onglets pour joueur inscrit ou non -->
             <ul class="nav nav-pills">
                 <li class="active">
                     <a data-toggle="tab"
                        href="#tab_joueur_inscrit"
-                       style="font-size: 18px;"
+                       style="font-size: 16px;"
                     >
                         Joueur Inscrit
                     </a>
@@ -19,14 +18,14 @@
                 <li>
                     <a data-toggle="tab"
                        href="#tab_nouveau_joueur"
-                       style="font-size: 18px;">
+                       style="font-size: 16px;">
                         Nouveau joueur
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab"
                        href="#tab_aide"
-                       style="font-size: 18px;">
+                       style="font-size: 16px;">
                         Aide
                     </a>
                 </li>
@@ -36,39 +35,37 @@
             <div class="tab-content">
                 <div id="tab_joueur_inscrit"
                      class="tab-pane fade in active">
-                    <br>
-                    <p style="font-size: 18px;">
-                        Sélectionnez le joueur dans la liste déroulante
-                        ci-dessous. <br>
-                        Vous pouvez aussi rechercher
-                        le joueur en saisissant une partie de son
-                        nom.
-                    </p>
+
                     <br>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <select style="font-size: 18px;  "
-                                        class="form-control"
-                                        name="joueur"
-                                        id="joueur"
-                                        size="8">
-                                    <option selected value="0">
-                                        Sélectionnez le joueur
-                                    </option>
-                                    <option value="1">Jean DUPONT</option>
-                                    <option value="2">Mohamed Hasnaoui</option>
-                                </select>
-                            </div>
+                        <div class="col-md-12">
+                            <select name='joueur_id'
+                                    rows='8'
+                                    id='joueur_id'
+                                    class='select2 '
+                                    style="font-size: 18px;">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br>
+                            <p style="font-size: 14px;">
+                                Sélectionnez le joueur dans la liste déroulante
+                                ci-dessus. <br>
+                                Vous pouvez aussi rechercher
+                                le joueur en saisissant une partie de son
+                                nom.
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div id="tab_nouveau_joueur"
                      class="tab-pane fade ">
-                    <div class="col-xs-12" style="height:20px;"></div>
+                    <div class="col-md-12" style="height:20px;">
+                    </div>
                     <div class="row">
-                        <div class="col-md-10">
-
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <input type="radio"
                                        name="genre"
@@ -86,6 +83,10 @@
                                                 </span>
                                 <br>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="prenom">Prénom *</label>
                                 <input style="font-size: 20px"
@@ -97,7 +98,8 @@
                                        required
                                        data-parsley-group="block0">
                             </div>
-
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nom">Nom *</label>
                                 <input style="font-size: 20px"
@@ -109,6 +111,10 @@
                                        required
                                        data-parsley-group="block0">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">Adresse Email *</label>
                                 <input style="font-size: 20px"
@@ -126,7 +132,19 @@
                                 >
                             </div>
                         </div>
-
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="telephone">Téléphone</label>
+                                <input style="font-size: 20px"
+                                       type="text"
+                                       class="form-control"
+                                       id="telephone"
+                                       name="telephone"
+                                       placeholder="Votre N° de téléphone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
                                 <input
@@ -144,17 +162,10 @@
                                                 Droitier
                                                 </span>
                             </div>
-
-                            <div class="form-group">
-                                <label for="telephone">Téléphone</label>
-                                <input style="font-size: 20px"
-                                       type="text"
-                                       class="form-control"
-                                       id="telephone"
-                                       name="telephone"
-                                       placeholder="Votre N° de téléphone">
-                            </div>
-
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="mdp1">Mot de Passe *</label>
                                 <input type="password"
@@ -166,6 +177,9 @@
                                        data-parsley-group="block0"
                                        data-parsley-equalto="#mdp2">
                             </div>
+                        </div>
+                        <div class="col-md-6">
+
                             <div class="form-group">
                                 <label for="mdp2">Mot de Passe pour vérification *</label>
                                 <input type="password" class="form-control"
@@ -178,7 +192,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="invalid-form-error-message"></div>
+                    <div class="invalid-form-error-message">
+                    </div>
                 </div>
                 <div id="tab_aide"
                      class="tab-pane fade">
