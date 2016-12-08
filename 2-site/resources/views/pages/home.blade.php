@@ -1,6 +1,5 @@
 <div class="slider">
     <div class="container text-center" style="padding-top:140px;">
-
         <h1 data-wow-delay="0.4s"
             class="nomargin size-50 weight-300 wow fadeInUp animated"
             style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
@@ -10,9 +9,9 @@
                 Complexe Multisport en Ile de France
             </span>
         </h1>
-        <p data-wow-delay="1.1s"
+        <p data-wow-delay="2.1s"
            class="lead font-lato size-30 wow fadeInUp animated"
-           style="visibility: visible; animation-delay: 1.1s; animation-name: fadeInUp;">
+           style="visi<del></del>bility: visible; animation-delay: 1.1s; animation-name: fadeInUp;">
             5 VS 5 & 3 VS 3 - BUBBLE BUMP -  JORKYBALL</p>
         <span data-wow-delay="2.1s"
               class="label label-danger wow fadeInUp animated"

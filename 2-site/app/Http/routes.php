@@ -24,22 +24,19 @@
         \App::setLocale($lang);
     }
 
-	//Route::resource('statistiques', 'StatistiquesController');
+	Route::resource('statistiques', 'StatistiquesController');
 
 
 	Route::get('genere/mesures', 'GenereMesuresController@addMesures' );
 
 
     // Envoi de mesures pour lestests
-    //Route::resource('envoiMesures', 'SessionMesuresController');
-    //Route::get('envoiMesures', function () {
-    //    return 'Hello World';
-    //});
-
     Route::get('envoiMesures',"EnvoiMesuresController@index");
 
     // API de réception des messages de mesure des capteurs
     Route::resource('sessionMesures', 'SessionMesuresAPIController');
+
+	Route::controller('inscriptionJoueur', 'InscriptionJoueurController');
 
 
     Route::get('/', 'HomeController@index');
@@ -71,19 +68,16 @@
     });
 
 
-    Route::group(['middleware' => 'auth', 'middleware' => 'sximoauth'], function () {
-        Route::controllers(['sximo/menu' => 'Sximo\MenuController',
-                            'sximo/config' => 'Sximo\ConfigController',
-                            'sximo/module' => 'Sximo\ModuleController',
-                            'sximo/tables' => 'Sximo\TablesController',
-                            'sximo/code' => 'Sximo\CodeController']);
-
-    });
-
-
-
-
-
-
-
-
+    Route::group(['middleware' => 'auth',
+                  'middleware' => 'sximoauth'],
+				  function ()
+				  {
+				      Route::controllers(
+					    [
+					        'sximo/menu' => Sximo\MenuController',
+				            'sximo/config' => 'Sximo\ConfigController',
+				            'sximo/module' => Sximo\ModuleController',
+				            'sximo/tables' => 'Sximo\TablesController',
+				            'sximo/code' => 'Sximo\CodeController']);
+			      }
+			     );
