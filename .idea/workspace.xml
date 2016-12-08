@@ -686,7 +686,7 @@
       <workItem from="1480873848323" duration="2182000" />
       <workItem from="1480939891336" duration="2510000" />
       <workItem from="1481212772036" duration="635000" />
-      <workItem from="1481213834533" duration="21551000" />
+      <workItem from="1481213834533" duration="21560000" />
     </task>
     <task id="LOCAL-00001" summary="Association mesures, joueurs sélectionnes / SQL OK&#10;todo: SQL à intégrer dans traitement">
       <created>1476465407612</created>
@@ -996,11 +996,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481239198690</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Inscription prototype en cours d'intégration">
+      <created>1481239212806</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1481239212806</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="402126000" />
+    <option name="totallyTimeSpent" value="402135000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
