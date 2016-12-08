@@ -50,7 +50,8 @@ Route::group(['middleware' => 'auth'], function()
 
 });	
 
-Route::group(['middleware' => 'auth' , 'middleware'=>'sximoauth'], function()
+Route::group(['middleware' => 'auth' ,
+              'middleware'=>'sximoauth'], function()
 {
 
 	Route::controllers([
@@ -59,10 +60,7 @@ Route::group(['middleware' => 'auth' , 'middleware'=>'sximoauth'], function()
 		'sximo/module' 		=> 'Sximo\ModuleController',
 		'sximo/tables'		=> 'Sximo\TablesController',
 		'sximo/code'		=> 'Sximo\CodeController'
-	]);			
-
-
-
+	]);
 });
 
 

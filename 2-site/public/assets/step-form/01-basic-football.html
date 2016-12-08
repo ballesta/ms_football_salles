@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Step From Wizard - 01 - basic</title>
+
+    <script src="plugins/jquery-2.1.4.min.js"></script>
+
+    <!-- bootstrap for better look example, but not necessary -->
+    <link rel="stylesheet"
+          href="plugins/bootstrap/css/bootstrap.min.css"
+          type="text/css"
+          media="screen, projection">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Step Form Wizard plugin -->
+    <link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+    <script src="step-form-wizard/js/step-form-wizard.js"></script>
+
+    <!-- nicer scroll in steps -->
+    <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- validation library http://parsleyjs.org/ -->
+    <link rel="stylesheet"
+          href="plugins/parsley/parsley.css"
+          type="text/css"
+          media="screen, projection">
+    <script src="plugins/parsley/parsley.min.js"></script>
+    <!-- French translation of messages -->
+    <script src="plugins/parsley/i18n/fr.js"></script>
+
+    <!-- Time picker -->
+    <link rel='stylesheet' type='text/css' href='../TimePicki-master/css/timepicki.css'/>
+    <script type='text/javascript'
+            src='../TimePicki-master/js/timepicki.js'>
+    </script>
+
+
+    <script>
+        // Initialisation après chargement de la page
+        $(document).ready(function () {
+                // En français
+                Parsley.setLocale('fr');
+
+                sfw = $("#inscription").stepFormWizard({
+                        transition: 'fade',
+                        //duration: 1000,
+                        height: 'auto',
+                        nextBtn: $('<a class="next-btn sf-right sf-btn" href="#">Suivant</a>'),
+                        prevBtn: $('<a class="prev-btn sf-left sf-btn" href="#">Précédent</a>'),
+                        finishBtn: $('<a class="finish-btn sf-right sf-btn" href="#">Terminer</a>'),
+                        showNav: 'left',
+                        //theme: 'sun',
+                        // Bouton suivant pour tous les panneaux.
+                        // i = N° du panneau qui demande de passer au suivant.
+                        onNext: function (i) {
+                            var valid = null;
+                            if (i == 0)
+                            {
+                                // Panneau 1: joueur
+                                // Remis à null après l'échec de la validation: pour quelle raison?
+                                if ($('#joueur').val() >=1 )
+                                {
+                                    // Raz des champs de création d'un nouveau joueur
+                                    $("#nom"      ).val("");
+                                    $("#prenom"   ).val("");
+                                    $("#email"    ).val("");
+                                    $("#telephone").val("");
+                                    $("#mdp1"     ).val("");
+                                    $("#mdp2"     ).val("");
+                                    valid = true;
+                                }
+                                else
+                                {
+                                    // Joueur non sélectionné: création nouveau joueur
+                                    // Valider les champs (nom, prénom, ...)
+                                    valid = $("#inscription").parsley().validate('block' + i);
+                                }
+                            }
+                            else
+                            {
+                                // Panneaux 2, 3, ... suivants
+                                valid = $("#inscription").parsley().validate('block' + i);
+                            }
+                            // La validation peut changer l'affichage en ajoutant des messages d'erreur.
+                            // Ré afficher le panneau pour prendre en compte.
+                            sfw.refresh();
+                            return valid;
+                        },
+                        // Validation particulière au bouton de fin sur le dernier panneau.
+                        onFinish: function (i) {
+                            //    // Validation du dernier panneau
+                            valid = $("#inscription").parsley().validate("block" + i);
+                            sfw.refresh();
+                            // Debrayer les vérifications de Parseley,
+                            // sinon ca bloque l'envoi du formulaire!
+                            // La raison est surement une dernière vérification globale
+                            // faite par Parseley avant d'envoyer.
+                            // Laquelle est bloquée par le fait que les champs de création du joueur
+                            // ne sont pas renseignés.
+                            $('#inscription').parsley().destroy();
+                            return valid;
+                        },
+                    }
+                );
+
+                // Calcule l'heure courante pour la proposer comme heure de début de partie
+                var date = new Date();
+                var heure_debut = date.getHours();
+            }
+        )
+        ;
+        $(window).load(function () {
+            /* Use mcustom scrollbar */
+            $(".sf-step").mCustomScrollbar({
+                theme: "dark-3",
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        });
+
+    </script>
+
+    <style>
+        pre {
+            margin: 45px 0 60px;
+        }
+
+        h1 {
+            margin: 60px 0 60px 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="site-index">
+        <div class="body-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <center>
+                        <h2>Bubble Soccer Arena</h2>
+                        <h3>Accueil des joueurs et remise des capteurs</h3>
+                    </center>
+                    <form id="inscription"
+                          action="inscription.php"
+                          method="post">
+                        <fieldset>
+                            <legend>Joueur</legend>
+
+                            <!-- Onglets -->
+                            <ul class="nav nav-pills">
+                                <li class="active">
+                                    <a data-toggle="tab"
+                                       href="#tab_joueur_inscrit"
+                                       style="font-size: 24px;"
+                                    >
+                                        Joueur Inscrit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab"
+                                       href="#tab_nouveau_joueur"
+                                       style="font-size: 24px;">
+                                        Nouveau joueur
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab"
+                                       href="#tab_aide"
+                                       style="font-size: 24px;">
+                                        Aide
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Contenu des Onglets -->
+                            <div class="tab-content">
+                                <div id="tab_joueur_inscrit"
+                                     class="tab-pane fade in active">
+                                    <br>
+                                    <p style="font-size: 18px;">
+                                        Sélectionnez le joueur dans la liste déroulante
+                                        ci-dessous. <br>
+                                        Vous pouvez aussi rechercher
+                                        le joueur en saisissant une partie de son
+                                        nom.
+                                    </p>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <select style="font-size: 25px;  "
+                                                        class="form-control"
+                                                        name="joueur"
+                                                        id="joueur"
+                                                        size="8">
+                                                    <option selected value="0">
+                                                        Sélectionnez le joueur
+                                                    </option>
+                                                    <option value="1">Jean DUPONT</option>
+                                                    <option value="2">Mohamed Hasnaoui</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab_nouveau_joueur"
+                                     class="tab-pane fade ">
+                                    <div class="col-xs-12" style="height:20px;"></div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <input type="radio"
+                                                       name="genre"
+                                                       value="F"
+                                                >
+                                                <span style="font-size: 24px;">
+                                                    Femme &nbsp;
+                                                </span>
+                                                <input type="radio"
+                                                       name="genre"
+                                                       value="H" checked
+                                                >
+                                                <span style="font-size: 24px;">
+                                                Homme
+                                                </span>
+                                                <br>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="prenom">Prénom *</label>
+                                                <input style="font-size: 20px"
+                                                       type="text"
+                                                       class="form-control"
+                                                       id="prenom"
+                                                       name="prenom"
+                                                       placeholder="Votre prénom"
+                                                       required
+                                                       data-parsley-group="block0">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="nom">Nom *</label>
+                                                <input style="font-size: 20px"
+                                                       type="text"
+                                                       class="form-control"
+                                                       id="nom"
+                                                       name="nom"
+                                                       placeholder="Votre nom"
+                                                       required
+                                                       data-parsley-group="block0">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Adresse Email *</label>
+                                                <input style="font-size: 20px"
+                                                       type="email"
+                                                       class="form-control"
+                                                       id="email"
+                                                       name="email"
+                                                       placeholder="Votre email"
+                                                       required
+                                                       data-parsley-group="block0"
+                                                       data-parsley-trigger="change"
+                                                       data-parsley-remote-options='{ "type": "POST", "dataType": "jsonp" }'
+                                                       data-parsley-remote="email_is_unique.php"
+                                                       data-parsley-remote-message="eMail utilisé par un joueur inscrit"
+                                                >
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input
+                                                        type="radio"
+                                                        name="lateralisation"
+                                                        value="G">
+                                                <span style="font-size: 22px;">
+                                                Gaucher &nbsp;
+                                                </span>
+                                                <input type="radio"
+                                                       name="lateralisation"
+                                                       value="F"
+                                                       checked>
+                                                <span style="font-size: 22px;">
+                                                Droitier
+                                                </span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="telephone">Téléphone</label>
+                                                <input style="font-size: 20px"
+                                                       type="text"
+                                                       class="form-control"
+                                                       id="telephone"
+                                                       name="telephone"
+                                                       placeholder="Votre N° de téléphone">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="mdp1">Mot de Passe *</label>
+                                                <input type="password"
+                                                       class="form-control"
+                                                       id="mdp1"
+                                                       name="mdp1"
+                                                       placeholder="Votre mot de Passe"
+                                                       required
+                                                       data-parsley-group="block0"
+                                                       data-parsley-equalto="#mdp2">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mdp2">Mot de Passe pour vérification *</label>
+                                                <input type="password" class="form-control"
+                                                       id="mdp2"
+                                                       name="mdp2"
+                                                       placeholder="Saisissez à nouveau votre mot de Passe"
+                                                       required
+                                                       data-parsley-group="block0"
+                                                       data-parsley-equalto="#mdp1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="invalid-form-error-message"></div>
+                                </div>
+                                <div id="tab_aide"
+                                     class="tab-pane fade">
+                                    <h3>Aide</h3>
+                                    <p>
+                                        Vous devez décider si le joueur est déjà inscrit
+                                        ou
+                                        s'il est inconnu chez vous.
+                                    </p>
+                                    <p>
+                                        Si vous avez un doute sur l'inscription au site,
+                                        vous pouvez rechercher le joueur en saisissant une partie de son nom
+                                        dans la boite de recherche de la liste déroulante
+                                        de l'onglet "Joueur Inscrit" (premier onglet).
+                                    </p>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Partie</legend>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="terrain">Terrain</label>
+                                        <select class="form-control"
+                                                name="terrain"
+                                                id="terrain"
+                                                data-parsley-group="block1"
+                                                required
+                                                style="font-size: 30px;  height:50px;">
+                                            <option value="1">Platinium</option>
+                                            <option value="2">Gold</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for='heure'>Heure de début du match (format HHmm)</label>
+                                        <input class="form-control"
+                                               id='heure'
+                                               required
+                                               data-parsley-group="block1"
+                                               type='text'
+                                               name='heure-debut'
+                                               placeholder="HHMM"
+                                               style="font-size: 30px; width:130px; height:50px;"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Durée du match (HH:MM)</label>
+                                        <br>
+                                        <input
+                                                type="radio"
+                                                style="width:20px; height:20px;"
+                                                id="duree30"
+                                                name="duree"
+                                                value="30">
+                                        <label for="duree30"
+                                               style="font-size: 20px;
+                                               width:120px; height:20px;">
+                                            00:30 &nbsp;
+                                        </label>
+                                        <input type="radio"
+                                               style=" width:20px; height:20px;"
+                                               name="duree"
+                                               id="duree60"
+                                               value="60"
+                                               checked>
+                                        <label for="duree60"
+                                               style="font-size: 20px;
+                                               width:120px; height:20px;">
+                                            01:00 &nbsp;
+                                        </label>
+                                        <input type="radio"
+                                               style="width:20px; height:20px;"
+                                               name="duree"
+                                               id="duree90"
+                                               value="90"
+                                        >
+                                        <label for="duree90"
+                                               style="font-size: 20px;
+                                               width:120px;
+                                               height:20px;">
+                                            01:30 &nbsp;
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Capteur</legend>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="capteur">Capteur remis au joueur</label>
+                                        <select class="form-control"
+                                                name="capteur"
+                                                id="capteur"
+                                                data-parsley-group="block1"
+                                                required
+                                                style="font-size: 30px;  height:50px;">
+                                            <option value="1">1111111</option>
+                                            <option value="2">2222222</option>
+                                            <option value="3">3333333</option>
+                                            <option value="2">3333333</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <p class="pull-left"><br>© MS-Football 2016</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

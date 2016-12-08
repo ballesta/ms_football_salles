@@ -74,10 +74,11 @@
 				  {
 				      Route::controllers(
 					    [
-					        'sximo/menu' => Sximo\MenuController',
-				            'sximo/config' => 'Sximo\ConfigController',
-				            'sximo/module' => Sximo\ModuleController',
-				            'sximo/tables' => 'Sximo\TablesController',
-				            'sximo/code' => 'Sximo\CodeController']);
+					        'sximo/menu'    => 'Sximo\MenuController',
+				            'sximo/config'  => 'Sximo\ConfigController',
+				            'sximo/module'  => 'Sximo\ModuleController',
+				            'sximo/tables'  => 'Sximo\TablesController',
+				            'sximo/code'    => 'Sximo\CodeController'
+					    ]);
 			      }
 			     );
