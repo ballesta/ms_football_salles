@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost/football-salles',
+    'url' => 'http://http://football.ballesta.fr/',
 
     /*
     |--------------------------------------------------------------------------
@@ -150,6 +150,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
+
     ],
 
     /*
@@ -204,6 +205,7 @@ return [
         'Markdown'  => GrahamCampbell\Markdown\Facades\Markdown::class,
         'Socialize' => Laravel\Socialite\Facades\Socialite::class ,
         'Navigation'=> App\Helpers\Database_Navigation::class,
+        'Role'      => App\Helpers\Roles::class,
         'Debugbar'  => Barryvdh\Debugbar\Facade::class
 
     ],
