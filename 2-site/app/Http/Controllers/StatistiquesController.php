@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\controller;
 use App\Models\Statistiques;
@@ -191,97 +193,103 @@ class StatistiquesController extends Controller {
 		$Shoot = 0;
 		$Pass = 0;
 		$Control = 0;
-
-		// Calculées à partir des vitesses moyennes transmises pour chaque mesure
-		// ++++ Hypothèse
-		$vitesses_moyennes = [];
-		$i=1;
-		foreach ($mesures as $m)
-		{
-			//dd($m);
-			$date_heure =  strtotime($m->Horodatage);
-			// En cas d'absence de message start: prendre heure premier message
-			if($i++ == 1)
-			{
-				// Premier message seulement: top de départ
-				$start = $date_heure;
-			}
-			$mesure = json_decode($m->message_json, $to_array=true);
-			//dd($mesure);
-		    if (isset($mesure["sensor"]["Start"]))
-				$start = $date_heure;
-			elseif (isset($mesure["sensor"]["EventShoot"]))
-			{
-				$ballons_joues++;
-			}
-		    elseif (isset($mesure["sensor"]["EventPass"]))
-		    {
-			    $ballons_joues++;
-		    }
-		    elseif (isset($mesure["sensor"]["EventControl"]))
-		    {
-			    $ballons_joues++;
-		    }
-			elseif (isset($mesure["sensor"]["Mesure"]))
-			{
-				// Mémorise les dernières valeurs reçues qui seront affichée
-				// Distance totale parcourue en mètres
-				$Dist       = $mesure["sensor"]["Mesure"]["param"][0]["Dist"];
-				// Vitesse moyenne en km/h
-				$Average    = $mesure["sensor"]["Mesure"]["param"][0]["Average"];
-				// Vitesse maximum en km/h
-				$Max = $mesure["sensor"]["Mesure"]["param"][0]["Max"];
-				// Nombre de pas depuis le début de la session
-				$Step       = $mesure["sensor"]["Mesure"]["param"][0]["Step"];
-				// Nombre de sprint depuis le début de la session
-				$Sprint     = $mesure["sensor"]["Mesure"]["param"][0]["Sprint"];
-				// Ratio mouvement/immobilité
-				$Mobility   = $mesure["sensor"]["Mesure"]["param"][0]["Mobility"];
-				// Nombre de tir depuis le début de la session
-				$Shoot      = $mesure["sensor"]["Mesure"]["param"][0]["Shoot"];
-				// Nombre de passes depuis le début de la session
-				$Pass       = $mesure["sensor"]["Mesure"]["param"][0]["Pass"];
-				//Nombre de contrôles depuis le début de la session
-				$Control    = $mesure["sensor"]["Mesure"]["param"][0]["Control"];
-
-				// Pour la courbe
-				$minutes = ($date_heure - $start) / 60;
-
-				$vitesses_moyennes["$minutes"] = $Average;
-			}
-		    elseif (isset($mesure["sensor"]["Check"]))
-		    {
-			    null;
-		    }
-		    elseif (isset($mesure["sensor"]["Battery"]))
-		    {
-			    null;
-		    }
-			else
-			    dd(["Message capteur inconnu:",$m]);
-			$end = $date_heure;
-		}
-
-		$minutes = ($end - $start) / 60;
-
-		$heures = floor($minutes / 60);
-		$minutes = $minutes % 60;
-		if ($minutes < 10)
-			$duree = "$heures:0$minutes";
-		else
-			$duree = "$heures:$minutes";
-
-		//dd([$end, $start,$end - $start,  $duree]);
+		$duree = 0;
 		$vitesses="";
-		//dd($vitesses_moyennes);
-		//$n = count($vitesses_moyennes);
-		foreach ($vitesses_moyennes as $m => $v)
-		{
-			$vitesses .= "{ x:$m, y:$v },";
-		}
-		$vitesses = rtrim($vitesses, ",");
 
-		//dd([$vitesses_moyennes,$vitesses]);
+		if (count($mesures) > 0)
+		{
+			// Calculées à partir des vitesses moyennes transmises pour chaque mesure
+			// ++++ Hypothèse
+			$vitesses_moyennes = [];
+			$i=1;
+			foreach ($mesures as $m)
+			{
+				//dd($m);
+				$date_heure =  strtotime($m->Horodatage);
+				// En cas d'absence de message start: prendre heure premier message
+				if($i++ == 1)
+				{
+					// Premier message seulement: top de départ
+					$start = $date_heure;
+				}
+				$mesure = json_decode($m->message_json, $to_array=true);
+				//dd($mesure);
+				if (isset($mesure["sensor"]["Start"]))
+					$start = $date_heure;
+				elseif (isset($mesure["sensor"]["EventShoot"]))
+				{
+					$ballons_joues++;
+				}
+				elseif (isset($mesure["sensor"]["EventPass"]))
+				{
+					$ballons_joues++;
+				}
+				elseif (isset($mesure["sensor"]["EventControl"]))
+				{
+					$ballons_joues++;
+				}
+				elseif (isset($mesure["sensor"]["Mesure"]))
+				{
+					// Mémorise les dernières valeurs reçues qui seront affichée
+					// Distance totale parcourue en mètres
+					$Dist       = $mesure["sensor"]["Mesure"]["param"][0]["Dist"];
+					// Vitesse moyenne en km/h
+					$Average    = $mesure["sensor"]["Mesure"]["param"][0]["Average"];
+					// Vitesse maximum en km/h
+					$Max = $mesure["sensor"]["Mesure"]["param"][0]["Max"];
+					// Nombre de pas depuis le début de la session
+					$Step       = $mesure["sensor"]["Mesure"]["param"][0]["Step"];
+					// Nombre de sprint depuis le début de la session
+					$Sprint     = $mesure["sensor"]["Mesure"]["param"][0]["Sprint"];
+					// Ratio mouvement/immobilité
+					$Mobility   = $mesure["sensor"]["Mesure"]["param"][0]["Mobility"];
+					// Nombre de tir depuis le début de la session
+					$Shoot      = $mesure["sensor"]["Mesure"]["param"][0]["Shoot"];
+					// Nombre de passes depuis le début de la session
+					$Pass       = $mesure["sensor"]["Mesure"]["param"][0]["Pass"];
+					//Nombre de contrôles depuis le début de la session
+					$Control    = $mesure["sensor"]["Mesure"]["param"][0]["Control"];
+
+					// Pour la courbe
+					$minutes = ($date_heure - $start) / 60;
+
+					$vitesses_moyennes["$minutes"] = $Average;
+				}
+				elseif (isset($mesure["sensor"]["Check"]))
+				{
+					null;
+				}
+				elseif (isset($mesure["sensor"]["Battery"]))
+				{
+					null;
+				}
+				else
+					dd(["Message capteur inconnu:",$m]);
+				$end = $date_heure;
+			}
+
+			$minutes = ($end - $start) / 60;
+
+			$heures = floor($minutes / 60);
+			$minutes = $minutes % 60;
+			if ($minutes < 10)
+				$duree = "$heures:0$minutes";
+			else
+				$duree = "$heures:$minutes";
+
+			//dd([$end, $start,$end - $start,  $duree]);
+			$vitesses="";
+			//dd($vitesses_moyennes);
+			//$n = count($vitesses_moyennes);
+			foreach ($vitesses_moyennes as $m => $v)
+			{
+				$vitesses .= "{ x:$m, y:$v },";
+			}
+			$vitesses = rtrim($vitesses, ",");
+
+			//dd([$vitesses_moyennes,$vitesses]);
+		}
+
 		return
 		[
 			'Dist'              => $Dist ,

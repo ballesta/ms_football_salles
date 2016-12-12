@@ -47,7 +47,7 @@
 			
 			<div class="form-group has-feedback  animated fadeInRight delayp1">
 				<label>{{ Lang::get('core.password') }}	</label>
-				<input type="password" name="password" placeholder="Password" class="form-control" required="true" />
+				<input type="text" name="password" placeholder="Mot de passe" class="form-control" required="true" />
 				
 				<i class="icon-lock form-control-feedback"></i>
 			</div>
