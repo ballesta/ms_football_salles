@@ -34,8 +34,20 @@
 			<tbody>	
 		
 					<tr>
+						<td width='30%' class='label-view text-right'>Code</td>
+						<td>{{ $row->code}} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>Numéro Serie</td>
 						<td>{{ $row->numero_serie}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Bluetooth</td>
+						<td>{{ $row->UID}} </td>
 						
 					</tr>
 				

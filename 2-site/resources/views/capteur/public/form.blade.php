@@ -20,12 +20,30 @@
 						<fieldset><legend> Capteurs</legend>
 				{!! Form::hidden('capteur_id', $row['capteur_id']) !!}					
 									  <div class="form-group  " >
+										<label for="Code" class=" control-label col-md-4 text-left"> Code </label>
+										<div class="col-md-6">
+										  {!! Form::text('code', $row['code'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										 </div> 
+										 <div class="col-md-2">
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Format A01, A02, A.., B01, B02"><i class="icon-question2"></i></a>
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Numéro Serie" class=" control-label col-md-4 text-left"> Numéro Serie <span class="asterix"> * </span></label>
 										<div class="col-md-6">
 										  {!! Form::text('numero_serie', $row['numero_serie'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
 										 <div class="col-md-2">
 										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="UID" class=" control-label col-md-4 text-left"> UID </label>
+										<div class="col-md-6">
+										  {!! Form::text('UID', $row['UID'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										 </div> 
+										 <div class="col-md-2">
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Identifiant Bluethoot (UID) qui caractérise le capteur"><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >

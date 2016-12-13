@@ -3,10 +3,10 @@
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class capteur extends Sximo  {
+class accueiljoueurs extends Sximo  {
 	
-	protected $table = 'fb_capteurs';
-	protected $primaryKey = 'capteur_id';
+	protected $table = 'fbs_inscription';
+	protected $primaryKey = 'inscription_id';
 
 	public function __construct() {
 		parent::__construct();
@@ -15,12 +15,12 @@ class capteur extends Sximo  {
 
 	public static function querySelect(  ){
 		
-		return "  SELECT fb_capteurs.* FROM fb_capteurs   ";
+		return "  SELECT fbs_inscription.* FROM fbs_inscription  ";
 	}	
 
 	public static function queryWhere(  ){
 		
-		return "  WHERE fb_capteurs.capteur_id IS NOT NULL ";
+		return "  WHERE fbs_inscription.inscription_id IS NOT NULL ";
 	}
 	
 	public static function queryGroup(){

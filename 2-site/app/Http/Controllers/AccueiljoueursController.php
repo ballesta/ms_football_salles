@@ -1,26 +1,24 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\controller;
-use App\Models\Statistiques;
+use App\Models\Accueiljoueurs;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect ;
+use Validator, Input, Redirect ; 
 
-use Illuminate\Support\Facades\DB;
-class StatistiquesController extends Controller {
+
+class AccueiljoueursController extends Controller {
 
 	protected $layout = "layouts.main";
 	protected $data = array();	
-	public $module = 'statistiques';
+	public $module = 'accueiljoueurs';
 	static $per_page	= '10';
 
 	public function __construct()
 	{
 		
 		$this->beforeFilter('csrf', array('on'=>'post'));
-		$this->model = new Statistiques();
+		$this->model = new Accueiljoueurs();
 		
 		$this->info = $this->model->makeInfo( $this->module);
 		$this->access = $this->model->validAccess($this->info['id']);
@@ -28,7 +26,7 @@ class StatistiquesController extends Controller {
 		$this->data = array(
 			'pageTitle'	=> 	$this->info['title'],
 			'pageNote'	=>  $this->info['note'],
-			'pageModule'=> 'statistiques',
+			'pageModule'=> 'accueiljoueurs',
 			'return'	=> self::returnUrl()
 			
 		);
@@ -38,7 +36,10 @@ class StatistiquesController extends Controller {
 
 		$lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
 		\App::setLocale($lang);
-		}
+		}  
+
+
+		
 	}
 
 	public function getIndex( Request $request )
@@ -48,7 +49,7 @@ class StatistiquesController extends Controller {
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
 
-		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'statistique_id'); 
+		$sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'inscription_id'); 
 		$order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
 		// End Filter sort and order for query 
 		// Filter Search for query		
@@ -76,7 +77,7 @@ class StatistiquesController extends Controller {
 		// Build pagination setting
 		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
 		$pagination = new Paginator($results['rows'], $results['total'], $params['limit']);	
-		$pagination->setPath('statistiques');
+		$pagination->setPath('accueiljoueurs');
 		
 		$this->data['rowData']		= $results['rows'];
 		// Build Pagination 
@@ -95,8 +96,10 @@ class StatistiquesController extends Controller {
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
-		return view('statistiques.index',$this->data);
+		return view('accueiljoueurs.index',$this->data);
 	}	
+
+
 
 	function getUpdate(Request $request, $id = null)
 	{
@@ -118,23 +121,24 @@ class StatistiquesController extends Controller {
 		{
 			$this->data['row'] =  $row;
 		} else {
-			$this->data['row'] = $this->model->getColumnTable('fb_statistiques'); 
+			$this->data['row'] = $this->model->getColumnTable('fbs_inscription'); 
 		}
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
-		return view('statistiques.form',$this->data);
-	}
+		return view('accueiljoueurs.form',$this->data);
+	}	
 
-	// Appellé par visualisation statistique (Loupe verte sur ligne)
-	// Lis et filtre les mesure
 	public function getShow( Request $request, $id = null)
 	{
+		if($this->access['is_detail'] == 0)
+		{
+			return Redirect::to('dashboard')
+				->with('messagetext',
+					\Lang::get('core.note_restric'))
+				->with('msgstatus','error');
+		}
 
-		if($this->access['is_detail'] ==0) 
-		return Redirect::to('dashboard')
-			->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-					
 		$row = $this->model->getRow($id);
 		if($row)
 		{
@@ -144,18 +148,25 @@ class StatistiquesController extends Controller {
 			// Elabore les statistique concernant un joueur à partir des mesures recues
 			// ++++ Pour les tests: toutes les mesures ++++
 			$this->data['statistiques']
-			=
-			$this->statistiques_partie_joueur($this->data['row']->joueur_id,
-									          $this->data['row']->date);
-			$this->data['access']		= $this->access;
-			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+				=
+				$this->statistiques_partie_joueur
+							(
+								$this->data['row']->joueur_id,
+							    $this->data['row']->date,
+							    $this->data['row']->duree
+							);
+			$this->data['access'] = $this->access;
+			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
 			$this->data['prevnext'] = $this->model->prevNext($id);
 			//dd($this);
+			// Attention: utilise la vue d'une autre entité
 			return view('statistiques.view',$this->data);
-		} else {
-			return Redirect::to('statistiques')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
 		}
-	}	
+		else
+		{
+			return Redirect::to('statistiques')->with('messagetext','Record Not Found !')->with('msgstatus','error');
+		}
+	}
 
 	//bb
 	// Elabore les statistiques pour un joueur dans une partie.
@@ -177,13 +188,18 @@ class StatistiquesController extends Controller {
 		}
 	*/
 
-	function statistiques_partie_joueur($joueur_id, $date)
+	function statistiques_partie_joueur($joueur_id,
+										$date,
+										$duree_match)
 	{
 		//dd($date);
 		// ++++ Lis toutes les mesure et les affecte au joueur ++++
 		// Par ordre chronologique ascendants.
-		$mesures = DB::table('fb_mesures')->orderBy('Horodatage', 'asc')
-										  ->get();
+		$mesures = DB::table('fb_mesures')
+			// Du début à la fin de la partie
+			->whereBetween('Horodatage' , [$date, $date+($duree_match * 60)])
+			->orderBy('Horodatage', 'asc')
+			->get();
 		$ballons_joues = 0;
 		$Dist = 0;
 		$Average = 0;
@@ -292,14 +308,16 @@ class StatistiquesController extends Controller {
 		}
 
 		return
-		[
-			'Dist'              => $Dist ,
-			'duree'             => $duree ,
-			'ballons_joues'     => $ballons_joues ,
-			'vitesse_maximale'  => $Max,
-			'vitesses'          => $vitesses
-		];
+			[
+				'Dist'              => $Dist ,
+				'duree'             => $duree ,
+				'ballons_joues'     => $ballons_joues ,
+				'vitesse_maximale'  => $Max,
+				'vitesses'          => $vitesses
+			];
 	}
+
+
 
 	function postSave( Request $request)
 	{
@@ -307,19 +325,19 @@ class StatistiquesController extends Controller {
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
-			$data = $this->validatePost('tb_statistiques');
+			$data = $this->validatePost('tb_accueiljoueurs');
 				
-			$id = $this->model->insertRow($data , $request->input('statistique_id'));
+			$id = $this->model->insertRow($data , $request->input('inscription_id'));
 			
 			if(!is_null($request->input('apply')))
 			{
-				$return = 'statistiques/update/'.$id.'?return='.self::returnUrl();
+				$return = 'accueiljoueurs/update/'.$id.'?return='.self::returnUrl();
 			} else {
-				$return = 'statistiques?return='.self::returnUrl();
+				$return = 'accueiljoueurs?return='.self::returnUrl();
 			}
 
 			// Insert logs into database
-			if($request->input('statistique_id') =='')
+			if($request->input('inscription_id') =='')
 			{
 				\SiteHelpers::auditTrail( $request , 'New Data with ID '.$id.' Has been Inserted !');
 			} else {
@@ -330,7 +348,7 @@ class StatistiquesController extends Controller {
 			
 		} else {
 
-			return Redirect::to('statistiques/update/'.$request->input('statistique_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('accueiljoueurs/update/'.$request->input('inscription_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
@@ -349,11 +367,11 @@ class StatistiquesController extends Controller {
 			
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
 			// redirect
-			return Redirect::to('statistiques?return='.self::returnUrl())
+			return Redirect::to('accueiljoueurs?return='.self::returnUrl())
         		->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success'); 
 	
 		} else {
-			return Redirect::to('statistiques?return='.self::returnUrl())
+			return Redirect::to('accueiljoueurs?return='.self::returnUrl())
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
 
@@ -362,8 +380,8 @@ class StatistiquesController extends Controller {
 	public static function display( )
 	{
 		$mode  = isset($_GET['view']) ? 'view' : 'default' ;
-		$model  = new Statistiques();
-		$info = $model::makeInfo('statistiques');
+		$model  = new Accueiljoueurs();
+		$info = $model::makeInfo('accueiljoueurs');
 
 		$data = array(
 			'pageTitle'	=> 	$info['title'],
@@ -380,7 +398,7 @@ class StatistiquesController extends Controller {
 				$data['row'] =  $row;
 				$data['fields'] 		=  \SiteHelpers::fieldLang($info['config']['grid']);
 				$data['id'] = $id;
-				return view('statistiques.public.view',$data);
+				return view('accueiljoueurs.public.view',$data);
 			} 
 
 		} else {
@@ -389,7 +407,7 @@ class StatistiquesController extends Controller {
 			$params = array(
 				'page'		=> $page ,
 				'limit'		=>  (isset($_GET['rows']) ? filter_var($_GET['rows'],FILTER_VALIDATE_INT) : 10 ) ,
-				'sort'		=> 'statistique_id' ,
+				'sort'		=> 'inscription_id' ,
 				'order'		=> 'asc',
 				'params'	=> '',
 				'global'	=> 1 
@@ -404,17 +422,20 @@ class StatistiquesController extends Controller {
 			$pagination->setPath('');
 			$data['i']			= ($page * $params['limit'])- $params['limit']; 
 			$data['pagination'] = $pagination;
-			return view('statistiques.public.index',$data);			
+			return view('accueiljoueurs.public.index',$data);			
 		}
+
+
 	}
 
 	function postSavepublic( Request $request)
 	{
+		
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
-			$data = $this->validatePost('fb_statistiques');		
-			 $this->model->insertRow($data , $request->input('statistique_id'));
+			$data = $this->validatePost('fbs_inscription');		
+			 $this->model->insertRow($data , $request->input('inscription_id'));
 			return  Redirect::back()->with('messagetext','<p class="alert alert-success">'.\Lang::get('core.note_success').'</p>')->with('msgstatus','success');
 		} else {
 
@@ -424,5 +445,8 @@ class StatistiquesController extends Controller {
 		}	
 	
 	}	
+
+
+
 
 }
