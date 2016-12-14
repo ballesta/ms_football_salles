@@ -33,6 +33,7 @@ class SessionmesureController extends Controller {
         }
         
     }
+
     public function getIndex( Request $request )
     {
         ////(( Code generated begin

@@ -7,7 +7,9 @@
 <title> {{ CNF_APPNAME }} </title>
 <meta name="keywords" content="">
 <meta name="description" content=""/>
-<link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
+<link rel="shortcut icon"
+	  href="{{ asset('favicon.ico')}}"
+	  type="image/x-icon">
 		<link href="{{ asset('sximo/js/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet"> 
 		<link href="{{ asset('sximo/js/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css')}}" rel="stylesheet">
 		<link href="{{ asset('sximo/fonts/awesome/css/font-awesome.min.css')}}" rel="stylesheet">

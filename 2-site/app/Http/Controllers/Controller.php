@@ -458,9 +458,10 @@ abstract class Controller extends BaseController {
 					// Handle Date 				
 					if($f['type'] =='date_time')
 					{
-						$data[$field] = date("Y-m-d H:i:s",strtotime($request->input($field)));
+						// Transform date in mysql date format
+						$data[$field] = date("Y-m-d H:i:s",
+							                 strtotime($request->input($field)));
 					}
-
 					
 					// Select
 					if($f['type'] =='select')
@@ -522,11 +523,7 @@ abstract class Controller extends BaseController {
 		if($md !='') $filter .= '&md='.$md;
 		if($sc !='') $filter .= '&search='.$sc;
 
-		 
-		 
-
 		return Redirect::to($this->data['pageModule'] . $filter);
-	
 	}	
 
 	function injectPaginate()
@@ -671,7 +668,6 @@ abstract class Controller extends BaseController {
 		exit;
 	
 	}	
-
 
 	function getLookup( Request $request, $id)
 	{

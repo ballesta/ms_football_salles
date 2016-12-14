@@ -1298,8 +1298,10 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 			{
 				if(defined('CNF_DATE') && CNF_DATE !='' )
 				{
-					$value = date("".CNF_DATE."",strtotime($value));
-				}  
+				    //bb
+					$value = date('d/m/Y H:i',strtotime($value));
+					//$value = date("d/m/Y H:i",strtotime($value));
+				}
 			} else {
 				$value = date("$format_value",strtotime($value));
 			}

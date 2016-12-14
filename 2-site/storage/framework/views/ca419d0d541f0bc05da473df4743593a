@@ -7,7 +7,9 @@
 <title> <?php echo e(CNF_APPNAME); ?> </title>
 <meta name="keywords" content="">
 <meta name="description" content=""/>
-<link rel="shortcut icon" href="<?php echo e(asset('favicon.ico')); ?>" type="image/x-icon">
+<link rel="shortcut icon"
+	  href="<?php echo e(asset('favicon.ico')); ?>"
+	  type="image/x-icon">
 		<link href="<?php echo e(asset('sximo/js/plugins/bootstrap/css/bootstrap.css')); ?>" rel="stylesheet"> 
 		<link href="<?php echo e(asset('sximo/js/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css')); ?>" rel="stylesheet">
 		<link href="<?php echo e(asset('sximo/fonts/awesome/css/font-awesome.min.css')); ?>" rel="stylesheet">

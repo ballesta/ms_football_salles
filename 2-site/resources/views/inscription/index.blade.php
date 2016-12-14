@@ -81,7 +81,10 @@
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
 					 	@if(SiteHelpers::filterColumn($limited ))
 						 <td>					 
-						 	{!! SiteHelpers::formatRows($row->{$field['field']},$field ,$row ) !!}						 
+						 	{!!
+						 		SiteHelpers::formatRows
+						 			($row->{$field['field']},$field ,$row )
+						 	!!}
 						 </td>
 						@endif	
 					 @endif					 

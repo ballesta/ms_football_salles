@@ -126,6 +126,7 @@ class InscriptionController extends Controller {
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
+		dd($this->data);
 		return view('inscription.form',$this->data);
 	}	
 
@@ -158,9 +159,21 @@ class InscriptionController extends Controller {
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
 			$data = $this->validatePost('tb_inscription');
-				
-			$id = $this->model->insertRow($data , $request->input('inscription_id'));
-			
+
+			// Passe la date de format français vers format anglais pour le base de données
+			// Format francais
+			$date_heure_francaise = $data['heure_debut'];
+			$format = "d/m/Y H:i";
+			// Format français vers interne
+			$dateobj = \DateTime::createFromFormat($format, $date_heure_francaise);
+			// Inerne vers format anglais BD
+			$data['heure_debut'] = $dateobj->format('Y-m-d H:i') ;
+			//dd([ $data, $date_heure_francaise, $dateobj]);
+
+			$id = $this->model
+				       ->insertRow($data ,
+				                   $request->input('inscription_id'));
+			$this->cree_partie($data, $id);
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'inscription/update/'.$id.'?return='.self::returnUrl();
@@ -171,7 +184,10 @@ class InscriptionController extends Controller {
 			// Insert logs into database
 			if($request->input('inscription_id') =='')
 			{
-				\SiteHelpers::auditTrail( $request , 'New Data with ID '.$id.' Has been Inserted !');
+				\SiteHelpers::auditTrail( $request ,
+										  'New Data with ID '
+										  .$id
+										  .' Has been Inserted !');
 			} else {
 				\SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
 			}
@@ -180,11 +196,22 @@ class InscriptionController extends Controller {
 			
 		} else {
 
-			return Redirect::to('inscription/update/'.$request->input('inscription_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
-			->withErrors($validator)->withInput();
+			return Redirect::to('inscription/update/'.$request->input('inscription_id'))
+							 ->with('messagetext',\Lang::get('core.note_error'))
+				             ->with('msgstatus','error')
+			                 ->withErrors($validator)
+				             ->withInput();
 		}	
 	
-	}	
+	}
+
+	public function cree_partie($data, $id)
+	{
+		return true;
+	}
+
+
+
 
 	public function postDelete( Request $request)
 	{

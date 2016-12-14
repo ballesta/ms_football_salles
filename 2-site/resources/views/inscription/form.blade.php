@@ -56,7 +56,13 @@
 										<div class="col-md-6">
 										  
 				<div class="input-group m-b" style="width:150px !important;">
-					{!! Form::text('heure_debut', $row['heure_debut'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
+					{!!
+						Form::text('heure_debut',
+					               $row['heure_debut'],
+					               array('class'=>'form-control datetime',
+					                     'style'=>'width:150px !important;'))
+					          //->format('d/m/Y H:i')
+					!!}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
 				 
@@ -68,10 +74,19 @@
 									  <div class="form-group  " >
 										<label for="Duree" class=" control-label col-md-4 text-left"> Duree </label>
 										<div class="col-md-6">
-										  {!! Form::text('duree', $row['duree'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  
+					<?php $duree = explode(',',$row['duree']);
+					$duree_opt = array( '30' => '30 minutes' ,  '60' => '60 minutes' ,  '90' => '90 minutes' , ); ?>
+					<select name='duree' rows='5'   class='select2 '  > 
+						<?php 
+						foreach($duree_opt as $key=>$val)
+						{
+							echo "<option  value ='$key' ".($row['duree'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+						}						
+						?></select> 
 										 </div> 
 										 <div class="col-md-2">
-										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Durée du match en minutes (30, 60, 90mn)."><i class="icon-question2"></i></a>
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Durée du match en minutes (30, 60, 90 minutes)."><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >

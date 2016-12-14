@@ -10,7 +10,8 @@ use App\Http\Controllers\Controller;
 class EnvoiMesuresController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Envoi des mesures
+     * Utilisation pour injecter des mesures de test
      *
      * @return Response
      */
@@ -21,6 +22,7 @@ class EnvoiMesuresController extends Controller
 
     }
 
+    // Envoi des mesures de shoots
     function envoi_shoots()
     {
         //
@@ -30,38 +32,34 @@ class EnvoiMesuresController extends Controller
         // URL de l'API
         // $url = "http://ms-football-api-native-5-1-lts/public/sessionMesures";
         //$url = "http://localhost/ms_football_api_native_5_1_lts/public/sessionMesures";
-        $url = "http://localhost/ms-football-salles-public/sessionMesures";
-        //$url = "http://localhost/ms_football_api_native_5_1_lts/";
-        //      http://localhost/ms_football_api_native_5_1_lts/
-        // sessionMesures
-
-        // Appel de l'api pour l'envoi d'un message
-
-        $nombre_messages = 1;
+	    //$url = "http://localhost/ms-football-salles-public/sessionMesures";
+	    $url = "http://football.ballesta.fr/sessionMesures";
+	    $nombre_messages = 10;
         for ($i=1; $i <= $nombre_messages ; $i++ ) {
             $s = $i*10;
+            // Message
             $data_json = '
-        {   
-            "sensor": {
-              "EventShoot": {
-                 "UID": "12345678",'.
-                '"id": "' . $i . '",' .
-                '"speed": "' . $s . '"
-              }
-            }
+		        {   
+		            "sensor": {
+		              "EventShoot": {
+		                 "UID": "111111",'.
+		                '"id": "' . $i . '",' .
+		                '"speed": "' . $s . '"
+		              }
+		            }
+		        }
+			';
+	        // Appel de l'api pour l'envoi d'un message
+	        $response = $this->api_post($data_json, $url);
+            $r .= $response . '<br><hr>';
         }
-		';
-            $response = $this->api_post($data_json, $url);
-            $r .= $response
-                .  '<br><hr>';
-        }
-
         $r .=  '*** Fin ***';
 
         return $r;
     }
 
 
+    // Envoi une mesure (codée en Json)
     function api_post($data_json, $url)
     {
         $ch = curl_init();

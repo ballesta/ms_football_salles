@@ -42,6 +42,7 @@ END;
 		// Crée la mesure
 		$mesure = new Mesure;
 		$mesure->Horodatage = $time;
+		$mesure->bluetooth = $uid;
 		$mesure->message_json = $Event;
 		$mesure->save();
 	}
