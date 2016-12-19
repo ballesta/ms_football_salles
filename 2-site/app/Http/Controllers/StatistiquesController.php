@@ -148,12 +148,19 @@ class StatistiquesController extends Controller {
 			$this->statistiques_partie_joueur($this->data['row']->joueur_id,
 									          $this->data['row']->date);
 			$this->data['access']		= $this->access;
-			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
+			$this->data['subgrid']
+				= (isset($this->info['config']['subgrid']) ?
+				         $this->info['config']['subgrid']
+				         :
+				         array());
 			$this->data['prevnext'] = $this->model->prevNext($id);
 			//dd($this);
-			return view('statistiques.view',$this->data);
+			return view('statistiques.view',
+				         $this->data);
 		} else {
-			return Redirect::to('statistiques')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
+			return Redirect::to('statistiques')
+				             ->with('messagetext','Record Not Found !')
+				             ->with('msgstatus','error');
 		}
 	}	
 
@@ -161,17 +168,13 @@ class StatistiquesController extends Controller {
 	// Elabore les statistiques pour un joueur dans une partie.
 	/*
 		{
-			"sensor":
-			{
 				"EventShoot":
 				{
-					"param": [
 					{
 						"UID": "111111",
 						"id": "1",
 						"speed": "11"
 					}
-					]
 				}
 			}
 		}
@@ -205,7 +208,7 @@ class StatistiquesController extends Controller {
 			$i=1;
 			foreach ($mesures as $m)
 			{
-				//dd($m);
+				//dd($m); // Mesure base
 				$date_heure =  strtotime($m->Horodatage);
 				// En cas d'absence de message start: prendre heure premier message
 				if($i++ == 1)
@@ -215,57 +218,63 @@ class StatistiquesController extends Controller {
 				}
 				$mesure = json_decode($m->message_json, $to_array=true);
 				//dd($mesure);
-				if (isset($mesure["sensor"]["Start"]))
-					$start = $date_heure;
-				elseif (isset($mesure["sensor"]["EventShoot"]))
+				if (isset($mesure["mesures"]))
+				{
+					null;
+				}
+				elseif (isset($mesure ["EventShoot"]))
 				{
 					$ballons_joues++;
 				}
-				elseif (isset($mesure["sensor"]["EventPass"]))
+				elseif (isset($mesure ["EventShoot"]))
 				{
 					$ballons_joues++;
 				}
-				elseif (isset($mesure["sensor"]["EventControl"]))
+				elseif (isset($mesure ["EventPass"]))
 				{
 					$ballons_joues++;
 				}
-				elseif (isset($mesure["sensor"]["Mesure"]))
+				elseif (isset($mesure ["EventControl"]))
+				{
+					$ballons_joues++;
+				}
+				elseif (isset($mesure["Mesure"]))
 				{
 					// Mémorise les dernières valeurs reçues qui seront affichée
 					// Distance totale parcourue en mètres
-					$Dist       = $mesure["sensor"]["Mesure"]["param"][0]["Dist"];
+					$Dist = $mesure ["Mesure"]["Dist"];
 					// Vitesse moyenne en km/h
-					$Average    = $mesure["sensor"]["Mesure"]["param"][0]["Average"];
+					$Average    = $mesure ["Mesure"]["Average"];
 					// Vitesse maximum en km/h
-					$Max = $mesure["sensor"]["Mesure"]["param"][0]["Max"];
+					$Max = $mesure ["Mesure"]["Max"];
 					// Nombre de pas depuis le début de la session
-					$Step       = $mesure["sensor"]["Mesure"]["param"][0]["Step"];
+					$Step       = $mesure ["Mesure"]["Step"];
 					// Nombre de sprint depuis le début de la session
-					$Sprint     = $mesure["sensor"]["Mesure"]["param"][0]["Sprint"];
+					$Sprint     = $mesure ["Mesure"]["Sprint"];
 					// Ratio mouvement/immobilité
-					$Mobility   = $mesure["sensor"]["Mesure"]["param"][0]["Mobility"];
+					$Mobility   = $mesure ["Mesure"]["Mobility"];
 					// Nombre de tir depuis le début de la session
-					$Shoot      = $mesure["sensor"]["Mesure"]["param"][0]["Shoot"];
+					$Shoot      = $mesure ["Mesure"]["Shoot"];
 					// Nombre de passes depuis le début de la session
-					$Pass       = $mesure["sensor"]["Mesure"]["param"][0]["Pass"];
+					$Pass       = $mesure ["Mesure"]["Pass"];
 					//Nombre de contrôles depuis le début de la session
-					$Control    = $mesure["sensor"]["Mesure"]["param"][0]["Control"];
+					$Control    = $mesure ["Mesure"]["Control"];
 
 					// Pour la courbe
 					$minutes = ($date_heure - $start) / 60;
 
 					$vitesses_moyennes["$minutes"] = $Average;
 				}
-				elseif (isset($mesure["sensor"]["Check"]))
+				elseif (isset($mesure ["Check"]))
 				{
 					null;
 				}
-				elseif (isset($mesure["sensor"]["Battery"]))
+				elseif (isset($mesure ["Battery"]))
 				{
 					null;
 				}
 				else
-					dd(["Message capteur inconnu:",$m]);
+					dd(["Message capteur inconnu:",$mesure]);
 				$end = $date_heure;
 			}
 

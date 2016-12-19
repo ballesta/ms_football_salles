@@ -99,8 +99,6 @@ class InscriptionController extends Controller {
 		return view('inscription.index',$this->data);
 	}	
 
-
-
 	function getUpdate(Request $request, $id = null)
 	{
 	
@@ -126,13 +124,12 @@ class InscriptionController extends Controller {
 		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
-		dd($this->data);
+		//dd($this->data);
 		return view('inscription.form',$this->data);
 	}	
 
 	public function getShow( Request $request, $id = null)
 	{
-
 		if($this->access['is_detail'] ==0) 
 		return Redirect::to('dashboard')
 			->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -154,26 +151,30 @@ class InscriptionController extends Controller {
 
 	function postSave( Request $request)
 	{
-		
 		$rules = $this->validateForm();
 		$validator = Validator::make($request->all(), $rules);	
 		if ($validator->passes()) {
-			$data = $this->validatePost('tb_inscription');
+			$inscription = $this->validatePost('tb_inscription');
 
 			// Passe la date de format français vers format anglais pour le base de données
 			// Format francais
-			$date_heure_francaise = $data['heure_debut'];
+			$date_heure_francaise = $inscription['heure_debut'];
 			$format = "d/m/Y H:i";
 			// Format français vers interne
 			$dateobj = \DateTime::createFromFormat($format, $date_heure_francaise);
-			// Inerne vers format anglais BD
-			$data['heure_debut'] = $dateobj->format('Y-m-d H:i') ;
-			//dd([ $data, $date_heure_francaise, $dateobj]);
+			// Interne vers format anglais BD
+			$inscription['heure_debut'] = $dateobj->format('Y-m-d H:i') ;
+			//dd([ $inscription, $date_heure_francaise, $dateobj]);
 
+			$inscription['complexe_salle_id'] = "7"; // ++++
+			//dd($inscription);
 			$id = $this->model
-				       ->insertRow($data ,
+				       ->insertRow($inscription ,
 				                   $request->input('inscription_id'));
-			$this->cree_partie($data, $id);
+
+			$this->cree_partie($id, $inscription);
+
+
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'inscription/update/'.$id.'?return='.self::returnUrl();
@@ -191,26 +192,71 @@ class InscriptionController extends Controller {
 			} else {
 				\SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
 			}
-
-			return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
-			
+			return Redirect::to($return)
+				             ->with('messagetext',
+				                    \Lang::get('core.note_success'))
+				             ->with('msgstatus','success');
 		} else {
-
-			return Redirect::to('inscription/update/'.$request->input('inscription_id'))
-							 ->with('messagetext',\Lang::get('core.note_error'))
-				             ->with('msgstatus','error')
-			                 ->withErrors($validator)
-				             ->withInput();
+			return Redirect::to('inscription/update/'
+				                .$request
+					          ->input('inscription_id'))
+							  ->with('messagetext',\Lang::get('core
+							                                 .note_error'))
+				              ->with('msgstatus','error')
+			                  ->withErrors($validator)
+				              ->withInput();
 		}	
 	
 	}
-
-	public function cree_partie($data, $id)
+	// Suite à inscription et remise capteur:
+	// - Crée la partie si inexistante
+	// - - Table fb_partie
+	public function cree_partie($inscription_id, $inscription)
 	{
-		return true;
+		// Lis ou crée partie
+		// Partie définie par:
+		// - Complexe salle
+		// - Salle (terrain)
+		// - Heure début
+		// Tentative de lecture de la partie
+		$complexe_salle_id = $inscription['complexe_salle_id'];
+		$complexe_salle_id = 7; // BSA
+        $salle_id          = $inscription['salle_id'];
+		$heure_debut       = $inscription['heure_debut'];
+		$parties = DB::table('fb_partie')->where('complexe_salle_id', $complexe_salle_id)
+			                             ->where('salle_id'         , $salle_id         )
+			                             ->where('debut'            , $heure_debut      )
+										 ->get();
+        dd($parties);
+
+		/*
+		debut
+		duree
+		fin
+		salle_id
+		complexe_salle_id
+		*/
+		//return $partie_id;
 	}
 
+	// Inscrit le joueur à la partie si pas encore inscrit
+	// - Table fb_joueurs_selectionnes
+	// - Déja inscrit si changement de capteur
+	//
+	// ++++ Restriction temporaire: pas de changement de capteur en cours de partie.
+	public function inscrit_joueur_a_partie($partie_id, $inscription)
+	{
 
+		// return $joueur_selectionne_id;
+	}
+
+	// Crée la session de mesures du capteur
+	// - Table fb_sessions_mesures
+	public function cree_sessions_mesures($joueur_selectionne_id, $inscription)
+	{
+
+		// return session_mesure_id;
+	}
 
 
 	public function postDelete( Request $request)
