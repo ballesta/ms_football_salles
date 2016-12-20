@@ -56,13 +56,7 @@
 										<div class="col-md-6">
 										  
 				<div class="input-group m-b" style="width:150px !important;">
-					{!!
-						Form::text('heure_debut',
-					               $row['heure_debut'],
-					               array('class'=>'form-control datetime',
-					                     'style'=>'width:150px !important;'))
-					          //->format('d/m/Y H:i')
-					!!}
+					{!! Form::text('heure_debut', $row['heure_debut'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
 				 
@@ -93,6 +87,15 @@
 										<label for="Capteur" class=" control-label col-md-4 text-left"> Capteur <span class="asterix"> * </span></label>
 										<div class="col-md-6">
 										  <select name='capteur_id' rows='5' id='capteur_id' class='select2 ' required  ></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Complexe Salle" class=" control-label col-md-4 text-left"> Complexe Salle </label>
+										<div class="col-md-6">
+										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -133,6 +136,9 @@
 		
 		$("#capteur_id").jCombo("{!! url('inscription/comboselect?filter=fb_capteurs:capteur_id:code|numero_serie|UID') !!}",
 		{  selected_value : '{{ $row["capteur_id"] }}' });
+		
+		$("#complexe_salle_id").jCombo("{!! url('inscription/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
+		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
 		 
 
 		$('.removeMultiFiles').on('click',function(){

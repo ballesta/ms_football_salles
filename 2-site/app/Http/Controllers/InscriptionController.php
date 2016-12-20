@@ -4,9 +4,9 @@ use App\Http\Controllers\controller;
 use App\Models\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
-use Validator, Input, Redirect ; 
+use Validator, Input, Redirect ;
 
-
+use Illuminate\Support\Facades\DB;
 class InscriptionController extends Controller {
 
 	protected $layout = "layouts.main";
@@ -149,6 +149,7 @@ class InscriptionController extends Controller {
 		}
 	}	
 
+	// Ajoute inscription
 	function postSave( Request $request)
 	{
 		$rules = $this->validateForm();
@@ -172,9 +173,11 @@ class InscriptionController extends Controller {
 				       ->insertRow($inscription ,
 				                   $request->input('inscription_id'));
 
-			$this->cree_partie($id, $inscription);
-
-
+			$partie_id = $this->cree_partie($id, $inscription);
+			$joueur_selectionne_id = $this->inscrit_joueur_a_partie($partie_id,
+				                                                    $inscription);
+			$session_mesure_id = $this->cree_sessions_mesures($joueur_selectionne_id,
+															  $inscription);
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'inscription/update/'.$id.'?return='.self::returnUrl();
@@ -220,23 +223,43 @@ class InscriptionController extends Controller {
 		// - Heure début
 		// Tentative de lecture de la partie
 		$complexe_salle_id = $inscription['complexe_salle_id'];
-		$complexe_salle_id = 7; // BSA
-        $salle_id          = $inscription['salle_id'];
+        $salle_id          = $inscription['terrain_id'];
+        $terrain_id = $salle_id;
 		$heure_debut       = $inscription['heure_debut'];
-		$parties = DB::table('fb_partie')->where('complexe_salle_id', $complexe_salle_id)
-			                             ->where('salle_id'         , $salle_id         )
-			                             ->where('debut'            , $heure_debut      )
+		$duree = $inscription['duree'];
+		$parties = DB::table('fb_partie')->where('complexe_salle_id',
+												 $complexe_salle_id)
+			                             ->where('salle_id',
+				                                 $salle_id)
+			                             ->where('debut',
+				                                  $heure_debut)
 										 ->get();
-        dd($parties);
+        $nbr_parties = count($parties);
+		if ($nbr_parties == 0)
+        {
+	        $partie = [];
+	        $partie['debut'] = $heure_debut;
+	        $partie['duree'] = $duree;
+	        $partie['fin'] = null;
+	        $partie['salle_id'] = $salle_id;
+	        $partie['complexe_salle_id'] = $complexe_salle_id ;
 
-		/*
-		debut
-		duree
-		fin
-		salle_id
-		complexe_salle_id
-		*/
-		//return $partie_id;
+        	// Partie inexistante: créer
+	        $partie_id = DB::table('fb_partie')->insertGetId($partie);
+        }
+        elseif ($nbr_parties == 1)
+        {
+        	// Partie déjà créée
+	        // dd($parties);
+	        $partie_id = $parties[0]->partie_id;
+        }
+        else
+        {
+        	dd(['Plus d une partie', parties]);
+        }
+
+        // Renvoie l'id de la partie créé ou lue
+		return $partie_id;
 	}
 
 	// Inscrit le joueur à la partie si pas encore inscrit
@@ -246,8 +269,17 @@ class InscriptionController extends Controller {
 	// ++++ Restriction temporaire: pas de changement de capteur en cours de partie.
 	public function inscrit_joueur_a_partie($partie_id, $inscription)
 	{
+		$joueur_id = $inscription['joueur_id'];
+		$capteur_id = $inscription['capteur_id'];
 
-		// return $joueur_selectionne_id;
+		$joueur_selectionne['partie_id' ] = $partie_id;
+		$joueur_selectionne['joueur_id' ] = $joueur_id;
+		$joueur_selectionne['capteur_id'] = $capteur_id;
+
+		// Partie inexistante: créer
+		$joueur_selectionne_id = DB::table('fb_joueurs_selectionnes')
+			                         ->insertGetId($joueur_selectionne);
+		return $joueur_selectionne_id;
 	}
 
 	// Crée la session de mesures du capteur
@@ -255,9 +287,15 @@ class InscriptionController extends Controller {
 	public function cree_sessions_mesures($joueur_selectionne_id, $inscription)
 	{
 
-		// return session_mesure_id;
-	}
+		$capteur_id = $inscription['capteur_id'];
 
+		$session_mesure = [];
+		$session_mesure['capteur_id'] = $capteur_id;
+		$session_mesure['joueur_selectionne_id'] = $joueur_selectionne_id;
+		$session_mesure_id = DB::table('fb_sessions_mesures')
+			                     ->insertGetId($session_mesure);
+		return $session_mesure_id;
+	}
 
 	public function postDelete( Request $request)
 	{
@@ -273,8 +311,7 @@ class InscriptionController extends Controller {
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
 			// redirect
 			return Redirect::to('inscription?return='.self::returnUrl())
-        		->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success'); 
-	
+        		->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
 		} else {
 			return Redirect::to('inscription?return='.self::returnUrl())
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
@@ -346,12 +383,6 @@ class InscriptionController extends Controller {
 
 			return  Redirect::back()->with('messagetext','<p class="alert alert-danger">'.\Lang::get('core.note_error').'</p>')->with('msgstatus','error')
 			->withErrors($validator)->withInput();
-
-		}	
-	
-	}	
-
-
-
-
+		}
+	}
 }

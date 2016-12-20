@@ -47,7 +47,7 @@
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>Heure Début</td>
-						<td>{{ date('d/m/Y H:i',strtotime($row->heure_debut)) }} </td>
+						<td>{{ date('',strtotime($row->heure_debut)) }} </td>
 						
 					</tr>
 				

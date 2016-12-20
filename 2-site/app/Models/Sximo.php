@@ -175,7 +175,6 @@ class Sximo extends Model
 
 	public function insertRow($data, $id)
 	{
-
 		$table = with(new static)->table;
 		$key = with(new static)->primaryKey;
 		$columns = $this->getTableField($table);
@@ -187,7 +186,13 @@ class Sximo extends Model
 			//bb
 			// Set complexe sportif
 			$complexe_salle_id = \Session::get('complexe_salle_id');
-			$this->set_field_if_exists($columns, $data, 'complexe_salle_id',$complexe_salle_id );
+			if ($complexe_salle_id == null)
+				$complexe_salle_id = 7;
+				//dd(['complexe_salle_id non défini',$complexe_salle_id]);
+			$this->set_field_if_exists( $columns,
+										$data,
+										'complexe_salle_id',
+										$complexe_salle_id );
 			// Set user id who created
 			$created_by_user_id = \Session::get('uid');
 			$this->set_field_if_exists($columns, $data, 'created_by_user_id', $created_by_user_id);
