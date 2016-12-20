@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ;
 
 use Illuminate\Support\Facades\DB;
+
 class StatistiquesController extends Controller {
 
 	protected $layout = "layouts.main";
@@ -283,9 +284,9 @@ class StatistiquesController extends Controller {
 			$heures = floor($minutes / 60);
 			$minutes = $minutes % 60;
 			if ($minutes < 10)
-				$duree = "$heures:0$minutes";
+				$duree = "0$heures:0$minutes";
 			else
-				$duree = "$heures:$minutes";
+				$duree = "0$heures:$minutes";
 
 			//dd([$end, $start,$end - $start,  $duree]);
 			$vitesses="";

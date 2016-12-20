@@ -9,6 +9,13 @@
         <div class="page-content-wrapper m-t">
             <div class="sbox ">
                 <div class="sbox-title">
+                    <div class="sbox-tools pull-left">
+                        <a href="{{ url('inscription?return='.$return) }}" class="tips"
+                           title="Retour à la liste des inscriptions des joueurs avec remise des capteurs"><i class="fa  fa-arrow-left"></i> Retour à la liste des inscriptions</a>
+                    </div>
+
+                    <div class="sbox-tools ">
+                    </div>
                 </div>
                 <div class="sbox-content">
                     <center><img src="/uploads/images/bsa.png"></center>
@@ -29,8 +36,8 @@
                             <td>
                                 <h2>
                                     {{ SiteHelpers::formatLookUp($row->joueur_id,
-                                          'joueur_id',
-                                          '1:fb_joueurs:joueur_id:premon|nom')
+                                                                 'joueur_id',
+                                                                 '1:fb_joueurs:joueur_id:premon|nom')
                                     }}
                                 </h2>
                             </td>
@@ -90,27 +97,27 @@
                     <script>
                         var ctx = document.getElementById('myChart').getContext('2d');
                         var myChart = new Chart(
-                                ctx,
-                                {
-                                    type: 'line',
-                                    data: {
-                                        datasets: [{
-                                            label: 'Vitesse',
-                                            data:
+                            ctx,
+                            {
+                                type: 'line',
+                                data: {
+                                    datasets: [{
+                                        label: 'Vitesse',
+                                        data:
                                             [
                                                 {{ $statistiques['vitesses']  }}
                                             ]
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        xAxes: [{
+                                            type: 'linear',
+                                            position: 'bottom'
                                         }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            xAxes: [{
-                                                type: 'linear',
-                                                position: 'bottom'
-                                            }]
-                                        }
                                     }
-                                });
+                                }
+                            });
                     </script>
                 </div>
             </div>

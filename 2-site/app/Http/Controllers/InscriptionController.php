@@ -7,6 +7,8 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ;
 
 use Illuminate\Support\Facades\DB;
+use App\Helpers\StatistiquesMesures;
+//use App\Helpers;
 class InscriptionController extends Controller {
 
 	protected $layout = "layouts.main";
@@ -28,7 +30,6 @@ class InscriptionController extends Controller {
 			'pageNote'	=>  $this->info['note'],
 			'pageModule'=> 'inscription',
 			'return'	=> self::returnUrl()
-			
 		);
 		
 		\App::setLocale(CNF_LANG);
@@ -36,15 +37,11 @@ class InscriptionController extends Controller {
 
 		$lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
 		\App::setLocale($lang);
-		}  
-
-
-		
+		}
 	}
 
 	public function getIndex( Request $request )
 	{
-
 		if($this->access['is_view'] ==0) 
 			return Redirect::to('dashboard')
 				->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -59,9 +56,7 @@ class InscriptionController extends Controller {
 			$search = 	$this->buildSearch('maps');
 			$filter = $search['param'];
 			$this->data['search_map'] = $search['maps'];
-		} 
-
-		
+		}
 		$page = $request->input('page', 1);
 		$params = array(
 			'page'		=> $page ,
@@ -101,7 +96,6 @@ class InscriptionController extends Controller {
 
 	function getUpdate(Request $request, $id = null)
 	{
-	
 		if($id =='')
 		{
 			if($this->access['is_add'] ==0 )
@@ -143,13 +137,21 @@ class InscriptionController extends Controller {
 			$this->data['access']		= $this->access;
 			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 			$this->data['prevnext'] = $this->model->prevNext($id);
-			return view('inscription.view',$this->data);
+
+			// Elabore les données statistiques
+			$statistiques = \App\Helpers\StatistiquesMesures::statistiques($id, $row);
+			$this->data['statistiques'] = $statistiques;
+			//dd($this->data);
+			return view('inscription.statistiques',$this->data);
+			//return view('inscription.statistiques',$statistiques);
 		} else {
 			return Redirect::to('inscription')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
 		}
 	}	
 
+	//bb
 	// Ajoute inscription
+	// Ajoute partie, joueur sélectionné, session mesures
 	function postSave( Request $request)
 	{
 		$rules = $this->validateForm();
@@ -173,11 +175,9 @@ class InscriptionController extends Controller {
 				       ->insertRow($inscription ,
 				                   $request->input('inscription_id'));
 
-			$partie_id = $this->cree_partie($id, $inscription);
-			$joueur_selectionne_id = $this->inscrit_joueur_a_partie($partie_id,
-				                                                    $inscription);
-			$session_mesure_id = $this->cree_sessions_mesures($joueur_selectionne_id,
-															  $inscription);
+			\App\Helpers\StatistiquesMesures::cree_partie_joueur_selectionne_session_mesures
+				($id, $inscription);
+
 			if(!is_null($request->input('apply')))
 			{
 				$return = 'inscription/update/'.$id.'?return='.self::returnUrl();
@@ -203,100 +203,13 @@ class InscriptionController extends Controller {
 			return Redirect::to('inscription/update/'
 				                .$request
 					          ->input('inscription_id'))
-							  ->with('messagetext',\Lang::get('core
-							                                 .note_error'))
+							  ->with('messagetext',\Lang::get('core.note_error'))
 				              ->with('msgstatus','error')
 			                  ->withErrors($validator)
 				              ->withInput();
 		}	
 	
 	}
-	// Suite à inscription et remise capteur:
-	// - Crée la partie si inexistante
-	// - - Table fb_partie
-	public function cree_partie($inscription_id, $inscription)
-	{
-		// Lis ou crée partie
-		// Partie définie par:
-		// - Complexe salle
-		// - Salle (terrain)
-		// - Heure début
-		// Tentative de lecture de la partie
-		$complexe_salle_id = $inscription['complexe_salle_id'];
-        $salle_id          = $inscription['terrain_id'];
-        $terrain_id = $salle_id;
-		$heure_debut       = $inscription['heure_debut'];
-		$duree = $inscription['duree'];
-		$parties = DB::table('fb_partie')->where('complexe_salle_id',
-												 $complexe_salle_id)
-			                             ->where('salle_id',
-				                                 $salle_id)
-			                             ->where('debut',
-				                                  $heure_debut)
-										 ->get();
-        $nbr_parties = count($parties);
-		if ($nbr_parties == 0)
-        {
-	        $partie = [];
-	        $partie['debut'] = $heure_debut;
-	        $partie['duree'] = $duree;
-	        $partie['fin'] = null;
-	        $partie['salle_id'] = $salle_id;
-	        $partie['complexe_salle_id'] = $complexe_salle_id ;
-
-        	// Partie inexistante: créer
-	        $partie_id = DB::table('fb_partie')->insertGetId($partie);
-        }
-        elseif ($nbr_parties == 1)
-        {
-        	// Partie déjà créée
-	        // dd($parties);
-	        $partie_id = $parties[0]->partie_id;
-        }
-        else
-        {
-        	dd(['Plus d une partie', parties]);
-        }
-
-        // Renvoie l'id de la partie créé ou lue
-		return $partie_id;
-	}
-
-	// Inscrit le joueur à la partie si pas encore inscrit
-	// - Table fb_joueurs_selectionnes
-	// - Déja inscrit si changement de capteur
-	//
-	// ++++ Restriction temporaire: pas de changement de capteur en cours de partie.
-	public function inscrit_joueur_a_partie($partie_id, $inscription)
-	{
-		$joueur_id = $inscription['joueur_id'];
-		$capteur_id = $inscription['capteur_id'];
-
-		$joueur_selectionne['partie_id' ] = $partie_id;
-		$joueur_selectionne['joueur_id' ] = $joueur_id;
-		$joueur_selectionne['capteur_id'] = $capteur_id;
-
-		// Partie inexistante: créer
-		$joueur_selectionne_id = DB::table('fb_joueurs_selectionnes')
-			                         ->insertGetId($joueur_selectionne);
-		return $joueur_selectionne_id;
-	}
-
-	// Crée la session de mesures du capteur
-	// - Table fb_sessions_mesures
-	public function cree_sessions_mesures($joueur_selectionne_id, $inscription)
-	{
-
-		$capteur_id = $inscription['capteur_id'];
-
-		$session_mesure = [];
-		$session_mesure['capteur_id'] = $capteur_id;
-		$session_mesure['joueur_selectionne_id'] = $joueur_selectionne_id;
-		$session_mesure_id = DB::table('fb_sessions_mesures')
-			                     ->insertGetId($session_mesure);
-		return $session_mesure_id;
-	}
-
 	public function postDelete( Request $request)
 	{
 		

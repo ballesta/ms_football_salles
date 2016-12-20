@@ -165,7 +165,6 @@ return [
     */
 
     'aliases' => [
-
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
@@ -203,11 +202,10 @@ return [
         'Captcha'   => Mews\Captcha\Facades\Captcha::class,
         'Socialize' => Laravel\Socialite\Facades\Socialite::class,
         'Markdown'  => GrahamCampbell\Markdown\Facades\Markdown::class,
-        'Socialize' => Laravel\Socialite\Facades\Socialite::class ,
+        'Socialize' => Laravel\Socialite\Facades\Socialite::class,
         'Navigation'=> App\Helpers\Database_Navigation::class,
         'Role'      => App\Helpers\Roles::class,
-        'Debugbar'  => Barryvdh\Debugbar\Facade::class
-
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+	    'Stat'      => App\Helpers\StatistiquesMesures::class
     ],
-
 ];
