@@ -674,7 +674,6 @@ abstract class Controller extends BaseController {
 		$args = explode("-",$id);
 		if(count($args)>=2) 
 		{
-
 			$model = '\\App\\Models\\'.ucwords($args['3']);
 			$model = new $model();
 			$info = $model->makeInfo( $args['3'] );

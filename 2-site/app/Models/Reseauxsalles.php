@@ -1,9 +1,8 @@
 <?php
-	namespace App\Models;
-	//namespace App\Helpers\Roles;
+namespace App\Models;
+//namespace App\Helpers\Roles;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-
 class reseauxsalles extends Sximo  {
     
     protected $table = 'fbs_reseaux_salles';
@@ -18,10 +17,9 @@ class reseauxsalles extends Sximo  {
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
-        $where = [];
-        $where[] = \App\Helpers\Roles::filter( "reseauxsalles");
-		$sql_where = \App\Helpers\SQL_Where::compose($where);
-		return $sql_where;
+        $where = [];$where[] = \App\Helpers\Roles::filter( "reseauxsalles");
+$sql_where = \App\Helpers\SQL_Where::compose($where);
+return $sql_where;
         ////)) Code generated end
     }
     

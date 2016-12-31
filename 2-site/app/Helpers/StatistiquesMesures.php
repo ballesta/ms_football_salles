@@ -152,11 +152,11 @@
 			// Lis toutes les mesure
 			// par ordre chronologique ascendants.
 			$mesures = DB::table('fb_mesures')->orderBy('Horodatage', 'asc')->get();
-			$ballons_joues = 0;
 			$Dist = 0;
 			$Average = 0;
 			$Max = 0;
 			$Max_session = 0;
+			$ballons_joues = 0;
 			$Step = 0;
 			$Sprint = 0;
 			$Mobility = 0;
@@ -165,11 +165,13 @@
 			$Control = 0;
 			$duree = 0;
 			$gen_test_a = 0;
+			$ballons = "";
 			$vitesses = "";
 			if (count($mesures) > 0) {
 				// Calculées à partir des vitesses moyennes transmises pour chaque mesure
 				// ++++ Hypothèse
 				$vitesses_moyennes = [];
+				$tableau_ballons_joues = [];
 				$i = 0;
 				$mesures_intervalle = [];
 				$mesures_traitees = [];
@@ -207,9 +209,12 @@
 							} elseif (isset($mesure ["EventControl"])) {
 								$ballons_joues++;
 							} elseif (isset($mesure["Mesure"])) {
+								// Seul message émuis par les capteurs en fin 2016.
+
 								// Mémorise les dernières valeurs reçues qui seront affichée
 								// Distance totale parcourue en mètres
 								$Dist = $mesure ["Mesure"]["Dist"];
+								//$Dist = $Dist1 - $Dist
 								// Vitesse moyenne en km/h depuis le dernier message
 								$Average = $mesure ["Mesure"]["Average"];
 								// Vitesse maximum en km/h depuis le dernier message
@@ -227,8 +232,8 @@
 								$Mobility = $mesure ["Mesure"]["Mobility"];
 								// Nombre de tir depuis le début de la session
 								$Shoot = $mesure ["Mesure"]["Shoot"];
-								if ($Shoot > $ballons_joues)
-									$ballons_joues = $Shoot;
+								//if ($Shoot > $ballons_joues)
+								//	$ballons_joues_cumules = $Shoot;
 								// Nombre de passes depuis le début de la session
 								$Pass = $mesure ["Mesure"]["Pass"];
 								//Nombre de contrôles depuis le début de la session
@@ -236,6 +241,7 @@
 								// Pour la courbe
 								$minutes = ($date_heure - $start) / 60;
 								$vitesses_moyennes["$minutes"] = $Average;
+								$tableau_ballons_joues["$minutes"] = $Shoot;
 							} elseif (isset($mesure ["Check"])) {
 								NULL;
 							} elseif (isset($mesure ["Battery"])) {
@@ -251,11 +257,15 @@
 					$minutes = ($end - $start) / 60;
 					$heures = floor($minutes / 60);
 					$minutes = $minutes % 60;
+
+					// Formater la durée en minutes
 					if ($minutes < 10)
 						$duree = "0$heures:0$minutes";
 					else
 						$duree = "0$heures:$minutes";
 					//dd([$end, $start,$end - $start,  $duree]);
+
+					// Vitesses
 					$vitesses = "";
 					//dd($vitesses_moyennes);
 					//$n = count($vitesses_moyennes);
@@ -263,7 +273,15 @@
 						$vitesses .= "{ x:$m, y:$v },";
 					}
 					$vitesses = rtrim($vitesses, ",");
-					//dd([$vitesses_moyennes,$vitesses]);
+
+					// Ballons joués
+					$ballons = "";
+					// dd($ballons_joues);
+					foreach ($tableau_ballons_joues as $m => $v) {
+						$ballons .= "{ x:$m, y:$v },";
+					}
+					$ballons = rtrim($ballons, ",");
+					//dd($ballons);
 				}
 			}
 			$s =
@@ -271,7 +289,8 @@
 			    'duree'              => $duree,
 			    'ballons_joues'      => $ballons_joues,
 			    'vitesse_maximale'   => $Max_session,
-			    'vitesses'           => $vitesses
+			    'vitesses'           => $vitesses,
+				'ballons'            => $ballons
 			];
 			//dd([$end, $start, $minutes, $mesures_intervalle, $mesures_traitees, $s]);
 			return $s;

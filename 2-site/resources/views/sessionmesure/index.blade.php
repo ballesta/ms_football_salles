@@ -117,9 +117,9 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
     $help        = '',
     $url         = URL::to('mesure'),
     $parent_key  = 'session_mesure_id',
-    $parent_label= 'date_heure',
+    $parent_label= 'heure_debut',
     $parent_id   = $row->session_mesure_id,
-    $parent_name = $row->date_heure
+    $parent_name = $row->heure_debut
     )
 !!}
 <!--//)) Code generated end-->

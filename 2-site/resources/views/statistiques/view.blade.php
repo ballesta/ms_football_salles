@@ -48,7 +48,7 @@
                                     <font color="#ffcc00">
                                         <strong>
                                             {{  $statistiques['Dist'] }}
-                                            km</strong>
+                                            m</strong>
                                     </font>
                                 </h3>
                             </td>
