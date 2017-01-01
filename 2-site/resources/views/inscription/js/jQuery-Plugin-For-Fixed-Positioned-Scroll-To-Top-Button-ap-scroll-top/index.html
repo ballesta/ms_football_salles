@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>jQuery ap-scroll-top Playground</title>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="lib/css/ap-scroll-top.css" type="text/css" media="all" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="lib/js/ap-scroll-top.js"></script>
+	</head>
+
+	<body><div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/animation/jQuery-Plugin-For-Fixed-Positioned-Scroll-To-Top-Button-ap-scroll-top.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+        <div id="content">
+            <ul>
+                <li>
+                    <h1>jQuery ap-scroll-top Playground</h1>
+                </li>
+                <li>
+                    <div id="options">
+                        <div class="row">
+                            <label for="option-enabled">Enabled:</label>
+                            <input type="checkbox" checked="checked" id="option-enabled" name="option-enabled" />
+                        </div>
+                        <div class="row">
+                            <label for="option-visibility-trigger">Visibility Trigger:</label>
+                            <select id="option-visibility-trigger" name="option-visibility-trigger">
+                                <option value="0">0</option>
+                                <option value="100" selected="selected">100px</option>
+                                <option value="400">400px</option>
+                                <option value="custom-function">Custom function</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label for="option-visibility-fade-speed">Visibility Fade Speed:</label>
+                            <select id="option-visibility-fade-speed" name="option-visibility-fade-speed">
+                                <option value="0">0</option>
+                                <option value="150" selected="selected">150ms</option>
+                                <option value="500">500ms</option>
+                                <option value="1500">1500ms</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label for="option-scroll-speed">Scroll Speed:</label>
+                            <select id="option-scroll-speed" name="option-scroll-speed">
+                                <option value="0">0</option>
+                                <option value="100">100ms</option>
+                                <option value="250" selected="selected">250ms</option>
+                                <option value="500">500ms</option>
+                                <option value="1500">1500ms</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label for="option-position">Position:</label>
+                            <select id="option-position" name="option-position">
+                                <optgroup label="Top">
+                                    <option value="top left">Left</option>
+                                    <option value="top center">Center</option>
+                                    <option value="top right">Right</option>
+                                </optgroup>
+                                <optgroup label="Bottom">
+                                    <option value="bottom left">Left</option>
+                                    <option value="bottom center">Center</option>
+                                    <option value="bottom right" selected="selected">Right</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p>
+                        Thanks to <a href="https://www.flickr.com/photos/buzz_rozwell/">Atmospherics</a> for the photos!
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://www.flickr.com/photos/buzz_rozwell/16650218443/" title="Field Reflection 2"><img src="https://farm9.staticflickr.com/8725/16650218443_bb442aacc7_c.jpg" width="800" height="513" alt="Field Reflection 2" /></a>
+                    </p>
+                </li>
+                <li>
+                    <p id="image-for-custom-function">
+                        <a href="https://www.flickr.com/photos/buzz_rozwell/16695168487/" title="Harbour Mountains"><img src="https://farm9.staticflickr.com/8716/16695168487_6663782019_c.jpg" width="800" height="534" alt="Harbour Mountains" /></a>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://www.flickr.com/photos/buzz_rozwell/16300207983/" title="Water/Snow/Ice"><img src="https://farm8.staticflickr.com/7651/16300207983_784b95055a_c.jpg" width="800" height="534" alt="Water/Snow/Ice" /></a>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://www.flickr.com/photos/buzz_rozwell/17047144785/" title="Volcanic Ice"><img src="https://farm9.staticflickr.com/8700/17047144785_e2edf01a7c_c.jpg" width="800" height="534" alt="Volcanic Ice" /></a>
+                    </p>
+                    <div id="bottom"></div>
+                </li>
+            </ul>
+        </div>
+
+		<script type="text/javascript">
+            // Setup plugin with default settings
+            $(document).ready(function() {
+
+                $.apScrollTop({
+                    'onInit': function(evt) {
+                        console.log('apScrollTop: init');
+                    }
+                });
+
+                // Add event listeners
+                $.apScrollTop().on('apstInit', function(evt) {
+                    console.log('apScrollTop: init');
+                });
+
+                $.apScrollTop().on('apstToggle', function(evt, details) {
+                    console.log('apScrollTop: toggle / is visible: ' + details.visible);
+                });
+
+                $.apScrollTop().on('apstCssClassesUpdated', function(evt) {
+                    console.log('apScrollTop: cssClassesUpdated');
+                });
+
+                $.apScrollTop().on('apstPositionUpdated', function(evt) {
+                    console.log('apScrollTop: positionUpdated');
+                });
+
+                $.apScrollTop().on('apstEnabled', function(evt) {
+                    console.log('apScrollTop: enabled');
+                });
+
+                $.apScrollTop().on('apstDisabled', function(evt) {
+                    console.log('apScrollTop: disabled');
+                });
+
+                $.apScrollTop().on('apstBeforeScrollTo', function(evt, details) {
+                    console.log('apScrollTop: beforeScrollTo / position: ' + details.position + ', speed: ' + details.speed);
+
+                    // You can return a single number here, which means that to this position
+                    // browser window scolls to
+                    /*
+                    return 100;
+                    */
+
+                    // .. or you can return an object, containing position and speed:
+                    /*
+                    return {
+                        position: 100,
+                        speed: 100
+                    };
+                    */
+
+                    // .. or do not return anything, so the default values are used to scroll
+                });
+
+                $.apScrollTop().on('apstScrolledTo', function(evt, details) {
+                    console.log('apScrollTop: scrolledTo / position: ' + details.position);
+                });
+
+                $.apScrollTop().on('apstDestroy', function(evt, details) {
+                    console.log('apScrollTop: destroy');
+                });
+
+            });
+
+
+            // Add change events for options
+            $('#option-enabled').on('change', function() {
+                var enabled = $(this).is(':checked');
+                $.apScrollTop('option', 'enabled', enabled);
+            });
+
+            $('#option-visibility-trigger').on('change', function() {
+                var value = $(this).val();
+                if (value == 'custom-function') {
+                    $.apScrollTop('option', 'visibilityTrigger', function(currentYPos) {
+                        var imagePosition = $('#image-for-custom-function').offset();
+                        return (currentYPos > imagePosition.top);
+                    });
+                }
+                else {
+                    $.apScrollTop('option', 'visibilityTrigger', parseInt(value));
+                }
+            });
+
+            $('#option-visibility-fade-speed').on('change', function() {
+                var value = parseInt($(this).val());
+                $.apScrollTop('option', 'visibilityFadeSpeed', value);
+            });
+
+            $('#option-scroll-speed').on('change', function() {
+                var value = parseInt($(this).val());
+                $.apScrollTop('option', 'scrollSpeed', value);
+            });
+
+            $('#option-position').on('change', function() {
+                var value = $(this).val();
+                $.apScrollTop('option', 'position', value);
+            });
+		</script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</body>
+</html>

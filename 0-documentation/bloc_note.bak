@@ -1,0 +1,50 @@
+﻿SELECT * 
+		 FROM `fb_mesures` 
+		WHERE `message_json` LIKE  '%"54:4a:16:56:46:1a"%'  
+		  AND Horodatage BETWEEN '2016-12-21 15:00:00' 
+		                     AND '2016-12-21 15:30:00'
+		ORDER BY `Horodatage`  ASC 
+		
+		
+2016-12-16 17:05:48
+2016-12-16 17:58:28
+	
+array:11 [▼
+  "pageTitle" => "Inscription"
+  "pageNote" => "Accueil des joueurs et remise capteurs"
+  "pageModule" => "inscription"
+  "return" => ""
+  "row" => {#1138 ▼
+    +"inscription_id": 33
+    +"joueur_id": 4
+    +"terrain_id": 11
+    +"heure_debut": "2016-12-16 17:00:00"
+    +"duree": 60
+    +"capteur_id": 3
+    +"created_by_user_id": 5
+    +"createdOn": "2016-12-20 19:54:01"
+    +"updatedOn": "2016-12-20 21:08:55"
+    +"complexe_salle_id": 7
+  }
+  "fields" => array:10 [▼
+    "inscription_id" => array:17 [▶]
+    "joueur_id" => array:17 [▶]
+    "terrain_id" => array:17 [▶]
+    "heure_debut" => array:17 [▶]
+    "duree" => array:17 [▶]
+    "capteur_id" => array:17 [▶]
+    "created_by_user_id" => array:17 [▶]
+    "createdOn" => array:17 [▶]
+    "updatedOn" => array:17 [▶]
+    "complexe_salle_id" => array:17 [▶]
+  ]
+  "id" => "33"
+  "access" => array:7 [▶]
+  "subgrid" => []
+  "prevnext" => array:2 [▶]
+  "statistiques" => array:5 [▼
+    "Dist" => "5"
+    "duree" => "0:52"
+    "ballons_joues" => 0
+    "vitesse_maximale" => "0"
+    "vitesses" => "{ x:0, y:0 },{ x:0.05, y:1 },{ x:0.18333333333333, y:2 },{ x:0.23333333333333, y:3 },{ x:0.31666666666667, y:4 },{ x:0.41666666666667, y:5 },{ x:0.48333333333	
