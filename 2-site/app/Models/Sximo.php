@@ -8,8 +8,12 @@ class Sximo extends Model
 		$key = with(new static)->primaryKey;
 		//bb
 		// Define variables for PHPstorm IDE
+		// In order that it does not show them as undefined.
 		$page=0;$limit=0;$sort=0;$order=0;$global=0;$params=0;
-		extract(array_merge(array('page' => '0', 'limit' => '0', 'sort' => '', 'order' => '', 'params' => '', 'global' => 1), $args));
+
+		extract(array_merge(array('page' => '0', 'limit' => '0', 'sort' => '',
+		                          'order' => '', 'params' => '', 'global' => 1),
+						    $args));
 		$offset = ($page - 1) * $limit;
 		$limitConditional = ($page != 0 && $limit != 0) ? "LIMIT  $offset , $limit" : '';
 		$orderConditional = ($sort != '' && $order != '') ? " ORDER BY {$sort} {$order} " : '';
@@ -19,14 +23,20 @@ class Sximo extends Model
 			$params .= " AND {$table}.entry_by ='" . \Session::get('uid') . "'";
 		// End Update permission global / own access new ver 1.1			
 		$rows = array();
-		$result = \DB::select(self::querySelect() . self::queryWhere() . " 
-				{$params} " . self::queryGroup() . " {$orderConditional}  {$limitConditional} ");
+		$result = \DB::select(self::querySelect() . self::queryWhere()
+				. " {$params} "
+				. self::queryGroup()
+				. " {$orderConditional}  {$limitConditional} ");
 		if ($key == '') {
 			$key = '*';
 		} else {
 			$key = $table . "." . $key;
 		}
-		$query = self::querySelect() . self::queryWhere() . " {$params} " . self::queryGroup() . " {$orderConditional}  ";
+		$query = self::querySelect()
+			   . self::queryWhere()
+			   . " {$params} "
+			   . self::queryGroup()
+			   . " {$orderConditional}  ";
 		$total = \DB::select($query);
 		$total = count($total);
 		//		$total = $res[0]->total;
@@ -178,9 +188,12 @@ class Sximo extends Model
 		$table = with(new static)->table;
 		$key = with(new static)->primaryKey;
 		$columns = $this->getTableField($table);
+		//bb
+		$this->date_french_format($columns, $data);
 		if ($id == NULL) {
 			// Insert Here
 			unset($data[$key]);
+			//dd($columns,$data);
 			$this->set_field_if_exists($columns,$data, 'createdOn', date("Y-m-d H:i:s"));
 			$this->set_field_if_exists($columns,$data, 'updatedOn', date("Y-m-d H:i:s"));
 			//bb
@@ -195,7 +208,10 @@ class Sximo extends Model
 										$complexe_salle_id );
 			// Set user id who created
 			$created_by_user_id = \Session::get('uid');
-			$this->set_field_if_exists($columns, $data, 'created_by_user_id', $created_by_user_id);
+			$this->set_field_if_exists($columns,
+									   $data,
+									   'created_by_user_id',
+										$created_by_user_id);
 			//dd($data);
 			// Insert new row
 			$id = \DB::table($table)->insertGetId($data);
@@ -220,6 +236,28 @@ class Sximo extends Model
 		}
 	}
 
+	//bb
+	// Passe la date de format français vers format anglais pour le base de données
+	// Format francais
+    function date_french_format($columns,&$data)
+    {
+		foreach ($data as $field_name => $value)
+		{
+			// Ne traite que les noms de champs contenant 'heure_' ou 'date_'
+			if (   strpos($field_name, 'heure_')       !== false
+				|| strpos($field_name, 'date_' )       !== false
+				|| strpos($field_name, 'heure_debut' ) !== false
+			)
+			{
+				$date_heure_francaise = $data[$field_name];
+				$format = "d/m/Y H:i";
+				// Format français vers interne
+				$dateobj = \DateTime::createFromFormat($format, $date_heure_francaise);
+				// Interne vers format anglais BD
+				$data[$field_name] = $dateobj->format('Y-m-d H:i') ;
+			}
+		}
+    }
 
 	function validAccess($id)
 	{

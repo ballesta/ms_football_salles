@@ -227,10 +227,6 @@ class StatistiquesController extends Controller {
 				{
 					$ballons_joues++;
 				}
-				elseif (isset($mesure ["EventShoot"]))
-				{
-					$ballons_joues++;
-				}
 				elseif (isset($mesure ["EventPass"]))
 				{
 					$ballons_joues++;
@@ -275,7 +271,9 @@ class StatistiquesController extends Controller {
 					null;
 				}
 				else
+				{
 					dd(["Message capteur inconnu:",$mesure]);
+				}
 				$end = $date_heure;
 			}
 

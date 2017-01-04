@@ -160,6 +160,31 @@ class InscriptionController extends Controller {
         //dd($this->data);
         return view('inscription.form',$this->data);
     }
+
+
+	public function getGenere( Request $request, $id = null)
+	{
+		if($this->access['is_detail'] ==0)
+			return Redirect::to('dashboard')
+						->with( 'messagetext',
+					            \Lang::get('core.note_restric'))
+									->with('msgstatus','error');
+		// Lis inscription
+		$row = $this->model->getRow($id);
+		if($row)
+		{
+			// Elabore les données statistiques
+			$mesures = \App\Helpers\GenereMesures::Partie($id, $row);
+			$this->data['mesures'] = $mesures;
+			//dd($this->data);
+			return Redirect::to('inscription')
+				        ->with('messagetext','Mesures crées')->with('msgstatus','success');
+			return view('inscription.statistiques',$this->data);
+		} else {
+			return Redirect::to('inscription')->with('messagetext','Record Not Found !')->with('msgstatus','error');
+		}
+	}
+
     public function getShow( Request $request, $id = null)
     {
         if($this->access['is_detail'] ==0)
@@ -204,7 +229,7 @@ class InscriptionController extends Controller {
             //// Interne vers format anglais BD
             //$inscription['heure_debut'] = $dateobj->format('Y-m-d H:i') ;
             //dd([ $inscription, $date_heure_francaise, $dateobj]);
-            $inscription['complexe_salle_id'] = "7"; // ++++
+            //$inscription['complexe_salle_id'] = "7"; // ++++
             //dd($inscription);
             $id = $this->model
             ->insertRow($inscription ,

@@ -32,6 +32,7 @@
 		// - - Table fb_partie
 		static function cree_partie($inscription_id, $inscription)
 		{
+			//dd($inscription);
 			// Lis ou crée partie
 			// Partie définie par:
 			// - Complexe salle
@@ -40,10 +41,12 @@
 			// Tentative de lecture de la partie
 			$complexe_salle_id = $inscription['complexe_salle_id'];
 			$salle_id = $inscription['terrain_id'];
-			$terrain_id = $salle_id;
-			$heure_debut = $inscription['heure_debut'];
+			$heure_debut = self::heure_francaise_vers_interne_db($inscription['heure_debut']);
 			$duree = $inscription['duree'];
-			$parties = DB::table('fb_partie')->where('complexe_salle_id', $complexe_salle_id)->where('salle_id', $salle_id)->where('debut', $heure_debut)->get();
+			$parties = DB::table('fb_partie')
+				->where('complexe_salle_id', $complexe_salle_id)->where('salle_id', $salle_id)
+				->where('debut', $heure_debut)
+				->get();
 			$nbr_parties = count($parties);
 			if ($nbr_parties == 0) {
 				$partie = [];
@@ -64,6 +67,17 @@
 			// Renvoie l'id de la partie créé ou lue
 			return $partie_id;
 		}
+
+		static function heure_francaise_vers_interne_db($date_heure_francaise)
+		{
+			$format = "d/m/Y H:i";
+			// Format français vers interne
+			$dateobj = \DateTime::createFromFormat($format, $date_heure_francaise);
+			// Interne vers format anglais BD
+			$heure_interne = $dateobj->format('Y-m-d H:i') ;
+			return $heure_interne;
+		}
+
 
 		// Inscrit le joueur à la partie si pas encore inscrit
 		// - Table fb_joueurs_selectionnes
@@ -152,10 +166,10 @@
 			// Lis toutes les mesure
 			// par ordre chronologique ascendants.
 			$mesures = DB::table('fb_mesures')->orderBy('Horodatage', 'asc')->get();
-			$Dist = 0;
+			$dist = 0;
 			$Average = 0;
 			$Max = 0;
-			$Max_session = 0;
+			$max_session = 0;
 			$ballons_joues = 0;
 			$Step = 0;
 			$Sprint = 0;
@@ -167,6 +181,7 @@
 			$gen_test_a = 0;
 			$ballons = "";
 			$vitesses = "";
+			$distances = "";
 			if (count($mesures) > 0) {
 				// Calculées à partir des vitesses moyennes transmises pour chaque mesure
 				// ++++ Hypothèse
@@ -202,8 +217,6 @@
 								NULL;
 							} elseif (isset($mesure ["EventShoot"])) {
 								$ballons_joues++;
-							} elseif (isset($mesure ["EventShoot"])) {
-								$ballons_joues++;
 							} elseif (isset($mesure ["EventPass"])) {
 								$ballons_joues++;
 							} elseif (isset($mesure ["EventControl"])) {
@@ -213,8 +226,7 @@
 
 								// Mémorise les dernières valeurs reçues qui seront affichée
 								// Distance totale parcourue en mètres
-								$Dist = $mesure ["Mesure"]["Dist"];
-								//$Dist = $Dist1 - $Dist
+								$dist = $mesure ["Mesure"]["Dist"];
 								// Vitesse moyenne en km/h depuis le dernier message
 								$Average = $mesure ["Mesure"]["Average"];
 								// Vitesse maximum en km/h depuis le dernier message
@@ -222,8 +234,8 @@
 
 								$Max = $mesure ["Mesure"]["Max"];
 								// Mémorise le maximum
-								if ($Max > $Max_session)
-									$Max_session = $Max;
+								if ($Max > $max_session)
+									$max_session = $Max;
 								// Nombre de pas depuis le début de la session
 								$Step = $mesure ["Mesure"]["Step"];
 								// Nombre de sprint depuis le début de la session
@@ -232,14 +244,15 @@
 								$Mobility = $mesure ["Mesure"]["Mobility"];
 								// Nombre de tir depuis le début de la session
 								$Shoot = $mesure ["Mesure"]["Shoot"];
-								//if ($Shoot > $ballons_joues)
-								//	$ballons_joues_cumules = $Shoot;
-								// Nombre de passes depuis le début de la session
+								if ($Shoot > $ballons_joues)
+									$ballons_joues = $Shoot;
+								// Nombre de pauis le début de la session
 								$Pass = $mesure ["Mesure"]["Pass"];
 								//Nombre de contrôles depuis le début de la session
 								$Control = $mesure ["Mesure"]["Control"];
 								// Pour la courbe
 								$minutes = ($date_heure - $start) / 60;
+								$tableau_distances_parcourues["$minutes"] = $dist;
 								$vitesses_moyennes["$minutes"] = $Average;
 								$tableau_ballons_joues["$minutes"] = $Shoot;
 							} elseif (isset($mesure ["Check"])) {
@@ -265,30 +278,42 @@
 						$duree = "0$heures:$minutes";
 					//dd([$end, $start,$end - $start,  $duree]);
 
-					// Vitesses
+
+					//// Vitesses
 					$vitesses = "";
-					//dd($vitesses_moyennes);
-					//$n = count($vitesses_moyennes);
 					foreach ($vitesses_moyennes as $m => $v) {
 						$vitesses .= "{ x:$m, y:$v },";
 					}
 					$vitesses = rtrim($vitesses, ",");
 
+
+
+					// Distances
+					$distances = "";
+					foreach ($tableau_distances_parcourues as $m => $v) {
+						$distances .= "{ x:$m, y:$v },";
+					}
+					$distances = rtrim($distances, ",");
+
 					// Ballons joués
 					$ballons = "";
 					// dd($ballons_joues);
+					$v_precedente = 0;
 					foreach ($tableau_ballons_joues as $m => $v) {
-						$ballons .= "{ x:$m, y:$v },";
+						$v_intervalle =  $v - $v_precedente;
+						$ballons .= "{ x:$m, y:$v_intervalle },";
+						$v_precedente = $v;
 					}
 					$ballons = rtrim($ballons, ",");
 					//dd($ballons);
 				}
 			}
 			$s =
-			[   'Dist'               => $Dist,
+			[   'Dist'               => $dist,
 			    'duree'              => $duree,
 			    'ballons_joues'      => $ballons_joues,
-			    'vitesse_maximale'   => $Max_session,
+			    'vitesse_maximale'   => $max_session,
+				'distances'          => $distances,
 			    'vitesses'           => $vitesses,
 				'ballons'            => $ballons
 			];

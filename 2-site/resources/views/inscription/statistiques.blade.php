@@ -100,57 +100,68 @@
 
                         </tbody>
                     </table>
+                    <h1>Résumé de la partie</h1>
                     <table class="table  table-bordered">
                         <tr>
                             <td>
-                                <img src="/uploads/images/statistiques/distance.png"
-                                     style="float:left;width:100px;height:100px;">
+                                <a href="#Graphique_Distance_Parcourue">
+                                    <img src="/uploads/images/statistiques/distance.png"
+                                         style="float:left;width:100px;height:100px;">
+                                </a>
+                                <font color="#ffcc00">
                                 <h3>
-                                    <a href="#Graphique_Distance_Parcourue">
-                                        Distance parcourue
-                                    </a>
+                                        Distance totale parcourue
                                     <br>
-                                    <font color="#ffcc00">
                                         <strong>
                                             {{  $statistiques['Dist'] }}
                                             m</strong>
-                                    </font>
                                 </h3>
+                                </font>
                             </td>
                             <td>
-                                <img src="/uploads/images/statistiques/duree.png"
-                                     style="float:left;width:100px;height:100px;">
+                                   <img src="/uploads/images/statistiques/duree.png"
+                                        style="float:left;width:100px;height:100px;">
+                                <font color="#ff9900">
                                 <h3>Durée de la partie<br>
-                                    <font color="#ff9900">
+
                                         <strong>
                                             {{  $statistiques['duree'] }}
                                         </strong>
-                                    </font>
                                 </h3>
+                                </font>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <img src="/uploads/images/statistiques/ballons.png"
-                                     style="float:left;width:100px;height:100px;">
-                                <h3>Ballons joués<br>
-                                    <font color="#3399ff">
-                                        {{  $statistiques['ballons_joues'] }}
-                                    </font>
+                                <a href="#Graphique_Ballons_Joues">
+
+                                    <img src="/uploads/images/statistiques/ballons.png"
+                                         style="float:left;width:100px;height:100px;">
+                                </a>
+                                <font color="#3399ff">
+                                <h3>
+                                    Ballons joués pendant toute la partie
+                                    <br>
+                                    {{  $statistiques['ballons_joues'] }}
                                 </h3>
+                                </font>
                             </td>
                             <td>
-                                <img src="/uploads/images/statistiques/vitesse.png"
-                                     style="float:left;width:100px;height:100px;">
-                                <h3> <a href="#Graphique_Vitesse">Vitesse maximale</a><br>
-                                    <font color="#e60000">
+                                <a href="#Graphique_Vitesse">
+                                    <img src="/uploads/images/statistiques/vitesse.png"
+                                         style="float:left;width:100px;height:100px;">
+                                </a>
+                                <font color="red">
+                                <h3> Vitesse maximale<br>
                                         {{  $statistiques['vitesse_maximale'] }}
                                         km/h
-                                    </font>
+
                                 </h3>
+                                </font>
                             </td>
                         </tr>
                     </table>
+                    <h1>Evolution des Performances</h1>
                     <canvas id="Graphique_Distance_Parcourue"></canvas>
                     <script>
                         var ctx_distance = document
@@ -195,6 +206,47 @@
                                 }
                             });
                     </script>
+                    <canvas id="Graphique_Ballons_Joues"></canvas>
+                    <script>
+                        var ctx_ballons = document.getElementById('Graphique_Ballons_Joues').getContext('2d');
+                        var myChartBallons = new Chart(
+                            ctx_ballons,
+                            {
+                                type: 'line',
+                                data: {
+                                    datasets:
+                                        [
+                                            {
+                                                label: 'Ballons joués',
+                                                data:
+                                                    [
+                                                        {{ $statistiques['ballons']  }}
+                                                    ],
+                                                backgroundColor: "CornflowerBlue"
+                                            }
+                                        ]
+                                },
+                                options: {
+                                    scales: {
+                                        xAxes: [{
+                                            type: 'linear',
+                                            position: 'bottom'
+                                        }],
+                                    },
+                                    legend: {
+                                        display: true,
+                                        labels: {
+                                            fontColor: 'Grey'
+                                        }
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Performances'
+                                    }
+                                }
+                            });
+                    </script>
+
                     <canvas id="Graphique_Vitesse"></canvas>
                     <script>
                         var ctx_vitesse = document.getElementById('Graphique_Vitesse').getContext('2d');
@@ -236,46 +288,6 @@
                             });
                     </script>
 
-                    <canvas id="Graphique_Ballons_Joues"></canvas>
-                    <script>
-                        var ctx_ballons = document.getElementById('Graphique_Ballons_Joues').getContext('2d');
-                        var myChartBallons = new Chart(
-                            ctx_ballons,
-                            {
-                                type: 'line',
-                                data: {
-                                    datasets:
-                                        [
-                                            {
-                                                label: 'Ballons joués',
-                                                data:
-                                                    [
-                                                        {{ $statistiques['ballons']  }}
-                                                    ],
-                                                backgroundColor: "CornflowerBlue"
-                                            }
-                                        ]
-                                },
-                                options: {
-                                    scales: {
-                                        xAxes: [{
-                                            type: 'linear',
-                                            position: 'bottom'
-                                        }],
-                                    },
-                                    legend: {
-                                        display: true,
-                                        labels: {
-                                            fontColor: 'Grey'
-                                        }
-                                    },
-                                    title: {
-                                        display: true,
-                                        text: 'Performances'
-                                    }
-                                }
-                            });
-                    </script>
                 </div>
             </div>
 

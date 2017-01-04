@@ -81,20 +81,14 @@
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
 					 	@if(SiteHelpers::filterColumn($limited ))
 						 <td>					 
-						 	{!!
-						 		SiteHelpers::formatRows
-						 			($row->{$field['field']},$field ,$row )
-						 	!!}
+						 	{!! SiteHelpers::formatRows($row->{$field['field']},$field ,$row ) !!}						 
 						 </td>
 						@endif	
 					 @endif					 
 				 @endforeach
 				 <td>
 					 	@if($access['is_detail'] ==1)
-						<a href="{{ URL::to('inscription/show/'.$row->inscription_id.'?return='.$return)}}"
-						   class="tips btn btn-xs btn-primary"
-						   title="Afficher les statistiques de la partie pour ce joueur">
-							Statistiques</a>
+						<a href="{{ URL::to('inscription/show/'.$row->inscription_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 						@endif
 						@if($access['is_edit'] ==1)
 						<a  href="{{ URL::to('inscription/update/'.$row->inscription_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
