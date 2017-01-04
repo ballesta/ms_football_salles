@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Helpers/Database_selection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Helpers/GenereMesures.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Helpers/StatistiquesMesures.php" afterPath="$PROJECT_DIR$/2-site/app/Helpers/StatistiquesMesures.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/StatistiquesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/StatistiquesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/moduleroutes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/moduleroutes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/inscription/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/inscription/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/inscription/statistiques.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/inscription/statistiques.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/inscription/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/inscription/view.blade.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -699,14 +689,7 @@
       <workItem from="1483288605044" duration="6430000" />
       <workItem from="1483377048129" duration="988000" />
       <workItem from="1483466506367" duration="599000" />
-      <workItem from="1483550763730" duration="10280000" />
-    </task>
-    <task id="LOCAL-00008" summary="problèmes label boutons">
-      <created>1476782367159</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1476782367159</updated>
+      <workItem from="1483550763730" duration="10293000" />
     </task>
     <task id="LOCAL-00009" summary="problèmes label boutons résolu: ajouté à template (voir mail doc)&#10;">
       <created>1476819792388</created>
@@ -1044,11 +1027,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483290931175</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="inscriptions et obtention statistiques">
+      <created>1483570452680</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1483570452680</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="533384000" />
+    <option name="totallyTimeSpent" value="533397000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
