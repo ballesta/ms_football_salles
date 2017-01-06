@@ -60,6 +60,7 @@
 				$dist += 10;
 				$shoot += 1;
 				$max = 10 + $m;
+				$max = self::point(20,$m);
 				$average = 5 + $m;
 				$mesure["Mesure"] =
 				[
@@ -112,5 +113,16 @@
 					                          $fin])
 				->where('bluetooth', $UID)
 				->delete();
+		}
+
+		// Génère une série sinusoidale amortie en fonction du temps
+		static function point($max, $t)
+		{
+			$pi = pi();
+			$periode = 10;
+			$p = 1
+			   + (cos((2*$pi)/$periode))
+			   * $t;
+			return $p;
 		}
 	}
