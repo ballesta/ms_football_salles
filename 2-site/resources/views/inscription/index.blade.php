@@ -87,11 +87,28 @@
 					 @endif					 
 				 @endforeach
 				 <td>
+					 <a  href="{{ URL::to('inscription/genere/'
+										 .$row->inscription_id
+										 .'?return=' . $return) }}"
+						 class="tips btn btn-xs btn-success"
+						 title="Génère des Mesures chaque minutes pendant toute la durée de la partie">
+						 Génère Mesures
+					 </a>
+
 					 	@if($access['is_detail'] ==1)
 						<a href="{{ URL::to('inscription/show/'.$row->inscription_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 						@endif
 						@if($access['is_edit'] ==1)
-						<a  href="{{ URL::to('inscription/update/'.$row->inscription_id.'?return='.$return) }}" class="tips btn btn-xs btn-success" title="{{ Lang::get('core.btn_edit') }}"><i class="fa fa-edit "></i></a>
+						<a  href="{{ URL::to('inscription/update/'
+										.$row->inscription_id.'?return='
+										.$return) }}"
+							class="tips btn btn-xs btn-success"
+							title="{{ Lang::get('core.btn_edit') }}">
+							<i class="fa fa-edit "></i>
+						</a>
+
+
+
 						@endif
 												
 					

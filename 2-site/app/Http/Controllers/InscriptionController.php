@@ -164,7 +164,7 @@ class InscriptionController extends Controller {
 
 	public function getGenere( Request $request, $id = null)
 	{
-		if($this->access['is_detail'] ==0)
+		if($this->access['is_detail'] == 0)
 			return Redirect::to('dashboard')
 						->with( 'messagetext',
 					            \Lang::get('core.note_restric'))
