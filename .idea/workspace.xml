@@ -2,28 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/resources/views/pages/backend.blade.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/.env" afterPath="$PROJECT_DIR$/2-site/.env" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Helpers/GenereMesures.php" afterPath="$PROJECT_DIR$/2-site/app/Helpers/GenereMesures.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Helpers/StatistiquesMesures.php" afterPath="$PROJECT_DIR$/2-site/app/Helpers/StatistiquesMesures.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/pageroutes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/pageroutes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/composer.json" afterPath="$PROJECT_DIR$/2-site/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/composer.lock" afterPath="$PROJECT_DIR$/2-site/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/config/mail.php" afterPath="$PROJECT_DIR$/2-site/config/mail.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/config/services.php" afterPath="$PROJECT_DIR$/2-site/config/services.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/inscription.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/inscription.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/inscription/statistiques.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/inscription/statistiques.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/public/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/public/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/public/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/public/view.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/view.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/views/c240567e0b63e61d9734e0cefbc0a964" afterPath="$PROJECT_DIR$/2-site/storage/framework/views/c240567e0b63e61d9734e0cefbc0a964" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/public/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/public/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/public/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/public/view.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/view.blade.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,28 +44,38 @@
       <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1040">
-              <caret line="233" column="21" lean-forward="false" selection-start-line="233" selection-start-column="12" selection-end-line="233" selection-end-column="21" />
+            <state relative-caret-position="1992">
+              <caret line="220" column="31" lean-forward="false" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccueiljoueursController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccueiljoueursController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1110">
-              <caret line="348" column="21" lean-forward="false" selection-start-line="348" selection-start-column="21" selection-end-line="348" selection-end-column="21" />
+            <state relative-caret-position="430">
+              <caret line="184" column="10" lean-forward="false" selection-start-line="184" selection-start-column="10" selection-end-line="184" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contactus.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/resources/views/pages/contactus.blade.php">
+      <file leaf-file-name="form_00.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form_00.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-305">
+              <caret line="61" column="42" lean-forward="false" selection-start-line="58" selection-start-column="1" selection-end-line="61" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -97,25 +91,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3640">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inscription.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="inscription.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/inscription.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+            <state relative-caret-position="-213">
+              <caret line="245" column="21" lean-forward="false" selection-start-line="245" selection-start-column="21" selection-end-line="245" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1484224956421" expanded="false" signature="11205:11247" ph="..." />
               </folding>
             </state>
           </provider>
@@ -124,13 +109,23 @@
       <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="8" column="70" lean-forward="false" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="70" />
+            <state relative-caret-position="1690">
+              <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
               <folding>
                 <marker date="1484219176460" expanded="true" signature="1355:1895" ph="..." />
                 <marker date="1484219176460" expanded="true" signature="1391:1873" ph="..." />
                 <marker date="1484219176460" expanded="true" signature="1422:1872" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3640">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,9 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>config</find>
-      <find>postsave</find>
-      <find>km</find>
       <find>title</find>
       <find>statistiques</find>
       <find>myChart</find>
@@ -182,11 +174,14 @@
       <find>inscription</find>
       <find>$return</find>
       <find>terr</find>
-      <find>save</find>
       <find>joueur</find>
       <find>tab_joueur_inscrit</find>
-      <find>joueur_id</find>
       <find>terrain</find>
+      <find>form</find>
+      <find>joueur_id</find>
+      <find>save</find>
+      <find>heure_debut</find>
+      <find>heure</find>
     </findStrings>
     <replaceStrings>
       <replace>}}</replace>
@@ -304,10 +299,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionJoueurController.php" />
         <option value="$PROJECT_DIR$/1-vendors/sximo/unzipped/sximo_lts/sximo515/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/index.blade.php" />
         <option value="$PROJECT_DIR$/2-site/public/assets/step-form/step-form-wizard/css/step-form-wizard-all.css" />
         <option value="$PROJECT_DIR$/2-site/app/helpers/Roles.php" />
         <option value="$PROJECT_DIR$/2-site/app/helpers/SQL_Where.php" />
@@ -353,8 +346,10 @@
         <option value="$PROJECT_DIR$/2-site/resources/views/pages/InscriptionJoueur.blade.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/form.blade.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form.blade.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php" />
+        <option value="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/index.blade.php" />
+        <option value="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form_00.blade.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/inscription.blade.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php" />
       </list>
     </option>
   </component>
@@ -648,24 +643,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -753,15 +730,15 @@
     <property name="settings.editor.splitter.proportion" value="0.19566396" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\public\tests" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\resources\views\accueiljoueurs" />
       <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\public\frontend\default\images" />
       <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\public\assets" />
       <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\resources\views\InscriptionJoueur" />
       <recent name="H:\wamp-3-32\www\ms_football_salles\1-vendors\step-form\" />
-      <recent name="H:\wamp-3-32\www\ms_football_salles\1-vendors\step-form\plugins\parsley\i18n" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\wamp-3-32\www\ms_football_salles\2-site\public\tests" />
     </key>
   </component>
   <component name="RunManager">
@@ -950,14 +927,7 @@
       <workItem from="1483788283019" duration="10550000" />
       <workItem from="1483814553030" duration="3528000" />
       <workItem from="1483881200881" duration="1392000" />
-      <workItem from="1484210036113" duration="6601000" />
-    </task>
-    <task id="LOCAL-00012" summary="Intégration API à partir de ms_football_api_native_5_lts / test en local">
-      <created>1477231704988</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1477231704988</updated>
+      <workItem from="1484210036113" duration="10111000" />
     </task>
     <task id="LOCAL-00013" summary="Sauvegarde base de données : problème quotes dans litteral string">
       <created>1477347613533</created>
@@ -1295,11 +1265,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483739862641</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Accueil joueurs">
+      <created>1484222398130</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1484222398130</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="564430000" />
+    <option name="totallyTimeSpent" value="567940000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1316,6 +1293,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2556391" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3714609" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1323,7 +1301,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1369,7 +1346,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="bREADCRUM EN COURS" />
     <MESSAGE value="Combo boxes limitees à complexe sportif" />
     <MESSAGE value="Forget descendants keys in session" />
     <MESSAGE value="Club_id +complexe_salless tb_users" />
@@ -1394,7 +1370,8 @@
     <MESSAGE value="Creation parties, joueurs sélectionnés, sessiosn mesures suite à inscription" />
     <MESSAGE value="inscriptions et obtention statistiques" />
     <MESSAGE value="Génération mesures partie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Génération mesures partie" />
+    <MESSAGE value="Accueil joueurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Accueil joueurs" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.39147288" />
   </component>
   <component name="XDebuggerManager">
@@ -1404,20 +1381,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="48" column="61" lean-forward="false" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Support/Manager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1592,6 +1555,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2275">
           <caret line="70" column="52" lean-forward="false" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="52" />
+          <folding>
+            <element signature="e#7#95#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1740,18 +1706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="8" column="70" lean-forward="false" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="70" />
-          <folding>
-            <marker date="1484219176460" expanded="true" signature="1355:1895" ph="..." />
-            <marker date="1484219176460" expanded="true" signature="1391:1873" ph="..." />
-            <marker date="1484219176460" expanded="true" signature="1422:1872" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1760,31 +1714,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php">
+    <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form_00.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1110">
-          <caret line="348" column="21" lean-forward="false" selection-start-line="348" selection-start-column="21" selection-end-line="348" selection-end-column="21" />
+        <state relative-caret-position="-305">
+          <caret line="61" column="42" lean-forward="false" selection-start-line="58" selection-start-column="1" selection-end-line="61" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/resources/views/InscriptionJoueur/form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1690">
+          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+          <folding>
+            <marker date="1484219176460" expanded="true" signature="1355:1895" ph="..." />
+            <marker date="1484219176460" expanded="true" signature="1391:1873" ph="..." />
+            <marker date="1484219176460" expanded="true" signature="1422:1872" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1040">
-          <caret line="233" column="21" lean-forward="false" selection-start-line="233" selection-start-column="12" selection-end-line="233" selection-end-column="21" />
+        <state relative-caret-position="1992">
+          <caret line="220" column="31" lean-forward="false" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/accueiljoueurs/inscription.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+        <state relative-caret-position="-213">
+          <caret line="245" column="21" lean-forward="false" selection-start-line="245" selection-start-column="21" selection-end-line="245" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#fieldset#1;n#form#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#fieldset#2;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1484224956421" expanded="false" signature="11205:11247" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="184" column="10" lean-forward="false" selection-start-line="184" selection-start-column="10" selection-end-line="184" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

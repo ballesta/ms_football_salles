@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <form id="inscription"
-          action="save?return="
+          action="/accueiljoueurs/save"
           method="post">
         <fieldset>
             <legend>Joueur</legend>
@@ -228,7 +228,7 @@
                                 style="font-size: 22px;">
                         </select>
                     </div>
-                    <div class="form-group">
+                    <!-- div class="form-group">
                         <label for='heure'>Heure de début du match (format HHmm)</label>
                         <input class="form-control"
                                id='heure'
@@ -239,6 +239,13 @@
                                placeholder="HHMM"
                                style="font-size: 30px; width:130px; height:50px;"
                         />
+                    </div -->
+                    <label for='heure'>Date et Heure de début du match</label>
+                    <div class="input-group m-b" style="width:150px !important;">
+                        {!! Form::text('heure_debut', $row['heure_debut'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
                     </div>
                     <div class="form-group">
                         <label>Durée du match (HH:MM)</label>

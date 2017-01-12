@@ -38,12 +38,17 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Heure Debut" class=" control-label col-md-4 text-left"> Heure Debut </label>
+										<label for="Heure Debut" class=" control-label col-md-4 text-left"> Heure Debut <span class="asterix"> * </span></label>
 										<div class="col-md-6">
-										  {!! Form::text('heure_debut', $row['heure_debut'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
+										  
+				<div class="input-group m-b" style="width:150px !important;">
+					{!! Form::text('heure_debut', $row['heure_debut'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
+					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				</div>
+				 
 										 </div> 
 										 <div class="col-md-2">
-										 	
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="heure du début de la partie à laquelle le joueur souhait s'inscrire"><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
