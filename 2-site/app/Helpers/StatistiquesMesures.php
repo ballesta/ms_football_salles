@@ -166,7 +166,7 @@
 			// Lis toutes les mesure
 			// par ordre chronologique ascendants.
 			$mesures = DB::table('fb_mesures')->orderBy('Horodatage', 'asc')->get();
-			$dist = 0;
+			$distance_precedente = 0;
 			$Average = 0;
 			$Max = 0;
 			$max_session = 0;
@@ -203,7 +203,7 @@
 						$mesures_intervalle[] = $mesure;
 						//if (   isset($mesure['Mesure'])) dd($mesure);
 						if (   isset($mesure['Mesure']["UID"])
-							&& $mesure['Mesure']["UID"]== $uid_capteur)
+							&& $mesure['Mesure']["UID"] == $uid_capteur)
 						{
 							// Traiter mesure
 							// En cas d'absence de message start: prendre heure premier message
@@ -222,11 +222,12 @@
 							} elseif (isset($mesure ["EventControl"])) {
 								$ballons_joues++;
 							} elseif (isset($mesure["Mesure"])) {
-								// Seul message émuis par les capteurs en fin 2016.
+								// Seul message émis par les capteurs en fin 2016.
 
 								// Mémorise les dernières valeurs reçues qui seront affichée
 								// Distance totale parcourue en mètres
-								$dist = $mesure ["Mesure"]["Dist"];
+								$cumul_distance = $mesure ["Mesure"]["Dist"];
+								$distance_totale = $cumul_distance;
 								// Vitesse moyenne en km/h depuis le dernier message
 								$Average = $mesure ["Mesure"]["Average"];
 								// Vitesse maximum en km/h depuis le dernier message
@@ -252,7 +253,9 @@
 								$Control = $mesure ["Mesure"]["Control"];
 								// Pour la courbe
 								$minutes = ($date_heure - $start) / 60;
+								$dist = $cumul_distance - $distance_precedente;
 								$tableau_distances_parcourues["$minutes"] = $dist;
+								$distance_precedente = $dist;
 								$vitesses_moyennes["$minutes"] = $Average;
 								$tableau_ballons_joues["$minutes"] = $Shoot;
 							} elseif (isset($mesure ["Check"])) {
@@ -278,22 +281,13 @@
 						$duree = "0$heures:$minutes";
 					//dd([$end, $start,$end - $start,  $duree]);
 
-
-					//// Vitesses
-					$vitesses = "";
-					foreach ($vitesses_moyennes as $m => $v) {
-						$vitesses .= "{ x:$m, y:$v },";
-					}
-					$vitesses = rtrim($vitesses, ",");
-
-
-
 					// Distances
 					$distances = "";
 					foreach ($tableau_distances_parcourues as $m => $v) {
 						$distances .= "{ x:$m, y:$v },";
 					}
 					$distances = rtrim($distances, ",");
+					//dd($distances);
 
 					// Ballons joués
 					$ballons = "";
@@ -306,16 +300,25 @@
 					}
 					$ballons = rtrim($ballons, ",");
 					//dd($ballons);
+
+					//// Vitesses
+					$vitesses = "";
+					foreach ($vitesses_moyennes as $m => $v) {
+						$vitesses .= "{ x:$m, y:$v },";
+					}
+					$vitesses = rtrim($vitesses, ",");
+
+
 				}
 			}
 			$s =
-			[   'Dist'               => $dist,
+			[   'Dist'               => $distance_totale,
 			    'duree'              => $duree,
 			    'ballons_joues'      => $ballons_joues,
 			    'vitesse_maximale'   => $max_session,
 				'distances'          => $distances,
+				'ballons'            => $ballons,
 			    'vitesses'           => $vitesses,
-				'ballons'            => $ballons
 			];
 			//dd([$end, $start, $minutes, $mesures_intervalle, $mesures_traitees, $s]);
 			return $s;

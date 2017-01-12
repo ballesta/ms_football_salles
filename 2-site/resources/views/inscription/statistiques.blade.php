@@ -113,7 +113,7 @@
                                         Distance totale parcourue
                                     <br>
                                         <strong>
-                                            {{  $statistiques['Dist'] }}
+                                            {{  round($statistiques['Dist']) }}
                                             m</strong>
                                 </h3>
                                 </font>
@@ -142,7 +142,7 @@
                                 <h3>
                                     Ballons joués pendant toute la partie
                                     <br>
-                                    {{  $statistiques['ballons_joues'] }}
+                                    {{  round($statistiques['ballons_joues']) }}
                                 </h3>
                                 </font>
                             </td>
@@ -153,7 +153,7 @@
                                 </a>
                                 <font color="red">
                                 <h3> Vitesse maximale<br>
-                                        {{  $statistiques['vitesse_maximale'] }}
+                                        {{  round($statistiques['vitesse_maximale'],2) }}
                                         km/h
 
                                 </h3>

@@ -47,15 +47,6 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Date Naissance" class=" control-label col-md-4 text-left"> Date Naissance </label>
-										<div class="col-md-6">
-										  {!! Form::text('date_naissance', $row['date_naissance'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
-										 </div> 
-										 <div class="col-md-2">
-										 	
-										 </div>
-									  </div> 					
-									  <div class="form-group  " >
 										<label for="Téléphone" class=" control-label col-md-4 text-left"> Téléphone </label>
 										<div class="col-md-6">
 										  {!! Form::text('telephone', $row['telephone'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 

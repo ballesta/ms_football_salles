@@ -147,15 +147,12 @@
 @section('content')
     <div class="page-content row">
         <!-- Page header -->
-
-
-
-                    <!--
-                    Formulaire d'accueil dérivé de step form
-                    Prototype hors Laravel:
-                        1-vendors/step-form/step-form-wizard/01-basic-football.html
-                    -->
-                    @include('accueiljoueurs.inscription')
+        <!--
+        Formulaire d'accueil dérivé de step form
+        Prototype hors Laravel:
+            1-vendors/step-form/step-form-wizard/01-basic-football.html
+        -->
+        @include('accueiljoueurs.inscription')
     </div>
     <script type="text/javascript">
         $(document).ready(function () {

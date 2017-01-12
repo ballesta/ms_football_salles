@@ -50,30 +50,27 @@
 			// Génère une mesure par minute
 			$mm='';
 			$t = strtotime($inscription->heure_debut);
-			$dist = 0;
-			$shoot = 0;
-			$dist = 0;
-			$max = 0;
-			$average = 0;
+			$cumul_shoot = 0;
+			$cumul_distance = 0;
 			for ($m = 0; $m <= $inscription->duree; $m++)
 			{
-				$dist += 10;
-				$shoot += 1;
+				$cumul_distance += self::point(20,$m);
+				$cumul_shoot += self::point(4,$m);;
 				$max = 10 + $m;
 				$max = self::point(20,$m);
-				$average = 5 + $m;
+				$average = self::point(20-4,$m);;
 				$mesure["Mesure"] =
 				[
-					"Shoot" => "$shoot",
-					"Control" => "0",
-					"Step" => "78",
-					"Dist" => "$dist",
-					"UID" => "54:4a:16:56:46:1a",
-					"Mobility" => "0",
-					"Max" => "$max",
-					"Average"=> "$average",
-					"Pass" => "0",
-					"Sprint" => "0"
+					"UID" => "54:4a:16:56:46:1a",   // Fixe
+					"Mobility" => "0",              // Instantanée
+					"Max" => "$max",                // Instantanée
+					"Average"=> "$average",         // Instantanée
+					"Shoot" => "$cumul_shoot",      // Cumul
+					"Control" => "0",               // Cumul
+					"Step" => "78",                 // Cumul
+					"Dist" => "$cumul_distance",    // Cumul
+					"Pass" => "0",                  // Cumul
+					"Sprint" => "0"                 // Cumul
 				];
 				//dd($mesure_en_json);
 				$horodatage = date('Y-m-d H-i-s', $t);
@@ -115,14 +112,42 @@
 				->delete();
 		}
 
-		// Génère une série sinusoidale amortie en fonction du temps
+
+		/**
+		 * Génère une série sinusoidale amortie en fonction du temps
+		 *
+		 * Equations données par Le Docteur Annabelle BALLESTA
+		 * Professeur à l'université de WarWick http://www2.warwick.ac.uk/
+		 *
+		 * @param $max Maximmum sur l'échelle des les Y
+		 * @param $t   Temps t en minutes
+		 *
+		 * @return int Point sur l'axe des Y
+		 */
 		static function point($max, $t)
 		{
-			$pi = pi();
-			$periode = 10;
+			$pi = pi();     // Constante PI avec un max de précision
+			$periode = 10;  // En Minutes
+
+			// 1-Sinusoide
 			$p = 1
-			   + (cos((2*$pi)/$periode))
-			   * $t;
-			return $p;
+			   + sin
+				(
+			   	    ((2*$pi)/$periode) * $t
+				);
+
+			// 2- Bruit aléatoire
+			$alea = rand(0, 1);
+			$p = $p + $alea;
+
+			// 3-Atténuation exponentielle comme la tour Eiffel
+			// http://www.unige.ch/~fiorelli/NuitScience/2010/Poster_TourEiffel_light.pdf
+			$attenuation = exp(-(0.03 * $t));
+			$p = $p * $attenuation;
+
+			// 4-Mise à l'échelle des Y
+			$y = ($p * $max / 2 * 0.8)
+			   + ($max * 0.1);
+			return $y;
 		}
 	}

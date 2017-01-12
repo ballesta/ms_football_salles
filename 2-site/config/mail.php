@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,8 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'bernard@ballesta.fr',
+               'name'    => 'Bernard BALLESTA'],
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +107,9 @@ return [
     |
     */
 
-    'sendmail' => '/usr/sbin/sendmail -bs',
+   /*
+     'sendmail' => '/usr/sbin/sendmail -bs',
+    */
 
     /*
     |--------------------------------------------------------------------------

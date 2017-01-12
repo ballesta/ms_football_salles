@@ -63,12 +63,6 @@
 						
 					</tr>
 				
-					<tr>
-						<td width='30%' class='label-view text-right'>Date Naissance</td>
-						<td>{{ $row->date_naissance}} </td>
-						
-					</tr>
-				
 			</tbody>	
 		</table>   
 

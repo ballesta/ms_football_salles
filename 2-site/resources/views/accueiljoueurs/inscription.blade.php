@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <form id="inscription"
-          action="inscription.php"
+          action="save?return="
           method="post">
         <fieldset>
             <legend>Joueur</legend>
@@ -35,16 +35,19 @@
             <div class="tab-content">
                 <div id="tab_joueur_inscrit"
                      class="tab-pane fade in active">
+                    <br>
+                    <br>
+                    <label for="joueur_id">Joueur inscrit</label>
+                    <select name='joueur_id'
+                            rows='8'
+                            id='joueur_id'
+                            class='select2 '
+                            style="font-size: 22px;">
+                    </select>
 
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <select name='joueur_id'
-                                    rows='8'
-                                    id='joueur_id'
-                                    class='select2 '
-                                    style="font-size: 18px;">
-                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -55,7 +58,7 @@
                                 ci-dessus. <br>
                                 Vous pouvez aussi rechercher
                                 le joueur en saisissant une partie de son
-                                nom.
+                                nom en utilisant le champ de recherche situé en début de liste déroulante.
                             </p>
                         </div>
                     </div>
@@ -217,15 +220,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="terrain">Terrain</label>
-                        <select class="form-control"
-                                name="terrain"
-                                id="terrain"
-                                data-parsley-group="block1"
-                                required
-                                style="font-size: 30px;  height:50px;">
-                            <option value="1">Platinium</option>
-                            <option value="2">Gold</option>
+                        <label for="terrain_id">Terrain</label>
+                        <select name='terrain_id'
+                                rows='8'
+                                id='terrain_id'
+                                class='select2 '
+                                style="font-size: 22px;">
                         </select>
                     </div>
                     <div class="form-group">
@@ -286,17 +286,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <label for="capteur">Capteur remis au joueur</label>
-                        <select class="form-control"
-                                name="capteur"
-                                id="capteur"
-                                data-parsley-group="block1"
-                                required
-                                style="font-size: 30px;  height:50px;">
-                            <option value="1">1111111</option>
-                            <option value="2">2222222</option>
-                            <option value="3">3333333</option>
-                            <option value="2">3333333</option>
+                        <label for="capteur_id">Capteur remis au joueur</label>
+                        <select name='capteur_id'
+                                rows='8'
+                                id='capteur_id'
+                                class='select2 '
+                                style="font-size: 22px;">
                         </select>
                     </div>
                 </div>

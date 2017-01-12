@@ -85,9 +85,9 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Inscriptions',
+    $text        = 'Accueil Joueurs',
     $help        = '',
-    $url         = URL::to('inscription'),
+    $url         = URL::to('accueiljoueurs'),
     $parent_key  = 'complexe_salle_id',
     $parent_label= 'nom',
     $parent_id   = $row->complexe_salle_id,

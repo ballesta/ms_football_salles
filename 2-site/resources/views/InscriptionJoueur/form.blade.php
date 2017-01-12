@@ -26,14 +26,14 @@
                         Post par defaut
                     -->
                     {!!
-                        Form::open(array('url'              =>'InscriptionJoueur/save?return='
-                                                             .$return                           ,
-                                         'class'            =>'form-horizontal'                 ,
-                                         'files'            => TRUE                             ,
-                                         'parsley-validate' =>''                                ,
-                                         'novalidate'       =>''
-                                         )
-                                  )
+                        Form::open(array
+                        (
+                            'url'               =>'InscriptionJoueur/save?return='.$return ,
+                            'class'             =>'form-horizontal'                        ,
+                            'files'             => TRUE                                    ,
+                            'parsley-validate'  =>''                                       ,
+                            'novalidate'        =>''
+                        ))
                     !!}
                     <div class="col-md-12">
                         <fieldset>
