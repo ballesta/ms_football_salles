@@ -9,3 +9,6 @@
             in reseaux table filter on session club_id
         role responsable centre
             in complexe table filter on session complexe_salles_id
+2017-01-12 Integrated accueil joueur in main menu
+    //todo Créer joueur si non sélectionné dans l'onglet 1
+    //todo Créer la partie, l'inscription à la partie (actuellement fait dans le trairtement des mesures
