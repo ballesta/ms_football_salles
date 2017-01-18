@@ -18,6 +18,12 @@
 					</tr>
 				
 					<tr>
+						<td width='30%' class='label-view text-right'>Nbr Joueurs Equipe</td>
+						<td>{{ $row->nbr_joueurs_equipe}} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>Centre</td>
 						<td>{{ SiteHelpers::formatLookUp($row->complexe_salle_id,'complexe_salle_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
 						

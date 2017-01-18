@@ -43,6 +43,16 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
+										<label for="Nbr Joueurs Equipe" class=" control-label col-md-4 text-left"> Nbr Joueurs Equipe </label>
+										<div class="col-md-6">
+										  <textarea name='nbr_joueurs_equipe' rows='5' id='nbr_joueurs_equipe' class='form-control '  
+				           >{{ $row['nbr_joueurs_equipe'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Nombre de joueurs maximum par équipe"><i class="icon-question2"></i></a>
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Centre" class=" control-label col-md-4 text-left"> Centre </label>
 										<div class="col-md-6">
 										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 

@@ -20,7 +20,7 @@
 						<fieldset><legend> Parties</legend>
 				{!! Form::hidden('partie_id', $row['partie_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Debut" class=" control-label col-md-4 text-left"> Debut </label>
+										<label for="Debut" class=" control-label col-md-4 text-left"> Debut <span class="asterix"> * </span></label>
 										<div class="col-md-6">
 										  
 				<div class="input-group m-b" style="width:150px !important;">
@@ -52,16 +52,6 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Fin" class=" control-label col-md-4 text-left"> Fin </label>
-										<div class="col-md-6">
-										  <textarea name='fin' rows='5' id='fin' class='form-control '  
-				           >{{ $row['fin'] }}</textarea> 
-										 </div> 
-										 <div class="col-md-2">
-										 	
-										 </div>
-									  </div> 					
-									  <div class="form-group  " >
 										<label for="Salle" class=" control-label col-md-4 text-left"> Salle </label>
 										<div class="col-md-6">
 										  <select name='salle_id' rows='5' id='salle_id' class='select2 '   ></select> 
@@ -71,10 +61,27 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
+										<label for="Equipe A" class=" control-label col-md-4 text-left"> Equipe A </label>
+										<div class="col-md-6">
+										  <select name='equipe_a_id' rows='5' id='equipe_a_id' class='select2 '   ></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Première equipe"><i class="icon-question2"></i></a>
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Equipe B" class=" control-label col-md-4 text-left"> Equipe B </label>
+										<div class="col-md-6">
+										  <select name='equipe_b_id' rows='5' id='equipe_b_id' class='select2 '   ></select> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Complexe Salle Id" class=" control-label col-md-4 text-left"> Complexe Salle Id </label>
 										<div class="col-md-6">
-										  <textarea name='complexe_salle_id' rows='5' id='complexe_salle_id' class='form-control '  
-				           >{{ $row['complexe_salle_id'] }}</textarea> 
+										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -108,6 +115,15 @@
         
 		$("#salle_id").jCombo("{!! url('partie/comboselect?filter=fbs_salles:salle_id:identifiant') !!}",
 		{  selected_value : '{{ $row["salle_id"] }}' });
+		
+		$("#equipe_a_id").jCombo("{!! url('partie/comboselect?filter=fb_equipes:equipe_id:nom') !!}",
+		{  selected_value : '{{ $row["equipe_a_id"] }}' });
+		
+		$("#equipe_b_id").jCombo("{!! url('partie/comboselect?filter=fb_equipes:equipe_id:nom') !!}",
+		{  selected_value : '{{ $row["equipe_b_id"] }}' });
+		
+		$("#complexe_salle_id").jCombo("{!! url('partie/comboselect?filter=fb_clubs:club_id:nom') !!}",
+		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
 		
 
         $('.removeCurrentFiles').on('click', function () {

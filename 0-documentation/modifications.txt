@@ -12,3 +12,10 @@
 2017-01-12 Integrated accueil joueur in main menu
     //todo Créer joueur si non sélectionné dans l'onglet 1
     //todo Créer la partie, l'inscription à la partie (actuellement fait dans le trairtement des mesures
+2017-01-17 Changement inscriptions joueurs en tableau pour tous les joueurs de la partie
+    Base de données
+        Terrains: + capacité en nombre de joueurs
+        Partie : 2 équipes
+            equipe_a_id
+
+

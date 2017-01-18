@@ -68,6 +68,9 @@ class Sximo extends Model
 			$result = array();
 		} else {
 			$result = $result[0];
+			//self::date_english_2_french_format($result);
+
+			//dd($result);
 		}
 		return $result;
 	}
@@ -189,7 +192,7 @@ class Sximo extends Model
 		$key = with(new static)->primaryKey;
 		$columns = $this->getTableField($table);
 		//bb
-		$this->date_french_format($columns, $data);
+		self::date_french_format($data);
 		if ($id == NULL) {
 			// Insert Here
 			unset($data[$key]);
@@ -238,15 +241,17 @@ class Sximo extends Model
 
 	//bb
 	// Passe la date de format français vers format anglais pour le base de données
+	//todo L'inverse ne fonctionne pas
 	// Format francais
-    function date_french_format($columns,&$data)
-    {
+	static function date_french_format(&$data)
+	{
 		foreach ($data as $field_name => $value)
 		{
 			// Ne traite que les noms de champs contenant 'heure_' ou 'date_'
 			if (   strpos($field_name, 'heure_')       !== false
 				|| strpos($field_name, 'date_' )       !== false
 				|| strpos($field_name, 'heure_debut' ) !== false
+				|| strpos($field_name, 'debut' )       !== false
 			)
 			{
 				$date_heure_francaise = $data[$field_name];
@@ -257,7 +262,36 @@ class Sximo extends Model
 				$data[$field_name] = $dateobj->format('Y-m-d H:i') ;
 			}
 		}
-    }
+	}
+	//bb
+	// Passe la date de format français vers format anglais pour le base de données
+	//todo L'inverse ne fonctionne pas
+	// Format francais
+	static function date_english_2_french_format(&$row_object)
+	{
+		// Transforme l'objet en tableau pour pouvoir itérer sur les champs
+		$data = (array)$row_object;
+
+		//dd($data);
+		foreach ($data as $field_name => $value)
+		{
+			// Ne traite que les noms de champs contenant 'heure_' ou 'date_'
+			if (   strpos($field_name, 'heure_')       !== false
+				|| strpos($field_name, 'date_' )       !== false
+				|| strpos($field_name, 'heure_debut' ) !== false
+				|| strpos($field_name, 'debut' )       !== false
+			)
+			{
+				$date_heure_anglaise = $data[$field_name];
+				$format = "Y-m-d H:i:s";
+				// Format anglais vers interne
+				$dateobj = \DateTime::createFromFormat($format, $date_heure_anglaise);
+				// Interne vers format francais
+				$date_francaise = $dateobj->format('d/m/Y H:i') ;
+				$row_object->$field_name = 'Date:' . $date_francaise;
+			}
+		}
+	}
 
 	function validAccess($id)
 	{

@@ -13,7 +13,7 @@
 			
 					<tr>
 						<td width='30%' class='label-view text-right'>Debut</td>
-						<td>{{ $row->debut}} </td>
+						<td>{{ date('d/m/Y h:i',strtotime($row->debut)) }} </td>
 						
 					</tr>
 				
@@ -24,14 +24,20 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Fin</td>
-						<td>{{ $row->fin}} </td>
+						<td width='30%' class='label-view text-right'>Salle</td>
+						<td>{{ SiteHelpers::formatLookUp($row->salle_id,'salle_id','1:fbs_salles:salle_id:identifiant') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Salle</td>
-						<td>{{ SiteHelpers::formatLookUp($row->salle_id,'salle_id','1:fbs_salles:salle_id:identifiant') }} </td>
+						<td width='30%' class='label-view text-right'>Equipe A</td>
+						<td>{{ SiteHelpers::formatLookUp($row->equipe_a_id,'equipe_a_id','1:fb_equipes:equipe_id:nom') }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Equipe B</td>
+						<td>{{ SiteHelpers::formatLookUp($row->equipe_b_id,'equipe_b_id','1:fb_equipes:equipe_id:nom') }} </td>
 						
 					</tr>
 						
