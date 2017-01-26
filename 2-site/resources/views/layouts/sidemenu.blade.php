@@ -15,7 +15,7 @@
                 <a data-toggle="" href="{{ url('dashboard') }}"> <i class="icon-home3"></i> </a>
                 <a class="dropdown-toggle" href="{{ url('notification') }}"> <i class="icon-bell"></i><span class="notif-alert ">0</span> </a>
             </li>
-            <li class="nav-header" style="display:none !mportant;">
+            <li class="nav-header" style="display:none !important;">
                 <div class="dropdown profile-element" style="text-align:center;"> <span>
 				{!! SiteHelpers::avatar() !!} 
 				 </span>
@@ -32,31 +32,36 @@
                 <div class="photo-header "> {!! SiteHelpers::avatar( 40 ) !!} </div>
             </li>
             @foreach ($sidebar as $menu)
-
-
-                <li @if(Request::segment(1) == $menu['module']) class="active" @endif>
-
-                @if($menu['module'] =='separator')
-                    <li class="separator"><span> {{$menu['menu_name']}} </span></li>
-
+                <li
+                    @if(Request::segment(1) == $menu['module'])           class="active"
+                    @endif
+                >
+                @if($menu['module'] == 'separator')
+                    <li class="separator">
+                        <span> {{$menu['menu_name']}}</span>
+                    </li>
                 @else
                     <a
-                            @if($menu['menu_type'] =='external')
+                        @if($menu['menu_type'] == 'external')
                             href="{{ $menu['url'] }}"
-                            @else
+                        @else
                             href="{{ URL::to($menu['module'])}}"
-                            @endif
-
-                            @if(count($menu['childs']) > 0 ) class="expand level-closed" @endif>
-                        <i class="{{$menu['menu_icons']}}"></i> <span class="nav-label">
-					
-					@if(CNF_MULTILANG ==1 && isset($menu['menu_lang']['title'][Session::get('lang')]))
-                                {{ $menu['menu_lang']['title'][Session::get('lang')] }}
-                            @else
-                                {{$menu['menu_name']}}
-                            @endif
-					
-					</span> @if(count($menu['childs']) > 1 )<span class="fa arrow"></span> @endif
+                        @endif
+                        @if(count($menu['childs']) > 0 )
+                            class="expand level-closed"
+                        @endif>
+                        <i class="{{$menu['menu_icons']}}"></i>
+                        <span class="nav-label">
+					 @if(CNF_MULTILANG ==1
+					 && isset($menu['menu_lang']['title'][Session::get('lang')]))
+                         {{ $menu['menu_lang']['title'][Session::get('lang')] }}
+                     @else
+                         {{$menu['menu_name']}}
+                     @endif
+					</span>
+                    @if(count($menu['childs']) > 1 )
+                        <span class="fa arrow"></span>
+                    @endif
                     </a>
                 @endif
                 @if(count($menu['childs']) > 0)

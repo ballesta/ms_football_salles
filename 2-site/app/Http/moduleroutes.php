@@ -17,5 +17,4 @@
                     Route::controller('inscription', 'InscriptionController');
                     Route::controller('statistiques', 'StatistiquesController');
                     Route::controller('accueiljoueurs', 'AccueiljoueursController');
-                    Route::controller('inscriptionsdates', 'InscriptionsdatesController');
                     ?>

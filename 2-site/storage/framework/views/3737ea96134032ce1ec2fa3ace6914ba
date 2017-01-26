@@ -15,7 +15,7 @@
                 <a data-toggle="" href="<?php echo e(url('dashboard')); ?>"> <i class="icon-home3"></i> </a>
                 <a class="dropdown-toggle" href="<?php echo e(url('notification')); ?>"> <i class="icon-bell"></i><span class="notif-alert ">0</span> </a>
             </li>
-            <li class="nav-header" style="display:none !mportant;">
+            <li class="nav-header" style="display:none !important;">
                 <div class="dropdown profile-element" style="text-align:center;"> <span>
 				<?php echo SiteHelpers::avatar(); ?> 
 				 </span>
@@ -32,33 +32,38 @@
                 <div class="photo-header "> <?php echo SiteHelpers::avatar( 40 ); ?> </div>
             </li>
             <?php foreach($sidebar as $menu): ?>
-
-
-                <li <?php if(Request::segment(1) == $menu['module']): ?> class="active" <?php endif; ?>>
-
-                <?php if($menu['module'] =='separator'): ?>
-                    <li class="separator"><span> <?php echo e($menu['menu_name']); ?> </span></li>
-
+                <li
+                    <?php if(Request::segment(1) == $menu['module']): ?>           class="active"
+                    <?php endif; ?>
+                >
+                <?php if($menu['module'] == 'separator'): ?>
+                    <li class="separator">
+                        <span> <?php echo e($menu['menu_name']); ?></span>
+                    </li>
                 <?php else: ?>
                     <a
-                            <?php if($menu['menu_type'] =='external'): ?>
+                        <?php if($menu['menu_type'] == 'external'): ?>
                             href="<?php echo e($menu['url']); ?>"
-                            <?php else: ?>
+                        <?php else: ?>
                             href="<?php echo e(URL::to($menu['module'])); ?>"
-                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php if(count($menu['childs']) > 0 ): ?>
+                            class="expand level-closed"
+                        <?php endif; ?>>
+                        <i class="<?php echo e($menu['menu_icons']); ?>"></i>
+                        <span class="nav-label">
+					 <?php if(CNF_MULTILANG ==1
+					 && isset($menu['menu_lang']['title'][Session::get('lang')])): ?>
+                         <?php echo e($menu['menu_lang']['title'][Session::get('lang')]); ?>
 
-                            <?php if(count($menu['childs']) > 0 ): ?> class="expand level-closed" <?php endif; ?>>
-                        <i class="<?php echo e($menu['menu_icons']); ?>"></i> <span class="nav-label">
-					
-					<?php if(CNF_MULTILANG ==1 && isset($menu['menu_lang']['title'][Session::get('lang')])): ?>
-                                <?php echo e($menu['menu_lang']['title'][Session::get('lang')]); ?>
+                     <?php else: ?>
+                         <?php echo e($menu['menu_name']); ?>
 
-                            <?php else: ?>
-                                <?php echo e($menu['menu_name']); ?>
-
-                            <?php endif; ?>
-					
-					</span> <?php if(count($menu['childs']) > 1 ): ?><span class="fa arrow"></span> <?php endif; ?>
+                     <?php endif; ?>
+					</span>
+                    <?php if(count($menu['childs']) > 1 ): ?>
+                        <span class="fa arrow"></span>
+                    <?php endif; ?>
                     </a>
                 <?php endif; ?>
                 <?php if(count($menu['childs']) > 0): ?>

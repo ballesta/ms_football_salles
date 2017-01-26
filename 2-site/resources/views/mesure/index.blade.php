@@ -4,51 +4,6 @@
 <div class="page-content row">
 <div class="page-content-wrapper m-t">
 <div class="sbox">
-<!--//(( Code generated begin-->
-<table>
-<tr>
-<td>
-<small>Réseau de salles</small><br>
-<strong>{{ Session::get('club_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Centres sportifs</small><br>
-<strong>{{ Session::get('complexe_salle_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Terrains</small><br>
-<strong>{{ Session::get('salle_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Parties</small><br>
-<strong>{{ Session::get('partie_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Joueur sélectionné</small><br>
-<strong>{{ Session::get('joueur_selectionne_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Sessions mesures</small><br>
-<strong>{{ Session::get('session_mesure_id_identifier', null) }}</strong>
-<td>
-</tr>
-</table>
-<!--//)) Code generated end-->
 <div class="sbox-title">
 <div class="sbox-tools pull-left" >
 @if($access['is_add'] ==1)

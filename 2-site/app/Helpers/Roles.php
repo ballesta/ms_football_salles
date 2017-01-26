@@ -80,15 +80,32 @@
 			}
 			return $filter;
 		}
-	}
 
+	// Show menu depending on context recorded in session.
+	// For each menu choice: show only if parent id is in session
+	// Example:
+	//  if "complexe sportif id" is in session:
+	//      All menu choices of modules filtered by this parent id
+	//      will be shown.
+	//          Shown:
+	//              Capteurs, Salles, joueurs
+	//              Which have the their parent in context
+	//          NOT shown:
+	//              Partie (Parent is Salle)
+	//              Inscription (Parent is Partie)
+	static function show_menu($module_name)
+	{
+		$actual_role = \Session::get('gid');
+		dd($module_name);
+		return TRUE;
+	}
 
 	function get_current_session_variable($id)
 	{
-		$role = \Session::get($id,null);
-		if (!is_null($role))
-			return $role;
-		else
+		$v = \Session::get($id, NULL);
+		if (!is_null($v))
+			return $v; else
 			dd("Session variable '$id' not found");
 	}
+}
 ?>

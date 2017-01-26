@@ -196,14 +196,10 @@ class SximoHelpers {
           return 'cant find the form';
         }
 
-
      } else {
         return 'cant find the form';
-     } 
-
+     }
   }
-
-
 }
 
 ?>

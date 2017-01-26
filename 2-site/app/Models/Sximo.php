@@ -255,11 +255,26 @@ class Sximo extends Model
 			)
 			{
 				$date_heure_francaise = $data[$field_name];
-				$format = "d/m/Y H:i";
+				if (strlen($date_heure_francaise) == 10)
+				{
+					$date_seulement = true;
+					$format = "d/m/Y";
+				}
+				elseif (strlen($date_heure_francaise) == 16)
+				{
+					$date_seulement = false;
+					$format = "d/m/Y H:i";
+				}
+				else
+					dd(['Date:',$date_heure_francaise]);
+
 				// Format français vers interne
 				$dateobj = \DateTime::createFromFormat($format, $date_heure_francaise);
 				// Interne vers format anglais BD
-				$data[$field_name] = $dateobj->format('Y-m-d H:i') ;
+				if ($date_seulement)
+					$data[$field_name] = $dateobj->format('Y-m-d') ;
+				else
+					$data[$field_name] = $dateobj->format('Y-m-d H:i') ;
 			}
 		}
 	}

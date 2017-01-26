@@ -38,44 +38,28 @@ class InscriptionController extends Controller {
     {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
-        $id = $request->query("complexe_salle_id");
-        $identifier = $request->query("nom");
+        $id = $request->query("partie_id");
+        $identifier = $request->query("debut");
         if (!is_null($id))
         {
-            \Session::put("complexe_salle_id", $id);
-            \Session::put("complexe_salle_id_identifier", $identifier);
+            \Session::put("partie_id", $id);
+            \Session::put("partie_id_identifier", $identifier);
         }
-        $id = \Session::get("complexe_salle_id", null);
-        $active_filter = \Session::get("complexe_salle_id_identifier");
+        $id = \Session::get("partie_id", null);
+        $active_filter = \Session::get("partie_id_identifier");
         // Check if parent already selected
         if (is_null($id))
         {
-            return Redirect::to("complexesportif")
+            return Redirect::to("partie")
             ->with("messagetext",
             "Vous devez d'abord sélectionner votre <br> "
-            ."<i>Centres sportifs</i> <br>"
+            ."<i>Parties</i> <br>"
             ."avant de choisir <br>"
             ."<i>Inscriptions</i>")
             ->with("msgstatus","warning");
         }
         ////)) Code generated end
         ////(( Code generated begin
-        \Session::forget("inscription_id");
-        \Session::forget("inscription_id_identifier");
-        \Session::forget("salle_id");
-        \Session::forget("salle_id_identifier");
-        \Session::forget("partie_id");
-        \Session::forget("partie_id_identifier");
-        \Session::forget("joueur_selectionne_id");
-        \Session::forget("joueur_selectionne_id_identifier");
-        \Session::forget("session_mesure_id");
-        \Session::forget("session_mesure_id_identifier");
-        \Session::forget("mesure_id");
-        \Session::forget("mesure_id_identifier");
-        \Session::forget("joueur_id");
-        \Session::forget("joueur_id_identifier");
-        \Session::forget("capteurs_id");
-        \Session::forget("capteurs_id_identifier");
         \Session::forget("inscription_id");
         \Session::forget("inscription_id_identifier");
         ////)) Code generated end
@@ -151,8 +135,8 @@ class InscriptionController extends Controller {
             $this->data['row'] = $this->model->getColumnTable('fbs_inscription');
             ////(( Code generated begin
             $columns = $this->data['row'];
-            $id = \Session::get('complexe_salle_id', null);
-            $columns['complexe_salle_id'] = $id;
+            $id = \Session::get('partie_id', null);
+            $columns['partie_id'] = $id;
             $this->data['row'] = $columns;
             ////)) Code generated end
         }

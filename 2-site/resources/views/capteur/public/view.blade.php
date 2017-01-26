@@ -31,7 +31,7 @@
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>Date Achat</td>
-						<td>{{ $row->date_achat}} </td>
+						<td>{{ date('d/m/Y',strtotime($row->date_achat)) }} </td>
 						
 					</tr>
 						
