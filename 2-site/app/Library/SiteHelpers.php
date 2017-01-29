@@ -180,7 +180,7 @@
 			}
 			$base = strlen($index);
 			if ($to_num) {
-				// Digital number    <<--    alphabet letter code
+				// Digital number <<--    alphabet letter code
 				$in = strrev($in);
 				$out = 0;
 				$len = strlen($in) - 1;
