@@ -11,18 +11,22 @@
 				$child_level = array();
 				$p = json_decode($row->access_data, TRUE);
 				if ($row->allow_guest == 1) {
-					$is_allow = 1;
+					$is_allow = 0;
 				} else {
 				    // Do not allow guest: must be logged in (I.E must have his group_id in session)
-					$is_allow = (isset($p[Session::get('gid')]) && $p[Session::get('gid')] ? 1 : 0);
-					// bb
-                    $current_module_name = $row->module;
-					$is_allow = self::allow_menu_choice($current_module_name,'complexesalles', 'club_id' );
-					//dd($row);
+					$is_allow = (isset($p[Session::get('gid')])
+                                    && $p[Session::get('gid')] ? 1 : 0);
 				}
-				if ($is_allow == 1) {
+				// bb
+				$current_module_name = $row->module;
+				$is_allow = self::allow_menu_choice($current_module_name);
+				$trace[$current_module_name] = $is_allow;
+
+				if ($is_allow == 1)
+				{
 					$menus2 = self::nestedMenu($row->menu_id, $position, $active);
-					if (count($menus2) > 0) {
+					if (count($menus2) > 0)
+					{
 						$level2 = array();
 						foreach ($menus2 as $row2) {
 							$p = json_decode($row2->access_data, TRUE);
@@ -59,6 +63,7 @@
 					$data[] = $level;
 				}
 			}
+			//dd($trace);
 			//echo '<pre>';print_r($data); echo '</pre>'; exit;
 			return $data;
 		}
@@ -66,31 +71,34 @@
 		// Allows menu choice for module if parent id set in session
 		public static function allow_menu_choice($current_module_name)
 		{
-			$is_allow = 0;
 			switch ($current_module_name)
             {
 				case 'reseauxsalles'    : $is_allow = 1; break;
-				case 'complexesportif'  : $is_allow = self::in_session('club_id'); break;
-				case 'equipe'           : $is_allow = self::in_session('complexe_salle_id'); break;
+				case 'complexesportif'  : $is_allow = self::in_session('club_id')          ;break;
+				case 'equipe'           : $is_allow = self::in_session('complexe_salle_id');break;
 				case 'capteur'          : $is_allow = self::in_session('complexe_salle_id'); break;
 				case 'joueurCentre'     : $is_allow = self::in_session('complexe_salle_id'); break;
 				case 'salle'            : $is_allow = self::in_session('complexe_salle_id'); break;
-				case 'partie'           : $is_allow = self::in_session('salle_id'); break;
-				case 'inscription'      : $is_allow = self::in_session('partie_id'); break;
-                default               : $is_allow = 1;
+				case 'partie'           : $is_allow = self::in_session('salle_id');          break;
+				case 'inscription'      : $is_allow = self::in_session('partie_id');         break;
+				case null               : $is_allow = 1;         break;
+                default                 : //dd(['Module inconnu', $current_module_name]);
+                                          $is_allow = 1;
 			}
 			return $is_allow;
 		}
 
 		public static function in_session($variable_name)
         {
-            $id = Session::get($variable_name);
-				//dd($club_id);
-            if (!is_null($id))
-					// Id in session set: allow menu choice
-				$is_allow = 1;
+	        if (Session::has($variable_name))
+            {
+                //$id = Session::get($variable_name);
+	            $is_allow = 1;
+            }
             else
-				$is_allow = 0;
+            {
+                $is_allow = 0;
+            }
 			return $is_allow;
 		}
 
