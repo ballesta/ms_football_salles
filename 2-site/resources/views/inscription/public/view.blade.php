@@ -12,32 +12,26 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Joueur</td>
+						<td width='30%' class='label-view text-right'>Player</td>
 						<td>{{ SiteHelpers::formatLookUp($row->joueur_id,'joueur_id','1:fb_joueurs:joueur_id:premon|nom') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Terrain</td>
-						<td>{{ SiteHelpers::formatLookUp($row->terrain_id,'terrain_id','1:fbs_salles:salle_id:identifiant') }} </td>
+						<td width='30%' class='label-view text-right'>Game</td>
+						<td>{{ SiteHelpers::formatLookUp($row->partie_id,'partie_id','1:fb_partie:partie_id:debut') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Heure Début</td>
-						<td>{{ $row->heure_debut}} </td>
+						<td width='30%' class='label-view text-right'>Team</td>
+						<td>{{ SiteHelpers::formatLookUp($row->equipe_id,'equipe_id','1:fb_equipes:equipe_id:nom') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Durée</td>
-						<td>{{ $row->duree}} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Capteur</td>
-						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:code|numero_serie|UID') }} </td>
+						<td width='30%' class='label-view text-right'>Sensor</td>
+						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:code') }} </td>
 						
 					</tr>
 						

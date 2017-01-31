@@ -4,9 +4,6 @@ use App\Models\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Validator, Input, Redirect ;
-use Illuminate\Support\Facades\DB;
-use App\Helpers\StatistiquesMesures;
-//use App\Helpers;
 class InscriptionController extends Controller {
     protected $layout = "layouts.main";
     protected $data = array();
@@ -26,6 +23,7 @@ class InscriptionController extends Controller {
         'pageNote'	=>  $this->info['note'],
         'pageModule'=> 'inscription',
         'return'	=> self::returnUrl()
+        
         );
         
         \App::setLocale(CNF_LANG);
@@ -33,6 +31,7 @@ class InscriptionController extends Controller {
             $lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
             \App::setLocale($lang);
         }
+        
     }
     public function getIndex( Request $request )
     {
@@ -77,6 +76,7 @@ class InscriptionController extends Controller {
             $filter = $search['param'];
             $this->data['search_map'] = $search['maps'];
         }
+        
         $page = $request->input('page', 1);
         $params = array(
         'page'		=> $page ,
@@ -115,6 +115,7 @@ class InscriptionController extends Controller {
     }
     function getUpdate(Request $request, $id = null)
     {
+        
         if($id =='')
         {
             if($this->access['is_add'] ==0 )
@@ -143,30 +144,7 @@ class InscriptionController extends Controller {
         $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
         
         $this->data['id'] = $id;
-        //dd($this->data);
         return view('inscription.form',$this->data);
-    }
-    public function getGenere( Request $request, $id = null)
-    {
-        if($this->access['is_detail'] == 0)
-        return Redirect::to('dashboard')
-        ->with( 'messagetext',
-        \Lang::get('core.note_restric'))
-        ->with('msgstatus','error');
-        // Lis inscription
-        $row = $this->model->getRow($id);
-        if($row)
-        {
-            // Elabore les données statistiques
-            $mesures = \App\Helpers\GenereMesures::Partie($id, $row);
-            $this->data['mesures'] = $mesures;
-            //dd($this->data);
-            return Redirect::to('inscription')
-            ->with('messagetext','Mesures crées')->with('msgstatus','success');
-            return view('inscription.statistiques',$this->data);
-        } else {
-            return Redirect::to('inscription')->with('messagetext','Record Not Found !')->with('msgstatus','error');
-        }
     }
     public function getShow( Request $request, $id = null)
     {
@@ -183,42 +161,21 @@ class InscriptionController extends Controller {
             $this->data['access']		= $this->access;
             $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
             $this->data['prevnext'] = $this->model->prevNext($id);
-            // Elabore les données statistiques
-            $statistiques = \App\Helpers\StatistiquesMesures::statistiques($id, $row);
-            $this->data['statistiques'] = $statistiques;
-            //dd($this->data);
-            return view('inscription.statistiques',$this->data);
-            //return view('inscription.statistiques',$statistiques);
+            return view('inscription.view',$this->data);
         } else {
             return Redirect::to('inscription')->with('messagetext','Record Not Found !')->with('msgstatus','error');
         }
     }
-    //bb
-    // Ajoute inscription
-    // Ajoute partie, joueur sélectionné, session mesures
     function postSave( Request $request)
     {
+        
         $rules = $this->validateForm();
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
-            $inscription = $this->validatePost('tb_inscription');
-            // ++++ revoir gestion des dates
-            // Passe la date de format français vers format anglais pour le base de données
-            // Format francais
-            //$date_heure_francaise = $inscription['heure_debut'];
-            //$format = "d/m/Y H:i";
-            //// Format français vers interne
-            //$dateobj = \DateTime::createFromFormat($format, $date_heure_francaise);
-            //// Interne vers format anglais BD
-            //$inscription['heure_debut'] = $dateobj->format('Y-m-d H:i') ;
-            //dd([ $inscription, $date_heure_francaise, $dateobj]);
-            //$inscription['complexe_salle_id'] = "7"; // ++++
-            //dd($inscription);
-            $id = $this->model
-            ->insertRow($inscription ,
-            $request->input('inscription_id'));
-            \App\Helpers\StatistiquesMesures::cree_partie_joueur_selectionne_session_mesures
-            ($id, $inscription);
+            $data = $this->validatePost('tb_inscription');
+            
+            $id = $this->model->insertRow($data , $request->input('inscription_id'));
+            
             if(!is_null($request->input('apply')))
             {
                 $return = 'inscription/update/'.$id.'?return='.self::returnUrl();
@@ -228,25 +185,15 @@ class InscriptionController extends Controller {
             // Insert logs into database
             if($request->input('inscription_id') =='')
             {
-                \SiteHelpers::auditTrail( $request ,
-                'New Data with ID '
-                .$id
-                .' Has been Inserted !');
+                \SiteHelpers::auditTrail( $request , 'New Data with ID '.$id.' Has been Inserted !');
             } else {
                 \SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
             }
-            return Redirect::to($return)
-            ->with('messagetext',
-            \Lang::get('core.note_success'))
-            ->with('msgstatus','success');
+            return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+            
         } else {
-            return Redirect::to('inscription/update/'
-            .$request
-            ->input('inscription_id'))
-            ->with('messagetext',\Lang::get('core.note_error'))
-            ->with('msgstatus','error')
-            ->withErrors($validator)
-            ->withInput();
+            return Redirect::to('inscription/update/'.$request->input('inscription_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+            ->withErrors($validator)->withInput();
         }
         
     }
@@ -265,6 +212,7 @@ class InscriptionController extends Controller {
             // redirect
             return Redirect::to('inscription?return='.self::returnUrl())
             ->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
+            
         } else {
             return Redirect::to('inscription?return='.self::returnUrl())
             ->with('messagetext','No Item Deleted')->with('msgstatus','error');
@@ -325,5 +273,6 @@ class InscriptionController extends Controller {
             return  Redirect::back()->with('messagetext','<p class="alert alert-danger">'.\Lang::get('core.note_error').'</p>')->with('msgstatus','error')
             ->withErrors($validator)->withInput();
         }
+        
     }
 }
