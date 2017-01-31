@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://http://football.ballesta.fr/',
+    'url' => 'http://football-salles.fr/',
 
     /*
     |--------------------------------------------------------------------------

@@ -63,14 +63,16 @@ class JoueurCentreController extends Controller {
         \Session::forget("salle_id_identifier");
         \Session::forget("partie_id");
         \Session::forget("partie_id_identifier");
-        \Session::forget("inscription_id");
-        \Session::forget("inscription_id_identifier");
+        \Session::forget("joueur_selectionne_id");
+        \Session::forget("joueur_selectionne_id_identifier");
+        \Session::forget("session_mesure_id");
+        \Session::forget("session_mesure_id_identifier");
+        \Session::forget("mesure_id");
+        \Session::forget("mesure_id_identifier");
         \Session::forget("joueur_id");
         \Session::forget("joueur_id_identifier");
         \Session::forget("capteurs_id");
         \Session::forget("capteurs_id_identifier");
-        \Session::forget("equipe_id");
-        \Session::forget("equipe_id_identifier");
         ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')

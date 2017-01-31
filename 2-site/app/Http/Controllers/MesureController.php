@@ -38,7 +38,7 @@ class MesureController extends Controller {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
         $id = $request->query("session_mesure_id");
-        $identifier = $request->query("heure_debut");
+        $identifier = $request->query("date_heure");
         if (!is_null($id))
         {
             \Session::put("session_mesure_id", $id);

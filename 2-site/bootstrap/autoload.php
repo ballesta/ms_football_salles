@@ -1,5 +1,5 @@
 <?php
-
+//echo 'autoload<br>';
 define('LARAVEL_START', microtime(true));
 
 /*
@@ -15,7 +15,7 @@ define('LARAVEL_START', microtime(true));
 */
 
 require __DIR__.'/../vendor/autoload.php';
-
+//echo 'vendor<br>';
 /*
 |--------------------------------------------------------------------------
 | Include The Compiled Class File

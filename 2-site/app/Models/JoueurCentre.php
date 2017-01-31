@@ -15,27 +15,14 @@ class joueurCentre extends Sximo  {
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
-    $where = [];// Filter on parent 
-$parent_id_key = 'complexe_salle_id';
-// Table
-$table = with(new static)->table;
-// clef primaire de la table
-$key = with(new static)->primaryKey;
-// Id du parent passée en paramètre?
-$id = \Session::get($parent_id_key,null);
-if (is_null($id))
-{
-    // No id,leave existing filter
-    $where[] = " $table.$key IS NOT NULL ";
-}
-else
-{
-    // Filter by parent id
-    $where[] = "  $table.$parent_id_key = $id ";
-}
-$where[] = \App\Helpers\Roles::filter( "joueurCentre");
-$sql_where = \App\Helpers\SQL_Where::compose($where);
-return $sql_where;
+    $key_word='WHERE ';
+	        foreach ($module->queryWhere as $c)
+	        {
+		        $queryWhere .= $key_word . $c ;
+		        // Following conditions
+		        $key_word='AND ';
+	        }
+			return $queryWhere;
         ////)) Code generated end
     }
     

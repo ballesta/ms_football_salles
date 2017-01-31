@@ -15,9 +15,14 @@ class joueurselectionne extends Sximo  {
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
-        $where = [];$where[] = \App\Helpers\Roles::filter( "joueurselectionne");
-$sql_where = \App\Helpers\SQL_Where::compose($where);
-return $sql_where;
+    $key_word='WHERE ';
+	        foreach ($module->queryWhere as $c)
+	        {
+		        $queryWhere .= $key_word . $c ;
+		        // Following conditions
+		        $key_word='AND ';
+	        }
+			return $queryWhere;
         ////)) Code generated end
     }
     
