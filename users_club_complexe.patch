@@ -1,8 +1,0 @@
-Index: 2-site/app/Http/Controllers/Core/UsersController.php
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
---- 2-site/app/Http/Controllers/Core/UsersController.php	(revision 16383cdc55ab790c86c49b88de2223faa5d1a975)
-+++ 2-site/app/Http/Controllers/Core/UsersController.php	(revision )
-@@ -1,0 +1,0 @@

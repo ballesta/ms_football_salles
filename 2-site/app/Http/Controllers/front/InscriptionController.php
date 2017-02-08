@@ -18,11 +18,14 @@ class InscriptionController extends Controller
     /*
      * Inscription joueurs à la partie sélectionné
      *
+     * Traitement en pseudo code:
+     * -------------------------
 	 * Si demande de formulaire:
 	 *     Si partie n'existe pas
 	 *         créer nouvelle partie
 	 *     Sinon
 	 *         Lire la partie existante à patir deu terrain_id et heure de début
+     * Ici: Partie existante et lue
 	 * Sinon
 	 *     (Cas d'une soumission de formulaire rempli)
 	 *     Traiter les données transmises par le formulaire:
@@ -44,11 +47,17 @@ class InscriptionController extends Controller
 	    $minutes = $_GET['minute'];
         echo "<h1>Inscription $terrain_id $heure $minutes</h1>";
         $partie = self::lis_ou_cree_partie($terrain_id, $heure, $minutes);
-        $salle_id = $partie->salle_id;
-        $salle= self::lis_salle($salle_id);
-        dd(["Salle", $salle]);
-        // Lis joueurs inscrits  + Noms joueurs
-	    // Jointure entre joueurs incrits et joueurs
+        //$salle_id = $partie->salle_id;
+        //$salle= self::lis_salle($salle_id);
+	    $partie_completee = self::complete_partie($partie);
+	    // Lis joueurs inscrits  + Noms joueurs + Capteurs
+	    $joueurs = self::lis_joueurs_capteurs($partie);
+	    // Compose les données à transmettre à la vue
+	    $inscriptions_partie = new Partie($partie_completee,$joueurs);
+		//dd($inscriptions_partie);
+
+	    return view('front.inscriptions.index')
+		    ->with(compact('inscriptions_partie'));
     }
 
     // Renvoie la partie
@@ -85,6 +94,7 @@ class InscriptionController extends Controller
 	    	// Partie existante
 		    //dd(["partie",$partie]);
 	    }
+
 		return $partie[0];
 	}
 
@@ -93,6 +103,49 @@ class InscriptionController extends Controller
 	{
 		$salle = DB::table('fbs_salles')->where('salle_id', '=', $salle_id)->get();
 		return $salle[0];
+	}
+
+	// Renvoie le détail de la partie complète destinée à être traitée par la vue
+	private function complete_partie($partie)
+	{
+		// Complète la partie avec le nom de la salle et le nom des equipes
+		$partie_completee =
+			DB::table('fb_partie as p')
+				->where('partie_id', '=', $partie->partie_id )
+				->leftjoin('fbs_salles as s',  's.salle_id', '=', 'p.salle_id')
+				->leftjoin('fb_equipes as equipe_a', 'equipe_a.equipe_id', '=', 'p.equipe_a_id')
+				->leftjoin('fb_equipes as equipe_b', 'equipe_b.equipe_id', '=', 'p.equipe_b_id')
+				->select(
+					'p.*',
+					's.identifiant as salle_nom',
+					'equipe_a.nom as equipe_a_nom',
+					'equipe_b.nom as equipe_b_nom'
+				)
+			->get();
+		//dd($partie_completee);
+		if (empty($partie_completee))
+			dd("Partie completee?");
+		return $partie_completee[0];
+	}
+
+	// Lis joueurs inscrits  + Noms joueurs + Capteurs
+	// par jointure entre joueurs incrits, joueurs et capteurs.
+	private function lis_joueurs_capteurs($partie)
+	{
+		$inscription_joueurs =
+			DB::table('fbs_inscription as i')
+				->where('i.partie_id', '=', $partie->partie_id )
+				->join('fb_joueurs as j',  'j.joueur_id', '=', 'i.joueur_id')
+				->join('fb_capteurs as c',  'c.capteur_id', '=', 'i.capteur_id')
+				->select
+				(
+					'i.*',
+					DB::raw('CONCAT(j.premon, " ", j.nom) AS joueur_nom'),
+					'c.code as capteur_code'
+				)
+				->get();
+		//dd($inscription_joueurs);
+		return $inscription_joueurs;
 	}
 
 	// Ajoute un zéro aux heures et minutes si necessaire
@@ -109,12 +162,13 @@ class InscriptionController extends Controller
     /**
      * Affiche la grille d'accès à une partie
      *
+     * route: 'front\InscriptionController@grille_terrains_parties'
      * @return \Illuminate\Http\Response
      */
     public function grille_terrains_parties()
     {
-	    //Echo '<h1>Inscription:grille_terrains_parties</h1>';
-	    Vue_partie_grille::partie_grille();
+	    Echo '<h1>Inscription:grille_terrains_parties</h1>';
+	    return Vue_partie_grille::partie_grille();
 
     }
 
@@ -176,6 +230,20 @@ class InscriptionController extends Controller
 }
 
 
+
+// Partie complète pour affichage dans la vue
+class Partie
+{
+	public $partie;
+	public $inscriptions;
+
+	function __construct($partie, $inscriptions)
+	{
+		$this->partie = $partie;
+		$this->inscriptions = $inscriptions;
+	}
+}
+
 class Vue_partie_grille
 {
 	static $terrain_selectionne;
@@ -185,6 +253,11 @@ class Vue_partie_grille
 	// Affiche la grille des Terrains et parties
 	static function partie_grille()
 	{
+		echo "Niveau output:", ob_get_level ();
+		//ob_clean();
+		//ob_start(); // Mémorise sorties
+
+
 		echo "<h1>Inscription des joueurs</h1>";
 		echo "<h>Sélectionner le terrain et l'heure de début de la partie</h>";
 		self::$terrain_selectionne = self::parametre('terrain');
@@ -197,6 +270,12 @@ class Vue_partie_grille
 			echo "<h2>joueurs incrits</h2>";
 			//self::affiche_joueurs inscrits();
 		}
+		$grille = ob_get_contents();
+		ob_end_clean();
+
+		return view('front.inscriptions.grille_terrains_parties')
+			->with(compact('grille'));
+
 	}
 
 	static function parametre($p)

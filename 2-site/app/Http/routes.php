@@ -26,8 +26,10 @@
 
 	// ---- Front ----
 	// Inscriptions des joueurs
-	Route::get('front/grille_terrains_parties', 'front\InscriptionController@grille_terrains_parties');
-	Route::get('front/inscriptions'           , 'front\InscriptionController@inscription');
+	Route::get('front/grille_terrains_parties',
+		       'front\InscriptionController@grille_terrains_parties');
+	Route::get('front/inscriptions'           ,
+		       'front\InscriptionController@inscription');
 
 	// ---- Back ----
 	Route::resource('statistiques', 'StatistiquesController');
