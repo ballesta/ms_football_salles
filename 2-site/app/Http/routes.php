@@ -28,8 +28,14 @@
 	// Inscriptions des joueurs
 	Route::get('front/grille_terrains_parties',
 		       'front\InscriptionController@grille_terrains_parties');
+
+    // Demande de fiche d'inscription des joueurs à une partie
 	Route::get('front/inscriptions'           ,
 		       'front\InscriptionController@inscription');
+
+	// Envoi de la fiche d'inscription remplie
+	Route::post('front/inscriptions-remplie'           ,
+				'front\InscriptionController@inscriptionRemplie');
 
 	// ---- Back ----
 	Route::resource('statistiques', 'StatistiquesController');

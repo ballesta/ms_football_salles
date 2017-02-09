@@ -56,9 +56,15 @@ class InscriptionController extends Controller
 	    $inscriptions_partie = new Partie($partie_completee,$joueurs);
 		//dd($inscriptions_partie);
 
-	    return view('front.inscriptions.index')
+	    return view('front.inscriptions.fiche_inscription_joueurs')
 		    ->with(compact('inscriptions_partie'));
     }
+
+    // Fiche inscription remplie
+	public function inscriptionRemplie()
+	{
+		dd(["Fiche inscription remplie",$_POST]);
+	}
 
     // Renvoie la partie
 	private function lis_ou_cree_partie($terrain_id, $heure, $minutes)
