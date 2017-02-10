@@ -25,7 +25,7 @@ html, body{
 
 /* @form wrappers 
 ---------------------------------- */
-.smart-wrap{ padding:0 20px; }
+.smart-wrap{ padding:0 5px; }
 .smart-forms, 
 .smart-forms *{
 	-webkit-box-sizing: border-box;
@@ -35,15 +35,15 @@ html, body{
 
 .smart-forms {
 	font-family:  "Roboto", Arial, Helvetica, sans-serif;
-	line-height: 1.231;
+	line-height: 1.2;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 16px;
 	color: #626262;
 }
 
 .smart-container{
 	background:#fff;
-	margin:50px auto;	
+	margin:20px auto;
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 	-o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
@@ -59,10 +59,10 @@ html, body{
 /* @if you want to change the form container width change the values below 
 /* @alternatively you can add yours eg .wrap4{ max-width:200px; } 
 ---------------------------------------------------------------------------- */
-.wrap-0{ max-width:952px; }
-.wrap-1{ max-width:852px; }
-.wrap-2{ max-width:652px; }
-.wrap-3{ max-width:452px; }
+.wrap-0{ max-width:1200px; }
+.wrap-1{ max-width:1000px; }
+.wrap-2{ max-width:800px; }
+.wrap-3{ max-width:600px; }
 
 /* @form helper classes 
 --------------------------------------------------------------- */
@@ -210,7 +210,7 @@ html, body{
 .smart-forms select,  
 .smart-forms textarea {
 	margin: 0;  
-	font-size: 14px;
+	font-size: 18px;
 	font-family:  "Roboto", Arial, Helvetica, sans-serif;
 	font-weight:400;
 	color: #626262;
@@ -246,7 +246,7 @@ html, body{
 --------------------------------------------------------- */
 .smart-forms .switch, 
 .smart-forms .option,
-.smart-forms .field-label{ font-size:14px; }
+.smart-forms .field-label{ font-size:16px; }
 
 /* @prevent user selection for usability purposes
 ----------------------------------------------------- */
@@ -345,7 +345,7 @@ html, body{
 	-moz-border-radius: 0;
 	-o-border-radius: 0;
 	border-radius: 0;
-    font-size: 11px;
+    font-size: 16px;
     color: #999;
 }
 
@@ -591,7 +591,7 @@ html, body{
     height: 25px;
 	width: 58px;
 	color: #fff;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
 	line-height: 20px;
     text-align: center;
@@ -695,7 +695,7 @@ html, body{
 	height: 42px;
 	color: #243140;
 	line-height: 1;
-	font-size:15px; 
+	font-size:20px;
     cursor: pointer;
 	padding: 0 18px;
 	text-align: center;
@@ -713,7 +713,7 @@ html, body{
 .smart-forms a.button, 
 .smart-forms span.button, 
 .smart-forms label.button { line-height: 42px; text-decoration: none; }
-.smart-forms .button i{ font-size:14px; }
+.smart-forms .button i{ font-size:16px; }
 .smart-forms .button-list .button{ margin-bottom:5px; }
 
 /* @primary button theme
