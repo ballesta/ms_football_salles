@@ -40,6 +40,9 @@ class InscriptionController extends Controller
 	 *     Ce qui demande de lire les fichiers liés comme les equipes et les joueurs.
 	 *
      */
+
+    // Demande de fiche d'inscription à une partie
+	// spécifiée par le terrain (salle) et l'heure de début.
     public function inscription()
     {
 	    $terrain_id = $_GET['terrain_id'];
@@ -57,10 +60,11 @@ class InscriptionController extends Controller
 		//dd($inscriptions_partie);
 
 	    return view('front.inscriptions.fiche_inscription_joueurs')
-		    ->with(compact('inscriptions_partie'));
+		            ->with(compact('inscriptions_partie'));
     }
 
-    // Fiche inscription remplie
+    // Réception de la Fiche d'inscription remplie
+	// Traitement des données saisies sur la fiche
 	public function inscriptionRemplie()
 	{
 		dd(["Fiche inscription remplie",$_POST]);

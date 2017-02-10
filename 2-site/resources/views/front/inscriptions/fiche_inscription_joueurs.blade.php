@@ -8,13 +8,6 @@
           type="text/css"
           href="/assets/smart-forms/css/font-awesome.min.css">
 
-    <!-- link rel="stylesheet"
-          type="text/css"
-          href="/assets/smart-forms/css/smart-themes/red.css" -->
-
-    <!--script type="text/javascript"
-            src="/assets/smart-forms/js/jquery-1.9.1.min.js">
-    </script -->
 
     <script type="text/javascript"
             src="/assets/smart-forms/js/jquery-cloneya.min.js">
@@ -57,6 +50,7 @@
                     <div class="spacer-b30">
                         <div class="tagline">
                             <span>Simple Cloning </span>
+                            <?php CLASSE::test(); ?>
                         </div><!-- .tagline -->
                     </div>
                     <div id="clone-fields">
@@ -84,3 +78,14 @@
         </div><!-- end .smart-forms section -->
     </div><!-- end .smart-wrap section -->
 @endsection
+
+<?php
+        class Classe
+        {
+        	static function test()
+                {
+                	echo "Test classe dand vue";
+                }
+
+        }
+?>
