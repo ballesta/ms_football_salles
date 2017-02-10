@@ -53,10 +53,16 @@ class InscriptionController extends Controller
         //$salle_id = $partie->salle_id;
         //$salle= self::lis_salle($salle_id);
 	    $partie_completee = self::complete_partie($partie);
+	    // Lis les joueurs enregistrés pour permettre de renseigner les listes déroulants
+	    $joueurs = self::lis_joueurs();
+	    // Lis les equipes pour permettre de renseigner les listes déroulants
+	    $equipes = self::lis_equipes();
+	    // Lis les capteurs pour permettre de renseigner les listes déroulants
+	    $capteurs = self::lis_capteurs();
 	    // Lis joueurs inscrits  + Noms joueurs + Capteurs
-	    $joueurs = self::lis_joueurs_capteurs($partie);
+	    $inscriptions = self::lis_joueurs_capteurs($partie);
 	    // Compose les données à transmettre à la vue
-	    $inscriptions_partie = new Partie($partie_completee,$joueurs);
+	    $inscriptions_partie = new Partie($partie_completee, $joueurs, $equipes, $capteurs, $inscriptions);
 		//dd($inscriptions_partie);
 
 	    return view('front.inscriptions.fiche_inscription_joueurs')
@@ -144,6 +150,26 @@ class InscriptionController extends Controller
 		return $partie_completee[0];
 	}
 
+	private function lis_equipes()
+	{
+		return 	DB::table('fb_equipes as e')
+			->select('e.*')
+			->get();
+	}
+
+	private function lis_capteurs()
+	{
+		return 	DB::table('fb_capteurs as c')
+			->select('c.*')
+			->get();
+	}
+
+	private function lis_joueurs()
+	{
+		return 	DB::table('fb_joueurs as j')
+			->select('j.*')
+			->get();
+	}
 	// Lis joueurs inscrits  + Noms joueurs + Capteurs
 	// par jointure entre joueurs incrits, joueurs et capteurs.
 	private function lis_joueurs_capteurs($partie)
@@ -253,9 +279,12 @@ class Partie
 	public $partie;
 	public $inscriptions;
 
-	function __construct($partie, $inscriptions)
+	function __construct($partie, $joueurs, $equipes, $capteurs, $inscriptions)
 	{
 		$this->partie = $partie;
+		$this->joueurs = $joueurs;
+		$this->equipes = $equipes;
+		$this->capteurs = $capteurs;
 		$this->inscriptions = $inscriptions;
 	}
 }

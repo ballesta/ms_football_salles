@@ -34,7 +34,7 @@
 		       'front\InscriptionController@inscription');
 
 	// Envoi de la fiche d'inscription remplie
-	Route::post('front/inscriptions-remplie'           ,
+	Route::post('front/inscription-remplie'           ,
 				'front\InscriptionController@inscriptionRemplie');
 
 	// ---- Back ----

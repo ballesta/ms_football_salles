@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
           type="text/css"
@@ -51,7 +52,7 @@
     <div class="smart-wrap">
         <div class="smart-forms smart-container wrap-0">
             <form method="post"
-                  action="front/inscriptions-remplie"
+                  action="inscription-remplie"
                   id="formulaire_inscriptions_remplie">
                 <div class="form-body">
                     <div class="frm-row">
@@ -79,10 +80,11 @@
                         <div class="spacer-b10 colm colm3">
                             Equipe A<br>
                             <label class="field select">
-                                <select id="access" name="equipe_a_partie[]">
-                                    <option value="IBM">IBM</option>
-                                    <option value="EDF">EDF</option>
-                                    <option value="Lions">Les lions du 93</option>
+                                <select id="access" name="equipe_id_a[]">
+                                    <option value="0"></option>
+                                    @foreach($inscriptions_partie->equipes as $e)
+                                        <option value="{{$e->equipe_id}}">{{$e->nom}}</option>
+                                    @endforeach
                                 </select>
                                 <i class="arrow simple"></i>
                             </label>
@@ -90,10 +92,11 @@
                         <div class="spacer-b10 colm colm3">
                             Equipe B<br>
                             <label class="field select">
-                                <select id="access" name="equipes_b_partie[]">
-                                    <option value="IBM">IBM</option>
-                                    <option value="EDF">EDF</option>
-                                    <option value="LIONS">Les lions du 93</option>
+                                <select id="access" name="equipes_id_b[]">
+                                    <option value="0"></option>
+                                    @foreach($inscriptions_partie->equipes as $e)
+                                        <option value="{{$e->equipe_id}}">{{$e->nom}}</option>
+                                    @endforeach
                                 </select>
                                 <i class="arrow simple"></i>
                             </label>
@@ -108,11 +111,7 @@
                             <div class="spacer-b10 colm colm2"><strong>Capteur</strong></div>
                             <div class="spacer-b10 colm colm2">
                                 <strong>
-                                    &nbsp;&nbsp;
-                                    Equipe<br>&nbsp;&nbsp;&nbsp;
-                                    A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    B &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    Aucune
+                                    Equipe
                                 </strong>
                             </div>
                         </div>
@@ -120,31 +119,49 @@
                     <hr>
                     {!! Formulaire::duplication_debut('joueurs') !!}
                         <div class="frm-row">
-                            {!!  Formulaire::champ_texte(3, "joueur_id[]", "Joueur enregistré" )!!}
-                            {!!  Formulaire::champ_texte(3, "joueur_mail[]", "Mail Joueur" )!!}
-                            <div class="spacer-b10 colm colm2">
+                            <div class="spacer-b5 colm colm3">
                                 <label class="field select">
-                                    <select  name="joueur_lateralite[]" value="Droitier">
+                                    <select  name="joueur_id[]">
+                                        <option value="0"></option>
+                                        @foreach($inscriptions_partie->joueurs as $j)
+                                            <option value="{{$j->joueur_id}}">{{$j->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    <i class="arrow simple"></i>
+                                </label>
+                            </div>
+                            {!!  Formulaire::champ_texte(3, "joueur_mail[]", "Mail Joueur" )!!}
+                            <div class="spacer-b5 colm colm2">
+                                <label class="field select">
+                                    <select  name="joueur_lateralite[]">
+                                        <option value=""></option>
                                         <option value="Droitier">Droitier</option>
                                         <option value="Gaucher">Gaucher</option>
                                     </select>
                                     <i class="arrow simple"></i>
                                 </label>
                             </div>
-                            {!!  Formulaire::champ_texte(2, "joueur_capteur_id[]", "Capteur" )!!}
-                            <div class="spacer-b10 colm colm2">
-                                <div class="option-group field">
-                                    <label class="option">
-                                        <input type="radio" name="joueur_equipe[]"  class="smartfm-ctrl" value="A" data-show-id="A">
-                                    </label>
-                                    <label class="option">
-                                        <input type="radio" name="joueur_equipe[]"  class="smartfm-ctrl" value="B" data-show-id="B">
-                                    </label>
-                                    <label class="option">
-                                        <input type="radio" name="joueur_equipe[]"   class="smartfm-ctrl" value="x"  data-show-id="x">
-                                    </label>
-                                </div>
-                            </div><!-- end col -->
+                            <div class="spacer-b5 colm colm2">
+                                <label class="field select">
+                                    <select  name="joueur_capteur_id[]">
+                                        <option value="0"></option>
+                                        @foreach($inscriptions_partie->capteurs as $c)
+                                            <option value="{{$c->capteur_id}}">{{$c->code}}</option>
+                                        @endforeach
+                                    </select>
+                                    <i class="arrow simple"></i>
+                                </label>
+                            </div>
+                            <div class="spacer-b5 colm colm1">
+                                <label class="field select">
+                                    <select  name="joueur_equipe_id[]">
+                                        <option value=""></option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                    </select>
+                                    <i class="arrow simple"></i>
+                                </label>
+                            </div>
                         </div><!-- end row -->
                     {!! Formulaire::duplication_fin('joueurs')!!}
 

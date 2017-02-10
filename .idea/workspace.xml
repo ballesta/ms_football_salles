@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
+    <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="Problème Equipe A,B avec radio button : changé en select (requête au support)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/public/assets/smart-forms/css/smart-forms.css" afterPath="$PROJECT_DIR$/2-site/public/assets/smart-forms/css/smart-forms.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs.blade.php" />
     </list>
@@ -28,42 +30,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="fiche_inscription_joueurs.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fiche_inscription_joueurs.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="910">
-              <caret line="144" column="44" lean-forward="true" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="44" />
+            <state relative-caret-position="280">
+              <caret line="126" column="87" lean-forward="false" selection-start-line="126" selection-start-column="87" selection-end-line="126" selection-end-column="87" />
               <folding>
-                <element signature="e#4638#4644#0#HTML" expanded="true" />
-                <element signature="e#4644#4650#0#HTML" expanded="true" />
-                <element signature="e#4697#4703#0#HTML" expanded="true" />
-                <element signature="e#4703#4709#0#HTML" expanded="true" />
-                <element signature="e#4709#4715#0#HTML" expanded="true" />
-                <element signature="e#4754#4760#0#HTML" expanded="true" />
-                <element signature="e#4760#4766#0#HTML" expanded="true" />
-                <element signature="e#4766#4772#0#HTML" expanded="true" />
-                <element signature="e#4772#4778#0#HTML" expanded="true" />
-                <element signature="e#4778#4784#0#HTML" expanded="true" />
-                <element signature="e#4823#4829#0#HTML" expanded="true" />
-                <element signature="e#4829#4835#0#HTML" expanded="true" />
-                <element signature="e#4835#4841#0#HTML" expanded="true" />
-                <element signature="e#4841#4847#0#HTML" expanded="true" />
-                <element signature="e#4847#4853#0#HTML" expanded="true" />
-                <marker date="1486757361610" expanded="true" signature="520:601" ph="..." />
-                <marker date="1486757361610" expanded="true" signature="686:747" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fiche_inscription_joueurs_radio.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs_radio.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="131" column="116" lean-forward="false" selection-start-line="131" selection-start-column="116" selection-end-line="131" selection-end-column="116" />
-              <folding>
-                <marker date="1486756709960" expanded="true" signature="520:601" ph="..." />
-                <marker date="1486756709960" expanded="true" signature="686:747" ph="..." />
+                <marker date="1486770332822" expanded="true" signature="521:602" ph="..." />
+                <marker date="1486770332822" expanded="true" signature="687:748" ph="..." />
               </folding>
             </state>
           </provider>
@@ -79,22 +53,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InscriptionController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InscriptionController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+            <state relative-caret-position="653">
+              <caret line="72" column="35" lean-forward="true" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
               <folding>
                 <element signature="e#46#74#0#PHP" expanded="true" />
-                <marker date="1486756757254" expanded="true" signature="8249:8532" ph="..." />
-                <marker date="1486756757254" expanded="true" signature="8259:8522" ph="..." />
-                <marker date="1486756757254" expanded="true" signature="8269:8361" ph="{...}" />
-                <marker date="1486756757254" expanded="true" signature="8374:8453" ph="{...}" />
-                <marker date="1486756757254" expanded="true" signature="8478:8512" ph="{...}" />
-                <marker date="1486756757254" expanded="true" signature="9210:9234" ph="select * fro... fbs_salles" />
-                <marker date="1486756757254" expanded="true" signature="9708:9731" ph="..." />
-                <marker date="1486756757254" expanded="true" signature="10230:10251" ph="..." />
-                <marker date="1486756757254" expanded="true" signature="10333:10358" ph="..." />
+                <marker date="1486770501344" expanded="true" signature="9090:9373" ph="..." />
+                <marker date="1486770501344" expanded="true" signature="9100:9363" ph="..." />
+                <marker date="1486770501344" expanded="true" signature="9110:9202" ph="{...}" />
+                <marker date="1486770501344" expanded="true" signature="9215:9294" ph="{...}" />
+                <marker date="1486770501344" expanded="true" signature="9319:9353" ph="{...}" />
+                <marker date="1486770501344" expanded="true" signature="10051:10075" ph="select * fro... fbs_salles" />
+                <marker date="1486770501344" expanded="true" signature="10549:10572" ph="..." />
+                <marker date="1486770501344" expanded="true" signature="11071:11092" ph="..." />
+                <marker date="1486770501344" expanded="true" signature="11174:11199" ph="..." />
               </folding>
             </state>
           </provider>
@@ -104,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="43" />
+              <caret line="36" column="34" lean-forward="false" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -113,8 +87,8 @@
       <file leaf-file-name="smart-forms.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/public/assets/smart-forms/css/smart-forms.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+            <state relative-caret-position="-655">
+              <caret line="1951" column="43" lean-forward="false" selection-start-line="1951" selection-start-column="43" selection-end-line="1951" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -327,12 +301,12 @@
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/front/tttt.sql" />
         <option value="$PROJECT_DIR$/2-site/resources/views/front/inscriptions/index.blade.php" />
         <option value="$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/front/inscriptions/tttt.php" />
-        <option value="$PROJECT_DIR$/2-site/public/assets/smart-forms/css/smart-forms.css" />
         <option value="$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs_radio.blade.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php" />
+        <option value="$PROJECT_DIR$/2-site/public/assets/smart-forms/css/smart-forms.css" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs.blade.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php" />
       </list>
     </option>
   </component>
@@ -879,14 +853,7 @@
       <workItem from="1486544870584" duration="23348000" />
       <workItem from="1486645134467" duration="15339000" />
       <workItem from="1486716989043" duration="13831000" />
-      <workItem from="1486746777293" duration="9057000" />
-    </task>
-    <task id="LOCAL-00027" summary="Accueil apres modif sixmo.php: filtrage sur complexe supprimé">
-      <created>1479859862842</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1479859862842</updated>
+      <workItem from="1486746777293" duration="14791000" />
     </task>
     <task id="LOCAL-00028" summary="Accueil apres modif sixmo.php: filtrage sur complexe supprimé">
       <created>1479859906361</created>
@@ -1224,11 +1191,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486718657138</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Problème Equipe A,B avec radio button : changé en select (requête au support)">
+      <created>1486757430898</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1486757430899</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="679376000" />
+    <option name="totallyTimeSpent" value="685110000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1248,7 +1222,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52348226" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2564516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2556391" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1330,7 +1304,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Statistiques: OK avec jeux d'essais" />
     <MESSAGE value="Test step form wizard" />
     <MESSAGE value="Test step form wizard - pb avec dates" />
     <MESSAGE value="Parsley pour vérification saisie joueur ou sélection OK" />
@@ -1355,7 +1328,8 @@
     <MESSAGE value="Intégration grille terrains parties dans front office" />
     <MESSAGE value="Intégration grille terrains parties dans front office: smart form intégré avec formulaire de demo" />
     <MESSAGE value="Test inclusion PHP dans vue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test inclusion PHP dans vue" />
+    <MESSAGE value="Problème Equipe A,B avec radio button : changé en select (requête au support)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Problème Equipe A,B avec radio button : changé en select (requête au support)" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.39147288" />
   </component>
   <component name="XDebuggerManager">
@@ -1669,22 +1643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/public/assets/smart-forms/css/smart-forms.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs_radio.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -1692,6 +1650,33 @@
           <folding>
             <marker date="1486756709960" expanded="true" signature="520:601" ph="..." />
             <marker date="1486756709960" expanded="true" signature="686:747" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/public/assets/smart-forms/css/smart-forms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-655">
+          <caret line="1951" column="43" lean-forward="false" selection-start-line="1951" selection-start-column="43" selection-end-line="1951" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="36" column="34" lean-forward="false" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="126" column="87" lean-forward="false" selection-start-line="126" selection-start-column="87" selection-end-line="126" selection-end-column="87" />
+          <folding>
+            <marker date="1486770332822" expanded="true" signature="521:602" ph="..." />
+            <marker date="1486770332822" expanded="true" signature="687:748" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1706,45 +1691,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+        <state relative-caret-position="653">
+          <caret line="72" column="35" lean-forward="true" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
           <folding>
             <element signature="e#46#74#0#PHP" expanded="true" />
-            <marker date="1486756757254" expanded="true" signature="8249:8532" ph="..." />
-            <marker date="1486756757254" expanded="true" signature="8259:8522" ph="..." />
-            <marker date="1486756757254" expanded="true" signature="8269:8361" ph="{...}" />
-            <marker date="1486756757254" expanded="true" signature="8374:8453" ph="{...}" />
-            <marker date="1486756757254" expanded="true" signature="8478:8512" ph="{...}" />
-            <marker date="1486756757254" expanded="true" signature="9210:9234" ph="select * fro... fbs_salles" />
-            <marker date="1486756757254" expanded="true" signature="9708:9731" ph="..." />
-            <marker date="1486756757254" expanded="true" signature="10230:10251" ph="..." />
-            <marker date="1486756757254" expanded="true" signature="10333:10358" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/front/inscriptions/fiche_inscription_joueurs.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="144" column="44" lean-forward="true" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="44" />
-          <folding>
-            <element signature="e#4638#4644#0#HTML" expanded="true" />
-            <element signature="e#4644#4650#0#HTML" expanded="true" />
-            <element signature="e#4697#4703#0#HTML" expanded="true" />
-            <element signature="e#4703#4709#0#HTML" expanded="true" />
-            <element signature="e#4709#4715#0#HTML" expanded="true" />
-            <element signature="e#4754#4760#0#HTML" expanded="true" />
-            <element signature="e#4760#4766#0#HTML" expanded="true" />
-            <element signature="e#4766#4772#0#HTML" expanded="true" />
-            <element signature="e#4772#4778#0#HTML" expanded="true" />
-            <element signature="e#4778#4784#0#HTML" expanded="true" />
-            <element signature="e#4823#4829#0#HTML" expanded="true" />
-            <element signature="e#4829#4835#0#HTML" expanded="true" />
-            <element signature="e#4835#4841#0#HTML" expanded="true" />
-            <element signature="e#4841#4847#0#HTML" expanded="true" />
-            <element signature="e#4847#4853#0#HTML" expanded="true" />
-            <marker date="1486757361610" expanded="true" signature="520:601" ph="..." />
-            <marker date="1486757361610" expanded="true" signature="686:747" ph="..." />
+            <marker date="1486770501344" expanded="true" signature="9090:9373" ph="..." />
+            <marker date="1486770501344" expanded="true" signature="9100:9363" ph="..." />
+            <marker date="1486770501344" expanded="true" signature="9110:9202" ph="{...}" />
+            <marker date="1486770501344" expanded="true" signature="9215:9294" ph="{...}" />
+            <marker date="1486770501344" expanded="true" signature="9319:9353" ph="{...}" />
+            <marker date="1486770501344" expanded="true" signature="10051:10075" ph="select * fro... fbs_salles" />
+            <marker date="1486770501344" expanded="true" signature="10549:10572" ph="..." />
+            <marker date="1486770501344" expanded="true" signature="11071:11092" ph="..." />
+            <marker date="1486770501344" expanded="true" signature="11174:11199" ph="..." />
           </folding>
         </state>
       </provider>

@@ -1932,8 +1932,8 @@ html, body{
 ----------------------------------- */
 .smart-forms .frm-row .colm{ 
 	min-height:1px; 
-	padding-left:10px; 
-	padding-right:10px; 
+	padding-left:5px;
+	padding-right:5px;
 	position:relative; 
 	float:left; 
 }
