@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -850,14 +849,7 @@
       <workItem from="1486544870584" duration="23348000" />
       <workItem from="1486645134467" duration="15339000" />
       <workItem from="1486716989043" duration="13831000" />
-      <workItem from="1486746777293" duration="16003000" />
-    </task>
-    <task id="LOCAL-00029" summary="iNSCRIPTOINS">
-      <created>1479940104632</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1479940104632</updated>
+      <workItem from="1486746777293" duration="16022000" />
     </task>
     <task id="LOCAL-00030" summary="Statistiques">
       <created>1480111391816</created>
@@ -1195,11 +1187,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486771006799</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Vue affichage fiche inscription oK: suite traiter le formulaire rempli">
+      <created>1486771969825</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1486771969826</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="686322000" />
+    <option name="totallyTimeSpent" value="686341000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
