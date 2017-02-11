@@ -2,59 +2,60 @@
 
 @section('content')
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-          type="text/css"
-          href="/assets/smart-forms/css/smart-forms.css">
-    <link rel="stylesheet"
-          type="text/css"
-          href="/assets/smart-forms/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+              type="text/css"
+              href="/assets/smart-forms/css/smart-forms.css">
+        <link rel="stylesheet"
+              type="text/css"
+              href="/assets/smart-forms/css/font-awesome.min.css">
 
 
-    <script type="text/javascript"
-            src="/assets/smart-forms/js/jquery-cloneya.min.js">
-    </script>
+        <script type="text/javascript"
+                src="/assets/smart-forms/js/jquery-cloneya.min.js">
+        </script>
 
-    <!--[if lte IE 9]>
-    <script type="text/javascript"
-            src="/assets/smart-forms/js/jquery.placeholder.min.js">
-    </script>
-    <![endif]-->
+        <!--[if lte IE 9]>
+        <script type="text/javascript"
+                src="/assets/smart-forms/js/jquery.placeholder.min.js">
+        </script>
+        <![endif]-->
 
-    <!--[if lte IE 8]>
-    <link type="text/css" rel="stylesheet"
-          href="/assets/smart-forms/css/smart-forms-ie8.css">
-    <![endif]-->
-    <style>
-        hr
-        {
-             margin-top: 10px;
-             margin-bottom: 10px;
-             border: 0;
-             border-top: 1px solid #eee;
-        }
-    </style>
+        <!--[if lte IE 8]>
+        <link type="text/css" rel="stylesheet"
+              href="/assets/smart-forms/css/smart-forms-ie8.css">
+        <![endif]-->
+        <style>
+            hr
+            {
+                 margin-top: 10px;
+                 margin-bottom: 10px;
+                 border: 0;
+                 border-top: 1px solid #eee;
+            }
+        </style>
 
 
-    <script type="text/javascript">
-        $(function()
-        {
-            /* Simple Cloning
-             ------------------------------------------------- */
-            $('#joueurs').cloneya();
-        }
-        );
-    </script>
-    <h1>
-        Sélectionnez les joueurs de la partie
-    </h1>
+        <script type="text/javascript">
+            $(function()
+            {
+                /* Simple Cloning
+                 ------------------------------------------------- */
+                $('#joueurs').cloneya();
+            }
+            );
+        </script>
+        <h1>
+            Sélectionnez les joueurs de la partie
+        </h1>
 
-    <div class="smart-wrap">
-        <div class="smart-forms smart-container wrap-0">
-            <form method="post"
-                  action="inscription-remplie"
-                  id="formulaire_inscriptions_remplie">
-                <div class="form-body">
+        <div class="smart-wrap">
+            <div class="smart-forms smart-container wrap-0">
+                <form method="post"
+                      action="inscription-remplie"
+                      id="formulaire_inscriptions_remplie">
+                    <div class="form-body">
+                        <input type="hidden" name="partie_id" value="{{$inscriptions_partie->partie->partie_id}}">
                     <div class="frm-row">
                         <div class="spacer-b10 colm colm3">
                         Salle<br>
@@ -67,12 +68,24 @@
                             <strong>{{$inscriptions_partie->partie->hh_mm}}</strong>
                         </div>
                         <div class="spacer-b10 colm colm2">
-                            Durée<br>
+                            Durée <br>
                             <label class="field select">
-                                <select id="access" name="partie_duree[]" value="01:00">
-                                    <option value="00:30">00:30</option>
-                                    <option value="01:00">01:00</option>
-                                    <option value="01:30">01:30</option>
+                                <select  name="partie_duree">
+                                    @if ($inscriptions_partie->partie->duree == "00:30")
+                                        <option value="00:30" selected>00:30</option>
+                                    @else
+                                        <option value="00:30">00:30</option>
+                                    @endif
+                                    @if ($inscriptions_partie->partie->duree == "01:00")
+                                        <option value="01:00" selected>01:00</option>
+                                    @else
+                                        <option value="01:00">01:00</option>
+                                    @endif
+                                    @if ($inscriptions_partie->partie->duree == "01:30")
+                                        <option value="01:30" selected>01:30</option>
+                                    @else
+                                        <option value="01:30">01:30</option>
+                                    @endif
                                 </select>
                                 <i class="arrow simple"></i>
                             </label>
@@ -80,10 +93,14 @@
                         <div class="spacer-b10 colm colm3">
                             Equipe A<br>
                             <label class="field select">
-                                <select id="access" name="equipe_id_a[]">
+                                <select  name="equipe_a_id">
                                     <option value="0"></option>
                                     @foreach($inscriptions_partie->equipes as $e)
-                                        <option value="{{$e->equipe_id}}">{{$e->nom}}</option>
+                                        @if ($inscriptions_partie->partie->equipe_a_id == $e->equipe_id)
+                                            <option value="{{$e->equipe_id}}" selected>{{$e->nom}}</option>
+                                        @else
+                                            <option value="{{$e->equipe_id}}">{{$e->nom}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 <i class="arrow simple"></i>
@@ -92,10 +109,14 @@
                         <div class="spacer-b10 colm colm3">
                             Equipe B<br>
                             <label class="field select">
-                                <select id="access" name="equipes_id_b[]">
+                                <select  name="equipe_b_id">
                                     <option value="0"></option>
                                     @foreach($inscriptions_partie->equipes as $e)
-                                        <option value="{{$e->equipe_id}}">{{$e->nom}}</option>
+                                        @if ($inscriptions_partie->partie->equipe_b_id == $e->equipe_id)
+                                            <option value="{{$e->equipe_id}}" selected>{{$e->nom}}</option>
+                                        @else
+                                            <option value="{{$e->equipe_id}}">{{$e->nom}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 <i class="arrow simple"></i>

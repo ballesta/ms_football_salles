@@ -21,10 +21,13 @@ class InscriptionController extends Controller
      * Traitement en pseudo code:
      * -------------------------
 	 * Demande de formulaire à partir du terrain et de l'heure de début de la partie:
+     * Peut être une demande initale pour laquelle la partie n'est pas encore créée
+     * ou pour une partie qui est créée et qui a été complétée à plusiers reprises
 	 *     Si partie n'existe pas
 	 *         créer nouvelle partie
 	 *     Sinon
 	 *         Lire la partie existante à partir deu terrain_id et heure de début
+     *         Lire tous les détail de la partie et les tables liées dont le formulaire a besoin
      *      Générer le formulaire
      *
 	 * Réception du Formulaire rempli
@@ -39,7 +42,7 @@ class InscriptionController extends Controller
 	 *          Effacer les inscriptions courantes de la partie
 	 *          Créer les inscriptions à partir des valeurs du formulaire
 	 *          Modifier la partie
-	 *      Générer le formulaire d'inscription à partir de la partie.
+     *      Appeler la route précédente pour Générer le formulaire d'inscription à partir de la partie.
 	 *          Ce qui demande de lire les fichiers liés comme les equipes et les joueurs pour
      *          déréférencer et constituer les listes.
 	 *
@@ -47,7 +50,7 @@ class InscriptionController extends Controller
 
     // Demande de fiche d'inscription à une partie
 	// spécifiée par le terrain (salle) et l'heure de début.
-    public function inscription()
+    public function inscription(Request $request)
     {
 	    $terrain_id = $_GET['terrain_id'];
 	    $heure = $_GET['heure'];
@@ -75,27 +78,130 @@ class InscriptionController extends Controller
 
     // Réception de la Fiche d'inscription remplie
 	// Traitement des données saisies sur la fiche
-	public function inscriptionRemplie()
+	public function inscriptionRemplie(Request $request)
 	{
-		dd(["Fiche inscription remplie",$_POST]);
+		//dd(["Fiche inscription remplie",$_POST]);
+		// Récupère les paramètre de l'url: terrain et heure de début de la partie
+
+		// Mise à jour de la partie existante ave les données de la fiche
+		self::maj_partie($request);
+
+		self::efface_joueurs_incrits($request);
+
+		self::cree_et_incrit_nouveaux_joueurs($request);
+
+		//self:inscrit_joueurs_connus_($request);
+
+		return back()->withInput();
 	}
 
-    // Renvoie la partie
+	// Mise à jour de la partie avec les données de la fiche reçue
+	static function maj_partie(Request $request)
+	{
+		$partie_id = $request->partie_id;
+		echo $partie_id;
+		//dd($request);
+		//DB::listen(function($sql) {
+		//	var_dump($sql);
+		//});
+		//DB::enableQueryLog();
+		$nbr_lignes_maj = DB::table('fb_partie')
+			->where('partie_id', '=', $partie_id)
+			->update
+			(
+				[
+					'duree'       => $request->partie_duree ,
+					'equipe_a_id' => $request->equipe_a_id  ,
+					'equipe_b_id' => $request->equipe_b_id
+				]
+			);
+	}
+
+	// Eface les inscriptions à la partie courante.
+	static  function efface_joueurs_incrits($request)
+	{
+		DB::table('fbs_inscription')->where('partie_id', '=', $request->partie_id)->delete();
+	}
+
+	static function cree_et_incrit_nouveaux_joueurs($request)
+	{
+		// Index des joueurs pour gérer accéder à toutes les données
+		// du joueur en cours de traitement.
+		$j = 0;
+
+		foreach($request->joueur_mail as $eMail)
+		{
+			if (!empty($eMail))
+			{
+				// Présence du mail.
+				// Voir si mail déja enregistré dans la base.
+				$joueurs = DB::table('fb_joueurs')
+					->where('eMail', '=', $eMail)
+					->get();
+				if (empty($joueurs))
+				{
+					// eMail inconnu: créer joueur
+					$joueur_id = DB::table('fb_joueurs')->insertGetId(
+						[
+							'eMail'             => $eMail[0],
+							'premon'            => '--',
+							'nom'               => 'A completer--',
+							'complexe_salle_id' => '7'
+						]);
+				}
+				else
+				{
+					// Email connu, mémorise l'id pour inscription
+					/*
+					 * array:1 [▼
+					  0 => {#906 ▼
+					    +"joueur_id": 13
+					    +"nom": "--A completer--"
+					    +"premon": "--A completer--"
+					    +"eMail": "Bernard@Ballesta.fr"
+					    +"telephone": null
+					    +"lateralite": "Droitier"
+					    +"date_naissance": null
+					    +"taille": null
+					    +"poids": null
+					    +"poste_id": null
+					    +"complexe_salle_id": 7
+					    +"equipe_id": null
+					    +"categorie_id": null
+					    +"entraineur_id": null
+					    +"tb_users_id": null
+					  }
+					]
+					 */
+					//dd($joueurs);
+					$joueur_id = $joueurs[0]->joueur_id;
+				}
+				// Joueur_id est connu.
+				// Inscription du joueur à la partie
+				DB::table('fbs_inscription')->insert(
+					[
+						'joueur_id'         => $joueur_id,
+						'partie_id'         => $request->partie_id,
+						'capteur_id'        => $request->joueur_capteur_id[$j],
+						'equipe_a_b'        => $request->joueur_equipe_id[$j]
+					]);
+
+			}
+			$j++;
+		}
+	}
+
+
+	// Renvoie la partie
 	private function lis_ou_cree_partie($terrain_id, $heure, $minutes)
 	{
-		$date_du_jour = date("Y-m-d");
-		$hh_mm = self::heure_hh_mm( $heure, $minutes);
-		$debut = "$date_du_jour $hh_mm:00";
-		//dd($debut);
-		// Tentative de lecture de la partie
-		$partie = DB::table('fb_partie')
-			->where('salle_id', '=', $terrain_id )
-			->where('debut'   , '=', $debut )
-			->get();
-		//dd([$debut,$partie]);
-    	if(empty($partie))
+		$partie = self::lis_partie($terrain_id, $heure, $minutes);
+    	if($partie === false)
 	    {
 	    	// Pas de partie: la créer
+		    $date_du_jour = date("Y-m-d");
+		    $hh_mm = self::heure_hh_mm( $heure, $minutes);
+		    $debut = "$date_du_jour $hh_mm:00";
 		    $partie_id = DB::table('fb_partie')->insertGetId(
 		    	[
 			        	'debut' => $debut,
@@ -104,14 +210,16 @@ class InscriptionController extends Controller
 				        'complexe_salle_id' => '7'
 			    ]);
 		    // Lis après création
-		    $partie = DB::table('fb_partie')
+		    $parties = DB::table('fb_partie')
 			    ->where('partie_id', '=', $partie_id )
 			    ->get();
 			// Vérifie la lecture de la toute nouvelle partie
-		    if(empty($partie))
+		    if(empty($parties))
 		    {
 			    dd(["Nouvelle partie non créée ou impossible à lire!", $partie_id, $partie]);
 		    }
+		    else
+		    	$partie = $parties[0];
 	    }
 	    else
 	    {
@@ -119,8 +227,27 @@ class InscriptionController extends Controller
 		    //dd(["partie",$partie]);
 	    }
 
-		return $partie[0];
+		return $partie;
 	}
+
+    // Lis la partie
+	// Renvoie la partie ou un vide
+	static function lis_partie($terrain_id, $heure, $minutes)
+	{
+		$date_du_jour = date("Y-m-d");
+		$hh_mm = self::heure_hh_mm( $heure, $minutes);
+		$debut = "$date_du_jour $hh_mm:00";
+		// Tentative de lecture de la partie
+		$parties =  DB::table('fb_partie')
+							->where('salle_id', '=', $terrain_id )
+							->where('debut'   , '=', $debut )
+							->get();
+		if (!empty($parties))
+			return $parties[0];
+		else
+			return false;
+	}
+
 
 	// Renvoie la salle
 	private function lis_salle($salle_id)
@@ -196,7 +323,7 @@ class InscriptionController extends Controller
 
 	// Ajoute un zéro aux heures et minutes si necessaire
 	// renvoie: "hh:mm"
-	private function heure_hh_mm($h, $m)
+	private static function heure_hh_mm($h, $m)
 	{
 		if ($h < 10)
 			$h = "0$h";
