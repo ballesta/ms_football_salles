@@ -20,24 +20,28 @@ class InscriptionController extends Controller
      *
      * Traitement en pseudo code:
      * -------------------------
-	 * Si demande de formulaire:
+	 * Demande de formulaire à partir du terrain et de l'heure de début de la partie:
 	 *     Si partie n'existe pas
 	 *         créer nouvelle partie
 	 *     Sinon
-	 *         Lire la partie existante à patir deu terrain_id et heure de début
-     * Ici: Partie existante et lue
-	 * Sinon
-	 *     (Cas d'une soumission de formulaire rempli)
-	 *     Traiter les données transmises par le formulaire:
-	 *     Vérifier que la partie existe bien; sinon renvoyer un erreur grave
-	 *     Créer les nouveaux joueurs tels que saisis dans le formulaire
-	 *         Le joueurs sont saisi si ils ne sont pas proposés dans la liste déroulante
-	 *     Créer les nouvelles équipes telles que saisis dans le formulaire
-	 *     Effacer les inscriptions courantes de la partie
-	 *     Créer les inscriptions à partir des valeurs du formulaire
-	 *     Modifier la partie
-	 * Générer le formulaire d'inscription à partie de la partie.
-	 *     Ce qui demande de lire les fichiers liés comme les equipes et les joueurs.
+	 *         Lire la partie existante à partir deu terrain_id et heure de début
+     *      Générer le formulaire
+     *
+	 * Réception du Formulaire rempli
+	 *      (Cas d'une soumission de formulaire rempli)
+	 *   >>>Vérifier que la partie existe bien; sinon renvoyer un erreur grave
+	 *      Traiter les données transmises par le formulaire:
+	 *          Créer les nouveaux joueurs tels que saisis dans le formulaire
+	 *              Le joueurs sont saisi si ils ne sont pas proposés dans la liste déroulante
+     *              Vérifier que le mail est bien unique
+	 *          Créer les nouvelles équipes telles que saisis dans le formulaire
+     *              todo créer equipes
+	 *          Effacer les inscriptions courantes de la partie
+	 *          Créer les inscriptions à partir des valeurs du formulaire
+	 *          Modifier la partie
+	 *      Générer le formulaire d'inscription à partir de la partie.
+	 *          Ce qui demande de lire les fichiers liés comme les equipes et les joueurs pour
+     *          déréférencer et constituer les listes.
 	 *
      */
 
