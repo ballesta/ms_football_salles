@@ -90,7 +90,7 @@ class InscriptionController extends Controller
 
 		self::cree_et_incrit_nouveaux_joueurs($request);
 
-		//self:inscrit_joueurs_connus_($request);
+		self::inscrit_joueurs_connus($request);
 
 		return back()->withInput();
 	}
@@ -129,10 +129,12 @@ class InscriptionController extends Controller
 		// du joueur en cours de traitement.
 		$j = 0;
 
-		foreach($request->joueur_mail as $eMail)
+		foreach($request->joueur_mail as $eMailConteneur)
 		{
-			if (!empty($eMail))
+			$eMail = $eMailConteneur[0];
+			if ($eMail !== "")
 			{
+				//dd(["Mail", $eMail]);
 				// Présence du mail.
 				// Voir si mail déja enregistré dans la base.
 				$joueurs = DB::table('fb_joueurs')
@@ -141,12 +143,31 @@ class InscriptionController extends Controller
 				if (empty($joueurs))
 				{
 					// eMail inconnu: créer joueur
+					// Analyser la structure de la saisie (adresse mail ou nom)
+					$pos_at = strpos($eMail, '@');
+					if ($pos_at !== false)
+					{
+						// Adresse eMail (contient '@')
+						$nom = substr($eMail, 0, $pos_at  );
+						$prenom = '?';
+					}
+					else
+					{
+						// Pas une adresse mail: probablement le nom
+						// Extraire prénom nom (séparés par un espace)
+						$pos_espace = strpos($eMail, ' ');
+						$prenom = substr($eMail, 0, $pos_espace) ;
+						$nom = substr($eMail, $pos_espace + 1 );
+						$eMail = strtolower("$prenom.$nom@domaine.fr");
+					}
+					//dd([$eMail,$prenom,$nom]);
 					$joueur_id = DB::table('fb_joueurs')->insertGetId(
 						[
-							'eMail'             => $eMail[0],
-							'premon'            => '--',
-							'nom'               => 'A completer--',
-							'complexe_salle_id' => '7'
+							'eMail'             => $eMail,
+							'premon'            => $prenom,
+							'nom'               => $nom,
+							'a_completer'       => 1,
+							'complexe_salle_id' => 7
 						]);
 				}
 				else
@@ -185,12 +206,45 @@ class InscriptionController extends Controller
 						'capteur_id'        => $request->joueur_capteur_id[$j],
 						'equipe_a_b'        => $request->joueur_equipe_id[$j]
 					]);
-
 			}
 			$j++;
 		}
 	}
 
+	static function inscrit_joueurs_connus($request)
+	{
+		// Index des joueurs pour gérer accéder à toutes les données
+		// du joueur en cours de traitement.
+		$j = 0;
+        if(!empty($request->joueur_id))
+        {
+			foreach($request->joueur_id as $joueur_id)
+		{
+			if ($joueur_id !== "")
+			{
+				//dd(["Joueur_id connu", $joueur_id]);
+				// Présence d'un joueur connu.
+				if (empty($request->joueur_capteur_id[$j]))
+					$capteur_id = 0;
+				else
+					$capteur_id = $request->joueur_capteur_id[$j];
+				if (empty($request->joueur_equipe_id[$j]))
+					$equipe_id = 0;
+				else
+					$equipe_id = $request->joueur_equipe_id[$j];
+				// Inscription du joueur à la partie
+				DB::table('fbs_inscription')->insert(
+					[
+						'joueur_id'         => $joueur_id,
+						'partie_id'         => $request->partie_id,
+						'capteur_id'        => $capteur_id,
+						'equipe_a_b'        => $equipe_id
+					]);
+			}
+			$j++;
+		}
+        }
+	}
 
 	// Renvoie la partie
 	private function lis_ou_cree_partie($terrain_id, $heure, $minutes)
@@ -308,14 +362,18 @@ class InscriptionController extends Controller
 		$inscription_joueurs =
 			DB::table('fbs_inscription as i')
 				->where('i.partie_id', '=', $partie->partie_id )
-				->join('fb_joueurs as j',  'j.joueur_id', '=', 'i.joueur_id')
-				->join('fb_capteurs as c',  'c.capteur_id', '=', 'i.capteur_id')
+				// Pas besoin des attributs des joueurs et capteurs, les id suffisent;
+				// Les identifiants seront utilisés pour mettre l'attribut "select"
+				// dans les listes déroulantes.
+				//->join('fb_joueurs as j',  'j.joueur_id', '=', 'i.joueur_id')
+				//->join('fb_capteurs as c',  'c.capteur_id', '=', 'i.capteur_id')
 				->select
 				(
-					'i.*',
-					DB::raw('CONCAT(j.premon, " ", j.nom) AS joueur_nom'),
-					'c.code as capteur_code'
+					'i.*'
+					//DB::raw('CONCAT(j.premon, " ", j.nom) AS joueur_nom'),
+					//'c.code as capteur_code'
 				)
+				->orderBy('inscription_id', 'asc')
 				->get();
 		//dd($inscription_joueurs);
 		return $inscription_joueurs;

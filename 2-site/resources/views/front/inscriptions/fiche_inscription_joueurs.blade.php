@@ -1,67 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet"
-              type="text/css"
-              href="/assets/smart-forms/css/smart-forms.css">
-        <link rel="stylesheet"
-              type="text/css"
-              href="/assets/smart-forms/css/font-awesome.min.css">
-
-
-        <script type="text/javascript"
-                src="/assets/smart-forms/js/jquery-cloneya.min.js">
-        </script>
-
-        <!--[if lte IE 9]>
-        <script type="text/javascript"
-                src="/assets/smart-forms/js/jquery.placeholder.min.js">
-        </script>
-        <![endif]-->
-
-        <!--[if lte IE 8]>
-        <link type="text/css" rel="stylesheet"
-              href="/assets/smart-forms/css/smart-forms-ie8.css">
-        <![endif]-->
-        <style>
-            hr
-            {
-                 margin-top: 10px;
-                 margin-bottom: 10px;
-                 border: 0;
-                 border-top: 1px solid #eee;
-            }
-        </style>
+<-!!   dd($inscriptions_partie) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          type="text/css"
+          href="/assets/smart-forms/css/smart-forms.css">
+    <link rel="stylesheet"
+          type="text/css"
+          href="/assets/smart-forms/css/font-awesome.min.css">
 
 
-        <script type="text/javascript">
-            $(function()
-            {
-                /* Simple Cloning
-                 ------------------------------------------------- */
+    <script type="text/javascript"
+            src="/assets/smart-forms/js/jquery-cloneya.min.js">
+    </script>
+
+    <!--[if lte IE 9]>
+    <script type="text/javascript"
+            src="/assets/smart-forms/js/jquery.placeholder.min.js">
+    </script>
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet"
+          href="/assets/smart-forms/css/smart-forms-ie8.css">
+    <![endif]-->
+    <style>
+        hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 0;
+            border-top: 1px solid #eee;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        $(function () {
+                    /* Simple Cloning
+                     ------------------------------------------------- */
                 $('#joueurs').cloneya();
             }
-            );
-        </script>
-        <h1>
-            Sélectionnez les joueurs de la partie
-        </h1>
+        );
+    </script>
+    <h1>
+        Sélectionnez les joueurs de la partie
+    </h1>
 
-        <div class="smart-wrap">
-            <div class="smart-forms smart-container wrap-0">
-                <form method="post"
-                      action="inscription-remplie"
-                      id="formulaire_inscriptions_remplie">
-                    <div class="form-body">
-                        <input type="hidden" name="partie_id" value="{{$inscriptions_partie->partie->partie_id}}">
+    <div class="smart-wrap">
+        <div class="smart-forms smart-container wrap-0">
+            <form method="post"
+                  action="inscription-remplie"
+                  id="formulaire_inscriptions_remplie">
+                <div class="form-body">
+                    <input type="hidden" name="partie_id" value="{{$inscriptions_partie->partie->partie_id}}">
                     <div class="frm-row">
                         <div class="spacer-b10 colm colm3">
-                        Salle<br>
-                                <strong>
-                                    {{$inscriptions_partie->partie->salle_nom}}
-                                </strong>
+                            Salle<br>
+                            <strong>
+                                {{$inscriptions_partie->partie->salle_nom}}
+                            </strong>
                         </div>
                         <div class="spacer-b10 colm colm1">
                             Début<br>
@@ -70,7 +68,7 @@
                         <div class="spacer-b10 colm colm2">
                             Durée <br>
                             <label class="field select">
-                                <select  name="partie_duree">
+                                <select name="partie_duree">
                                     @if ($inscriptions_partie->partie->duree == "00:30")
                                         <option value="00:30" selected>00:30</option>
                                     @else
@@ -93,7 +91,7 @@
                         <div class="spacer-b10 colm colm3">
                             Equipe A<br>
                             <label class="field select">
-                                <select  name="equipe_a_id">
+                                <select name="equipe_a_id">
                                     <option value="0"></option>
                                     @foreach($inscriptions_partie->equipes as $e)
                                         @if ($inscriptions_partie->partie->equipe_a_id == $e->equipe_id)
@@ -109,7 +107,7 @@
                         <div class="spacer-b10 colm colm3">
                             Equipe B<br>
                             <label class="field select">
-                                <select  name="equipe_b_id">
+                                <select name="equipe_b_id">
                                     <option value="0"></option>
                                     @foreach($inscriptions_partie->equipes as $e)
                                         @if ($inscriptions_partie->partie->equipe_b_id == $e->equipe_id)
@@ -138,54 +136,159 @@
                         </div>
                     </div>
                     <hr>
-                    {!! Formulaire::duplication_debut('joueurs') !!}
-                        <div class="frm-row">
-                            <div class="spacer-b5 colm colm3">
-                                <label class="field select">
-                                    <select  name="joueur_id[]">
-                                        <option value="0"></option>
-                                        @foreach($inscriptions_partie->joueurs as $j)
-                                            <option value="{{$j->joueur_id}}">{{$j->nom}}</option>
-                                        @endforeach
-                                    </select>
-                                    <i class="arrow simple"></i>
-                                </label>
-                            </div>
-                            {!!  Formulaire::champ_texte(3, "joueur_mail[]", "Mail Joueur" )!!}
-                            <div class="spacer-b5 colm colm2">
-                                <label class="field select">
-                                    <select  name="joueur_lateralite[]">
-                                        <option value=""></option>
-                                        <option value="Droitier">Droitier</option>
-                                        <option value="Gaucher">Gaucher</option>
-                                    </select>
-                                    <i class="arrow simple"></i>
-                                </label>
-                            </div>
-                            <div class="spacer-b5 colm colm2">
-                                <label class="field select">
-                                    <select  name="joueur_capteur_id[]">
-                                        <option value="0"></option>
-                                        @foreach($inscriptions_partie->capteurs as $c)
-                                            <option value="{{$c->capteur_id}}">{{$c->code}}</option>
-                                        @endforeach
-                                    </select>
-                                    <i class="arrow simple"></i>
-                                </label>
-                            </div>
-                            <div class="spacer-b5 colm colm1">
-                                <label class="field select">
-                                    <select  name="joueur_equipe_id[]">
-                                        <option value=""></option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                    </select>
-                                    <i class="arrow simple"></i>
-                                </label>
-                            </div>
-                        </div><!-- end row -->
-                    {!! Formulaire::duplication_fin('joueurs')!!}
+                    <!-- ligne Joueurs -->
+                    <div id="joueurs">
+                    {{--  Aucun joueurs inscrits: mettre une ligne paour chaque joueur --}}
+                    @forelse($inscriptions_partie->inscriptions as $inscription )
+                        <div class="toclone clone-widget">
+                            <div class="frm-row">
+                                <div class="spacer-b5 colm colm3">
+                                    <label class="field select">
+                                        <select name="joueur_id[]">
+                                            <option value="0"></option>
+                                            @foreach($inscriptions_partie->joueurs as $j)
+                                                @if ($inscription->joueur_id == $j->joueur_id)
+                                                    <option value="{{$j->joueur_id}}" selected>
+                                                        {{$j->nom}}
+                                                    </option>
+                                                @else
+                                                    <option value="{{$j->joueur_id}}">
+                                                        {{$j->nom}}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <i class="arrow simple"></i>
+                                    </label>
+                                </div>
+                                {!!  Formulaire::champ_texte(3, "joueur_mail[]", "Mail Joueur" )!!}
+                                <div class="spacer-b5 colm colm2">
+                                    <label class="field select">
+                                        <select name="joueur_lateralite[]">
+                                            <option value=""></option>
+                                            @if($j->lateralite == "Droitier")
+                                                <option value="Droitier" selected>Droitier</option>
+                                            @else
+                                                <option value="Droitier">Droitier</option>
+                                            @endif
+                                            @if($j->lateralite == "Gaucher")
+                                                    <option value="Gaucher" selected>Gaucher</option>
+                                            @else
+                                                    <option value="Gaucher">Gaucher</option>
+                                            @endif
+                                        </select>
+                                        <i class="arrow simple"></i>
+                                    </label>
+                                </div>
+                                <div class="spacer-b5 colm colm2">
+                                    <label class="field select">
+                                        <select name="joueur_capteur_id[]">
+                                            <option value="0"></option>
+                                            @foreach($inscriptions_partie->capteurs as $c)
+                                                @if ($inscription->capteur_id == $c->capteur_id)
+                                                    <option value="{{$c->capteur_id}}" selected>
+                                                        {{$c->code}}
+                                                    </option>
+                                                @else
+                                                    <option value="{{$c->capteur_id}}">{{$c->code}}</option>
+                                                @endif
+                                             @endforeach
+                                        </select>
+                                        <i class="arrow simple"></i>
+                                    </label>
+                                </div>
+                                <div class="spacer-b5 colm colm1">
+                                    <label class="field select">
+                                        <select name="joueur_equipe_id[]">
+                                            <option value=""></option>
+                                            @if ($inscription->equipe_a_b == "A")
+                                                <option value="A" selected>A</option>
+                                            @else
+                                                <option value="A">A</option>
+                                            @endif
+                                            @if ($inscription->equipe_a_b == "B")
+                                                <option value="B" selected>B</option>
+                                            @else
+                                                <option value="B">B</option>
+                                            @endif
+                                        </select>
+                                        <i class="arrow simple"></i>
+                                    </label>
+                                </div>
+                            </div><!-- end row -->
 
+                            <a href="#"
+                               class="clone button btn-primary">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                            <a href="#"
+                               class="delete button">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                        </div><!-- to clone -->
+                        @empty
+                            {{--  Aucun joueur inscrit: mettre une ligne vide --}}
+                            <div class="toclone clone-widget">
+                                <div class="frm-row">
+                                    <div class="spacer-b5 colm colm3">
+                                        <label class="field select">
+                                            <select name="joueur_id[]">
+                                                <option value="0"></option>
+                                                {{-- Proposer tous les joueurs --}}
+                                                @foreach($inscriptions_partie->joueurs as $j)
+                                                        <option value="{{$j->joueur_id}}">
+                                                            {{$j->nom}}
+                                                        </option>
+                                                @endforeach
+                                            </select>
+                                            <i class="arrow simple"></i>
+                                        </label>
+                                    </div>
+                                    {!!  Formulaire::champ_texte(3, "joueur_mail[]", "Mail Joueur" )!!}
+                                    <div class="spacer-b5 colm colm2">
+                                        <label class="field select">
+                                            <select name="joueur_lateralite[]">
+                                                <option value=""></option>
+                                                <option value="Droitier">Droitier</option>
+                                                <option value="Gaucher">Gaucher</option>
+                                            </select>
+                                            <i class="arrow simple"></i>
+                                        </label>
+                                    </div>
+                                    <div class="spacer-b5 colm colm2">
+                                        <label class="field select">
+                                            <select name="joueur_capteur_id[]">
+                                                <option value="0"></option>
+                                                @foreach($inscriptions_partie->capteurs as $c)
+                                                    <option value="{{$c->capteur_id}}">{{$c->code}}</option>
+                                                @endforeach
+                                            </select>
+                                            <i class="arrow simple"></i>
+                                        </label>
+                                    </div>
+                                    <div class="spacer-b5 colm colm1">
+                                        <label class="field select">
+                                            <select name="joueur_equipe_id[]">
+                                                <option value=""></option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                            </select>
+                                            <i class="arrow simple"></i>
+                                        </label>
+                                    </div>
+                                </div><!-- end row -->
+
+                                <a href="#"
+                                   class="clone button btn-primary">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                                <a href="#"
+                                   class="delete button">
+                                    <i class="fa fa-minus"></i>
+                                </a>
+                            </div><!-- to clone -->
+                        @endforelse
+                    </div><!-- end ligne joueurs -->
 
                 </div><!-- end .form-body section -->
                 <div class="form-footer">
@@ -201,20 +304,21 @@
 @endsection
 
 <?php
-    // ------------------- P H P -------------
+// ------------------- P H P -------------
 
-    class Formulaire
-    {
-    	// Copie des Données de base de la vue
-        public static $inscriptions_partie = null;
+class Formulaire
+{
+	// Copie des Données de base de la vue
+	public static $inscriptions_partie = null;
 
-    	static function donnees($inscriptions_partie){
-        	self::$inscriptions_partie = $inscriptions_partie;
-        }
+	static function donnees($inscriptions_partie)
+	{
+		self::$inscriptions_partie = $inscriptions_partie;
+	}
 
-	    static function  form_debut($titre, $id_form, $action)
-	    {
-		    return <<<FIN
+	static function form_debut($titre, $id_form, $action)
+	{
+		return <<<FIN
 <div class="smart-wrap">
 	<div class="smart-forms smart-container wrap-0">
         <form method="post"
@@ -223,10 +327,11 @@
             <div class="form-body">
 
 FIN;
-	    }
-	    static function form_fin($texte_bouton)
-	    {
-		    return <<<FIN
+	}
+
+	static function form_fin($texte_bouton)
+	{
+		return <<<FIN
             </div><!-- end .form-body section -->
             <div class="form-footer">
                 <button type="submit"
@@ -238,32 +343,31 @@ FIN;
     </div><!-- end .smart-forms section -->
 </div><!-- end .smart-wrap section -->
 FIN;
-	    }
+	}
 
-
-	    static function titre_section($t)
-	    {
-		    return <<<FIN
+	static function titre_section($t)
+	{
+		return <<<FIN
 	<div class="spacer-b30 spacer-t30">
         <div class="tagline">
             <span>$t</span>
         </div><!-- tagline -->
     </div><!-- spacer -->
 FIN;
-	    }
+	}
 
-	    static function duplication_debut($id)
-	    {
-		    return <<<FIN
+	static function duplication_debut($id)
+	{
+		return <<<FIN
 <div id="$id">
     <div class="toclone clone-widget">
 FIN;
-	    }
+	}
 
-	    static function champ_texte($colonnes, $id, $label )
-	    {
-		    $name = $id . '[]';
-		    return <<<FIN
+	static function champ_texte($colonnes, $id, $label)
+	{
+		$name = $id . '[]';
+		return <<<FIN
  <div class="spacer-b10 colm colm$colonnes">
     <label class="field">
         <input type="text" class="gui-input"
@@ -272,12 +376,11 @@ FIN;
     </label>
  </div><!-- end spacer -->
 FIN;
-	    }
+	}
 
-
-	    static function duplication_fin()
-	    {
-		    return <<<FIN
+	static function duplication_fin()
+	{
+		return <<<FIN
         <a href="#"
            class="clone button btn-primary">
             <i class="fa fa-plus"></i>
@@ -289,21 +392,21 @@ FIN;
     </div><!-- to clone -->
 </div><!-- id -->
 FIN;
-	    }
+	}
 
-	    static function cree_joueurs()
-	    {
-		    //self::titre_section('Création rapide des joueurs et     inscription à  la partie');
-		    self::duplication_debut('clone-cree-joueurs');
-		    self::champ_texte(3,'prenoms_nouveaux_joueurs', 'Prénom' );
-		    self::champ_texte(3,'noms_nouveaux_joueurs', 'Nom' );
-		    self::champ_texte(4,'email_nouveaux_joueurs', 'eMail' );
-		    self::duplication_fin();
-	    }
+	static function cree_joueurs()
+	{
+		//self::titre_section('Création rapide des joueurs et     inscription à  la partie');
+		self::duplication_debut('clone-cree-joueurs');
+		self::champ_texte(3, 'prenoms_nouveaux_joueurs', 'Prénom');
+		self::champ_texte(3, 'noms_nouveaux_joueurs', 'Nom');
+		self::champ_texte(4, 'email_nouveaux_joueurs', 'eMail');
+		self::duplication_fin();
+	}
 
-	    static function terrain_partie($terrain, $heure_debut)
-	    {
-		    return <<<FIN
+	static function terrain_partie($terrain, $heure_debut)
+	{
+		return <<<FIN
     <div class="spacer-b30 spacer-t30">
         <div class="tagline">
             <span>Terrain, heure de début la partie, équipes</span>
@@ -342,11 +445,11 @@ FIN;
     </div>
 
 FIN;
-	    }
+	}
 
-	    static function joueurs_inscrits_partie()
-	    {
-		    return <<<FIN
+	static function joueurs_inscrits_partie()
+	{
+		return <<<FIN
     <div class="spacer-b30 spacer-t30">
         <div class="tagline">
             <span>Joueurs Incrits à la partie</span>
@@ -381,32 +484,29 @@ FIN;
     </div>
     <!-- end #clone-group-fields -->
 FIN;
-	    }
+	}
 
-	    // todo voir ou utilisé
-	    static function heures()
-	    {
-		    $liste_heures = "";
-		    for ($h = 8; $h<=23; $h++)
-		    {
-			    if ($h < 10)
-				    $hm = "0" . $h;
-			    else
-				    $hm = $h;
+	// todo voir ou utilisé
+	static function heures()
+	{
+		$liste_heures = "";
+		for ($h = 8; $h <= 23; $h++) {
+			if ($h < 10)
+				$hm = "0" . $h; else
+				$hm = $h;
+			$liste_heures .= "<option value=\"$hm:00\">$hm:00</option>";
+			$liste_heures .= "<option value=\"$hm:30\">$hm:30</option>";
+		}
+		return $liste_heures;
+	}
 
-			    $liste_heures .= "<option value=\"$hm:00\">$hm:00</option>";
-			    $liste_heures .= "<option value=\"$hm:30\">$hm:30</option>";
-		    }
-		    return $liste_heures;
-	    }
-
-	    // Envoi du contenu html au navigateur.
-	    // Le paramètre $html est en général composé en heredoc ("<<<FIN ... FIN")
-	    // Relpplacé par un return direct.
-	    // todo supprimer?
-	    static function echo_html($html)
-	    {
-		    echo $html;
-	    }
-    }
+	// Envoi du contenu html au navigateur.
+	// Le paramètre $html est en général composé en heredoc ("<<<FIN ... FIN")
+	// Relpplacé par un return direct.
+	// todo supprimer?
+	static function echo_html($html)
+	{
+		echo $html;
+	}
+}
 ?>
