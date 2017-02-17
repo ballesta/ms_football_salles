@@ -57,6 +57,9 @@ function changeOperate( val , field )
 	}
 }
 jQuery(function(){
+		$('.date').datepicker({format:'yyyy-mm-dd',autoClose:true})
+		$('.datetime').datetimepicker({format: 'yyyy-mm-dd hh:ii:ss'}); 
+		//$(".sel-search").select2({ width:"98%"});	
 
 
 	$('.doSearch').click(function(){
@@ -88,8 +91,12 @@ jQuery(function(){
 			}
 			
 		});
-		
-		window.location.href = '{{ $pageUrl }}?search='+attr;
+		<?php if($searchMode =='ajax') { ?> 
+			reloadData( '#{{ $pageModule }}',"{{ $pageUrl }}/data?search="+attr);	
+			$('#sximo-modal').modal('hide');
+		<?php } else { ?>
+			window.location.href = '{{ $pageUrl }}?search='+attr;
+		<?php } ?>
 	});
 });
 

@@ -99,7 +99,7 @@ $tpl['masterdetailview'] ='	<hr />
 				<td width="30">  </td>		
 			 @foreach ($subgrid[\'tableGrid\'] as $field)
 				 @if($field[\'view\'] ==\'1\' )		
-				 	<td> {!! SiteHelpers::formatRows($row->$field[\'field\'],$field) !!}</td>				 
+				 	<td> {!! SiteHelpers::formatRows($row->{$field[\'field\']},$field) !!}</td>				 
 				 @endif					 
 			 
 			 @endforeach

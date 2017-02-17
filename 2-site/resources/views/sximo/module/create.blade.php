@@ -3,7 +3,10 @@
 @section('content')
 
   <div class="page-content row">
-	
+
+	@if(Session::has('message'))
+		   {{ Session::get('message') }}
+	@endif	
 
 
 	 <div class="page-content-wrapper m-t">  
@@ -11,8 +14,8 @@
 
  {!! Form::open(array('url'=>'sximo/module/create/', 'class'=>'form-horizontal', 'parsley-validate'=>'','novalidate'=>'')) !!}
 
-		<div class="sbox   animated fadeInUp"> 
-			<div class="sbox-title"> <h3> {{ Lang::get('core.t_module') }} <small>{{ Lang::get('core.create') }}</small></h3> </div>
+		<div class="sbox "> 
+			<div class="sbox-title">  <h3> {{ Lang::get('core.t_module') }} <small>{{ Lang::get('core.t_modulesmall') }}</small></h3> </div>
 			<div class="sbox-content"> 	
 	
       <div class="form-group">
@@ -62,7 +65,15 @@
 				
 				<small style="font-style:italic"> Used for table view (  MySQL View Table Schema) </small> 
 				
-			</label>		
+			</label>	
+
+			<label class="radio">	
+				<input type="radio" name="module_template" value="ajax" /> <span class="text-success"><b>  Ajax Crud </b></span> <br />				
+				
+				<small style="font-style:italic"> Edit Modal, Modal Add , Modal View , Copy Rows , lock master key values , Ajax sorting and pagination </small> 
+				
+			</label>
+							
 					
 		</div>
 	</div>		
@@ -137,8 +148,8 @@
       <div class="form-group">
 		<label class="col-sm-3 text-right">&nbsp;</label>
 		<div class="col-sm-9">	
-	  	<button type="submit" class="btn btn-primary "><i class="icon-checkmark-circle2"></i>  {{ Lang::get('core.sb_submit') }}</button>
-	  	<a href="{{ url('sximo/module')}}" class="btn btn-warning"> <i class="icon-backward"></i> Cancel </a>
+	  	<button type="submit" class="btn btn-primary ">  {{ Lang::get('core.sb_submit') }}</button>
+	  	<a href="{{ url('sximo/module')}}" class="btn btn-warning"> {{ Lang::get('core.sb_cancel')}} </a>  
 		</div>	  
 
       </div>

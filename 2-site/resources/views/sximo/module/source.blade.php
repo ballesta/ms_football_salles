@@ -6,12 +6,11 @@
 
   <div class="page-content row ">
 
-
  	<div class="page-content-wrapper m-t"> 
  	<div class="ajaxLoading"></div>
  	@include('sximo.module.tab',array('active'=>'source','type'=> 'addon'))
  		<div class="sbox">
- 		<div class="sbox-title"><h4> {{ $row->module_title }} <small> : Source Code Editor</small></h4> </div>
+ 		<div class="sbox-title"><h4> {{ $row->module_title }} <small> : Source Code Editor </small></h4></div>
  		<div class="sbox-content">
 	 		<div class="row">
 	 			<div class="col-md-3">

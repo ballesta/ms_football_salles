@@ -20,11 +20,12 @@ class mesurestoutes extends Sximo  {
 
 	public static function queryWhere(  ){
 		
-		return "  WHERE fb_mesures.mesure_id IS NOT NULL ";
+		return "  WHERE fb_mesures.mesure_id IS NOT NULL
+ ";
 	}
 	
 	public static function queryGroup(){
-		return "  ";
+		return " ORDER BY Horodatage DESC ";
 	}
 	
 

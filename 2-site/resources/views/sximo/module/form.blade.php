@@ -3,6 +3,7 @@
 @section('content')
 
   <div class="page-content row">
+
 	<div class="page-content-wrapper m-t"> 
 	@include('sximo.module.tab',array('active'=>'form','type'=>$type))
 
@@ -29,7 +30,7 @@
           <tr >
             <th scope="col">No</th>
             <th scope="col">Field</th>
-            <th scope="col" width="70"><i class="fa fa-key"></i> Limit To</th>
+            <th scope="col" width="70"> Limit</th>
             <th scope="col" data-hide="phone">Title / Caption </th>
 
 			<th scope="col" data-hide="phone">Type </th>
@@ -55,10 +56,25 @@
 				<input type="text" class="form-control" name="limited[<?php echo $id;?>]" class="limited" value="<?php echo $limited_to;?>" />
 
 			</td>            
-            <td>
+			<td>
+				<div class="input-group input-group-sm">
+				<span class="input-group-addon xlick bg-default btn-xs " >EN</span>		
 				<input type="text" name="label[<?php echo $id;?>]" class="form-control input-sm" value="<?php echo $rows['label'];?>" />
-			
+				
+              </div>
+			  <?php $lang = SiteHelpers::langOption();
+			   if(CNF_MULTILANG ==1) {
+			  	foreach($lang as $l) { if($l['folder'] !='en') {
+			   ?>
+			   <div class="input-group input-group-sm" style="margin:1px 0 !important;">
+			   		<span class="input-group-addon xlick bg-default btn-sm " ><?php echo strtoupper($l['folder']);?></span>
+			  	 <input name="language[<?php echo $id;?>][<?php echo $l['folder'];?>]" type="text" class="form-control input-sm " 
+				 value="<?php echo (isset($rows['language'][$l['folder']]) ? $rows['language'][$l['folder']] : '');?>" />
+				 
+              </div>
+			  <?php } } } ?>			
 			</td>
+
 			<td>
             <?php echo $rows['type'];?>
 			<input type="hidden" name="type[<?php echo $id;?>]" value="<?php echo $rows['type'];?>" />
@@ -99,9 +115,9 @@
 		</select>
 		</td>
             <td>
-			<a href="javascript:void(0)" class="btn btn-xs btn-primary editForm"  role="button"  
+			<a href="javascript:void(0)" class="text-info editForm"  role="button"  
 			onclick="SximoModal('{{ URL::to('sximo/module/editform/'.$row->module_id.'?field='.$rows['field'].'&alias='.$rows['alias']) }}','Edit Field : <?php echo $rows['field'];?>')">
-			<i class="fa fa-cog"></i></a>
+			<i class="icon-table"></i></a>
 
 			
 			

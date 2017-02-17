@@ -1,8 +1,8 @@
 <div class="sbox">
-	<div class="sbox-title"> <h4> {{ $pageTitle }} : <small>{{ $pageNote }}</small></h4></div>
+	
 	<div class="sbox-content">
 
-<div class="table-responsive" style="min-height:300px;">
+<div class="table-responsive">
     <table class="table table ">
         <thead>
 			<tr>
@@ -13,7 +13,7 @@
 						<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
 						@if(SiteHelpers::filterColumn($limited ))
 						
-							<th>{{ $t['label'] }}</th>			
+							<th align="{{ $t['align'] }} " width="{{ $t['width']}}">{{ SiteHelpers::activeLang($t['label'],(isset($t['language'])? $t['language'] : array())) }}</th>			
 						@endif 
 					@endif
 				@endforeach
@@ -26,7 +26,7 @@
             @foreach ($rowData as $row)
             <?php $ids = ++$i; ?>
                 <tr>
-					<td><a href="javascript:void(0)" class="expandable-child-{{ $key}}-{{ $id }}" rel="#row-{{ $key }}-{{ $row->{$key} }}" 
+					<td width="30"><a href="javascript:void(0)" class="expandable-child-{{ $key }}-{{$id}}" rel="#row-{{ $key }}-{{ $row->{$key} }}" 
 					data-url=""
 					><i class="fa fa-plus " ></i></a></td>	
 													
@@ -47,6 +47,20 @@
             <tr style="display:none" class="expanded" id="row-{{ $key }}-{{ $row->{$key} }}">
                 	<td></td>
                 	<td colspan="{{ $colspan}}" class="data">
+
+                	@if(count($nested_subgrid)>=1)
+					  <ul class="nav nav-tabs" role="tablist">
+					  	<li role="presentation" class="active"><a href="#home{{ $row->{$key} }}" aria-controls="home" role="tab" data-toggle="tab">{{ $pageTitle}} :   View Detail </a></li>
+						@foreach($nested_subgrid as $sub)
+							<li role="presentation"><a href="#{{ str_replace(" ","_",$sub['title']) }}{{ $row->{$key} }}" aria-controls="profile" role="tab" data-toggle="tab"
+							onclick="loadNestedLookup('{!! url($sub['module']."/lookup/".implode('-',$sub)."-".$row->{$key}) !!}','#{{ str_replace(" ","_",$sub['title']) }}{{ $row->{$key} }}')" 
+							>{{ $pageTitle}} :   {{ $sub['title'] }}</a></li>
+						@endforeach
+					  </ul>
+                	@endif
+                	  <!-- Tab panes -->
+				  	<div class="tab-content m-t">
+				  		<div role="tabpanel" class="tab-pane active" id="home{{ $row->{$key} }}">
                 		<table class="table table-striped">
                 			<thead>
                 				<tr>
@@ -67,7 +81,11 @@
 					 		@endforeach	
 					 		</tbody>
                 		</table>
-
+                		</div>
+                		
+				  	@foreach($nested_subgrid as $sub)
+				  	<div role="tabpanel" class="tab-pane" id="{{ str_replace(" ","_",$sub['title']) }}{{ $row->{$key} }}" ></div>
+				  	@endforeach
 
                 	</td>
                 	
@@ -83,23 +101,35 @@
 </div>	
 
 <script type="text/javascript">
+	$(function(){
+		<?php for($i=0 ; $i<count($nested_subgrid); $i++)  :?>
+
+
+				$('#{{ $nested_subgrid[$i]['title']}} a').click(function (e) {
+				  e.preventDefault()
+				  $(this).tab('show')
+				})
+
+		<?php endfor;?>
+	})
+
+
+
+</script>
+
+
+<script type="text/javascript">
 
 $('.expandable-child-{{ $key }}-{{$id}}').click(function(){
 
 		var id = $(this).attr('rel');
+		//alert(id);
 		selector =  id +" .data";
 		if($(selector).is(':empty'))
 		{
 			$(id).show();
-			$(this).removeClass('expandable'); $(this).addClass('collapseable'); 
-			var url = $(this).attr('data-url');
-			//$('.expanded').hide();
-			$.get( url , function(data){
-				$(selector).html(data);			
-				
-			})
-			$(this).html('<i class="fa fa-minus"></i>');
-			$(this).addClass('open');
+			$(this).removeClass('expandable-child-{{ $key }}-{{$id}}'); $(this).addClass('collapseable'); 
+
 		} else {
 			if($(this).hasClass('open'))
 			{

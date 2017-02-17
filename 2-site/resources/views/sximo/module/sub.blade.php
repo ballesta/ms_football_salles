@@ -3,6 +3,7 @@
 @section('content')
 
   <div class="page-content row">
+
 	<div class="page-content-wrapper m-t"> 
 	@include('sximo.module.tab',array('active'=>'sub','type'=> $type))
 	

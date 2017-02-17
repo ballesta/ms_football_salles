@@ -13,7 +13,7 @@
  {!! Form::open(array('url'=>'sximo/module/savepermission/'.$module_name, 'class'=>'form-horizontal')) !!}
 
 <div class="sbox">
-	<div class="sbox-title"> <h4> {{ $row->module_title }} <small> : Permission  ( Set Access to Groups ) </small></h4></div>
+	<div class="sbox-title"><h4> {{ $row->module_title }} <small> :  Module Permission </small></h4></div>
 	<div class="sbox-content">	
 		<table class="table table-striped table-bordered" id="table">
 		<thead class="no-border">

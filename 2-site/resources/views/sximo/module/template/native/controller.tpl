@@ -88,11 +88,12 @@ class {controller}Controller extends Controller {
 		$this->data['i']			= ($page * $params['limit'])- $params['limit']; 
 		// Grid Configuration 
 		$this->data['tableGrid'] 	= $this->info['config']['grid'];
-		$this->data['tableForm'] 	= $this->info['config']['forms'];	
+		$this->data['tableForm'] 	= $this->info['config']['forms'];
+		$this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);		
 		// Group users permission
 		$this->data['access']		= $this->access;
 		// Detail from master if any
-		
+		$this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
@@ -123,7 +124,7 @@ class {controller}Controller extends Controller {
 		} else {
 			$this->data['row'] = $this->model->getColumnTable('{table}'); 
 		}
-		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
+		$this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['forms']);
 		{masterdetailsubform}
 		$this->data['id'] = $id;
 		return view('{class}.form',$this->data);
@@ -144,12 +145,34 @@ class {controller}Controller extends Controller {
 			$this->data['id'] = $id;
 			$this->data['access']		= $this->access;
 			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
-			$this->data['prevnext'] = $this->model->prevNext($id);
+			$this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
 			return view('{class}.view',$this->data);
 		} else {
 			return Redirect::to('{class}')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
 		}
-	}	
+	}
+
+	function postCopy( Request $request)
+	{
+	    foreach(\DB::select("SHOW COLUMNS FROM {table} ") as $column)
+        {
+			if( $column->Field != '{key}')
+				$columns[] = $column->Field;
+        }
+		
+		if(count($request->input('ids')) >=1)
+		{
+			$toCopy = implode(",",$request->input('ids'));
+			$sql = "INSERT INTO {table} (".implode(",", $columns).") ";
+			$sql .= " SELECT ".implode(",", $columns)." FROM {table} WHERE {key} IN (".$toCopy.")";
+			\DB::select($sql);
+			return Redirect::to('{class}')->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+		} else {
+		
+			return Redirect::to('{class}')->with('messagetext','Please select row to copy')->with('msgstatus','error');
+		}	
+		
+	}		
 
 	function postSave( Request $request)
 	{
@@ -180,7 +203,7 @@ class {controller}Controller extends Controller {
 			
 		} else {
 
-			return Redirect::to('{class}/update/'.$request->input('{key}'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('{class}/update/'. $request->input('{key}'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
@@ -199,11 +222,11 @@ class {controller}Controller extends Controller {
 			{masterdetaildelete}
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
 			// redirect
-			return Redirect::to('{class}?return='.self::returnUrl())
+			return Redirect::to('{class}')
         		->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success'); 
 	
 		} else {
-			return Redirect::to('{class}?return='.self::returnUrl())
+			return Redirect::to('{class}')
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
 

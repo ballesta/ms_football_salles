@@ -110,13 +110,14 @@
    <div class="form-group">
     <label for="ipt" class=" control-label col-md-4"></label>
 	<div class="col-md-8">
-	  <button type="submit" name="submit" class="btn btn-sm btn-danger"><i class="icon-spinner7"></i> Re-Build Now</button>
+	  <button type="submit" name="submit" class="btn btn-sm btn-danger"> Re-Build Now</button>
 	 </div> 
   </div>       
 
  {!! Form::close() !!}
  <script type="text/javascript">
 	$(function(){
+
         $('#rebuild').click(function () {
             var url = $(this).attr("href");
             $(this).html('<i class="icon-spinner7"></i> Processing .... ');
@@ -126,7 +127,6 @@
             });
             return false;
         })
-        
 
 		$('input[type="checkbox"],input[type="radio"]').iCheck({
 			checkboxClass: 'icheckbox_square-red',
