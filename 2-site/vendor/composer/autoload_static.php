@@ -356,6 +356,7 @@ class ComposerStaticInitcdc2a4538299988f3ec575ac2da502e7
 
     public static $classMap = array (
         'AjaxHelpers' => __DIR__ . '/../..' . '/app/Library/AjaxHelpers.php',
+        'App\\Library\\MyHelpers' => __DIR__ . '/../..' . '/app/Library/MyHelpers.php',
         'App\\Library\\Slimdown' => __DIR__ . '/../..' . '/app/Library/Slimdown.php',
         'App\\Models\\Core\\Groups' => __DIR__ . '/../..' . '/app/Models/Core/Groups.php',
         'App\\Models\\Core\\Logs' => __DIR__ . '/../..' . '/app/Models/Core/Logs.php',
@@ -376,6 +377,7 @@ class ComposerStaticInitcdc2a4538299988f3ec575ac2da502e7
         'App\\Models\\malette' => __DIR__ . '/../..' . '/app/Models/Malette.php',
         'App\\Models\\mesure' => __DIR__ . '/../..' . '/app/Models/Mesure.php',
         'App\\Models\\mesurestoutes' => __DIR__ . '/../..' . '/app/Models/Mesurestoutes.php',
+        'App\\Models\\mesurestoutesajax' => __DIR__ . '/../..' . '/app/Models/Mesurestoutesajax.php',
         'App\\Models\\notification' => __DIR__ . '/../..' . '/app/Models/Notification.php',
         'App\\Models\\partie' => __DIR__ . '/../..' . '/app/Models/Partie.php',
         'App\\Models\\reseauxsalles' => __DIR__ . '/../..' . '/app/Models/Reseauxsalles.php',

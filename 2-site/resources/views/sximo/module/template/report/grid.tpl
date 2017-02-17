@@ -3,14 +3,24 @@
 @section('content')
 {{--*/ usort($tableGrid, "SiteHelpers::_sort") /*--}}
   <div class="page-content row">
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="page-title">
+        <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3>
+      </div>
+
+      <ul class="breadcrumb">
+        <li><a href="{{ URL::to('dashboard') }}"> Dashboard </a></li>
+        <li class="active">{{ $pageTitle }}</li>
+      </ul>	  
+	  
+    </div>
 	
 	
 	<div class="page-content-wrapper m-t">	 	
 
 <div class="sbox animated fadeInRight">
-	<div class="sbox-title">
-		 <h3><i class="icon-bars"></i>  {{ $pageTitle }} <small>{{ $pageNote }}</small></h3>
-
+	<div class="sbox-title"> <h5> <i class="fa fa-table"></i> </h5>
 <div class="sbox-tools" >
 		@if(Session::get('gid') ==1)
 			<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
@@ -47,7 +57,7 @@
             @foreach ($rowData as $row)
                 <tr>
 					<td width="30"> {{ ++$i }} </td>	
-				@foreach ($tableGrid as $field)
+					@foreach ($tableGrid as $field)
 					 @if($field['view'] =='1')
 					 	<?php $limited = isset($field['limited']) ? $field['limited'] :''; ?>
 					 	@if(SiteHelpers::filterColumn($limited ))
@@ -56,8 +66,7 @@
 						 </td>
 						@endif	
 					 @endif					 
-				 @endforeach				 
-				
+				 	@endforeach
                 </tr>
 				
             @endforeach

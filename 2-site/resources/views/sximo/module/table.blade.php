@@ -2,16 +2,13 @@
 
 @section('content')
 <?php 
-
-
 	$formats = array(
 			'date'	=> 'Date',
 			'image'	=> 'Image',
 			'link'	=> 'Link',
-			'checkbox'	=> 'Checkbox/Radio',
-			'radio'	=> 'Radio',
-			'file'	=> 'Files',
-			'database'	=> 'Database'						
+			'radio'	=> 'Checkbox/Radio',
+			'file'	=> 'Files',	
+			'function'=> 'Function'							
 		);
 	?>
   <div class="page-content row">
@@ -40,13 +37,15 @@
 				<th scope="col">No</th>
 				<th scope="col">Table</th>
 				<th scope="col">Field</th>
-				<th scope="col" width="70"><i class="fa fa-key"></i> Limit To</th>
+				<th scope="col" width="70"> Limit</th>
 				<th scope="col"><i class="icon-link"></i></th>
 				<th scope="col" data-hide="phone">Title / Caption </th>
 				<th scope="col" data-hide="phone">Show</th>
 				<th scope="col" data-hide="phone">View </th>
 				<th scope="col" data-hide="phone">Sortable</th>
 				<th scope="col" data-hide="phone">Download</th>
+				<th scope="col" data-hide="phone" style="width:70px;">Width</th>
+				<th scope="col" data-hide="phone" style="width:100px;">Align</th>				
 				<th scope="col" data-hide="phone"> Format As </th>
 			  </tr>
 			 </thead> 
@@ -64,22 +63,38 @@
 					<?php
 						 $limited_to = (isset($rows['limited']) ? $rows['limited'] : '');
 					?>
-					<input type="text" class="form-control" name="limited[<?php echo $id;?>]" class="limited" value="<?php echo $limited_to;?>" />
+					<input type="text" class="form-control" width="30" name="limited[<?php echo $id;?>]" class="limited" value="<?php echo $limited_to;?>" />
 
 				</td>
-				<td>	
-
-				<span class=" xlick @if(isset($rows['conn']['valid']) && $rows['conn']['valid'] =='1') text-danger @endif " title="Lookup Display" 
-				
+				<td>				
+				<span class=" xlick " title="Lookup Display" 
 					onclick="SximoModal('{{ URL::to('sximo/module/conn/'.$row->module_id.'?field='.$rows['field'].'&alias='.$rows['alias']) }}' ,' Connect Field : {{ $rows['field']}} ' )"
 					>
 						<i class="fa fa-external-link"></i>
 					</span>
 				</td>
 				<td >           
+					<div class="input-group input-group-sm">
+					<span class="input-group-addon xlick bg-default btn-xs " >EN</span>				
 					<input name="label[<?php echo $id;?>]" type="text" class="form-control input-sm " 
 					id="label" value="<?php echo $rows['label'];?>" />
-				</td>				
+					</div>
+
+
+				  <?php $lang = SiteHelpers::langOption();
+				  if(CNF_MULTILANG ==1) {
+					foreach($lang as $l) { if($l['folder'] !='en') {
+				   ?>
+				   <div class="input-group input-group-sm" style="margin:1px 0 !important;">
+				   <span class="input-group-addon xlick bg-default btn-sm " ><?php echo strtoupper($l['folder']);?></span>
+					 <input name="language[<?php echo $id;?>][<?php echo $l['folder'];?>]" type="text" class="form-control input-sm " 
+					 value="<?php echo (isset($rows['language'][$l['folder']]) ? $rows['language'][$l['folder']] : '');?>"
+					 placeholder="Label for <?php echo ucwords($l['name']);?>"
+					  />
+					 
+				  </div>
+				  <?php } } }?>	
+				</td>					
 				<td>
 				<label >
 				<input name="view[<?php echo $id;?>]" type="checkbox" id="view" value="1" 
@@ -105,23 +120,37 @@
 				</label>
 				</td>
 				<td>
-				<select class="select-alt" name="format_as[<?php echo $id;?>]">
+					<input type="text" class="form-control" name="width[<?php echo $id;?>]" value="<?php echo $rows['width'];?>" />
+				</td>
+				<td>
+					<?php $aligns = array('left','center','right'); ?>
+					<select class="form-control" name="align[<?php echo $id;?>]">
+					<?php foreach ($aligns as $al) { ?>
+						<option value="<?php echo $al;?>" <?php if(isset($rows['align']) && $rows['align'] == $al) echo 'selected';?> ><?php echo ucwords($al);?></option>
+					<?php } ?>
+					</select>
+				</td>	
+
+
+				<td>
+				<select class="select-alt" name="format_as[<?php echo $id;?>]" style="width:100px;">
 					<option value=''> None </option>
 					@foreach($formats as $key=>$val)
 					<option value="{{ $key }}" <?php if(isset($rows['format_as']) && $rows['format_as'] ==$key) echo 'selected';?> > {{ $val }} </option>
 					@endforeach
 				</select>	
 				
-				<input type="text" name="format_value[<?php echo $id;?>]" value="<?php if(isset($rows['format_value'])) echo $rows['format_value'];?>" class="form-control" style="width:auto !important; display:inline;">
+				<input type="text" name="format_value[<?php echo $id;?>]"  value="<?php if(isset($rows['format_value'])) echo $rows['format_value'];?>" class="form-control" style="width:auto !important; display:inline;">
 
-				<button type="button" data-html="true" class="btn btn-xs btn-info format_info" data-toggle="popover" title="Example Usage" data-content="  <b>Data </b> = dd-yy-mm <br /> <b>Image</b> = /uploads/path_to_upload <br />  <b>Link </b> = http://domain.com ?" data-placement="left">?</button>
+		
+				<a href="javascript://ajax" data-html="true" class="text-success format_info" data-toggle="popover" title="Example Usage" data-content="  <b>Data </b> = dd-yy-mm <br /> <b>Image</b> = /uploads/path_to_upload <br />  <b>Link </b> = http://domain.com ? <br /> <b> Function </b> = class|method|params <br /><br /> All Field are accepted using tag {FieldName} . Example {<b><?php echo $rows['field'];?></b>} " data-placement="left">
+				<i class="icon-question4"></i>
+				</a>
 
 				
 				<input type="hidden" name="frozen[<?php echo $id;?>]" value="<?php echo $rows['frozen'];?>" />
 				<input type="hidden" name="search[<?php echo $id;?>]" value="<?php echo $rows['search'];?>" />
 				<input type="hidden" name="hidden[<?php echo $id;?>]" value="<?php if(isset($rows['hidden'])) echo $rows['hidden'];?>" />
-				<input type="hidden" name="align[<?php echo $id;?>]" value="<?php if(isset($rows['align'])) echo $rows['align'];?>" />
-				<input type="hidden" name="width[<?php echo $id;?>]" value="<?php echo $rows['width'];?>" />
 				<input type="hidden" name="alias[<?php echo $id;?>]" value="<?php echo $rows['alias'];?>" />
 				<input type="hidden" name="field[<?php echo $id;?>]" value="<?php echo $rows['field'];?>" />
 				<input type="hidden" name="sortlist[<?php echo $id;?>]" class="reorder" value="<?php echo $rows['sortlist'];?>" />
@@ -147,7 +176,7 @@
 	  <p> <strong>Tips !</strong> Drag and drop rows to re ordering lists </p>	
 	</div>	
 					
-			<button type="submit" class="btn btn-primary"> Save Changes </button>
+			<button type="submit" class="btn btn-primary"><i class="icon-checkmark-circle2"></i> Save Changes </button>
 			<input type="hidden" name="module_id" value="{{ $row->module_id }}" />
 	{!! Form::close() !!}
 		

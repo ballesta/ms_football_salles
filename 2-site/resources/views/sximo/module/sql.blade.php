@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="page-content row">
-
+    <!-- Page header -->
 	 <div class="page-content-wrapper m-t"> 
 	@include('sximo.module.tab',array('active'=>'sql','type'=>  $type ))
 
@@ -10,7 +10,7 @@
 		   {{ Session::get('message') }}
 	@endif
 <div class="sbox">
- <div class="sbox-title"> <h4> {{ $row->module_title }}<small>  : MySQL Editor ( Edit SQL Statement ) </small></h4></div>
+  <div class="sbox-title"> <h4> {{ $row->module_title }}<small>  : MySQL Editor ( Edit SQL Statement ) </small></h4></div>
  <div class="sbox-content">
  {!! Form::open(array('url'=>'sximo/module/savesql/'.$module_name, 'class'=>'form-vertical ')) !!}
  <div class="infobox infobox-info fade in">

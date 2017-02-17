@@ -23,7 +23,7 @@
 	@endforeach
 </ul>	
 <div class="sbox">
-	<div class="sbox-title"><h4> {{ $row->module_title }}  <small> :  Extend form ( Setting Child Form ) </small> </h4></div>
+	<div class="sbox-title"><h4> {{ $row->module_title }} <small> SubForm  : Extend Form </small></h4></div>
 	<div class="sbox-content">	
   
     {!! Form::open(array('url'=>'sximo/module/savesubform/'.$module_name, 'class'=>'form-horizontal  ')) !!}
@@ -84,7 +84,7 @@
           <button name="submit" type="submit" class="btn btn-primary"><i class="icon-bubble-check"></i> Save Master Detail </button>
           @if(isset($subform['master_key']))
           <a href="{{ url('sximo/module/subformremove/'.$module_name) }}" class="btn btn-danger"><i class="icon-cancel-circle2 "></i> Remove </a>
-          @endif
+          @endif          
          </div> 
         </div> 
       

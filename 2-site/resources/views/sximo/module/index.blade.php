@@ -8,28 +8,28 @@
 		<section >
 
 				<div class="row m-l-none m-r-none m-t  white-bg shortcut " >
-					<div class="col-sm-3  p-sm ribon-setting">
+					<div class="col-sm-3  p-sm ribon-white">
 						<span class="pull-left m-r-sm "><i class="icon-folder-plus3"></i></span> 
 						<a href="{{ URL::to('sximo/module/create') }}" class="clear">
 							<span class="h3 block m-t-xs"><strong> {{ Lang::get('core.btn_create') }} Module </strong>
 							</span> <small > {{ Lang::get('core.fr_createmodule') }}  </small>
 						</a>
 					</div>				
-					<div class="col-sm-3  p-sm ribon-white">
+					<div class="col-sm-3  p-sm ribon-module">
 						<span class="pull-left m-r-sm "><i class="icon-folder-upload2"></i></span>
 						<a href="javascript:void(0)" class="clear " onclick="$('.unziped').toggle()">
 							<span class="h3 block m-t-xs"><strong>{{ Lang::get('core.btn_install') }} Module </strong>
 							</span> <small >{{ Lang::get('core.fr_installmodule') }} </small> 
 						</a>
 					</div>				
-					<div class="col-sm-3   p-sm ribon-module">
+					<div class="col-sm-3   p-sm ribon-white">
 						<span class="pull-left m-r-sm "><i class="icon-folder-download2"></i></span>
 						<a href="{{ URL::to('sximo/module/package') }}" class="clear post_url">
 							<span class="h3 block m-t-xs"><strong>{{ Lang::get('core.btn_backup') }} Module</strong>
 							</span> <small > {{ Lang::get('core.fr_backupmodule') }} </small> 
 						</a>
 					</div>					
-					<div class="col-sm-6 col-md-3  p-sm ribon-white">
+					<div class="col-sm-6 col-md-3  p-sm ribon-setting">
 						<span class="pull-left m-r-sm "><i class="icon-database"></i></span>
 						<a href="{{ URL::to('sximo/tables') }}" >
 							<span class="h3 block m-t-xs"><strong>Database</strong>
@@ -93,15 +93,13 @@
 				</button>
 					<ul style="display: none;" class="dropdown-menu icons-right">
 						@if($type != 'core')
-						<li><a href="{{ URL::to($row->module_name)}}"><i class="icon-play2"></i> {{ Lang::get('core.btn_view') }} Module </a></li>
-						<li><a href="{{ URL::to('sximo/module/duplicate/'.$row->module_id)}}" onclick="SximoModal(this.href,'Duplicate/Clone Module'); return false;" ><i class="icon-copy4"></i> Duplicate/Clone </a></li>						
+						<li><a href="{{ URL::to($row->module_name)}}"><i class="fa fa-table"></i> {{ Lang::get('core.btn_view') }} Module </a></li>
 						@endif
-						<li><a href="{{ URL::to('sximo/module/config/'.$row->module_name)}}"><i class="icon-pencil4"></i> {{ Lang::get('core.btn_edit') }}</a></li>	
-						
+						<li><a href="{{ URL::to('sximo/module/config/'.$row->module_name)}}"><i class="fa fa-edit"></i> {{ Lang::get('core.btn_edit') }}</a></li>						
 						@if($type != 'core')
-						<li><a href="javascript://ajax" onclick="SximoConfirmDelete('{{ URL::to('sximo/module/destroy/'.$row->module_id)}}')"><i class="icon-remove5"></i> {{ Lang::get('core.btn_remove') }}</a></li>
+						<li><a href="javascript://ajax" onclick="SximoConfirmDelete('{{ URL::to('sximo/module/destroy/'.$row->module_id)}}')"><i class="fa fa-refresh"></i> {{ Lang::get('core.btn_remove') }}</a></li>
 						<li class="divider"></li>
-						<li><a href="{{ URL::to('sximo/module/rebuild/'.$row->module_id)}}"><i class="icon-spinner7"></i> Rebuild All Codes</a></li>
+						<li><a href="{{ URL::to('sximo/module/rebuild/'.$row->module_id)}}"><i class="fa fa-code"></i> Rebuild All Codes</a></li>
 						@endif
 					</ul>
 				</div>					
@@ -155,9 +153,7 @@
         return false;
       }
       $('#SximoTable').attr({'action' : $(this).attr('href') }).submit();
-    });
-
-
+    })
   })
   </script>	 
 

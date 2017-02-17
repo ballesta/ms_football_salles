@@ -7,9 +7,10 @@
 <title> {{ CNF_APPNAME }} </title>
 <meta name="keywords" content="">
 <meta name="description" content=""/>
-<link rel="shortcut icon"
-	  href="{{ asset('favicon.ico')}}"
-	  type="image/x-icon">
+<link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">	
+
+
+
 		<link href="{{ asset('sximo/js/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet"> 
 		<link href="{{ asset('sximo/js/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css')}}" rel="stylesheet">
 		<link href="{{ asset('sximo/fonts/awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -53,25 +54,34 @@
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-		@yield('head')
+		<![endif]-->		
+
+
+		<!-- AJax -->
+		<link href="{{ asset('sximo/js/plugins/ajax/ajaxSximo.css')}}" rel="stylesheet"> 
+		<script type="text/javascript" src="{{ asset('sximo/js/plugins/ajax/ajaxSximo.js') }}"></script>
+
+		<!-- End Ajax -->
+	
   	</head>
   	<body class="sxim-init" >
 	<div id="wrapper">
 		@include('layouts/sidemenu')
 		<div class="gray-bg " id="page-wrapper">
 			@include('layouts/headmenu')
+
 			@yield('content')		
 		</div>
 
 		<div class="footer fixed">
 		    <div class="pull-right">
+		       
 		    </div>
 		    <div>
-		        <strong>Copyright</strong>
-				&copy; 2016-{{ date('Y')}} - {{ CNF_COMNAME }}
+		        <strong>Copyright</strong> &copy; 2014-{{ date('Y')}} . {{ CNF_COMNAME }}  
 		    </div>
-		</div>
+		</div>		
+
 	</div>
 
 <div class="modal fade" id="sximo-modal" tabindex="-1" role="dialog">
@@ -100,7 +110,7 @@
 {{ Sitehelpers::showNotification() }} 
 <script type="text/javascript">
 jQuery(document).ready(function ($) {
-    //alert('debut layout.app');
+
     $('#sidemenu').sximMenu();
 	setInterval(function(){ 
 		var noteurl = $('.notif-value').attr('code'); 
@@ -114,7 +124,7 @@ jQuery(document).ready(function ($) {
 			html += '<li><div class="text-center link-block"><a href="'+noteurl+'/notification"><strong>View All Notification</strong> <i class="fa fa-angle-right"></i></a></div></li>';
 			$('.notif-value').html(html);
 		});
-	}, 60000);
+	}, 10000);
 		
 });	
 	

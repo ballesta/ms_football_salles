@@ -24,17 +24,17 @@ class ModuleController extends Controller {
         $this->dbhost       = $database[$driver]['host']; 
         $this->model = new Module();
 
+
         $this->data = array(
             'pageTitle' =>  'Module',
             'pageNote'  =>  'Manage All Module',
             
-        );
-
-
+        );        
 	}
 
 	public function getIndex( Request $request)
 	{
+
         if(!is_null($request->input('t')))
         {
             $rowData = \DB::table('tb_module')->where('module_type','=','core')
@@ -166,7 +166,7 @@ class ModuleController extends Controller {
                 'module_note'    =>$request->input('module_note'),
                 'module_db'        =>$request->input('module_db'),    
                 'module_db_key' => $primary,
-                'module_type'     =>  $module_type ,
+                'module_type'     => $module_type,
                 'module_created'     => date("Y-m-d H:i:s"),
                 'module_config' => \SiteHelpers::CF_encode_json($json_data),            
             );
@@ -299,7 +299,17 @@ class ModuleController extends Controller {
 		$this->data['module_name'] = $row->module_name;
 		$config = \SiteHelpers::CF_decode_json($row->module_config,true);     
 		$this->data['tables']     = $config['grid']; 
-        $this->data['type']     = $row->module_type;        
+        $this->data['type']     = ($row->module_type =='ajax' ? 'addon' : $row->module_type);  
+        $this->data['setting'] = array(
+            'gridtype'        => (isset($config['setting']) ? $config['setting']['gridtype'] : 'native'  ),
+            'orderby'        => (isset($config['setting']) ? $config['setting']['orderby'] : $row->module_db_key  ),
+            'ordertype'        => (isset($config['setting']) ? $config['setting']['ordertype'] : 'asc'  ),
+            'perpage'        => (isset($config['setting']) ? $config['setting']['perpage'] : '10'  ),
+            'frozen'        => (isset($config['setting']['frozen'])  ? $config['setting']['frozen'] : 'false'  ),
+            'form-method'        => (isset($config['setting']['form-method'])  ? $config['setting']['form-method'] : 'native'  ),
+            'view-method'        => (isset($config['setting']['view-method'])  ? $config['setting']['view-method'] : 'native'  ),
+            'inline'        => (isset($config['setting']['inline'])  ? $config['setting']['inline'] : 'false'  ),
+        );       
 		
 		return view('sximo.module.config',$this->data);        
                                                 
@@ -342,7 +352,50 @@ class ModuleController extends Controller {
             ->with('messagetext','The following errors occurred')->with('msgstatus','error')
             ->withErrors($validator)->withInput();
         }        
-    }    
+    }  
+
+
+    public function postSavesetting( Request $request)
+    {
+        $this->beforeFilter('csrf', array('on'=>'post'));
+        
+        $id = $request->input('module_id');
+        $row = \DB::table('tb_module')->where('module_id', $id)
+                                ->get();
+        if(count($row) <= 0){
+            return Redirect::to('sximo/module')->with('messagetext','Can not find module')->with('msgstatus','error');   
+                
+        }                                
+        $row = $row[0];        
+        $config = \SiteHelpers::CF_decode_json($row->module_config); 
+        $setting = array(
+            'gridtype'        => '' ,
+            'orderby'        => $request->input('orderby') ,
+            'ordertype'        => $request->input('ordertype') ,
+            'perpage'        => $request->input('perpage') ,
+            'frozen'        => (!is_null($request->input('frozen'))  ? 'true' : 'false' ) ,
+            'form-method'   => (!is_null($request->input('form-method'))  ? $request->input('form-method') : 'native' ) ,
+            'view-method'        => (!is_null($request->input('view-method'))  ? $request->input('view-method') : 'native' ) ,
+            'inline'        => (!is_null($request->input('inline'))  ? 'true' : 'false' ) ,
+
+        
+            
+        );
+        if(isset($config['setting'])) unset($config['setting']);
+
+        $new_config =     array_merge($config,array("setting" => $setting));
+        $data['module_config'] = \SiteHelpers::CF_encode_json($new_config);
+        $data['module_type']    =  $request->input('module_type');
+
+        
+        \DB::table('tb_module')
+            ->where('module_id', '=',$id )
+            ->update(array('module_config' => \SiteHelpers::CF_encode_json($new_config),'module_type'=> $request->input('module_type')));   
+
+
+        return Redirect::to('sximo/module/config/'.$row->module_name)
+        ->with('messagetext','Module Setting Has Been Save Successfull')->with('msgstatus','success'); 
+    }            
 
     function getSql(Request $request , $id )
     {
@@ -360,7 +413,7 @@ class ModuleController extends Controller {
 		$this->data['sql_group']     	= $config['sql_group'];            
 		$this->data['module_name'] 		= $row->module_name;    
 		$this->data['module'] 			= 'module';
-        $this->data['type']           = $row->module_type;
+        $this->data['type']             = ($row->module_type =='ajax' ? 'addon' : $row->module_type);  
 
 		return view('sximo.module.sql',$this->data);
                             
@@ -481,7 +534,7 @@ class ModuleController extends Controller {
 						
 		$this->data['module'] = 'module';
 		$this->data['module_name'] = $row->module_name;
-         $this->data['type']     = $row->module_type;
+        $this->data['type']     = ($row->module_type =='ajax' ? 'addon' : $row->module_type);  
 		return view('sximo.module.table',$this->data);
                             
     } 
@@ -503,7 +556,7 @@ class ModuleController extends Controller {
 		$this->data['form_column'] = (isset($config['form_column']) ? $config['form_column'] : 1 );        
 		$this->data['module'] = 'module';
 		$this->data['module_name'] = $row->module_name;
-         $this->data['type']     = $row->module_type;
+        $this->data['type']     = ($row->module_type =='ajax' ? 'addon' : $row->module_type);  
 		return view('sximo.module.form',$this->data);
                            
     }  
@@ -527,8 +580,14 @@ class ModuleController extends Controller {
         extract($_POST);    
         $f = array();
         for($i=1; $i<= $total ;$i++) {        
-
-            $language =array();    
+            $language =array();
+            foreach($lang as $l)
+            {
+                if($l['folder'] !='en'){
+                    $label_lang = (isset($_POST['language'][$i][$l['folder']]) ? $_POST['language'][$i][$l['folder']] : ''); 
+                    $language[$l['folder']] =$label_lang;        
+                }    
+            }   
             $f[] = array(
                 "field"         => $field[$i],
                 "alias"         => $alias[$i],
@@ -785,6 +844,14 @@ class ModuleController extends Controller {
         extract($_POST);
         for($i=1; $i<= $total ;$i++) {    
             $language =array();
+            foreach($lang as $l)
+            {
+                if($l['folder'] !='en'){
+                    $label_lang = (isset($_POST['language'][$i][$l['folder']]) ? $_POST['language'][$i][$l['folder']] : ''); 
+                    $language[$l['folder']] =$label_lang;        
+                }    
+            }
+
             $grid[] = array(
                 'field'        => $field[$i],
                 'alias'        => $alias[$i],
@@ -890,7 +957,7 @@ class ModuleController extends Controller {
             }
             $this->data['access'] = $access;                    
             $this->data['groups_access'] = \DB::select("select * from tb_groups_access where module_id ='".$row->module_id."'");
-            
+            $this->data['type']     = ($row->module_type =='ajax' ? 'addon' : $row->module_type);  
             return view('sximo.module.permission',$this->data);
                                
                             
@@ -1097,7 +1164,7 @@ class ModuleController extends Controller {
 		$this->data['tables'] = Module::getTableList($this->db);
 		$this->data['module'] = $row->module_name;
 		$this->data['module_name'] = $id;  
-        $this->data['type']     = $row->module_type;  
+        $this->data['type']     = ($row->module_type =='ajax' ? 'addon' : $row->module_type);   
 		$this->data['modules'] = Module::all();    
 		return view('sximo.module.sub',$this->data);    
 
@@ -1511,7 +1578,7 @@ class ModuleController extends Controller {
             if(!is_dir($dir))               mkdir( $dir,0777 );  
             if(!is_dir($dirPublic))         mkdir( $dirPublic,0777 );            
 
-           
+
              // BLANK TEMPLATE 
             if($row->module_type =='generic')
             {
@@ -1634,29 +1701,124 @@ class ModuleController extends Controller {
                     file_put_contents(  $dirM ."{$ctr}.php" , $build_model) ;
                     file_put_contents(  $dir."/index.blade.php" , $build_grid) ; 
                     file_put_contents( $dir."/form.blade.php" , $build_form) ;
-
                     file_put_contents(  $dir."/view.blade.php" , $build_view) ;       
                     file_put_contents(  $dir."/public/index.blade.php" , $build_front) ;  
                     file_put_contents(  $dir."/public/view.blade.php" , $build_frontview) ; 
                     file_put_contents(  $dir."/public/form.blade.php" , $build_frontform) ;                                     
                 
-                }
-
+                }                  
 
             }
+
              
             
+            if($row->module_type =='ajax')
+            {
 
-        self::createRouters();
+                // Do CRUD using Ajax
+                $template = base_path().'/resources/views/sximo/module/template/ajax/';
+                $controller = file_get_contents(  $template.'controller.tpl' );
+                $grid = file_get_contents(  $template.'grid.tpl' );                
+                if(isset($config['subgrid']) && count($config['subgrid'])>=1)
+                {
+                     $view = file_get_contents(  $template.'view_detail.tpl' );
+                } else {
+                     $view = file_get_contents(  $template.'view.tpl' );
+                }               
 
+                $form = file_get_contents(  $template.'form.tpl' );
+                $model = file_get_contents(  $template.'model.tpl' );    
+                $table = file_get_contents(  $template.'table.tpl' );
+                $toolbar = file_get_contents(  $template.'toolbar.tpl' );   
+                $front = file_get_contents(  $template.'frontend.tpl' );
+                $frontview = file_get_contents(  $template.'frontendview.tpl' ); 
+                $frontform = file_get_contents(  $template.'frontform.tpl' );
+                     
+                if($row->module_db_key =='')
+                {
+                    $controller = file_get_contents(  $template.'controller_view.tpl' );
+                    $grid = file_get_contents(  $template.'grid_view.tpl' );
+                    $toolbar = file_get_contents(  $template.'toolbar_view.tpl' );
+                    $table = file_get_contents(  $template.'table_view.tpl' );
+                    
+                } 
+
+
+
+                $build_controller       = \SiteHelpers::blend($controller,$codes);    
+                $build_view             = \SiteHelpers::blend($view,$codes);    
+                $build_form             = \SiteHelpers::blend($form,$codes);    
+                $build_grid             = \SiteHelpers::blend($grid,$codes);    
+                $build_table            = \SiteHelpers::blend($table,$codes);    
+                $build_model            = \SiteHelpers::blend($model,$codes);
+                $build_toolbar          = \SiteHelpers::blend($toolbar,$codes);       
+                $build_front            = \SiteHelpers::blend($front,$codes);   
+                $build_frontview        = \SiteHelpers::blend($frontview,$codes);   
+                $build_frontform        = \SiteHelpers::blend($frontform,$codes);                                
+                           
+
+                  if(!is_null($request->get('rebuild')))
+                {
+                     file_put_contents( $dirC."{$ctr}Controller.php" , $build_controller) ;    
+                    // rebuild spesific files
+                    if($request->input('c') =='y') file_put_contents(  $dirC."{$ctr}Controller.php" , $build_controller) ;    
+                    if($request->input('m') =='y') file_put_contents(  $dirM."{$ctr}.php" , $build_model) ;                
+                    if($request->input('g') =='y') file_put_contents(  $dir."/index.blade.php" , $build_grid) ;
+                    if($request->input('g') =='y') file_put_contents(  $dir."/table.blade.php" , $build_grid) ;
+                    if($row->module_db_key !='')
+                    {        
+                        if($request->input('f') =='y') file_put_contents( $dir."/form.blade.php" , $build_form) ;
+                        if($request->input('v') =='y') {
+                             if(isset($config['subgrid']) && count($config['subgrid'])>=1)
+                             {
+                                file_put_contents(  $dir."/view_detail.blade.php" , $build_view) ;
+                             } else {
+                                file_put_contents(  $dir."/view.blade.php" , $build_view) ;
+                             }                            
+                        } 
+                        // Frontend Grid
+                        if($request->input('fg') =='y'){
+
+                            file_put_contents(  $dir."/public/index.blade.php" , $build_front) ;
+                        } 
+                        // Frontend View
+                        if($request->input('fv') =='y'){
+                            file_put_contents(  $dir."/public/view.blade.php" , $build_frontview) ;
+                        } 
+                        // Frontend Form
+                        if($request->input('ff') =='y'){
+                            file_put_contents(  $dir."/public/form.blade.php" , $build_frontform) ;
+                        } 
+
+                    }        
+                
+                } else {
+                                       
+                    file_put_contents(  $dirC."{$ctr}Controller.php" , $build_controller) ;    
+                    file_put_contents(  $dirM."{$ctr}.php" , $build_model) ;
+                    file_put_contents(  $dir."/index.blade.php" , $build_grid) ;                    
+                    file_put_contents(  $dir."/form.blade.php" , $build_form) ;
+                    file_put_contents(  $dir."/view.blade.php" , $build_view) ;
+                    file_put_contents(  $dir."/table.blade.php" , $build_table) ;
+                    file_put_contents(  $dir."/toolbar.blade.php" , $build_toolbar) ;
+                    file_put_contents(  $dir."/public/index.blade.php" , $build_front) ;  
+                    file_put_contents(  $dir."/public/view.blade.php" , $build_frontview) ; 
+                    file_put_contents(  $dir."/public/form.blade.php" , $build_frontform) ;                                       
+                }  
+                                         
+
+            }            
+             
+            
+            self::createRouters();
+    
         if($request->ajax() == true && \Auth::check() == true)
         {
             return response()->json(array('status'=>'success','message'=>'Code Script has been replaced successfull')); 
         } else {
 
-            return Redirect::to('sximo/module')->with('messagetext','Proccess successfull')->with('msgstatus','success');   
-        }
-       
+            return Redirect::to('sximo/module')->with('messagetext','Code Script has been replaced successfull')->with('msgstatus','success');   
+        }  
     }  
 
     function findPrimarykey( $table )
@@ -1670,7 +1832,7 @@ class ModuleController extends Controller {
            // print_r($key);
         }
         return $primaryKey;    
-    }   
+    }    
     
     function buildRelation( $table , $field)
     {
@@ -2023,10 +2185,10 @@ class ModuleController extends Controller {
 
         }            
 
-    }
+    } 
 
-  function getSubformremove( Request $request ,$id =0)
-  {
+    function getSubformremove( Request $request ,$id =0)
+    {
 
                
         $row = \DB::table('tb_module')->where('module_name', $id)
@@ -2047,7 +2209,7 @@ class ModuleController extends Controller {
 
         return Redirect::to('sximo/module/subform/'.$row->module_name)
             ->with('messagetext','Subform has beed Removed Successful.')->with('msgstatus','success'); 
-  }     
+    }  
 
 
     function getSource( Request $request ,$id)
@@ -2143,126 +2305,7 @@ class ModuleController extends Controller {
 
     }
 
-    public function getDuplicate( Request $request,$id)
-    {
 
-        $row = \DB::table('tb_module')->where('module_id', $id)
-                                ->get();        
-        if(count($row) <= 0){
-             return Redirect::to('sximo/module')->with('messagetext','Can not find module')->with('msgstatus','error');                         
-        }
-        $row = $row[0];        
-        $this->data['row'] = $row;      
-
-        $this->data['module'] = 'module';
-        $this->data['module_lang'] = json_decode($row->module_lang,true);    
-        $this->data['module_name'] = $row->module_name;
-
-        $config = \SiteHelpers::CF_decode_json($row->module_config,true);  
-       
-//       echo '<pre>'; print_r($config); echo '</pre>'; 
-
-        $this->data['tables']     = $config['grid']; 
-        $this->data['type']     = $row->module_type;        
-        
-        return view('sximo.module.duplicate',$this->data); 
-
-    }
-
-    public function postDuplicate(  Request $request,$id )
-    {
-
-        $rules = array(
-            'module_name'    =>'required|alpha|min:2|unique:tb_module',
-            'module_title'    =>'required',
-            'module_note'    =>'required',
-        );    
-        
-        $validator = Validator::make($request->all(), $rules);    
-        if ($validator->passes()) {
-            
-
-
-            $row = \DB::table('tb_module')->where('module_id', $id)
-                                    ->get();        
-            if(count($row) <= 0){
-                 return Redirect::to('sximo/module')->with('messagetext','Can not find module')->with('msgstatus','error');                         
-            }
-            $row = $row[0];        
-            $this->data['row'] = $row;     
-            $config = \SiteHelpers::CF_decode_json($row->module_config,true);  
-               
-            foreach(\DB::select("SHOW COLUMNS FROM tb_module ") as $column)
-            {
-                if( $column->Field != 'module_id')
-                    $columns[] = $column->Field;
-            }
-
-            $sql = "INSERT INTO tb_module (".implode(",", $columns).") ";
-                $sql .= " SELECT ".implode(",", $columns)." FROM tb_module WHERE module_id = '".$id."'";
-                \DB::select($sql);
-
-            $res = \DB::select('select * from tb_module order by module_id desc limit 1');
-            if(count($res)>=1)
-            {
-                $row = $res[0];
-               // echo $row->module_id ; exit;
-                $data = array(
-                    'module_title'  => trim( $request->module_title) ,
-                    'module_name'   => trim( $request->module_name) ,
-                    'module_note'   => trim( $request->module_note) ,
-                    'module_author' => \Session::get('fid')
-                );    
-                 \DB::table('tb_module')->where('module_id',$row->module_id)->update($data);   
-
-                // Add Default permission
-                $tasks = array(
-                    'is_global'        => 'Global',
-                    'is_view'        => 'View ',
-                    'is_detail'        => 'Detail',
-                    'is_add'        => 'Add ',
-                    'is_edit'        => 'Edit ',
-                    'is_remove'        => 'Remove ',
-                    'is_excel'        => 'Excel ',    
-                    
-                );                    
-                $groups = \DB::table('tb_groups')->get();
-                $rows = \DB::table('tb_module')->where('module_id',$row->module_id)->get();        
-                if(count($rows) >= 1)
-                {
-                    $id = $rows[0];
-                    
-                    foreach($groups as $g)
-                    {
-                        $arr = array();
-                        foreach($tasks as $t=>$v)            
-                        {
-                            if($g->group_id =='1') {
-                                $arr[$t] = '1' ;
-                            } else {
-                                $arr[$t] = '0' ;
-                            }    
-                        
-                        }        
-                        $data = array
-                        (
-                            "access_data"    => json_encode($arr),
-                            "module_id"        => $id->module_id,                
-                            "group_id"        => $g->group_id,
-                        );
-                        \DB::table('tb_groups_access')->insert($data);    
-                    }
-                }    
-                return Redirect::to('sximo/module/rebuild/'.$row->module_id.'?mode=duplicate');
-         
-            } else {
-                return Redirect::to('sximo/module')->with('messagetext','Failed to Duplicate Module !' )->with('msgstatus','error');
-
-            }
-        }     
-                         
-
-    }
  
 
 }	

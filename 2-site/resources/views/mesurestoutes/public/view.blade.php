@@ -18,8 +18,32 @@
 					</tr>
 				
 					<tr>
+						<td width='30%' class='label-view text-right'>Bluetooth</td>
+						<td>{{ $row->bluetooth}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Complexe Salle Id</td>
+						<td>{{ $row->complexe_salle_id}} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>Message Json</td>
 						<td>{{ $row->message_json}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Created At</td>
+						<td>{{ $row->created_at}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>Updated At</td>
+						<td>{{ $row->updated_at}} </td>
 						
 					</tr>
 						

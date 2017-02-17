@@ -48,10 +48,50 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
+										<label for="Bluetooth" class=" control-label col-md-4 text-left"> Bluetooth </label>
+										<div class="col-md-6">
+										  <textarea name='bluetooth' rows='5' id='bluetooth' class='form-control '  
+				           >{{ $row['bluetooth'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Complexe Salle Id" class=" control-label col-md-4 text-left"> Complexe Salle Id </label>
+										<div class="col-md-6">
+										  <textarea name='complexe_salle_id' rows='5' id='complexe_salle_id' class='form-control '  
+				           >{{ $row['complexe_salle_id'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Message Json brut" class=" control-label col-md-4 text-left"> Message Json brut </label>
 										<div class="col-md-6">
 										  <textarea name='message_json' rows='5' id='editor' class='form-control editor '  
 						 >{{ $row['message_json'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Created At" class=" control-label col-md-4 text-left"> Created At </label>
+										<div class="col-md-6">
+										  <textarea name='created_at' rows='5' id='created_at' class='form-control '  
+				           >{{ $row['created_at'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Updated At" class=" control-label col-md-4 text-left"> Updated At </label>
+										<div class="col-md-6">
+										  <textarea name='updated_at' rows='5' id='updated_at' class='form-control '  
+				           >{{ $row['updated_at'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	

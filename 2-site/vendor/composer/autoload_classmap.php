@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AjaxHelpers' => $baseDir . '/app/Library/AjaxHelpers.php',
+    'App\\Library\\MyHelpers' => $baseDir . '/app/Library/MyHelpers.php',
     'App\\Library\\Slimdown' => $baseDir . '/app/Library/Slimdown.php',
     'App\\Models\\Core\\Groups' => $baseDir . '/app/Models/Core/Groups.php',
     'App\\Models\\Core\\Logs' => $baseDir . '/app/Models/Core/Logs.php',
@@ -27,6 +28,7 @@ return array(
     'App\\Models\\malette' => $baseDir . '/app/Models/Malette.php',
     'App\\Models\\mesure' => $baseDir . '/app/Models/Mesure.php',
     'App\\Models\\mesurestoutes' => $baseDir . '/app/Models/Mesurestoutes.php',
+    'App\\Models\\mesurestoutesajax' => $baseDir . '/app/Models/Mesurestoutesajax.php',
     'App\\Models\\notification' => $baseDir . '/app/Models/Notification.php',
     'App\\Models\\partie' => $baseDir . '/app/Models/Partie.php',
     'App\\Models\\reseauxsalles' => $baseDir . '/app/Models/Reseauxsalles.php',
