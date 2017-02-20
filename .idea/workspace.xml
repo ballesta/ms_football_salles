@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" />
@@ -67,8 +66,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="50" column="66" lean-forward="false" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="66" />
+            <state relative-caret-position="486">
+              <caret line="47" column="62" lean-forward="true" selection-start-line="47" selection-start-column="62" selection-end-line="47" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -102,18 +101,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnvoiMesures.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SessionmesureController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SessionMesuresAPIController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SessionMesuresAPIController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+            <state relative-caret-position="338">
+              <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
               <folding>
                 <element signature="e#42#70#0#PHP" expanded="true" />
               </folding>
@@ -136,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnvoiMesuresController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EnvoiMesuresController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="257">
+              <caret line="42" column="20" lean-forward="true" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -318,7 +305,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2-site/bootstrap/cache/config.php" />
         <option value="$PROJECT_DIR$/2-site/app/Helpers/GenereMesures.php" />
         <option value="$PROJECT_DIR$/2-site/app/Helpers/StatistiquesMesures.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/inscription/statistiques.blade.php" />
@@ -364,11 +350,12 @@
         <option value="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" />
         <option value="$PROJECT_DIR$/2-site/app/MesuresVerification.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/MesuresVerificationController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php" />
       </list>
     </option>
   </component>
@@ -917,14 +904,7 @@
       <workItem from="1487378319875" duration="164000" />
       <workItem from="1487410391800" duration="10370000" />
       <workItem from="1487435293048" duration="4371000" />
-      <workItem from="1487593239606" duration="7304000" />
-    </task>
-    <task id="LOCAL-00034" summary="Test step form wizard">
-      <created>1480380043712</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1480380043712</updated>
+      <workItem from="1487593239606" duration="9736000" />
     </task>
     <task id="LOCAL-00035" summary="Test step form wizard - pb avec dates">
       <created>1480463454340</created>
@@ -1262,11 +1242,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487609586127</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Récupération travail misSion BSA (numérotation messages capteurs et bornes)">
+      <created>1487612588487</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1487612588487</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="757182000" />
+    <option name="totallyTimeSpent" value="759614000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1349,7 +1336,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Parsley pour vérification saisie joueur ou sélection / Email unique OK" />
     <MESSAGE value="Partie /heure" />
     <MESSAGE value="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base" />
     <MESSAGE value="Inscription prototype en cours d'intégration" />
@@ -1374,7 +1360,8 @@
     <MESSAGE value="Vue affichage fiche inscription oK: suite traiter le formulaire rempli" />
     <MESSAGE value="Vue affichage fiche inscription oK: enfin!" />
     <MESSAGE value="Détection rupture numero messages bornes et capteurs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Détection rupture numero messages bornes et capteurs" />
+    <MESSAGE value="Récupération travail misSion BSA (numérotation messages capteurs et bornes)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Récupération travail misSion BSA (numérotation messages capteurs et bornes)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1675,55 +1662,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/MesurestoutesajaxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="3" column="33" lean-forward="false" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-          <folding>
-            <marker date="1487425690089" expanded="true" signature="5368:5419" ph="INSERT INTO fb_mesures... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1958">
-          <caret line="94" column="23" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="50" column="66" lean-forward="false" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1743,11 +1686,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+        <state relative-caret-position="338">
+          <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
           <folding>
             <element signature="e#42#70#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="47" column="62" lean-forward="true" selection-start-line="47" selection-start-column="62" selection-end-line="47" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1958">
+          <caret line="94" column="23" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/MesurestoutesajaxController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="3" column="33" lean-forward="false" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+          <folding>
+            <marker date="1487425690089" expanded="true" signature="5368:5419" ph="INSERT INTO fb_mesures... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="42" column="20" lean-forward="true" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>

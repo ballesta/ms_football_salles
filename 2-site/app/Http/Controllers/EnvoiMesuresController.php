@@ -32,28 +32,32 @@ class EnvoiMesuresController extends Controller
         // URL de l'API
         // $url = "http://ms-football-api-native-5-1-lts/public/sessionMesures";
         //$url = "http://localhost/ms_football_api_native_5_1_lts/public/sessionMesures";
-	    //$url = "http://localhost/ms-football-salles-public/sessionMesures";
 	    $url = "http://football.ballesta.fr/sessionMesures";
-	    $nombre_messages = 10;
+	    //$url = "http://football.ballesta.fr/sessionMesures";
+	    $begin = time();
+	    $nombre_messages = 100;
         for ($i=1; $i <= $nombre_messages ; $i++ ) {
             $s = $i*10;
             // Message
             $data_json = '
 		        {   
-		            "sensor": {
-		              "EventShoot": {
-		                 "UID": "111111",'.
-		                '"id": "' . $i . '",' .
-		                '"speed": "' . $s . '"
-		              }
-		            }
+                    "chronoBorne": "0" , "chronoSensor": "0" , "IEEE": "54:4a:16:56:46:1a",
+                     "mesures": 
+                        {"Shoot": "0", "Passes": "0", "Step": "0", "Dist": "0", "Control": "0", 
+                        "Mobility": "0", "Max": "0", "Average": "0", "Sprint": "0"}"
 		        }
 			';
 	        // Appel de l'api pour l'envoi d'un message
 	        $response = $this->api_post($data_json, $url);
             $r .= $response . '<br><hr>';
         }
-        $r .=  '*** Fin ***';
+        $end = time();
+        $duree_emission = $end - $begin;
+
+        $r .= "url: $url<br>"
+	        . "nombre_messages: $nombre_messages <br>"
+	        . "duree_emission: $duree_emission <br>"
+	       .  '*** Fin ***';
 
         return $r;
     }
