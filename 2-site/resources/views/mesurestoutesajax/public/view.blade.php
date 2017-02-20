@@ -36,6 +36,18 @@
 					</tr>
 				
 					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Perte Messages', (isset($fields['perte_messages']['language'])? $fields['perte_messages']['language'] : array())) }}</td>
+						<td>{{ $row->perte_messages}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Perte Messages Capteur', (isset($fields['perte_messages_capteur']['language'])? $fields['perte_messages_capteur']['language'] : array())) }}</td>
+						<td>{{ $row->perte_messages_capteur}} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Message Json', (isset($fields['message_json']['language'])? $fields['message_json']['language'] : array())) }}</td>
 						<td>{{ $row->message_json}} </td>
 						

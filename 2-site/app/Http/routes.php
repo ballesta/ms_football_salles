@@ -38,6 +38,8 @@
 				'front\InscriptionController@inscriptionRemplie');
 
 	// ---- Back ----
+	Route::get('mesures/verifie', 'MesuresVerificationController@verifieMesures' );
+
 	Route::resource('statistiques', 'StatistiquesController');
 
 	Route::get('genere/mesures', 'GenereMesuresController@addMesures' );

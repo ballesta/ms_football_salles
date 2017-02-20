@@ -12,20 +12,26 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Terrain</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Soccer Field', (isset($fields['identifiant']['language'])? $fields['identifiant']['language'] : array())) }}</td>
 						<td>{{ $row->identifiant}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Nbr Joueurs Equipe</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Number of players', (isset($fields['nbr_joueurs_equipe']['language'])? $fields['nbr_joueurs_equipe']['language'] : array())) }}</td>
 						<td>{{ $row->nbr_joueurs_equipe}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Centre</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Centre', (isset($fields['complexe_salle_id']['language'])? $fields['complexe_salle_id']['language'] : array())) }}</td>
 						<td>{{ SiteHelpers::formatLookUp($row->complexe_salle_id,'complexe_salle_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Sensors', (isset($fields['capteurs']['language'])? $fields['capteurs']['language'] : array())) }}</td>
+						<td>{{ $row->capteurs}} </td>
 						
 					</tr>
 						

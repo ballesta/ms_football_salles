@@ -9,31 +9,26 @@ class SalleController extends Controller {
     protected $data = array();
     public $module = 'salle';
     static $per_page	= '10';
+    
     public function __construct()
     {
-        
-        $this->beforeFilter('csrf', array('on'=>'post'));
+        parent::__construct();
         $this->model = new Salle();
         
         $this->info = $this->model->makeInfo( $this->module);
         $this->access = $this->model->validAccess($this->info['id']);
         
         $this->data = array(
-        'pageTitle'	=> 	$this->info['title'],
-        'pageNote'	=>  $this->info['note'],
-        'pageModule'=> 'salle',
-        'return'	=> self::returnUrl()
-        
+        'pageTitle'			=> 	$this->info['title'],
+        'pageNote'			=>  $this->info['note'],
+        'pageModule'		=> 'salle',
+        'pageUrl'			=>  url('salle'),
+        'return' 			=> 	self::returnUrl()
         );
         
-        \App::setLocale(CNF_LANG);
-        if (defined('CNF_MULTILANG') && CNF_MULTILANG == '1') {
-            $lang = (\Session::get('lang') != "" ? \Session::get('lang') : CNF_LANG);
-            \App::setLocale($lang);
-        }
-        
     }
-    public function getIndex( Request $request )
+    
+    public function getIndex()
     {
         ////(( Code generated begin
         // Get parameter in URL to use it as filter
@@ -73,10 +68,15 @@ class SalleController extends Controller {
         \Session::forget("equipe_id_identifier");
         ////)) Code generated end
         if($this->access['is_view'] ==0)
-        return Redirect::to('dashboard')
-        ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
-        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : 'salle_id');
-        $order = (!is_null($request->input('order')) ? $request->input('order') : 'asc');
+        return Redirect::to('dashboard')->with('messagetext',\Lang::get('core.note_restric'))->with('msgstatus','error');
+        
+        $this->data['access']		= $this->access;
+        return view('salle.index',$this->data);
+    }
+    public function postData( Request $request)
+    {
+        $sort = (!is_null($request->input('sort')) ? $request->input('sort') : $this->info['setting']['orderby']);
+        $order = (!is_null($request->input('order')) ? $request->input('order') : $this->info['setting']['ordertype']);
         // End Filter sort and order for query
         // Filter Search for query
         $filter = '';
@@ -90,7 +90,7 @@ class SalleController extends Controller {
         $page = $request->input('page', 1);
         $params = array(
         'page'		=> $page ,
-        'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : static::$per_page ) ,
+        'limit'		=> (!is_null($request->input('rows')) ? filter_var($request->input('rows'),FILTER_VALIDATE_INT) : $this->info['setting']['perpage'] ) ,
         'sort'		=> $sort ,
         'order'		=> $order,
         'params'	=> $filter,
@@ -102,8 +102,9 @@ class SalleController extends Controller {
         // Build pagination setting
         $page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;
         $pagination = new Paginator($results['rows'], $results['total'], $params['limit']);
-        $pagination->setPath('salle');
+        $pagination->setPath('salle/data');
         
+        $this->data['param']		= $params;
         $this->data['rowData']		= $results['rows'];
         // Build Pagination
         $this->data['pagination']	= $pagination;
@@ -114,18 +115,20 @@ class SalleController extends Controller {
         // Grid Configuration
         $this->data['tableGrid'] 	= $this->info['config']['grid'];
         $this->data['tableForm'] 	= $this->info['config']['forms'];
+        $this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);
         // Group users permission
         $this->data['access']		= $this->access;
         // Detail from master if any
+        $this->data['setting'] 		= $this->info['setting'];
         
         // Master detail link if any
         $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
-        return view('salle.index',$this->data);
+        return view('salle.table',$this->data);
     }
+    
     function getUpdate(Request $request, $id = null)
     {
-        
         if($id =='')
         {
             if($this->access['is_add'] ==0 )
@@ -141,9 +144,9 @@ class SalleController extends Controller {
         $row = $this->model->find($id);
         if($row)
         {
-            $this->data['row'] =  $row;
+            $this->data['row'] 		=  $row;
         } else {
-            $this->data['row'] = $this->model->getColumnTable('fbs_salles');
+            $this->data['row'] 		= $this->model->getColumnTable('fbs_salles');
             ////(( Code generated begin
             $columns = $this->data['row'];
             $id = \Session::get('complexe_salle_id', null);
@@ -151,13 +154,15 @@ class SalleController extends Controller {
             $this->data['row'] = $columns;
             ////)) Code generated end
         }
-        $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
+        $this->data['setting'] 		= $this->info['setting'];
+        $this->data['fields'] 		=  \AjaxHelpers::fieldLang($this->info['config']['forms']);
         
         $this->data['id'] = $id;
         return view('salle.form',$this->data);
     }
-    public function getShow( Request $request, $id = null)
+    public function getShow( $id = null)
     {
+        
         if($this->access['is_detail'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -166,66 +171,95 @@ class SalleController extends Controller {
         if($row)
         {
             $this->data['row'] =  $row;
-            $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['grid']);
+            
             $this->data['id'] = $id;
             $this->data['access']		= $this->access;
-            $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
-            $this->data['prevnext'] = $this->model->prevNext($id);
+            $this->data['setting'] 		= $this->info['setting'];
+            $this->data['fields'] 		= \AjaxHelpers::fieldLang($this->info['config']['grid']);
+            $this->data['subgrid']		= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
             return view('salle.view',$this->data);
         } else {
-            return Redirect::to('salle')->with('messagetext','Record Not Found !')->with('msgstatus','error');
+            return response()->json(array(
+            'status'=>'error',
+            'message'=> \Lang::get('core.note_error')
+            ));
         }
     }
-    function postSave( Request $request)
+    function postCopy( Request $request)
+    {
+        
+        foreach(\DB::select("SHOW COLUMNS FROM fbs_salles ") as $column)
+        {
+            if( $column->Field != 'salle_id')
+            $columns[] = $column->Field;
+        }
+        if(count($request->input('ids')) >=1)
+        {
+            $toCopy = implode(",",$request->input('ids'));
+            
+            
+            $sql = "INSERT INTO fbs_salles (".implode(",", $columns).") ";
+            $sql .= " SELECT ".implode(",", $columns)." FROM fbs_salles WHERE salle_id IN (".$toCopy.")";
+            \DB::select($sql);
+            return response()->json(array(
+            'status'=>'success',
+            'message'=> \Lang::get('core.note_success')
+            ));
+        } else {
+            return response()->json(array(
+            'status'=>'success',
+            'message'=> 'Please select row to copy'
+            ));
+        }
+        
+    }
+    function postSave( Request $request, $id =0)
     {
         
         $rules = $this->validateForm();
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
-            $data = $this->validatePost('tb_salle');
+            $data = $this->validatePost('fbs_salles');
             
             $id = $this->model->insertRow($data , $request->input('salle_id'));
             
-            if(!is_null($request->input('apply')))
-            {
-                $return = 'salle/update/'.$id.'?return='.self::returnUrl();
-            } else {
-                $return = 'salle?return='.self::returnUrl();
-            }
-            // Insert logs into database
-            if($request->input('salle_id') =='')
-            {
-                \SiteHelpers::auditTrail( $request , 'New Data with ID '.$id.' Has been Inserted !');
-            } else {
-                \SiteHelpers::auditTrail($request ,'Data with ID '.$id.' Has been Updated !');
-            }
-            return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+            return response()->json(array(
+            'status'=>'success',
+            'message'=> \Lang::get('core.note_success')
+            ));
             
         } else {
-            return Redirect::to('salle/update/'.$request->input('salle_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
-            ->withErrors($validator)->withInput();
+            $message = $this->validateListError(  $validator->getMessageBag()->toArray() );
+            return response()->json(array(
+            'message'	=> $message,
+            'status'	=> 'error'
+            ));
         }
         
     }
     public function postDelete( Request $request)
     {
-        
-        if($this->access['is_remove'] ==0)
-        return Redirect::to('dashboard')
-        ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
+        if($this->access['is_remove'] ==0) {
+            return response()->json(array(
+            'status'=>'error',
+            'message'=> \Lang::get('core.note_restric')
+            ));
+            die;
+        }
         // delete multipe rows
         if(count($request->input('ids')) >=1)
         {
             $this->model->destroy($request->input('ids'));
             
-            \SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
-            // redirect
-            return Redirect::to('salle?return='.self::returnUrl())
-            ->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
-            
+            return response()->json(array(
+            'status'=>'success',
+            'message'=> \Lang::get('core.note_success_delete')
+            ));
         } else {
-            return Redirect::to('salle?return='.self::returnUrl())
-            ->with('messagetext','No Item Deleted')->with('msgstatus','error');
+            return response()->json(array(
+            'status'=>'error',
+            'message'=> \Lang::get('core.note_error')
+            ));
         }
     }
     public static function display( )
@@ -285,4 +319,5 @@ class SalleController extends Controller {
         }
         
     }
+    
 }

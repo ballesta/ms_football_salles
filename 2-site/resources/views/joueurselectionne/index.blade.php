@@ -4,37 +4,6 @@
 <div class="page-content row">
 <div class="page-content-wrapper m-t">
 <div class="sbox">
-<!--//(( Code generated begin-->
-<table>
-<tr>
-<td>
-<small>Réseau de salles</small><br>
-<strong>{{ Session::get('club_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Centres sportifs</small><br>
-<strong>{{ Session::get('complexe_salle_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Terrains</small><br>
-<strong>{{ Session::get('salle_id_identifier', null) }}</strong>
-<td>
-<td>
-&nbsp;&nbsp;<i class="icon-arrow-right2"></i>&nbsp;&nbsp;
-<td>
-<td>
-<small>Parties</small><br>
-<strong>{{ Session::get('partie_id_identifier', null) }}</strong>
-<td>
-</tr>
-</table>
-<!--//)) Code generated end-->
 <div class="sbox-title">
 <div class="sbox-tools pull-left" >
 @if($access['is_add'] ==1)
@@ -103,19 +72,6 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 @endif
 @endforeach
 <td>
-<!--//(( Code generated begin-->
-{!!
-    \Navigation::link_to_detail(
-    $text        = 'Sessions mesures',
-    $help        = '',
-    $url         = URL::to('sessionmesure'),
-    $parent_key  = 'joueur_selectionne_id',
-    $parent_label= 'joueur_id',
-    $parent_id   = $row->joueur_selectionne_id,
-    $parent_name = $row->joueur_id
-    )
-!!}
-<!--//)) Code generated end-->
 @if($access['is_detail'] ==1)
 <a href="{{ URL::to('joueurselectionne/show/'.$row->joueur_selectionne_id.'?return='.$return)}}" class="tips btn btn-xs btn-primary" title="{{ Lang::get('core.btn_view') }}"><i class="fa  fa-search "></i></a>
 @endif

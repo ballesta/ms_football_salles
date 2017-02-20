@@ -17,14 +17,9 @@ class reseauxsalles extends Sximo  {
     }
     public static function queryWhere(  ){
         ////(( Code generated begin
-    $key_word='WHERE ';
-	        foreach ($module->queryWhere as $c)
-	        {
-		        $queryWhere .= $key_word . $c ;
-		        // Following conditions
-		        $key_word='AND ';
-	        }
-			return $queryWhere;
+        $where = [];$where[] = \App\Helpers\Roles::filter( "reseauxsalles");
+$sql_where = \App\Helpers\SQL_Where::compose($where);
+return $sql_where;
         ////)) Code generated end
     }
     

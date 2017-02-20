@@ -50,6 +50,26 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
+										<label for="Perte Messages" class=" control-label col-md-4 text-left"> Perte Messages </label>
+										<div class="col-md-6">
+										  <textarea name='perte_messages' rows='5' id='perte_messages' class='form-control '  
+				           >{{ $row['perte_messages'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Nombre de massage manquants"><i class="icon-question2"></i></a>
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Perte Messages Capteur" class=" control-label col-md-4 text-left"> Perte Messages Capteur </label>
+										<div class="col-md-6">
+										  <textarea name='perte_messages_capteur' rows='5' id='perte_messages_capteur' class='form-control '  
+				           >{{ $row['perte_messages_capteur'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
 										<label for="Message Json" class=" control-label col-md-4 text-left"> Message Json </label>
 										<div class="col-md-6">
 										  {!! Form::text('message_json', $row['message_json'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 

@@ -99,9 +99,9 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
-    $text        = 'Joueur sélectionné',
+    $text        = 'Inscriptions',
     $help        = '',
-    $url         = URL::to('joueurselectionne'),
+    $url         = URL::to('inscription'),
     $parent_key  = 'partie_id',
     $parent_label= 'debut',
     $parent_id   = $row->partie_id,

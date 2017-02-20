@@ -1,65 +1,54 @@
-@extends('layouts.app')
+@if($setting['view-method'] =='native')
+<div class="sbox">
+	<div class="sbox-title">  
+		<h4> <i class="fa fa-table"></i> <?php echo $pageTitle ;?> <small>{{ $pageNote }}</small>
+			<a href="javascript:void(0)" class="collapse-close pull-right btn btn-xs btn-danger" onclick="ajaxViewClose('#{{ $pageModule }}')">
+			<i class="fa fa fa-times"></i></a>
+		</h4>
+	 </div>
 
-@section('content')
-<div class="page-content row">
-    <!-- Page header -->
-
-	 
-	 
- 	<div class="page-content-wrapper m-t">   
-
-<div class="sbox ">
-	<div class="sbox-title">
-		<div class="sbox-tools pull-left" >
-	   		<a href="{{ url('salle?return='.$return) }}" class="tips" title="{{ Lang::get('core.btn_back') }}"><i class="fa  fa-arrow-left"></i></a>
-			@if($access['is_add'] ==1)
-	   		<a href="{{ url('salle/update/'.$id.'?return='.$return) }}" class="tips " title="{{ Lang::get('core.btn_edit') }}"><i class="fa  fa-pencil"></i></a>
-			@endif 
-					
-		</div>	
-
-		<div class="sbox-tools " >
-			<a href="{{ ($prevnext['prev'] != '' ? url('salle/show/'.$prevnext['prev'].'?return='.$return ) : '#') }}" class="tips "><i class="fa fa-arrow-left"></i>  </a>	
-			<a href="{{ ($prevnext['next'] != '' ? url('salle/show/'.$prevnext['next'].'?return='.$return ) : '#') }}" class="tips"> <i class="fa fa-arrow-right"></i>  </a>
-			@if(Session::get('gid') ==1)
-				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
-			@endif 			
-		</div>
-
-
-	</div>
-	<div class="sbox-content" > 	
+	<div class="sbox-content"> 
+@endif	
 
 		<table class="table table-striped table-bordered" >
 			<tbody>	
-		
+				
 					<tr>
-						<td width='30%' class='label-view text-right'>Terrain</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Soccer Field', (isset($fields['identifiant']['language'])? $fields['identifiant']['language'] : array())) }}</td>
 						<td>{{ $row->identifiant}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Nbr Joueurs Equipe</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Number of players', (isset($fields['nbr_joueurs_equipe']['language'])? $fields['nbr_joueurs_equipe']['language'] : array())) }}</td>
 						<td>{{ $row->nbr_joueurs_equipe}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Centre</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Centre', (isset($fields['complexe_salle_id']['language'])? $fields['complexe_salle_id']['language'] : array())) }}</td>
 						<td>{{ SiteHelpers::formatLookUp($row->complexe_salle_id,'complexe_salle_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
 						
 					</tr>
 				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Sensors', (isset($fields['capteurs']['language'])? $fields['capteurs']['language'] : array())) }}</td>
+						<td>{{ $row->capteurs}} </td>
+						
+					</tr>
+				
 			</tbody>	
-		</table>   
+		</table>  
+			
+		 	
 
-	 
-	
-	</div>
+@if($setting['form-method'] =='native')
+	</div>	
 </div>	
+@endif	
 
-	</div>
-</div>
-	  
-@stop
+<script>
+$(document).ready(function(){
+
+});
+</script>	
