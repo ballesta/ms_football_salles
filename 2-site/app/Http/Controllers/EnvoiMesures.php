@@ -7,18 +7,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
+// Envoi de mesures pour lestests
 class EnvoiMesuresController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Route::get('envoiMesures',"EnvoiMesuresController@index");
      *
      * @return Response
      */
     public function getIndex()
     {
+	    $begin = time();
+        $r = $this->envoi_shoots();
+		$end = time();
 
-        return $this->envoi_shoots();
-
+		return '----seconds: ' . $end - $begin . $r;
     }
 
     function envoi_shoots()
@@ -26,31 +30,25 @@ class EnvoiMesuresController extends Controller
         //
         $r = "<h1>Envoi mesures</h1>"
             . "<h3>Local: Enregistrement brut</h3>";
-        return $r;
+        //return $r;
 
         // URL de l'API
-        // $url = "http://ms-football-api-native-5-1-lts/public/sessionMesures";
-        //$url = "http://localhost/ms_football_api_native_5_1_lts/public/sessionMesures";
-        $url = "http://localhost/ms-football-salles/public/sessionMesures";
-        //$url = "http://localhost/ms_football_api_native_5_1_lts/";
-        //      http://localhost/ms_football_api_native_5_1_lts/
-        // sessionMesures
+        $url = "http://ms-football-salles-public/sessionMesures";
 
         // Appel de l'api pour l'envoi d'un message
 
-        $nombre_messages = 1;
+        $nombre_messages = 10;
         for ($i=1; $i <= $nombre_messages ; $i++ ) {
             $s = $i*10;
             $data_json = '
-        {   
-            "sensor": {
-              "EventShoot": {
-                 "UID": "12345678",'.
-                '"id": "' . $i . '",' .
-                '"speed": "' . $s . '"
-              }
+            {"chronoBorne": "0" , 
+             "chronoSensor": "0" , 
+             "IEEE": "54:4a:16:56:46:1a", 
+             "mesures": 
+                {"Shoot": "0", "Passes": "0", "Step": "0", "Dist": "0", 
+                 "Control": "0", "Mobility": "0", "Max": "0", 
+                 "Average": "0", "Sprint": "0"}
             }
-        }
 		';
             $response = $this->api_post($data_json, $url);
             $r .= $response
@@ -61,7 +59,6 @@ class EnvoiMesuresController extends Controller
 
         return $r;
     }
-
 
     function api_post($data_json, $url)
     {
@@ -84,72 +81,5 @@ class EnvoiMesuresController extends Controller
         curl_close($ch);
 
         return $response;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-        return "<h1>Create</h1>";
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-        return "<h1>Store</h1>";
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-        return "<h1>Show</h1>";
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

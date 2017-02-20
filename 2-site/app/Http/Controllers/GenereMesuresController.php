@@ -23,15 +23,15 @@ class GenereMesuresController extends Controller
 
 
     // Appelé par la route:
-	// 	    Route::get('genere/mesures/eventShoot',
+	// 	    Route::get('genere/mesures',
 	//                 GenereMesuresController@addMesures' );
 	//                                         ----------
 	public function addMesures()
 	{
 		// Supprime l'ensemble des mesures
 		// avant de générer le nouveau jeux d'essais
-		DB::table('fb_mesures')->truncate();
-		$n=20;
+		//DB::table('fb_mesures')->truncate();
+		$n=10;
 		$interval = 5; // Minutes
 		$this->add_EventShoots($n, $interval);
 		$this->add_Mesures($n, $interval);
@@ -50,6 +50,7 @@ class GenereMesuresController extends Controller
 		// Start at 10 km/h
 		$speed = 10;
 		// Generate 10 mesures
+		$begin_at= time();
 		for ($id = 1; $id <= $n; $id++) {
 			// Change speed
 			$speed++;
@@ -58,6 +59,8 @@ class GenereMesuresController extends Controller
 			$formated_time = date("Y-m-d H:i:s", $time);
 			$this->generateEventShoot($formated_time, $uid, $id, $speed);
 		}
+		$end_at = time();
+		echo $end_at - $begin_at
 	}
 
 	function generateEventShoot($time, $uid, $id, $speed)

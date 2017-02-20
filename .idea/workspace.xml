@@ -2,51 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/framework/sessions/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/storage/logs/.gitignore" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/CapteurController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/CapteurController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/EquipeController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/EquipeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurCentreController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurCentreController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/PartieController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/PartieController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Capteur.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Capteur.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Equipe.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Equipe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Inscription.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Inscription.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/JoueurCentre.php" afterPath="$PROJECT_DIR$/2-site/app/Models/JoueurCentre.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Joueurselectionne.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Joueurselectionne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Mesure.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Mesure.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Partie.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Partie.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Salle.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Salle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Models/Sessionmesure.php" afterPath="$PROJECT_DIR$/2-site/app/Models/Sessionmesure.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/capteur/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/capteur/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/complexesportif/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/equipe/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/equipe/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/inscription/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/inscription/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurselectionne/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/mesure/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/mesure/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/public/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/public/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/public/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/public/view.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/mesurestoutesajax/view.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/partie/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/partie/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/reseauxsalles/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/salle/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/salle/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/salle/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/salle/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/salle/public/form.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/salle/public/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/salle/public/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/salle/public/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/salle/public/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/salle/public/view.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/salle/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/salle/view.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/sessionmesure/index.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/sessionmesure/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/app/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/sessions/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/sessions/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/logs/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/logs/.gitignore" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,24 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SalleController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-              <folding>
-                <element signature="e#38#74#0#PHP" expanded="true" />
-                <marker date="1487365106499" expanded="true" signature="7845:7896" ph="INSERT INTO fbs_salles... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="31" />
+            <state relative-caret-position="28">
+              <caret line="50" column="66" lean-forward="false" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -135,17 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MesurestoutesController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/MesurestoutesController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="26" column="49" lean-forward="false" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MesuresVerificationController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MesuresVerificationController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/MesuresVerificationController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
@@ -157,6 +98,60 @@
                 <marker date="1487596919051" expanded="true" signature="2273:2431" ph="update fb_me... " />
                 <marker date="1487596919051" expanded="true" signature="3184:3334" ph="update fb_me... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnvoiMesures.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionmesureController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionMesuresAPIController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+              <folding>
+                <element signature="e#42#70#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnvoiMesuresController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenereMesuresController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1958">
+              <caret line="94" column="23" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,9 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>methodNotAllowed</find>
-      <find>check</find>
-      <find>getRouteForMethods</find>
       <find>clone</find>
       <find>clone-fields</find>
       <find>titre_section</find>
@@ -203,6 +195,9 @@
       <find>@if</find>
       <find>lis_joueurs_capteurs</find>
       <find>function getIndex</find>
+      <find>genere</find>
+      <find>chronoBorne</find>
+      <find>envoiMesures</find>
     </findStrings>
     <replaceStrings>
       <replace>}}</replace>
@@ -212,9 +207,9 @@
     </replaceStrings>
     <dirStrings>
       <dir>H:\wamp-3-32\www\ms_football_salles\2-site\resources</dir>
-      <dir>H:\wamp-3-32\www\ms_football_salles\2-site\app\Http</dir>
       <dir>H:\wamp-3-32\www\ms_football_salles\2-site</dir>
       <dir>H:\wamp-3-32\www\ms_football_salles\2-site\public\assets\smart-forms\js</dir>
+      <dir>H:\wamp-3-32\www\ms_football_salles\2-site\app\Http</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -323,9 +318,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2-site/app/Helpers/Database_selection.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/StatistiquesController.php" />
-        <option value="$PROJECT_DIR$/2-site/resources/views/inscriptionsdates/view.blade.php" />
         <option value="$PROJECT_DIR$/2-site/bootstrap/cache/config.php" />
         <option value="$PROJECT_DIR$/2-site/app/Helpers/GenereMesures.php" />
         <option value="$PROJECT_DIR$/2-site/app/Helpers/StatistiquesMesures.php" />
@@ -374,6 +366,9 @@
         <option value="$PROJECT_DIR$/2-site/app/MesuresVerification.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/MesuresVerificationController.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" />
       </list>
     </option>
   </component>
@@ -922,14 +917,7 @@
       <workItem from="1487378319875" duration="164000" />
       <workItem from="1487410391800" duration="10370000" />
       <workItem from="1487435293048" duration="4371000" />
-      <workItem from="1487593239606" duration="4332000" />
-    </task>
-    <task id="LOCAL-00033" summary="Statistiques: OK avec jeux d'essais">
-      <created>1480286962119</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1480286962119</updated>
+      <workItem from="1487593239606" duration="7304000" />
     </task>
     <task id="LOCAL-00034" summary="Test step form wizard">
       <created>1480380043712</created>
@@ -1267,11 +1255,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487016557293</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Détection rupture numero messages bornes et capteurs">
+      <created>1487609586126</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1487609586127</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="754210000" />
+    <option name="totallyTimeSpent" value="757182000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1290,7 +1285,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39285713" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5392857" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39285713" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2556391" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1298,11 +1294,10 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20045818" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1354,7 +1349,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Parsley pour vérification saisie joueur ou sélection OK" />
     <MESSAGE value="Parsley pour vérification saisie joueur ou sélection / Email unique OK" />
     <MESSAGE value="Partie /heure" />
     <MESSAGE value="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base" />
@@ -1379,7 +1373,8 @@
     <MESSAGE value="Problème Equipe A,B avec radio button : changé en select (requête au support)" />
     <MESSAGE value="Vue affichage fiche inscription oK: suite traiter le formulaire rempli" />
     <MESSAGE value="Vue affichage fiche inscription oK: enfin!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vue affichage fiche inscription oK: enfin!" />
+    <MESSAGE value="Détection rupture numero messages bornes et capteurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Détection rupture numero messages bornes et capteurs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1388,41 +1383,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/dashboard/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Helpers/Roles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="95" column="29" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/partie/view.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="37" column="71" lean-forward="false" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1-vendors/sximo/unzipped/ajax/source/sximo3/protected/app/controllers/BaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/layouts/sidemenu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1855">
-          <caret line="53" column="48" lean-forward="false" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Library/MyHelpers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1690,7 +1650,7 @@
         <state relative-caret-position="864">
           <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
           <folding>
-            <element signature="e#38#74#0#PHP" expanded="true" />
+            <element signature="e#38#74#0#PHP" expanded="false" />
             <marker date="1487365106499" expanded="true" signature="7845:7896" ph="INSERT INTO fbs_salles... " />
           </folding>
         </state>
@@ -1725,11 +1685,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1958">
+          <caret line="94" column="23" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="31" />
+        <state relative-caret-position="28">
+          <caret line="50" column="66" lean-forward="false" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="66" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1743,6 +1737,16 @@
             <marker date="1487596919051" expanded="true" signature="520:797" ph="SELECT `mesu... fb_mesures" />
             <marker date="1487596919051" expanded="true" signature="2273:2431" ph="update fb_me... " />
             <marker date="1487596919051" expanded="true" signature="3184:3334" ph="update fb_me... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+          <folding>
+            <element signature="e#42#70#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
