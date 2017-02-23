@@ -3,24 +3,12 @@
 @section('content')
 
   <div class="page-content row">
-    <!-- Page header -->
 
- 
  	<div class="page-content-wrapper m-t">
 
 
 <div class="sbox">
-	<div class="sbox-title"> 
-		<div class="sbox-tools pull-left" >
-			<a href="{{ url($pageModule.'?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="fa  fa-arrow-left"></i></a> 
-		</div>
-		<div class="sbox-tools " >
-			@if(Session::get('gid') ==1)
-				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
-			@endif 			
-		</div> 
-
-	</div>
+	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3> </div>
 	<div class="sbox-content"> 	
 
 		<ul class="parsley-error-list">
@@ -31,10 +19,10 @@
 
 		 {!! Form::open(array('url'=>'equipe/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
 <div class="col-md-12">
-						<fieldset><legend> Equipe</legend>
+						<fieldset><legend> Teams</legend>
 				{!! Form::hidden('equipe_id', $row['equipe_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Nom" class=" control-label col-md-4 text-left"> Nom </label>
+										<label for="Team name" class=" control-label col-md-4 text-left"> Team name </label>
 										<div class="col-md-6">
 										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 										 </div> 
@@ -43,7 +31,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Centre" class=" control-label col-md-4 text-left"> Centre </label>
+										<label for="Center" class=" control-label col-md-4 text-left"> Center </label>
 										<div class="col-md-6">
 										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
 										 </div> 
@@ -67,7 +55,7 @@
 					<button type="button" onclick="location.href='{{ URL::to('equipe?return='.$return) }}' " class="btn btn-warning btn-sm "><i class="icon-cancel-circle2 "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
-				  </div> 
+				  </div>
 		 
 		 {!! Form::close() !!}
 	</div>
@@ -81,7 +69,7 @@
 		$("#complexe_salle_id").jCombo("{!! url('equipe/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
 		 
-
+		
 		$('.removeMultiFiles').on('click',function(){
 			var removeUrl = '{{ url("equipe/removefiles?file=")}}'+$(this).attr('url');
 			$(this).parent().remove();

@@ -3,24 +3,12 @@
 @section('content')
 
   <div class="page-content row">
-    <!-- Page header -->
 
- 
  	<div class="page-content-wrapper m-t">
 
 
 <div class="sbox">
-	<div class="sbox-title"> 
-		<div class="sbox-tools pull-left" >
-			<a href="{{ url($pageModule.'?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="fa  fa-arrow-left"></i></a> 
-		</div>
-		<div class="sbox-tools " >
-			@if(Session::get('gid') ==1)
-				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
-			@endif 			
-		</div> 
-
-	</div>
+	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3> </div>
 	<div class="sbox-content"> 	
 
 		<ul class="parsley-error-list">
@@ -31,10 +19,10 @@
 
 		 {!! Form::open(array('url'=>'complexesportif/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
 <div class="col-md-12">
-						<fieldset><legend> Complexe sportif</legend>
+						<fieldset><legend> Sport complex</legend>
 				{!! Form::hidden('complexe_salle_id', $row['complexe_salle_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Nom" class=" control-label col-md-4 text-left"> Nom <span class="asterix"> * </span></label>
+										<label for="Name" class=" control-label col-md-4 text-left"> Name <span class="asterix"> * </span></label>
 										<div class="col-md-6">
 										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
@@ -43,7 +31,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Adresse" class=" control-label col-md-4 text-left"> Adresse </label>
+										<label for="Address" class=" control-label col-md-4 text-left"> Address </label>
 										<div class="col-md-6">
 										  <textarea name='Adresse' rows='5' id='Adresse' class='form-control '  
 				           >{{ $row['Adresse'] }}</textarea> 
@@ -53,7 +41,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Code Postal" class=" control-label col-md-4 text-left"> Code Postal </label>
+										<label for="Zip code" class=" control-label col-md-4 text-left"> Zip code </label>
 										<div class="col-md-6">
 										  {!! Form::text('code_postal', $row['code_postal'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 										 </div> 
@@ -62,7 +50,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Ville" class=" control-label col-md-4 text-left"> Ville </label>
+										<label for="Town" class=" control-label col-md-4 text-left"> Town </label>
 										<div class="col-md-6">
 										  {!! Form::text('ville', $row['ville'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 										 </div> 
@@ -71,7 +59,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Telephone" class=" control-label col-md-4 text-left"> Telephone </label>
+										<label for="Phone" class=" control-label col-md-4 text-left"> Phone </label>
 										<div class="col-md-6">
 										  {!! Form::text('telephone', $row['telephone'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 										 </div> 
@@ -89,7 +77,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Réseau" class=" control-label col-md-4 text-left"> Réseau <span class="asterix"> * </span></label>
+										<label for="Network" class=" control-label col-md-4 text-left"> Network <span class="asterix"> * </span></label>
 										<div class="col-md-6">
 										  <select name='club_id' rows='5' id='club_id' class='select2 ' required  ></select> 
 										 </div> 
@@ -113,7 +101,7 @@
 					<button type="button" onclick="location.href='{{ URL::to('complexesportif?return='.$return) }}' " class="btn btn-warning btn-sm "><i class="icon-cancel-circle2 "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
-				  </div> 
+				  </div>
 		 
 		 {!! Form::close() !!}
 	</div>
@@ -127,7 +115,7 @@
 		$("#club_id").jCombo("{!! url('complexesportif/comboselect?filter=fbs_reseaux_salles:club_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["club_id"] }}' });
 		 
-
+		
 		$('.removeMultiFiles').on('click',function(){
 			var removeUrl = '{{ url("complexesportif/removefiles?file=")}}'+$(this).attr('url');
 			$(this).parent().remove();

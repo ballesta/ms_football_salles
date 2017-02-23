@@ -3,24 +3,12 @@
 @section('content')
 
   <div class="page-content row">
-    <!-- Page header -->
 
- 
  	<div class="page-content-wrapper m-t">
 
 
 <div class="sbox">
-	<div class="sbox-title"> 
-		<div class="sbox-tools pull-left" >
-			<a href="{{ url($pageModule.'?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="fa  fa-arrow-left"></i></a> 
-		</div>
-		<div class="sbox-tools " >
-			@if(Session::get('gid') ==1)
-				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
-			@endif 			
-		</div> 
-
-	</div>
+	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3> </div>
 	<div class="sbox-content"> 	
 
 		<ul class="parsley-error-list">
@@ -31,10 +19,10 @@
 
 		 {!! Form::open(array('url'=>'reseauxsalles/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
 <div class="col-md-12">
-						<fieldset><legend> Réseaux de complexes sportifs</legend>
+						<fieldset><legend> Sport network</legend>
 				{!! Form::hidden('club_id', $row['club_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Nom" class=" control-label col-md-4 text-left"> Nom <span class="asterix"> * </span></label>
+										<label for="Name" class=" control-label col-md-4 text-left"> Name <span class="asterix"> * </span></label>
 										<div class="col-md-6">
 										  {!! Form::text('nom', $row['nom'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true'  )) !!} 
 										 </div> 
@@ -43,7 +31,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Ville" class=" control-label col-md-4 text-left"> Ville </label>
+										<label for="Town" class=" control-label col-md-4 text-left"> Town </label>
 										<div class="col-md-6">
 										  {!! Form::text('ville', $row['ville'],array('class'=>'form-control', 'placeholder'=>'',   )) !!} 
 										 </div> 
@@ -67,7 +55,7 @@
 					<button type="button" onclick="location.href='{{ URL::to('reseauxsalles?return='.$return) }}' " class="btn btn-warning btn-sm "><i class="icon-cancel-circle2 "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
-				  </div> 
+				  </div>
 		 
 		 {!! Form::close() !!}
 	</div>
@@ -78,7 +66,7 @@
 	$(document).ready(function() { 
 		
 		 
-
+		
 		$('.removeMultiFiles').on('click',function(){
 			var removeUrl = '{{ url("reseauxsalles/removefiles?file=")}}'+$(this).attr('url');
 			$(this).parent().remove();

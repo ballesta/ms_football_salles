@@ -12,31 +12,31 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Nom</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Name', (isset($fields['nom']['language'])? $fields['nom']['language'] : array())) }}</td>
 						<td>{{ $row->nom}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Prénom</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('First name', (isset($fields['premon']['language'])? $fields['premon']['language'] : array())) }}</td>
 						<td>{{ $row->premon}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>EMail</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('EMail', (isset($fields['eMail']['language'])? $fields['eMail']['language'] : array())) }}</td>
 						<td>{{ $row->eMail}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Téléphone</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Phone', (isset($fields['telephone']['language'])? $fields['telephone']['language'] : array())) }}</td>
 						<td>{{ $row->telephone}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Lateralite</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Righrt/left handed', (isset($fields['lateralite']['language'])? $fields['lateralite']['language'] : array())) }}</td>
 						<td>{{ $row->lateralite}} </td>
 						
 					</tr>

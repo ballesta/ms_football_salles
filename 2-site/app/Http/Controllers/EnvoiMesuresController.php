@@ -35,7 +35,8 @@ class EnvoiMesuresController extends Controller
 	    $url = "http://football.ballesta.fr/sessionMesures";
 	    //$url = "http://football.ballesta.fr/sessionMesures";
 	    $begin = time();
-	    $nombre_messages = 100;
+	    $nombre_messages = 1000;
+	    $ch = curl_init();
         for ($i=1; $i <= $nombre_messages ; $i++ ) {
             $s = $i*10;
             // Message
@@ -48,10 +49,11 @@ class EnvoiMesuresController extends Controller
 		        }
 			';
 	        // Appel de l'api pour l'envoi d'un message
-	        $response = $this->api_post($data_json, $url);
+	        $response = $this->api_post($ch, $data_json, $url);
             $r .= $response . '<br><hr>';
         }
-        $end = time();
+	    curl_close($ch);
+	    $end = time();
         $duree_emission = $end - $begin;
 
         $r .= "url: $url<br>"
@@ -64,9 +66,9 @@ class EnvoiMesuresController extends Controller
 
 
     // Envoi une mesure (codée en Json)
-    function api_post($data_json, $url)
+    function api_post($ch, $data_json, $url)
     {
-        $ch = curl_init();
+        //$ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch,
             CURLOPT_HTTPHEADER,
@@ -81,7 +83,7 @@ class EnvoiMesuresController extends Controller
             throw new Exception('****' . curl_error($ch), curl_errno($ch));
         }
 
-        curl_close($ch);
+        //curl_close($ch);
 
         return $response;
     }

@@ -3,24 +3,12 @@
 @section('content')
 
   <div class="page-content row">
-    <!-- Page header -->
 
- 
  	<div class="page-content-wrapper m-t">
 
 
 <div class="sbox">
-	<div class="sbox-title"> 
-		<div class="sbox-tools pull-left" >
-			<a href="{{ url($pageModule.'?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="fa  fa-arrow-left"></i></a> 
-		</div>
-		<div class="sbox-tools " >
-			@if(Session::get('gid') ==1)
-				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
-			@endif 			
-		</div> 
-
-	</div>
+	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3> </div>
 	<div class="sbox-content"> 	
 
 		<ul class="parsley-error-list">
@@ -31,7 +19,7 @@
 
 		 {!! Form::open(array('url'=>'capteur/save?return='.$return, 'class'=>'form-horizontal','files' => true , 'parsley-validate'=>'','novalidate'=>' ')) !!}
 <div class="col-md-12">
-						<fieldset><legend> Capteurs</legend>
+						<fieldset><legend> Sensors</legend>
 				{!! Form::hidden('capteur_id', $row['capteur_id']) !!}					
 									  <div class="form-group  " >
 										<label for="Code" class=" control-label col-md-4 text-left"> Code </label>
@@ -98,7 +86,7 @@
 					<button type="button" onclick="location.href='{{ URL::to('capteur?return='.$return) }}' " class="btn btn-warning btn-sm "><i class="icon-cancel-circle2 "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
-				  </div> 
+				  </div>
 		 
 		 {!! Form::close() !!}
 	</div>
@@ -112,7 +100,7 @@
 		$("#complexe_salle_id").jCombo("{!! url('capteur/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
 		 
-
+		
 		$('.removeMultiFiles').on('click',function(){
 			var removeUrl = '{{ url("capteur/removefiles?file=")}}'+$(this).attr('url');
 			$(this).parent().remove();

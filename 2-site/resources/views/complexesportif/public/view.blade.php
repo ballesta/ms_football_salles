@@ -12,37 +12,37 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Nom</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Name', (isset($fields['nom']['language'])? $fields['nom']['language'] : array())) }}</td>
 						<td>{{ $row->nom}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Adresse</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Address', (isset($fields['Adresse']['language'])? $fields['Adresse']['language'] : array())) }}</td>
 						<td>{{ $row->Adresse}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Code Postal</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Zip code', (isset($fields['code_postal']['language'])? $fields['code_postal']['language'] : array())) }}</td>
 						<td>{{ $row->code_postal}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Ville</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Town', (isset($fields['ville']['language'])? $fields['ville']['language'] : array())) }}</td>
 						<td>{{ $row->ville}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Telephone</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Phone', (isset($fields['telephone']['language'])? $fields['telephone']['language'] : array())) }}</td>
 						<td>{{ $row->telephone}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Email</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Email', (isset($fields['email']['language'])? $fields['email']['language'] : array())) }}</td>
 						<td>{{ $row->email}} </td>
 						
 					</tr>

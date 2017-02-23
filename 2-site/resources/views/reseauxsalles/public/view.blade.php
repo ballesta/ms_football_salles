@@ -12,13 +12,13 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Nom</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Netword name', (isset($fields['nom']['language'])? $fields['nom']['language'] : array())) }}</td>
 						<td>{{ $row->nom}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Ville</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Town', (isset($fields['ville']['language'])? $fields['ville']['language'] : array())) }}</td>
 						<td>{{ $row->ville}} </td>
 						
 					</tr>

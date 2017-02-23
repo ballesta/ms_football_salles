@@ -14,56 +14,58 @@
 </tr>
 </table>
 <!--//)) Code generated end-->
-<div class="sbox-title">
-<div class="sbox-tools pull-left" >
-@if($access['is_add'] ==1)
-<a href="{{ URL::to('complexesportif/update?return='.$return) }}"
-class="tips"  title="{{ Lang::get('core.btn_create') }}">
-<i class="fa  fa-plus "></i> Créer</a>
-@endif
-@if($access['is_remove'] ==1)
-<a href="javascript://ajax"  onclick="SximoDelete();" class="tips"
-title="Supprimer les lignes cochées">
-<i class="fa fa-trash-o"></i> Supprimer</a>
-@endif
-<a href="{{ URL::to( 'complexesportif/search?return='.$return) }}"
-class="tips"
-onclick="SximoModal(this.href,'Advance Search'); return false;"               title="{{ Lang::get('core.btn_search') }}">
-<i class="fa fa-search"> Rechercher</i> </a>
-@if($access['is_excel'] ==1)
-<a href="{{ URL::to('complexesportif/download?return='.$return) }}" class="tips " title="{{ Lang::get('core.btn_download') }}">
-<i class="fa fa-cloud-download"></i> Télécharger</a>
-@endif
-<a href="{{ url($pageModule) }}"
-class=" tips"
-title="{{ Lang::get('core.btn_clearsearch') }}" >
-<i class="fa fa-spinner"> Tout Afficher</i>
-</a>
-</div>
+<div class="sbox-title"> <h5> <i class="fa fa-table"></i> {{ $pageTitle }} <small>{{ $pageNote }}</small> </h5>
 <div class="sbox-tools" >
+<a href="{{ url($pageModule) }}" class="btn btn-xs btn-white tips"  title="{{ Lang::get('core.btn_clearsearch') }}" ><i class="fa fa-trash-o"></i> {{ Lang::get('core.btn_clearsearch') }} </a>
 @if(Session::get('gid') ==1)
-<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
+<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="btn btn-xs btn-white tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa fa-cog"></i></a>
 @endif
 </div>
 </div>
 <div class="sbox-content">
+<div class="m-b row ">
+<div class="col-md-6">
+@if($access['is_add'] ==1)
+<a href="{{ URL::to('complexesportif/update') }}" class="tips btn btn-sm btn-white"  title="{{ Lang::get('core.btn_create') }}">
+<i class="fa fa-plus-circle "></i>&nbsp;{{ Lang::get('core.btn_create') }}</a>
+<a href="javascript://ajax" class="btn btn-sm btn-white copy" ><i class="icon-copy"></i> Copy </a>
+@endif
+@if($access['is_remove'] ==1)
+<a href="javascript://ajax"  onclick="SximoDelete();" class="tips btn btn-sm btn-white" title="{{ Lang::get('core.btn_remove') }}">
+<i class="fa fa-minus-circle "></i>&nbsp;{{ Lang::get('core.btn_remove') }}</a>
+@endif
+<a href="{{ URL::to( 'complexesportif/search') }}" class="btn btn-sm btn-white" onclick="SximoModal(this.href,'Advance Search'); return false;" title="{{ Lang::get('core.btn_search') }}"><i class="fa fa-search"></i> {{ Lang::get('core.btn_search') }} </a>
+</div>
+<div class="col-md-6 ">
+@if($access['is_excel'] ==1)
+<div class="pull-right">
+<a href="{{ URL::to( $pageModule .'/export/excel?return='.$return) }}" class="btn btn-sm btn-white"><i class="icon-file-download"></i> Excel</a>
+<a href="{{ URL::to( $pageModule .'/export/word?return='.$return) }}" class="btn btn-sm btn-white"><i class="icon-file-download"></i> Word </a>
+<a href="{{ URL::to( $pageModule .'/export/csv?return='.$return) }}" class="btn btn-sm btn-white"><i class="icon-file-download"></i> CSV </a>
+<a href="{{ URL::to( $pageModule .'/export/print?return='.$return) }}" class="btn btn-sm btn-white" onclick="ajaxPopupStatic(this.href); return false;" ><i class="icon-print2"></i> Print</a>
+</div>
+@endif
+</div>
+</div>
 {!! (isset($search_map) ? $search_map : '') !!}
-{!! Form::open(array('url'=>'complexesportif/delete/0?return='.$return, 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
+{!! Form::open(array('url'=>'complexesportif/delete/', 'class'=>'form-horizontal' ,'id' =>'SximoTable' )) !!}
 <div class="table-responsive" style="min-height:300px;">
 <table class="table table-striped ">
 <thead>
 <tr>
-<th class="number"><span> No </span> </th>
+<th class="number"> No </th>
 <th> <input type="checkbox" class="checkall" /></th>
 @foreach ($tableGrid as $t)
 @if($t['view'] =='1')
-<?php $limited = isset($t['limited']) ? $t['limited'] :''; ?>
-@if(SiteHelpers::filterColumn($limited ))
-<th><span>{{ $t['label'] }}</span></th>
-@endif
+<?php $limited = isset($t['limited']) ? $t['limited'] :'';
+if(SiteHelpers::filterColumn($limited ))
+{
+    echo '<th align="'.$t['align'].'" width="'.$t['width'].'">'.\SiteHelpers::activeLang($t['label'],(isset($t['language'])? $t['language'] : array())).'</th>';
+}
+?>
 @endif
 @endforeach
-<th width="40%"><span>{{ Lang::get('core.btn_action') }}</span></th>
+<th width="40%">{{ Lang::get('core.btn_action') }}</th>
 </tr>
 </thead>
 <tbody>
@@ -81,7 +83,7 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 @endif
 @endif
 @endforeach
-<td>
+<td width="100" class="text-right">
 <!--//(( Code generated begin-->
 {!!
     \Navigation::link_to_detail(
@@ -153,4 +155,21 @@ title="{{ Lang::get('core.btn_clearsearch') }}" >
 </div>
 </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('.do-quick-search').click(function(){
+    $('#SximoTable').attr('action','{{ URL::to("complexesportif/multisearch")}}');
+        $('#SximoTable').submit();
+    });
+    $('.copy').click(function() {
+        var total = $('input[class="ids"]:checkbox:checked').length;
+        if(confirm('are u sure Copy selected rows ?'))
+        {
+        $('#SximoTable').attr('action','{{ url("complexesportif/copy")}}');
+            $('#SximoTable').submit();// do the rest here
+        }
+    })
+    
+});
+</script>
 @stop

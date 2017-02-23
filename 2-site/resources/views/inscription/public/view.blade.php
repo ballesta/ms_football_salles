@@ -12,25 +12,25 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Player</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Player', (isset($fields['joueur_id']['language'])? $fields['joueur_id']['language'] : array())) }}</td>
 						<td>{{ SiteHelpers::formatLookUp($row->joueur_id,'joueur_id','1:fb_joueurs:joueur_id:premon|nom') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Game</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Game', (isset($fields['partie_id']['language'])? $fields['partie_id']['language'] : array())) }}</td>
 						<td>{{ SiteHelpers::formatLookUp($row->partie_id,'partie_id','1:fb_partie:partie_id:debut') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Team</td>
-						<td>{{ SiteHelpers::formatLookUp($row->equipe_id,'equipe_id','1:fb_equipes:equipe_id:nom') }} </td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Equipe A B', (isset($fields['equipe_a_b']['language'])? $fields['equipe_a_b']['language'] : array())) }}</td>
+						<td>{{ $row->equipe_a_b}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Sensor</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Sensor', (isset($fields['capteur_id']['language'])? $fields['capteur_id']['language'] : array())) }}</td>
 						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:code') }} </td>
 						
 					</tr>

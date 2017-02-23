@@ -74,6 +74,45 @@ class ComplexesportifController extends Controller {
         \Session::forget("equipe_id");
         \Session::forget("equipe_id_identifier");
         ////)) Code generated end
+        ////(( Code generated begin
+        // Get parameter in URL to use it as filter
+        $id = $request->query("club_id");
+        $identifier = $request->query("nom");
+        if (!is_null($id))
+        {
+            \Session::put("club_id", $id);
+            \Session::put("club_id_identifier", $identifier);
+        }
+        $id = \Session::get("club_id", null);
+        $active_filter = \Session::get("club_id_identifier");
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("reseauxsalles")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Réseau de salles</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Centres sportifs</i>")
+            ->with("msgstatus","warning");
+        }
+        ////)) Code generated end
+        ////(( Code generated begin
+        \Session::forget("complexe_salle_id");
+        \Session::forget("complexe_salle_id_identifier");
+        \Session::forget("salle_id");
+        \Session::forget("salle_id_identifier");
+        \Session::forget("partie_id");
+        \Session::forget("partie_id_identifier");
+        \Session::forget("inscription_id");
+        \Session::forget("inscription_id_identifier");
+        \Session::forget("joueur_id");
+        \Session::forget("joueur_id_identifier");
+        \Session::forget("capteurs_id");
+        \Session::forget("capteurs_id_identifier");
+        \Session::forget("equipe_id");
+        \Session::forget("equipe_id_identifier");
+        ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -116,10 +155,11 @@ class ComplexesportifController extends Controller {
         // Grid Configuration
         $this->data['tableGrid'] 	= $this->info['config']['grid'];
         $this->data['tableForm'] 	= $this->info['config']['forms'];
+        $this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);
         // Group users permission
         $this->data['access']		= $this->access;
         // Detail from master if any
-        
+        $this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
         // Master detail link if any
         $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
@@ -146,14 +186,8 @@ class ComplexesportifController extends Controller {
             $this->data['row'] =  $row;
         } else {
             $this->data['row'] = $this->model->getColumnTable('fbs_complexe_salles');
-            ////(( Code generated begin
-            $columns = $this->data['row'];
-            $id = \Session::get('club_id', null);
-            $columns['club_id'] = $id;
-            $this->data['row'] = $columns;
-            ////)) Code generated end
         }
-        $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
+        $this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['forms']);
         
         $this->data['id'] = $id;
         return view('complexesportif.form',$this->data);
@@ -172,11 +206,32 @@ class ComplexesportifController extends Controller {
             $this->data['id'] = $id;
             $this->data['access']		= $this->access;
             $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
-            $this->data['prevnext'] = $this->model->prevNext($id);
+            $this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
             return view('complexesportif.view',$this->data);
         } else {
             return Redirect::to('complexesportif')->with('messagetext','Record Not Found !')->with('msgstatus','error');
         }
+    }
+    function postCopy( Request $request)
+    {
+        foreach(\DB::select("SHOW COLUMNS FROM fbs_complexe_salles ") as $column)
+        {
+            if( $column->Field != 'complexe_salle_id')
+            $columns[] = $column->Field;
+        }
+        
+        if(count($request->input('ids')) >=1)
+        {
+            $toCopy = implode(",",$request->input('ids'));
+            $sql = "INSERT INTO fbs_complexe_salles (".implode(",", $columns).") ";
+            $sql .= " SELECT ".implode(",", $columns)." FROM fbs_complexe_salles WHERE complexe_salle_id IN (".$toCopy.")";
+            \DB::select($sql);
+            return Redirect::to('complexesportif')->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+        } else {
+            
+            return Redirect::to('complexesportif')->with('messagetext','Please select row to copy')->with('msgstatus','error');
+        }
+        
     }
     function postSave( Request $request)
     {
@@ -204,7 +259,7 @@ class ComplexesportifController extends Controller {
             return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
             
         } else {
-            return Redirect::to('complexesportif/update/'.$request->input('complexe_salle_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+            return Redirect::to('complexesportif/update/'. $request->input('complexe_salle_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
             ->withErrors($validator)->withInput();
         }
         
@@ -222,11 +277,11 @@ class ComplexesportifController extends Controller {
             
             \SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
             // redirect
-            return Redirect::to('complexesportif?return='.self::returnUrl())
+            return Redirect::to('complexesportif')
             ->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
             
         } else {
-            return Redirect::to('complexesportif?return='.self::returnUrl())
+            return Redirect::to('complexesportif')
             ->with('messagetext','No Item Deleted')->with('msgstatus','error');
         }
     }

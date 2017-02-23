@@ -12,13 +12,13 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Nom</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Team name', (isset($fields['nom']['language'])? $fields['nom']['language'] : array())) }}</td>
 						<td>{{ $row->nom}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Centre</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Center', (isset($fields['complexe_salle_id']['language'])? $fields['complexe_salle_id']['language'] : array())) }}</td>
 						<td>{{ SiteHelpers::formatLookUp($row->complexe_salle_id,'complexe_salle_id','1:fbs_complexe_salles:complexe_salle_id:nom|ville') }} </td>
 						
 					</tr>

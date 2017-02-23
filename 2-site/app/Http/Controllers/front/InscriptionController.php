@@ -199,12 +199,20 @@ class InscriptionController extends Controller
 				}
 				// Joueur_id est connu.
 				// Inscription du joueur à la partie
+				if (isset($request->joueur_capteur_id[$j]))
+					$joueur_capteur_id = $request->joueur_capteur_id[$j];
+				else
+					$joueur_capteur_id = 0;
+				if (isset($request->joueur_equipe_id[$j]))
+					$joueur_equipe_id = $request->joueur_equipe_id[$j];
+				else
+					$joueur_equipe_id = 0;
 				DB::table('fbs_inscription')->insert(
 					[
 						'joueur_id'         => $joueur_id,
 						'partie_id'         => $request->partie_id,
-						'capteur_id'        => $request->joueur_capteur_id[$j],
-						'equipe_a_b'        => $request->joueur_equipe_id[$j]
+						'capteur_id'        => $joueur_capteur_id,
+						'equipe_a_b'        => $joueur_equipe_id
 					]);
 			}
 			$j++;

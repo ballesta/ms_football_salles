@@ -9,7 +9,15 @@ class Sximo extends Model {
 	{
        $table = with(new static)->table;
 	   $key = with(new static)->primaryKey;
-	   
+
+	   // Pour eviter les erreurs dans PHP STORM
+		$page 	= '';
+		$limit = '';
+		$sort 	= '';
+		$order = '';
+		$params= '';
+		$global= '';
+
         extract( array_merge( array(
 			'page' 		=> '0' ,
 			'limit'  	=> '0' ,
@@ -51,18 +59,35 @@ class Sximo extends Model {
        $table = with(new static)->table;
 	   $key = with(new static)->primaryKey;
 
-		$result = \DB::select( 
-				self::querySelect() . 
-				self::queryWhere().
-				" AND ".$table.".".$key." = '{$id}' ". 
-				self::queryGroup()
-			);	
+	    //dd([self::querySelect(), self::queryWhere(), self::queryGroup()]);
+		if (empty(self::queryWhere()))
+		{
+			// Pas de filtre
+			$where = ' WHERE ';
+			$and = ' ';
+		}
+		else
+		{
+			// Filtre donc ' WHERE ' présent
+			$where = ' ';
+			// Et au moins 1 condition donc ' AND ' avant deuxième
+			$and = " AND ";
+		}
+
+		$query =  self::querySelect()
+				. $where
+				. self::queryWhere()
+		        . $and . $table.".".$key." = $id "
+				. self::queryGroup();
+		//dd($query);
+		$result = \DB::select( $query);
 		if(count($result) <= 0){
 			$result = array();		
 		} else {
 
 			$result = $result[0];
 		}
+		//dd($result);
 		return $result;		
 	}	
 

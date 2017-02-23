@@ -62,6 +62,33 @@ class InscriptionController extends Controller {
         \Session::forget("inscription_id");
         \Session::forget("inscription_id_identifier");
         ////)) Code generated end
+        ////(( Code generated begin
+        // Get parameter in URL to use it as filter
+        $id = $request->query("partie_id");
+        $identifier = $request->query("debut");
+        if (!is_null($id))
+        {
+            \Session::put("partie_id", $id);
+            \Session::put("partie_id_identifier", $identifier);
+        }
+        $id = \Session::get("partie_id", null);
+        $active_filter = \Session::get("partie_id_identifier");
+        // Check if parent already selected
+        if (is_null($id))
+        {
+            return Redirect::to("partie")
+            ->with("messagetext",
+            "Vous devez d'abord sélectionner votre <br> "
+            ."<i>Parties</i> <br>"
+            ."avant de choisir <br>"
+            ."<i>Inscriptions</i>")
+            ->with("msgstatus","warning");
+        }
+        ////)) Code generated end
+        ////(( Code generated begin
+        \Session::forget("inscription_id");
+        \Session::forget("inscription_id_identifier");
+        ////)) Code generated end
         if($this->access['is_view'] ==0)
         return Redirect::to('dashboard')
         ->with('messagetext', \Lang::get('core.note_restric'))->with('msgstatus','error');
@@ -104,10 +131,11 @@ class InscriptionController extends Controller {
         // Grid Configuration
         $this->data['tableGrid'] 	= $this->info['config']['grid'];
         $this->data['tableForm'] 	= $this->info['config']['forms'];
+        $this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);
         // Group users permission
         $this->data['access']		= $this->access;
         // Detail from master if any
-        
+        $this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
         // Master detail link if any
         $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
         // Render into template
@@ -134,14 +162,8 @@ class InscriptionController extends Controller {
             $this->data['row'] =  $row;
         } else {
             $this->data['row'] = $this->model->getColumnTable('fbs_inscription');
-            ////(( Code generated begin
-            $columns = $this->data['row'];
-            $id = \Session::get('partie_id', null);
-            $columns['partie_id'] = $id;
-            $this->data['row'] = $columns;
-            ////)) Code generated end
         }
-        $this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
+        $this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['forms']);
         
         $this->data['id'] = $id;
         return view('inscription.form',$this->data);
@@ -160,11 +182,32 @@ class InscriptionController extends Controller {
             $this->data['id'] = $id;
             $this->data['access']		= $this->access;
             $this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array());
-            $this->data['prevnext'] = $this->model->prevNext($id);
+            $this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
             return view('inscription.view',$this->data);
         } else {
             return Redirect::to('inscription')->with('messagetext','Record Not Found !')->with('msgstatus','error');
         }
+    }
+    function postCopy( Request $request)
+    {
+        foreach(\DB::select("SHOW COLUMNS FROM fbs_inscription ") as $column)
+        {
+            if( $column->Field != 'inscription_id')
+            $columns[] = $column->Field;
+        }
+        
+        if(count($request->input('ids')) >=1)
+        {
+            $toCopy = implode(",",$request->input('ids'));
+            $sql = "INSERT INTO fbs_inscription (".implode(",", $columns).") ";
+            $sql .= " SELECT ".implode(",", $columns)." FROM fbs_inscription WHERE inscription_id IN (".$toCopy.")";
+            \DB::select($sql);
+            return Redirect::to('inscription')->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+        } else {
+            
+            return Redirect::to('inscription')->with('messagetext','Please select row to copy')->with('msgstatus','error');
+        }
+        
     }
     function postSave( Request $request)
     {
@@ -192,7 +235,7 @@ class InscriptionController extends Controller {
             return Redirect::to($return)->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
             
         } else {
-            return Redirect::to('inscription/update/'.$request->input('inscription_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+            return Redirect::to('inscription/update/'. $request->input('inscription_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
             ->withErrors($validator)->withInput();
         }
         
@@ -210,11 +253,11 @@ class InscriptionController extends Controller {
             
             \SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
             // redirect
-            return Redirect::to('inscription?return='.self::returnUrl())
+            return Redirect::to('inscription')
             ->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success');
             
         } else {
-            return Redirect::to('inscription?return='.self::returnUrl())
+            return Redirect::to('inscription')
             ->with('messagetext','No Item Deleted')->with('msgstatus','error');
         }
     }

@@ -3,24 +3,12 @@
 @section('content')
 
   <div class="page-content row">
-    <!-- Page header -->
 
- 
  	<div class="page-content-wrapper m-t">
 
 
 <div class="sbox">
-	<div class="sbox-title"> 
-		<div class="sbox-tools pull-left" >
-			<a href="{{ url($pageModule.'?return='.$return) }}" class="tips"  title="{{ Lang::get('core.btn_back') }}" ><i class="fa  fa-arrow-left"></i></a> 
-		</div>
-		<div class="sbox-tools " >
-			@if(Session::get('gid') ==1)
-				<a href="{{ URL::to('sximo/module/config/'.$pageModule) }}" class="tips" title=" {{ Lang::get('core.btn_config') }}" ><i class="fa  fa-ellipsis-v"></i></a>
-			@endif 			
-		</div> 
-
-	</div>
+	<div class="sbox-title"> <h3> {{ $pageTitle }} <small>{{ $pageNote }}</small></h3> </div>
 	<div class="sbox-content"> 	
 
 		<ul class="parsley-error-list">
@@ -34,16 +22,11 @@
 						<fieldset><legend> Parties</legend>
 				{!! Form::hidden('partie_id', $row['partie_id']) !!}					
 									  <div class="form-group  " >
-										<label for="Debut" class=" control-label col-md-4 text-left"> Debut <span class="asterix"> * </span></label>
+										<label for="Begins" class=" control-label col-md-4 text-left"> Begins <span class="asterix"> * </span></label>
 										<div class="col-md-6">
 										  
 				<div class="input-group m-b" style="width:150px !important;">
-					{!! Form::text('debut',
-					               date('d/m/Y h:i',strtotime($row['debut'])),
-					               array('class'=>'form-control datetime',
-					                     'style'=>'width:150px !important')
-					                    )
-					!!}
+					{!! Form::text('debut', $row['debut'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
 				 
@@ -53,7 +36,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Duree" class=" control-label col-md-4 text-left"> Duree </label>
+										<label for="Duration" class=" control-label col-md-4 text-left"> Duration </label>
 										<div class="col-md-6">
 										  
 					<?php $duree = explode(',',$row['duree']);
@@ -71,7 +54,21 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Salle" class=" control-label col-md-4 text-left"> Salle </label>
+										<label for="End" class=" control-label col-md-4 text-left"> End </label>
+										<div class="col-md-6">
+										  
+				<div class="input-group m-b" style="width:150px !important;">
+					{!! Form::text('fin', $row['fin'],array('class'=>'form-control datetime', 'style'=>'width:150px !important;')) !!}
+					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				</div>
+				 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group  " >
+										<label for="Play Ground" class=" control-label col-md-4 text-left"> Play Ground </label>
 										<div class="col-md-6">
 										  <select name='salle_id' rows='5' id='salle_id' class='select2 '   ></select> 
 										 </div> 
@@ -80,7 +77,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Equipe A" class=" control-label col-md-4 text-left"> Equipe A </label>
+										<label for="A team" class=" control-label col-md-4 text-left"> A team </label>
 										<div class="col-md-6">
 										  <select name='equipe_a_id' rows='5' id='equipe_a_id' class='select2 '   ></select> 
 										 </div> 
@@ -89,7 +86,7 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Equipe B" class=" control-label col-md-4 text-left"> Equipe B </label>
+										<label for="B team" class=" control-label col-md-4 text-left"> B team </label>
 										<div class="col-md-6">
 										  <select name='equipe_b_id' rows='5' id='equipe_b_id' class='select2 '   ></select> 
 										 </div> 
@@ -122,7 +119,7 @@
 					<button type="button" onclick="location.href='{{ URL::to('partie?return='.$return) }}' " class="btn btn-warning btn-sm "><i class="icon-cancel-circle2 "></i>  {{ Lang::get('core.sb_cancel') }} </button>
 					</div>	  
 			
-				  </div> 
+				  </div>
 		 
 		 {!! Form::close() !!}
 	</div>
@@ -142,10 +139,10 @@
 		$("#equipe_b_id").jCombo("{!! url('partie/comboselect?filter=fb_equipes:equipe_id:nom') !!}",
 		{  selected_value : '{{ $row["equipe_b_id"] }}' });
 		
-		$("#complexe_salle_id").jCombo("{!! url('partie/comboselect?filter=fb_clubs:club_id:nom') !!}",
+		$("#complexe_salle_id").jCombo("{!! url('partie/comboselect?filter=fbs_complexe_salles:complexe_salle_id:nom|ville') !!}",
 		{  selected_value : '{{ $row["complexe_salle_id"] }}' });
 		 
-
+		
 		$('.removeMultiFiles').on('click',function(){
 			var removeUrl = '{{ url("partie/removefiles?file=")}}'+$(this).attr('url');
 			$(this).parent().remove();

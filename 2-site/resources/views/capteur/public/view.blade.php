@@ -12,25 +12,25 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Code</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Code', (isset($fields['code']['language'])? $fields['code']['language'] : array())) }}</td>
 						<td>{{ $row->code}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Numéro Serie</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Serial numbezr', (isset($fields['numero_serie']['language'])? $fields['numero_serie']['language'] : array())) }}</td>
 						<td>{{ $row->numero_serie}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Bluetooth</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Bluetooth', (isset($fields['UID']['language'])? $fields['UID']['language'] : array())) }}</td>
 						<td>{{ $row->UID}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Date Achat</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Date baught', (isset($fields['date_achat']['language'])? $fields['date_achat']['language'] : array())) }}</td>
 						<td>{{ date('d/m/Y',strtotime($row->date_achat)) }} </td>
 						
 					</tr>

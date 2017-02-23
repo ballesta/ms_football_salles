@@ -12,56 +12,56 @@
 		
 			
 					<tr>
-						<td width='30%' class='label-view text-right'>Inscription Id</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Inscription Id', (isset($fields['inscription_id']['language'])? $fields['inscription_id']['language'] : array())) }}</td>
 						<td>{{ $row->inscription_id}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Joueur Id</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Joueur Id', (isset($fields['joueur_id']['language'])? $fields['joueur_id']['language'] : array())) }}</td>
 						<td>{{ SiteHelpers::formatLookUp($row->joueur_id,'joueur_id','1:fb_joueurs:joueur_id:premon|nom') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Terrain Id</td>
-						<td>{{ SiteHelpers::formatLookUp($row->terrain_id,'terrain_id','1:fbs_salles:salle_id:identifiant') }} </td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Partie Id', (isset($fields['partie_id']['language'])? $fields['partie_id']['language'] : array())) }}</td>
+						<td>{{ SiteHelpers::formatLookUp($row->partie_id,'partie_id','1:fb_partie:partie_id:debut|duree') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Heure Debut</td>
-						<td>{{ date('',strtotime($row->heure_debut)) }} </td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Equipe A B', (isset($fields['equipe_a_b']['language'])? $fields['equipe_a_b']['language'] : array())) }}</td>
+						<td>{{ $row->equipe_a_b}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Capteur Id</td>
-						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:numero_serie') }} </td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Capteur Id', (isset($fields['capteur_id']['language'])? $fields['capteur_id']['language'] : array())) }}</td>
+						<td>{{ SiteHelpers::formatLookUp($row->capteur_id,'capteur_id','1:fb_capteurs:capteur_id:code') }} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>Created By User Id</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Gage', (isset($fields['gage']['language'])? $fields['gage']['language'] : array())) }}</td>
+						<td>{{ $row->gage}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Created By User Id', (isset($fields['created_by_user_id']['language'])? $fields['created_by_user_id']['language'] : array())) }}</td>
 						<td>{{ $row->created_by_user_id}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>CreatedOn</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('CreatedOn', (isset($fields['createdOn']['language'])? $fields['createdOn']['language'] : array())) }}</td>
 						<td>{{ $row->createdOn}} </td>
 						
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>UpdatedOn</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('UpdatedOn', (isset($fields['updatedOn']['language'])? $fields['updatedOn']['language'] : array())) }}</td>
 						<td>{{ $row->updatedOn}} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>Complexe Salle Id</td>
-						<td>{{ $row->complexe_salle_id}} </td>
 						
 					</tr>
 						

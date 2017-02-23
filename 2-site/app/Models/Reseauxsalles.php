@@ -1,6 +1,4 @@
-<?php
-namespace App\Models;
-//namespace App\Helpers\Roles;
+<?php namespace App\Models;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 class reseauxsalles extends Sximo  {

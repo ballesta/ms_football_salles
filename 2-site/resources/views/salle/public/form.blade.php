@@ -27,29 +27,36 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Nbr Joueurs Equipe" class=" control-label col-md-4 text-left"> Nbr Joueurs Equipe </label>
+										<label for="Maximum players" class=" control-label col-md-4 text-left"> Maximum players <span class="asterix"> * </span></label>
 										<div class="col-md-6">
-										  <textarea name='nbr_joueurs_equipe' rows='5' id='nbr_joueurs_equipe' class='form-control '  
-				           >{{ $row['nbr_joueurs_equipe'] }}</textarea> 
+										  {!! Form::text('nbr_joueurs_equipe', $row['nbr_joueurs_equipe'],array('class'=>'form-control', 'placeholder'=>'', 'required'=>'true', 'parsley-type'=>'number'   )) !!} 
 										 </div> 
 										 <div class="col-md-2">
 										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Nombre de joueurs maximum par équipe"><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Centre" class=" control-label col-md-4 text-left"> Centre </label>
+										<label for="Sensors" class=" control-label col-md-4 text-left"> Sensors </label>
 										<div class="col-md-6">
-										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
+										  
+					<?php $capteurs = explode(',',$row['capteurs']);
+					$capteurs_opt = array( '1' => 'Equipé de bornes MS-SPORT' ,  '0' => 'NON équipé de bornes MS-SPORT' , ); ?>
+					<select name='capteurs' rows='5'   class='select2 '  > 
+						<?php 
+						foreach($capteurs_opt as $key=>$val)
+						{
+							echo "<option  value ='$key' ".($row['capteurs'] == $key ? " selected='selected' " : '' ).">$val</option>"; 						
+						}						
+						?></select> 
 										 </div> 
 										 <div class="col-md-2">
-										 	
+										 	<a href="#" data-toggle="tooltip" placement="left" class="tips" title="Le terrain (salle) est il équipé de bornes de réception des signaux des capteurs "><i class="icon-question2"></i></a>
 										 </div>
 									  </div> 					
 									  <div class="form-group  " >
-										<label for="Sensors" class=" control-label col-md-4 text-left"> Sensors </label>
+										<label for="Centre" class=" control-label col-md-4 text-left"> Centre </label>
 										<div class="col-md-6">
-										  <textarea name='capteurs' rows='5' id='capteurs' class='form-control '  
-				           >{{ $row['capteurs'] }}</textarea> 
+										  <select name='complexe_salle_id' rows='5' id='complexe_salle_id' class='select2 '   ></select> 
 										 </div> 
 										 <div class="col-md-2">
 										 	

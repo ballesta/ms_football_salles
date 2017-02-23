@@ -88,11 +88,12 @@ class ReseauxsallesController extends Controller {
 		$this->data['i']			= ($page * $params['limit'])- $params['limit']; 
 		// Grid Configuration 
 		$this->data['tableGrid'] 	= $this->info['config']['grid'];
-		$this->data['tableForm'] 	= $this->info['config']['forms'];	
+		$this->data['tableForm'] 	= $this->info['config']['forms'];
+		$this->data['colspan'] 		= \SiteHelpers::viewColSpan($this->info['config']['grid']);		
 		// Group users permission
 		$this->data['access']		= $this->access;
 		// Detail from master if any
-		
+		$this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
 		// Master detail link if any 
 		$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
 		// Render into template
@@ -123,7 +124,7 @@ class ReseauxsallesController extends Controller {
 		} else {
 			$this->data['row'] = $this->model->getColumnTable('fbs_reseaux_salles'); 
 		}
-		$this->data['fields'] 		=  \SiteHelpers::fieldLang($this->info['config']['forms']);
+		$this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['forms']);
 		
 		$this->data['id'] = $id;
 		return view('reseauxsalles.form',$this->data);
@@ -144,12 +145,34 @@ class ReseauxsallesController extends Controller {
 			$this->data['id'] = $id;
 			$this->data['access']		= $this->access;
 			$this->data['subgrid']	= (isset($this->info['config']['subgrid']) ? $this->info['config']['subgrid'] : array()); 
-			$this->data['prevnext'] = $this->model->prevNext($id);
+			$this->data['fields'] =  \AjaxHelpers::fieldLang($this->info['config']['grid']);
 			return view('reseauxsalles.view',$this->data);
 		} else {
 			return Redirect::to('reseauxsalles')->with('messagetext','Record Not Found !')->with('msgstatus','error');					
 		}
-	}	
+	}
+
+	function postCopy( Request $request)
+	{
+	    foreach(\DB::select("SHOW COLUMNS FROM fbs_reseaux_salles ") as $column)
+        {
+			if( $column->Field != 'club_id')
+				$columns[] = $column->Field;
+        }
+		
+		if(count($request->input('ids')) >=1)
+		{
+			$toCopy = implode(",",$request->input('ids'));
+			$sql = "INSERT INTO fbs_reseaux_salles (".implode(",", $columns).") ";
+			$sql .= " SELECT ".implode(",", $columns)." FROM fbs_reseaux_salles WHERE club_id IN (".$toCopy.")";
+			\DB::select($sql);
+			return Redirect::to('reseauxsalles')->with('messagetext',\Lang::get('core.note_success'))->with('msgstatus','success');
+		} else {
+		
+			return Redirect::to('reseauxsalles')->with('messagetext','Please select row to copy')->with('msgstatus','error');
+		}	
+		
+	}		
 
 	function postSave( Request $request)
 	{
@@ -180,7 +203,7 @@ class ReseauxsallesController extends Controller {
 			
 		} else {
 
-			return Redirect::to('reseauxsalles/update/'.$request->input('club_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
+			return Redirect::to('reseauxsalles/update/'. $request->input('club_id'))->with('messagetext',\Lang::get('core.note_error'))->with('msgstatus','error')
 			->withErrors($validator)->withInput();
 		}	
 	
@@ -199,11 +222,11 @@ class ReseauxsallesController extends Controller {
 			
 			\SiteHelpers::auditTrail( $request , "ID : ".implode(",",$request->input('ids'))."  , Has Been Removed Successfull");
 			// redirect
-			return Redirect::to('reseauxsalles?return='.self::returnUrl())
+			return Redirect::to('reseauxsalles')
         		->with('messagetext', \Lang::get('core.note_success_delete'))->with('msgstatus','success'); 
 	
 		} else {
-			return Redirect::to('reseauxsalles?return='.self::returnUrl())
+			return Redirect::to('reseauxsalles')
         		->with('messagetext','No Item Deleted')->with('msgstatus','error');				
 		}
 
