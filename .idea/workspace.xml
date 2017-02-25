@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" />
@@ -44,8 +43,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+            <state relative-caret-position="378">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,7 +53,7 @@
       <file leaf-file-name="InscriptionController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
+            <state relative-caret-position="5832">
               <caret line="219" column="5" lean-forward="false" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
               <folding>
                 <marker date="1487752248896" expanded="true" signature="15049:15332" ph="..." />
@@ -84,83 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7128">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1487355300275" expanded="false" signature="5900:5915" ph="..." />
-                <marker date="1487355300275" expanded="true" signature="5916:6079" ph="..." />
-                <marker date="1487355300275" expanded="true" signature="16825:16844" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComplexesportifController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5562">
-              <caret line="210" column="9" lean-forward="false" selection-start-line="210" selection-start-column="9" selection-end-line="210" selection-end-column="9" />
-              <folding>
-                <marker date="1487880340970" expanded="true" signature="1248:6420" ph="{...}" />
-                <marker date="1487880340970" expanded="true" signature="11960:12050" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JoueurController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/JoueurController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3834">
-              <caret line="146" column="12" lean-forward="false" selection-start-line="146" selection-start-column="12" selection-end-line="146" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sximo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Models/Sximo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1188">
-              <caret line="44" column="27" lean-forward="false" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="27" />
-              <folding>
-                <marker date="1487868479429" expanded="true" signature="5408:5486" ph="SELECT * FRO... ${$table}" />
-                <marker date="1487868479429" expanded="true" signature="5546:5571" ph="SELECT * FRO... ${$table}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Complexesportif.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/app/Models/Complexesportif.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-              <folding>
-                <marker date="1487880341434" expanded="true" signature="397:450" ph="SELECT fbs_c... fbs_complexe_salles" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FrontAccesStatistiquesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state relative-caret-position="608">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <marker date="1488035439355" expanded="true" signature="427:482" ph="..." />
                 <marker date="1488035439355" expanded="true" signature="437:473" ph="..." />
@@ -1141,14 +1068,8 @@
       <workItem from="1487843575837" duration="1262000" />
       <workItem from="1487864450676" duration="6713000" />
       <workItem from="1487932310400" duration="1555000" />
-      <workItem from="1488032860816" duration="2195000" />
-    </task>
-    <task id="LOCAL-00039" summary="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base">
-      <created>1480640249197</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1480640249197</updated>
+      <workItem from="1488032860816" duration="2439000" />
+      <workItem from="1488035841292" duration="630000" />
     </task>
     <task id="LOCAL-00040" summary="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base">
       <created>1480705299451</created>
@@ -1486,11 +1407,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488034805202</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Interface BSA">
+      <created>1488035576794</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1488035576794</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="782978000" />
+    <option name="totallyTimeSpent" value="783852000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1505,7 +1433,7 @@
     <frame x="-8" y="0" width="1936" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19408602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1967742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1573,7 +1501,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Inscription prototype en cours d'intégration" />
     <MESSAGE value="Statistiques sans mesures" />
     <MESSAGE value="Dates format Français / essais sur module inscription / reste à généraliser" />
     <MESSAGE value="Creation parties suite à inscription" />
@@ -1598,7 +1525,8 @@
     <MESSAGE value="Récupération travail misSion BSA (numérotation messages capteurs et bornes)" />
     <MESSAGE value="TESTS CAPACITES ENVOI MESSAGES (LOCAL, ADSL, WIFI)" />
     <MESSAGE value="Verification backoffice avant livraison" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verification backoffice avant livraison" />
+    <MESSAGE value="Interface BSA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Interface BSA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1934,7 +1862,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
+        <state relative-caret-position="5832">
           <caret line="219" column="5" lean-forward="false" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
           <folding>
             <marker date="1487752248896" expanded="true" signature="15049:15332" ph="..." />
@@ -1963,7 +1891,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7128">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1487355300275" expanded="false" signature="5900:5915" ph="..." />
@@ -1975,8 +1903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="608">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <marker date="1488035439355" expanded="true" signature="427:482" ph="..." />
             <marker date="1488035439355" expanded="true" signature="437:473" ph="..." />
@@ -1986,8 +1914,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+        <state relative-caret-position="378">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>

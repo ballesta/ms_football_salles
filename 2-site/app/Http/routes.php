@@ -27,7 +27,8 @@
 	// ---- Front ----
 	// Accès à partir du Site BSA
 	Route::resource('front/statistiques',
-	                'FrontAccesStatistiques');
+	                'FrontAccesStatistiquesController@index');
+    //               FrontAccesStatistiques
 
 	// Inscriptions des joueurs
 	Route::get('front/grille_terrains_parties',
