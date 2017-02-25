@@ -18,7 +18,7 @@ class FrontAccesStatistiquesController extends Controller
     {
 	    if ( isset($_GET['key']))
 		    $key = $_GET['key'];
-	        if ($key != "K&SuDY3rz5wX#iy1kf%CJOv0S3^DLLcv")
+	        if ($key != "Jnx6XxZS8WGJpEtRuhvpGP9fQfHa93NK")
 	        	return "Erreur d'authentification: clef non reconnue";
 	    else
 		    return "Erreur d'authentification: clef absente";
