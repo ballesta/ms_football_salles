@@ -16,6 +16,14 @@ class FrontAccesStatistiquesController extends Controller
      */
     public function index()
     {
+	    if ( isset($_GET['key']))
+		    $key = $_SERVER['key'];
+	        if ($key != "K&SuDY3rz5wX#iy1kf%CJOv0S3^DLLcv")
+	        	return "Erreur d'authentification: clef non reconnue";
+	    else
+		    return "Erreur d'authentification: clef absente";
+
+
     	//http://football-bsa.ballesta.fr/index.php
 	    if ( isset($_SERVER['HTTP_REFERER']))
     	    $retour = $_SERVER['HTTP_REFERER'];
