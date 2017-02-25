@@ -17,7 +17,7 @@ class FrontAccesStatistiquesController extends Controller
     public function index()
     {
 	    if ( isset($_GET['key']))
-		    $key = $_SERVER['key'];
+		    $key = $_GET['key'];
 	        if ($key != "K&SuDY3rz5wX#iy1kf%CJOv0S3^DLLcv")
 	        	return "Erreur d'authentification: clef non reconnue";
 	    else
