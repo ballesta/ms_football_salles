@@ -17,7 +17,11 @@ class FrontAccesStatistiquesController extends Controller
     public function index()
     {
     	//http://football-bsa.ballesta.fr/index.php
-    	$retour = $_SERVER['HTTP_REFERER'];
+	    if ( isset($_SERVER['HTTP_REFERER']))
+    	    $retour = $_SERVER['HTTP_REFERER'];
+	    else
+	    	$retour = " #";
+
 	    return
 		    "
 				<h1>Statistiques des parties</h1>
