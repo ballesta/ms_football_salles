@@ -17,7 +17,7 @@ class FrontAccesStatistiquesController extends Controller
     public function index()
     {
 	    return '<h1>Statistiques des parties</h1>
-                <a href=javascript:history.go(-1)>
+                <a href=http://football.ballesta.fr/front/statistiques>
 					<h2>
 						Retour au site BSA
 					</h2>
