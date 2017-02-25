@@ -86,13 +86,13 @@
       <file leaf-file-name="FrontAccesStatistiquesController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+            <state relative-caret-position="310">
+              <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
               <folding>
-                <marker date="1488036999969" expanded="true" signature="384:490" ph="..." />
-                <marker date="1488036999969" expanded="true" signature="498:532" ph="..." />
-                <marker date="1488036999969" expanded="true" signature="604:659" ph="..." />
-                <marker date="1488036999969" expanded="true" signature="614:650" ph="..." />
+                <marker date="1488037856340" expanded="true" signature="485:591" ph="..." />
+                <marker date="1488037856340" expanded="true" signature="599:633" ph="..." />
+                <marker date="1488037856340" expanded="true" signature="671:726" ph="..." />
+                <marker date="1488037856340" expanded="true" signature="681:717" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1071,14 +1071,7 @@
       <workItem from="1487864450676" duration="6713000" />
       <workItem from="1487932310400" duration="1555000" />
       <workItem from="1488032860816" duration="2439000" />
-      <workItem from="1488035841292" duration="1205000" />
-    </task>
-    <task id="LOCAL-00043" summary="Inscription prototype en cours d'intégration">
-      <created>1481232760342</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1481232760342</updated>
+      <workItem from="1488035841292" duration="2008000" />
     </task>
     <task id="LOCAL-00044" summary="Inscription prototype en cours d'intégration">
       <created>1481239198690</created>
@@ -1416,11 +1409,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488036749232</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Interface BSA">
+      <created>1488037082015</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1488037082015</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="784427000" />
+    <option name="totallyTimeSpent" value="785230000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1913,13 +1913,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        <state relative-caret-position="310">
+          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
           <folding>
-            <marker date="1488036999969" expanded="true" signature="384:490" ph="..." />
-            <marker date="1488036999969" expanded="true" signature="498:532" ph="..." />
-            <marker date="1488036999969" expanded="true" signature="604:659" ph="..." />
-            <marker date="1488036999969" expanded="true" signature="614:650" ph="..." />
+            <marker date="1488037856340" expanded="true" signature="485:591" ph="..." />
+            <marker date="1488037856340" expanded="true" signature="599:633" ph="..." />
+            <marker date="1488037856340" expanded="true" signature="671:726" ph="..." />
+            <marker date="1488037856340" expanded="true" signature="681:717" ph="..." />
           </folding>
         </state>
       </provider>
