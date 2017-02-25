@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" />
@@ -40,10 +40,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
+            <state relative-caret-position="594">
               <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
@@ -83,14 +83,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontAccesStatistiquesController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FrontAccesStatistiquesController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="311">
+              <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
               <folding>
-                <marker date="1488035439355" expanded="true" signature="427:482" ph="..." />
-                <marker date="1488035439355" expanded="true" signature="437:473" ph="..." />
+                <marker date="1488036999969" expanded="true" signature="384:490" ph="..." />
+                <marker date="1488036999969" expanded="true" signature="498:532" ph="..." />
+                <marker date="1488036999969" expanded="true" signature="604:659" ph="..." />
+                <marker date="1488036999969" expanded="true" signature="614:650" ph="..." />
               </folding>
             </state>
           </provider>
@@ -307,8 +309,8 @@
         <option value="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
         <option value="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" />
       </list>
     </option>
   </component>
@@ -1069,28 +1071,7 @@
       <workItem from="1487864450676" duration="6713000" />
       <workItem from="1487932310400" duration="1555000" />
       <workItem from="1488032860816" duration="2439000" />
-      <workItem from="1488035841292" duration="630000" />
-    </task>
-    <task id="LOCAL-00040" summary="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base">
-      <created>1480705299451</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1480705299451</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base">
-      <created>1480737172186</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1480737172186</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base">
-      <created>1481214478886</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1481214478887</updated>
+      <workItem from="1488035841292" duration="1205000" />
     </task>
     <task id="LOCAL-00043" summary="Inscription prototype en cours d'intégration">
       <created>1481232760342</created>
@@ -1414,11 +1395,32 @@
       <option name="project" value="LOCAL" />
       <updated>1488035576794</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Interface BSA">
+      <created>1488036490351</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1488036490351</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Interface BSA">
+      <created>1488036656934</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1488036656934</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Interface BSA">
+      <created>1488036749232</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1488036749232</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="783852000" />
+    <option name="totallyTimeSpent" value="784427000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1901,22 +1903,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <marker date="1488035439355" expanded="true" signature="427:482" ph="..." />
-            <marker date="1488035439355" expanded="true" signature="437:473" ph="..." />
-          </folding>
+        <state relative-caret-position="594">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="311">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding>
+            <marker date="1488036999969" expanded="true" signature="384:490" ph="..." />
+            <marker date="1488036999969" expanded="true" signature="498:532" ph="..." />
+            <marker date="1488036999969" expanded="true" signature="604:659" ph="..." />
+            <marker date="1488036999969" expanded="true" signature="614:650" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
