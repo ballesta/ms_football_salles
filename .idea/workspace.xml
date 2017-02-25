@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" />
@@ -39,21 +41,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="28" column="45" lean-forward="false" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="45" />
+            <state relative-caret-position="324">
+              <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InscriptionController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InscriptionController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
-              <caret line="219" column="5" lean-forward="true" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
+              <caret line="219" column="5" lean-forward="false" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
               <folding>
                 <marker date="1487752248896" expanded="true" signature="15049:15332" ph="..." />
                 <marker date="1487752248896" expanded="true" signature="15059:15322" ph="..." />
@@ -64,6 +66,33 @@
                 <marker date="1487752248896" expanded="true" signature="16508:16531" ph="..." />
                 <marker date="1487752248896" expanded="true" signature="17030:17051" ph="..." />
                 <marker date="1487752248896" expanded="true" signature="17133:17158" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccueiljoueursController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#39#75#0#PHP" expanded="true" />
+                <marker date="1487878750646" expanded="true" signature="5290:5346" ph="INSERT INTO fbs_inscription... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7128">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1487355300275" expanded="false" signature="5900:5915" ph="..." />
+                <marker date="1487355300275" expanded="true" signature="5916:6079" ph="..." />
+                <marker date="1487355300275" expanded="true" signature="16825:16844" ph="..." />
               </folding>
             </state>
           </provider>
@@ -122,6 +151,19 @@
               <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
               <folding>
                 <marker date="1487880341434" expanded="true" signature="397:450" ph="SELECT fbs_c... fbs_complexe_salles" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrontAccesStatistiquesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+              <folding>
+                <marker date="1488035439355" expanded="true" signature="427:482" ph="..." />
+                <marker date="1488035439355" expanded="true" signature="437:473" ph="..." />
               </folding>
             </state>
           </provider>
@@ -289,7 +331,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2-site/config/services.php" />
         <option value="$PROJECT_DIR$/2-site/config/mail.php" />
         <option value="$PROJECT_DIR$/2-site/composer.json" />
         <option value="$PROJECT_DIR$/2-site/resources/views/pages/InscriptionJoueur.blade.php" />
@@ -332,7 +373,6 @@
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/SalleController.php" />
@@ -340,6 +380,8 @@
         <option value="$PROJECT_DIR$/2-site/app/Models/Sximo.php" />
         <option value="$PROJECT_DIR$/2-site/app/Models/Complexesportif.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/ComplexesportifController.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/routes.php" />
       </list>
     </option>
   </component>
@@ -439,7 +481,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -818,38 +859,9 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ms_football_salles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2-site" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -1128,21 +1140,8 @@
       <workItem from="1487747839158" duration="6347000" />
       <workItem from="1487843575837" duration="1262000" />
       <workItem from="1487864450676" duration="6713000" />
-      <workItem from="1487932310400" duration="597000" />
-    </task>
-    <task id="LOCAL-00037" summary="Parsley pour vérification saisie joueur ou sélection / Email unique OK">
-      <created>1480541817362</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1480541817362</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Partie /heure">
-      <created>1480545194425</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1480545194425</updated>
+      <workItem from="1487932310400" duration="1555000" />
+      <workItem from="1488032860816" duration="2195000" />
     </task>
     <task id="LOCAL-00039" summary="Inscription prototype extérieur OK / Suite: intégrer dans appli et connecter à la base">
       <created>1480640249197</created>
@@ -1473,11 +1472,25 @@
       <option name="project" value="LOCAL" />
       <updated>1487891340514</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Verification backoffice avant livraison">
+      <created>1487942194833</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1487942194834</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Verification backoffice avant livraison">
+      <created>1488034805202</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1488034805202</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="779825000" />
+    <option name="totallyTimeSpent" value="782978000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1492,7 +1505,7 @@
     <frame x="-8" y="0" width="1936" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19139785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19408602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1594,27 +1607,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/frontinscriptions.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/resources/views/inscription/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="113" column="11" lean-forward="true" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/front/tttt.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/resources/views/front/assets/smart-forms/css/smart-themes/red.css" />
     <entry file="file://$PROJECT_DIR$/2-site/public/assets/smart-forms/js/jquery-1.9.1.min.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1892,14 +1884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="28" column="45" lean-forward="false" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Models/Sximo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1188">
@@ -1951,7 +1935,7 @@
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/front/InscriptionController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="219" column="5" lean-forward="true" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
+          <caret line="219" column="5" lean-forward="false" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
           <folding>
             <marker date="1487752248896" expanded="true" signature="15049:15332" ph="..." />
             <marker date="1487752248896" expanded="true" signature="15059:15322" ph="..." />
@@ -1963,6 +1947,48 @@
             <marker date="1487752248896" expanded="true" signature="17030:17051" ph="..." />
             <marker date="1487752248896" expanded="true" signature="17133:17158" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/AccueiljoueursController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#39#75#0#PHP" expanded="true" />
+            <marker date="1487878750646" expanded="true" signature="5290:5346" ph="INSERT INTO fbs_inscription... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7128">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1487355300275" expanded="false" signature="5900:5915" ph="..." />
+            <marker date="1487355300275" expanded="true" signature="5916:6079" ph="..." />
+            <marker date="1487355300275" expanded="true" signature="16825:16844" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/FrontAccesStatistiquesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <marker date="1488035439355" expanded="true" signature="427:482" ph="..." />
+            <marker date="1488035439355" expanded="true" signature="437:473" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
