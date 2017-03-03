@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="page-content row">
-	 
-	 
+
  	<div class="page-content-wrapper m-t">   
 
 <div class="sbox "> 

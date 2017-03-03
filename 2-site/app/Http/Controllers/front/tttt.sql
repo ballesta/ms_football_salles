@@ -1,2 +1,0 @@
-
- select `p`.*, `SUBSTRING(p`.`debut,12,5)` as `hh_mm`, `s`.`identifiant` as `salle_nom`, `equipe_a`.`nom` as `equipe_a_nom`, `equipe_b`.`nom` as `equipe_b_nom` from `fb_partie` as `p` left join `fbs_salles` as `s` on `s`.`salle_id` = `p`.`salle_id` left join `fb_equipes` as `equipe_a` on `equipe_a`.`equipe_id` = `p`.`equipe_a_id` left join `fb_equipes` as `equipe_b` on `equipe_b`.`equipe_id` = `p`.`equipe_b_id` where `partie_id` = 16)

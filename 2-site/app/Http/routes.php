@@ -25,6 +25,15 @@
     }
 
 	// ---- Front ----
+	// Intégration statistiques Tunisie
+
+
+	 Route::get('tunisie/stats', 'front\tunisie\StatsController@get_stats_player');
+
+	// Fin tunisie
+
+
+
 	// Accès à partir du Site BSA
 	Route::resource('front/statistiques',
 	                'FrontAccesStatistiquesController@index');

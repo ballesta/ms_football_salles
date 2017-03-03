@@ -67,7 +67,7 @@
   	<body class="sxim-init" >
 	<div id="wrapper">
 		@include('layouts/sidemenu')
-		<div class="gray-bg " id="page-wrapper">
+		<div class="gray-bg " id="page-wrapper" style="height:1300px">
 			@include('layouts/headmenu')
 
 			@yield('content')		
