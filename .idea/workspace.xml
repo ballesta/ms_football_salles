@@ -2,31 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/tunisie/StatistiquesEquipe.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/tunisie/StatistiquesJoueur.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/tunisie/StatsController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/public/frontend/default/plugins/chart/js/Chart.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/public/frontend/default/plugins/jquery/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/front/statistiques/tunisie/equipe/stats.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/front/statistiques/tunisie/player/index.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/front/statistiques/tunisie/player/master.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/front/statistiques/tunisie/player/stats.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/2-site/resources/views/front/statistiques/tunisie/player/topbar.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/tttt.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/front/tttt.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2-site/resources/views/front/statistiques/StatistiquesJoueur.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/routes.php" afterPath="$PROJECT_DIR$/2-site/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/composer.json" afterPath="$PROJECT_DIR$/2-site/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/view.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/joueurCentre/view.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/2-site/resources/views/layouts/app.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/sessions/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/sessions/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/logs/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/logs/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/2-site/vendor/composer/autoload_classmap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/2-site/vendor/composer/autoload_static.php" />
     </list>
     <ignored path="ms_football_salles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1196,14 +1177,7 @@
       <workItem from="1488293752119" duration="5391000" />
       <workItem from="1488388192302" duration="4515000" />
       <workItem from="1488465941762" duration="7924000" />
-      <workItem from="1488551015971" duration="3790000" />
-    </task>
-    <task id="LOCAL-00050" summary="Statistiques sans mesures">
-      <created>1481667131994</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1481667131995</updated>
+      <workItem from="1488551015971" duration="3870000" />
     </task>
     <task id="LOCAL-00051" summary="Dates format Français / essais sur module inscription / reste à généraliser">
       <created>1481746185678</created>
@@ -1541,11 +1515,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488039873154</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Integration statistiques joueur Tunisie - Tel que livré - sans modifications">
+      <created>1488556096646</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1488556096646</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="809123000" />
+    <option name="totallyTimeSpent" value="809203000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1649,7 +1630,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Statistiques sans mesures" />
     <MESSAGE value="Dates format Français / essais sur module inscription / reste à généraliser" />
     <MESSAGE value="Creation parties suite à inscription" />
     <MESSAGE value="Creation parties, joueurs sélectionnés, sessiosn mesures suite à inscription" />
@@ -1674,7 +1654,8 @@
     <MESSAGE value="TESTS CAPACITES ENVOI MESSAGES (LOCAL, ADSL, WIFI)" />
     <MESSAGE value="Verification backoffice avant livraison" />
     <MESSAGE value="Interface BSA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Interface BSA" />
+    <MESSAGE value="Integration statistiques joueur Tunisie - Tel que livré - sans modifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integration statistiques joueur Tunisie - Tel que livré - sans modifications" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1946,6 +1927,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
           <caret line="1" column="534" lean-forward="true" selection-start-line="1" selection-start-column="534" selection-end-line="1" selection-end-column="534" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2011,6 +1993,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-40">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
