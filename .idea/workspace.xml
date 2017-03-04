@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dbda6415-032b-4604-bde0-5d441dbeab49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" afterPath="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/app/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" afterPath="$PROJECT_DIR$/2-site/storage/framework/cache/.gitignore" />
@@ -85,20 +86,40 @@
         <entry file="file://$PROJECT_DIR$/2-site/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="184">
-              <caret line="209" column="6" lean-forward="true" selection-start-line="209" selection-start-column="6" selection-end-line="209" selection-end-column="6" />
+              <caret line="209" column="6" lean-forward="false" selection-start-line="209" selection-start-column="6" selection-end-line="209" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InscriptionController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InscriptionController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="307" column="8" lean-forward="true" selection-start-line="307" selection-start-column="8" selection-end-line="307" selection-end-column="8" />
+            <state relative-caret-position="-108">
+              <caret line="307" column="8" lean-forward="false" selection-start-line="307" selection-start-column="8" selection-end-line="307" selection-end-column="8" />
               <folding>
                 <marker date="1487880341712" expanded="true" signature="8083:8139" ph="INSERT INTO fbs_inscription... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenereMesures.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Helpers/GenereMesures.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenereMesuresController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="119" column="23" lean-forward="true" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,31 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/resources/views/layouts/app.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1917">
-              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="sximo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2-site/public/sximo/js/sximo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4104">
               <caret line="154" column="1" lean-forward="false" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="smoothscroll.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2-site/public/frontend/default/plugins/smoothscroll.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -155,7 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inscrit_joueurs_connus</find>
       <find>joueurs</find>
       <find>duplication_debut</find>
       <find>inscriptions</find>
@@ -185,6 +185,7 @@
       <find>statistique</find>
       <find>stat</find>
       <find>StatistiquesMesures</find>
+      <find>GenereMesures</find>
     </findStrings>
     <replaceStrings>
       <replace>}}</replace>
@@ -338,7 +339,6 @@
         <option value="$PROJECT_DIR$/2-site/app/Models/Reseauxsalles.php" />
         <option value="$PROJECT_DIR$/2-site/app/MesuresVerification.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/MesuresVerificationController.php" />
-        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/SessionMesuresAPIController.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
         <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesuresController.php" />
@@ -359,6 +359,7 @@
         <option value="$PROJECT_DIR$/2-site/public/sximo/js/sximo.js" />
         <option value="$PROJECT_DIR$/2-site/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/2-site/resources/views/front/statistiques/tunisie/player/stats.blade.php" />
+        <option value="$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php" />
       </list>
     </option>
   </component>
@@ -887,6 +888,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ms_football_salles" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2-site" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Helpers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -1177,14 +1200,7 @@
       <workItem from="1488293752119" duration="5391000" />
       <workItem from="1488388192302" duration="4515000" />
       <workItem from="1488465941762" duration="7924000" />
-      <workItem from="1488551015971" duration="3870000" />
-    </task>
-    <task id="LOCAL-00051" summary="Dates format Français / essais sur module inscription / reste à généraliser">
-      <created>1481746185678</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1481746185678</updated>
+      <workItem from="1488551015971" duration="9318000" />
     </task>
     <task id="LOCAL-00052" summary="Creation parties suite à inscription">
       <created>1482177919852</created>
@@ -1522,11 +1538,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488556096646</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Integration statistiques joueur Tunisie - Tel que livré - sans modifications">
+      <created>1488556179250</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1488556179250</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="809203000" />
+    <option name="totallyTimeSpent" value="814651000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1545,8 +1568,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44047618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39285713" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44047618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7416667" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25537634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1671,13 +1694,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2-site/app/Models/Capteur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/MesuresVerification.php" />
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/SessionmesureController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1694,13 +1710,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/EnvoiMesures.php" />
-    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="94" column="23" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/MesuresVerificationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -1947,7 +1956,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2058,18 +2067,34 @@
     <entry file="file://$PROJECT_DIR$/2-site/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
-          <caret line="209" column="6" lean-forward="true" selection-start-line="209" selection-start-column="6" selection-end-line="209" selection-end-column="6" />
+          <caret line="209" column="6" lean-forward="false" selection-start-line="209" selection-start-column="6" selection-end-line="209" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/InscriptionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="307" column="8" lean-forward="true" selection-start-line="307" selection-start-column="8" selection-end-line="307" selection-end-column="8" />
+        <state relative-caret-position="-108">
+          <caret line="307" column="8" lean-forward="false" selection-start-line="307" selection-start-column="8" selection-end-line="307" selection-end-column="8" />
           <folding>
             <marker date="1487880341712" expanded="true" signature="8083:8139" ph="INSERT INTO fbs_inscription... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Helpers/GenereMesures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2-site/app/Http/Controllers/GenereMesuresController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="119" column="23" lean-forward="true" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -31,10 +31,9 @@ class GenereMesuresController extends Controller
 		// Supprime l'ensemble des mesures
 		// avant de générer le nouveau jeux d'essais
 		//DB::table('fb_mesures')->truncate();
-		$n=10;
-		$interval = 5; // Minutes
-		$this->add_EventShoots($n, $interval);
-		$this->add_Mesures($n, $interval);
+		$duree_partie =30; // minutes
+		//$this->add_EventShoots($duree_partie, 60);
+		$this->add_Mesures($duree_partie, 5);
 
 		return "Mesures Générées: $n eventShoot  (chaque $interval minutes)<br>"
 		     . "Mesures Générées: $n mesures (chaque $interval minutes)<br>  ";
@@ -46,10 +45,10 @@ class GenereMesuresController extends Controller
 		// Start now: time in seconds since Unix creation
 		$time = time();
 		// Sensor id
-		$uid = "111111";
+		$uid = "54:4a:16:56:46:1a";
 		// Start at 10 km/h
 		$speed = 10;
-		// Generate 10 mesures
+		// Generate mesures
 		$begin_at= time();
 		for ($id = 1; $id <= $n; $id++) {
 			// Change speed
@@ -89,12 +88,14 @@ END;
 	}
 
 	// Add Mesures
-	function add_Mesures($n, $interval)
+	function add_Mesures($game_duration_minutes, $interval_seconds)
 	{
 		// Start now: time in seconds since Unix creation
 		$time = time();
 		// Sensor id
-		$uid = "111111";
+		$IEEE = "54:4a:16:56:46:1a";
+		$ChronoBorne = 0;
+		$ChronoSensor = 0;
 		$Dist = 0;
 		$Average = 1;
 		$Max = 0;
@@ -102,80 +103,102 @@ END;
 		$Sprint = 0;
 		$Mobility = 0;
 		$Shoot = 0;
-		$Pass = 0;
+		$Passes = 0;
 		$Control = 0;
-
 		$top_average = 40;
+		$n = ($game_duration_minutes * 60) / $interval_seconds;
 		// Generate mesures
 		for ($id = 1; $id <= $n; $id++) 
 		{
 			// Add $interval minutes to time
-			$time += $interval * 60;
-			$formated_time = date("Y-m-d H:i:s", $time);
+			$time += $interval_seconds;
+			$formated_time = date("Y-m-d ", $time). '12:00:00';
+			$Shoot++;
+			$Passes++;
+			$Step++;
 			$Dist++;
+			$Control++;
+			$Mobility++;
+			$Max++;
 			$Average = $Average * 2;
 			if($Average > $top_average--)
 				$Average = $top_average-- / 4;
-			$Max++;
-			$Step++;
 			$Sprint++;
-			$Mobility++;
-			$Shoot++;
-			$Pass++;
-			$Control++;
-			$this->generateMesure(  $formated_time, 
-				                    $uid,
-									$Dist,
-									$Average,
-									$Max,
-									$Step,
-									$Sprint,
-									$Mobility,
+			$this->generateMesure(  $formated_time,
+									$ChronoBorne,
+									$ChronoSensor,
+									$IEEE,
 									$Shoot,
-									$Pass,
-									$Control);
+									$Passes,
+									$Step,
+									$Dist,
+									$Control,
+									$Mobility,
+									$Max,
+									$Average,
+									$Sprint);
 		}
 	}
 
-	function generateMesure($time, 
-							$uid,
-							$Dist,
-							$Average,
-							$Max,
-							$Step,
-							$Sprint,
-							$Mobility,
+	function generateMesure($time,
+							$ChronoBorne,
+							$ChronoSensor,
+							$IEEE,
 							$Shoot,
-							$Pass,
-							$Control)
+							$Passes,
+							$Step,
+							$Dist,
+							$Control,
+							$Mobility,
+							$Max,
+							$Average,
+							$Sprint)
 	{
 		//echo "$time, $uid, $id, $speed <br>";
-		$Event = <<<END
-		{
-		  "sensor": {
-		  "Mesure": {
-		    "param": [
-		      {
-		        "UID"       : "$uid",
-		        "Dist"      : "$Dist",
-		        "Average"   : "$Average",
-		        "Max"       : "$Max",
-		        "Step"      : "$Step",
-		        "Sprint"    : "$Sprint",
-		        "Mobility"  : "$Mobility",
-		        "Shoot"     : "$Shoot",
-		        "Pass"      : "$Pass",
-		        "Control"   : "$Control"
-		      }
-		    ]
+		/*
+		 * Extrait des mesures réalisées en février à BSA avec Mathieux
+		 * {
+		 *  "chronoBorne": "1" ,
+		 *  "chronoSensor": "1" ,
+		 *  "IEEE": "54:4a:16:56:46:1a",
+		 *  "mesures":
+		 *      {
+		 *          "Shoot": "0",
+		 *          "Passes": "0",
+		 *          "Step": "0",
+		 *          "Dist": "0",
+		 *          "Control": "0",
+		 *          "Mobility": "0",
+		 *          "Max": "0",
+		 *          "Average": "0",
+		 *          "Sprint": "0"
+		 *       }
+		 *  }
+		 * */
+
+		$message = <<<END
+		  {
+		    "chronoBorne" : "$ChronoBorne" ,
+			"chronoSensor": "$ChronoSensor" ,
+		    "IEEE": "$IEEE",
+		    "mesures": 
+		        {
+		            "Shoot"     : "$Shoot",
+		            "Passes"    : "$Passes",
+		            "Step"      : "$Step",
+		            "Dist"      : "$Dist",
+		            "Control"   : "$Control"
+		            "Mobility"  : "$Mobility",
+		            "Max"       : "$Max",
+		            "Average"   : "$Average",
+		            "Sprint"    : "$Sprint",
+		        }
 		  }
-		  }
-		}
 END;
 		// Crée la mesure
 		$mesure = new Mesure;
 		$mesure->Horodatage = $time;
-		$mesure->message_json = $Event;
+		$mesure->message_json = $message;
 		$mesure->save();
 	}
 
